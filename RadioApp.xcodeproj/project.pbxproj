@@ -29,6 +29,11 @@
 		E1E497E92C56D7500099440D /* Color + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497E72C56D7500099440D /* Color + Ext.swift */; };
 		E1E497EB2C56D8500099440D /* DS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497EA2C56D8500099440D /* DS.swift */; };
 		E1E497EE2C56DD670099440D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497ED2C56DD670099440D /* ProfileViewModel.swift */; };
+		E1E497FB2C56E6230099440D /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1E497F62C56E6230099440D /* SF-Pro-Display-Medium.otf */; };
+		E1E497FC2C56E6230099440D /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1E497F72C56E6230099440D /* SF-Pro-Display-Regular.otf */; };
+		E1E497FD2C56E6230099440D /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1E497F82C56E6230099440D /* SF-Pro-Display-Bold.otf */; };
+		E1E497FE2C56E6230099440D /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1E497F92C56E6230099440D /* SF-Pro-Display-Semibold.otf */; };
+		E1E498012C56EC900099440D /* Font + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498002C56EC900099440D /* Font + Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +59,12 @@
 		E1E497E72C56D7500099440D /* Color + Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color + Ext.swift"; sourceTree = "<group>"; };
 		E1E497EA2C56D8500099440D /* DS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DS.swift; sourceTree = "<group>"; };
 		E1E497ED2C56DD670099440D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		E1E497F62C56E6230099440D /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		E1E497F72C56E6230099440D /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		E1E497F82C56E6230099440D /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		E1E497F92C56E6230099440D /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		E1E497FF2C56E6CF0099440D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1E498002C56EC900099440D /* Font + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font + Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +131,7 @@
 			children = (
 				2663C77F2C569E54002EFD0C /* WelcomeView.swift */,
 				2663C7922C569FA4002EFD0C /* Autorization */,
-				2663C7932C56A009002EFD0C /* Profile */,
+				2663C7932C56A009002EFD0C /* ProfileFlow */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -155,19 +166,20 @@
 			path = Autorization;
 			sourceTree = "<group>";
 		};
-		2663C7932C56A009002EFD0C /* Profile */ = {
+		2663C7932C56A009002EFD0C /* ProfileFlow */ = {
 			isa = PBXGroup;
 			children = (
 				2663C7942C56A01F002EFD0C /* ProfileView.swift */,
 				E1E497ED2C56DD670099440D /* ProfileViewModel.swift */,
 				E1E497EC2C56DD410099440D /* SubViews */,
 			);
-			path = Profile;
+			path = ProfileFlow;
 			sourceTree = "<group>";
 		};
 		E1E497D82C56D0C70099440D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E1E497FF2C56E6CF0099440D /* Info.plist */,
 				E1E497DB2C56D1B40099440D /* DesignSystem */,
 				2663C7812C569E55002EFD0C /* Assets.xcassets */,
 			);
@@ -177,6 +189,7 @@
 		E1E497DB2C56D1B40099440D /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				E1E497EF2C56E37F0099440D /* Fonts */,
 				E1E497D92C56D14F0099440D /* Resources.swift */,
 				E1E497EA2C56D8500099440D /* DS.swift */,
 			);
@@ -203,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				E1E497E72C56D7500099440D /* Color + Ext.swift */,
+				E1E498002C56EC900099440D /* Font + Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -214,6 +228,17 @@
 				2663C7982C56A060002EFD0C /* LegalPoliciesView.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		E1E497EF2C56E37F0099440D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E1E497F82C56E6230099440D /* SF-Pro-Display-Bold.otf */,
+				E1E497F62C56E6230099440D /* SF-Pro-Display-Medium.otf */,
+				E1E497F72C56E6230099440D /* SF-Pro-Display-Regular.otf */,
+				E1E497F92C56E6230099440D /* SF-Pro-Display-Semibold.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,8 +306,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1E497FB2C56E6230099440D /* SF-Pro-Display-Medium.otf in Resources */,
 				2663C7852C569E55002EFD0C /* Preview Assets.xcassets in Resources */,
+				E1E497FD2C56E6230099440D /* SF-Pro-Display-Bold.otf in Resources */,
+				E1E497FE2C56E6230099440D /* SF-Pro-Display-Semibold.otf in Resources */,
 				2663C7822C569E55002EFD0C /* Assets.xcassets in Resources */,
+				E1E497FC2C56E6230099440D /* SF-Pro-Display-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +336,7 @@
 				2663C7AB2C56A257002EFD0C /* Model.swift in Sources */,
 				2663C79F2C56A0CD002EFD0C /* ForgotPassView.swift in Sources */,
 				2663C7952C56A01F002EFD0C /* ProfileView.swift in Sources */,
+				E1E498012C56EC900099440D /* Font + Ext.swift in Sources */,
 				2663C79D2C56A0AB002EFD0C /* SignUpView.swift in Sources */,
 				2663C7972C56A037002EFD0C /* ProfileEditView.swift in Sources */,
 				E1E497E92C56D7500099440D /* Color + Ext.swift in Sources */,
@@ -448,6 +478,9 @@
 				DEVELOPMENT_TEAM = LT54Q8Z33F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RadioApp/Resources/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -482,6 +515,9 @@
 				DEVELOPMENT_TEAM = LT54Q8Z33F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RadioApp/Resources/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

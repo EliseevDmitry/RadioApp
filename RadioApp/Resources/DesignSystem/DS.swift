@@ -22,7 +22,10 @@ enum DS {
         static let pinkNeon = Color(hex: "#FF296D")
     }
     
-    enum Fonts {
-        
+    enum Fonts: String {
+        case sfBold = "SF-Pro-Display-Bold"
+        case sfMedium = "SF-Pro-Display-Medium"
+        case sfRegular = "SF-Pro-Display-Regular"
+        case sfSemibold = "SF-Pro-Display-Semibold"
     }
 }
