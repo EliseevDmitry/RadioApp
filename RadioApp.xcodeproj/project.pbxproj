@@ -25,8 +25,9 @@
 		2663C7AB2C56A257002EFD0C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C7AA2C56A257002EFD0C /* Model.swift */; };
 		2663C7AE2C56A2B9002EFD0C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2663C7AD2C56A2B9002EFD0C /* Kingfisher */; };
 		E1E497DA2C56D14F0099440D /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497D92C56D14F0099440D /* Resources.swift */; };
-		E1E497E02C56D3FE0099440D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497DF2C56D3FE0099440D /* Extensions.swift */; };
 		E1E497E62C56D5380099440D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497E52C56D5380099440D /* NetworkService.swift */; };
+		E1E497E92C56D7500099440D /* Color + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497E72C56D7500099440D /* Color + Ext.swift */; };
+		E1E497EB2C56D8500099440D /* DS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497EA2C56D8500099440D /* DS.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,8 +49,9 @@
 		2663C7A82C56A249002EFD0C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		2663C7AA2C56A257002EFD0C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		E1E497D92C56D14F0099440D /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
-		E1E497DF2C56D3FE0099440D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = RadioApp/Resources/Extensions/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		E1E497E52C56D5380099440D /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E1E497E72C56D7500099440D /* Color + Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color + Ext.swift"; sourceTree = "<group>"; };
+		E1E497EA2C56D8500099440D /* DS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DS.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				E1E497E32C56D4DF0099440D /* Services */,
 				2663C78C2C569ED5002EFD0C /* Flows */,
 				2663C78D2C569EE8002EFD0C /* Components */,
+				E1E497E82C56D7500099440D /* Extensions */,
 				E1E497D82C56D0C70099440D /* Resources */,
 				2663C7832C569E55002EFD0C /* Preview Content */,
 			);
@@ -113,9 +116,9 @@
 		2663C78C2C569ED5002EFD0C /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				2663C77F2C569E54002EFD0C /* WelcomeView.swift */,
 				2663C7922C569FA4002EFD0C /* Autorization */,
 				2663C7932C56A009002EFD0C /* Profile */,
-				2663C77F2C569E54002EFD0C /* WelcomeView.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -129,15 +132,6 @@
 				2663C7A62C56A212002EFD0C /* SearchView.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		2663C78E2C569F09002EFD0C /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				E1E497DF2C56D3FE0099440D /* Extensions.swift */,
-			);
-			name = Extensions;
-			path = ../Extensions;
 			sourceTree = "<group>";
 		};
 		2663C7912C569F89002EFD0C /* Models */ = {
@@ -172,7 +166,6 @@
 		E1E497D82C56D0C70099440D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2663C78E2C569F09002EFD0C /* Extensions */,
 				E1E497DB2C56D1B40099440D /* DesignSystem */,
 				2663C7812C569E55002EFD0C /* Assets.xcassets */,
 			);
@@ -183,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				E1E497D92C56D14F0099440D /* Resources.swift */,
+				E1E497EA2C56D8500099440D /* DS.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -201,6 +195,14 @@
 				E1E497E52C56D5380099440D /* NetworkService.swift */,
 			);
 			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		E1E497E82C56D7500099440D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E1E497E72C56D7500099440D /* Color + Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +284,7 @@
 			files = (
 				2663C7A32C56A1A5002EFD0C /* PlayerMenuView.swift in Sources */,
 				2663C7A12C56A10E002EFD0C /* CustomTabBarView.swift in Sources */,
+				E1E497EB2C56D8500099440D /* DS.swift in Sources */,
 				2663C79B2C56A09B002EFD0C /* SignInView.swift in Sources */,
 				E1E497DA2C56D14F0099440D /* Resources.swift in Sources */,
 				2663C7802C569E54002EFD0C /* WelcomeView.swift in Sources */,
@@ -292,9 +295,9 @@
 				2663C7AB2C56A257002EFD0C /* Model.swift in Sources */,
 				2663C79F2C56A0CD002EFD0C /* ForgotPassView.swift in Sources */,
 				2663C7952C56A01F002EFD0C /* ProfileView.swift in Sources */,
-				E1E497E02C56D3FE0099440D /* Extensions.swift in Sources */,
 				2663C79D2C56A0AB002EFD0C /* SignUpView.swift in Sources */,
 				2663C7972C56A037002EFD0C /* ProfileEditView.swift in Sources */,
+				E1E497E92C56D7500099440D /* Color + Ext.swift in Sources */,
 				2663C77E2C569E54002EFD0C /* RadioAppApp.swift in Sources */,
 				2663C7992C56A060002EFD0C /* LegalPoliciesView.swift in Sources */,
 			);
