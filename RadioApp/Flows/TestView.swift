@@ -26,6 +26,7 @@ struct TestView: View {
             LazyVGrid(columns: columns) {
                 ForEach(stations, id: \.voteCount) {item in
                     item
+                       .frame(height: 170)
                 }
             }
         }
