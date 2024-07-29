@@ -12,6 +12,7 @@ struct WelcomeView: View {
     var body: some View {
         VStack {
             Text("Let's Get Started")
+                .font(.custom(.sfSemibold, size: 49))
         }
         .padding()
     }
