@@ -24,6 +24,9 @@
 		2663C7A92C56A249002EFD0C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C7A82C56A249002EFD0C /* ViewModel.swift */; };
 		2663C7AB2C56A257002EFD0C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C7AA2C56A257002EFD0C /* Model.swift */; };
 		2663C7AE2C56A2B9002EFD0C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2663C7AD2C56A2B9002EFD0C /* Kingfisher */; };
+		268696642C57DC330075E9DC /* StationPopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268696632C57DC330075E9DC /* StationPopularView.swift */; };
+		268696662C57E0320075E9DC /* VoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268696652C57E0320075E9DC /* VoteView.swift */; };
+		268696682C57EB6A0075E9DC /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268696672C57EB6A0075E9DC /* TestView.swift */; };
 		7A6579FF2C57F34E00FFDBFD /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6579FE2C57F34E00FFDBFD /* URLManager.swift */; };
 		E1E497DA2C56D14F0099440D /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497D92C56D14F0099440D /* Resources.swift */; };
 		E1E497E62C56D5380099440D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497E52C56D5380099440D /* NetworkService.swift */; };
@@ -55,6 +58,9 @@
 		2663C7A62C56A212002EFD0C /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		2663C7A82C56A249002EFD0C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		2663C7AA2C56A257002EFD0C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		268696632C57DC330075E9DC /* StationPopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationPopularView.swift; sourceTree = "<group>"; };
+		268696652C57E0320075E9DC /* VoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteView.swift; sourceTree = "<group>"; };
+		268696672C57EB6A0075E9DC /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		7A6579FE2C57F34E00FFDBFD /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		E1E497D92C56D14F0099440D /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		E1E497E52C56D5380099440D /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -134,6 +140,7 @@
 				2663C77F2C569E54002EFD0C /* WelcomeView.swift */,
 				2663C7922C569FA4002EFD0C /* Autorization */,
 				2663C7932C56A009002EFD0C /* ProfileFlow */,
+				268696672C57EB6A0075E9DC /* TestView.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -145,6 +152,8 @@
 				2663C7A22C56A1A5002EFD0C /* PlayerMenuView.swift */,
 				2663C7A42C56A1F2002EFD0C /* VolumeView.swift */,
 				2663C7A62C56A212002EFD0C /* SearchView.swift */,
+				268696632C57DC330075E9DC /* StationPopularView.swift */,
+				268696652C57E0320075E9DC /* VoteView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -327,9 +336,11 @@
 			files = (
 				2663C7A32C56A1A5002EFD0C /* PlayerMenuView.swift in Sources */,
 				E1E497EE2C56DD670099440D /* ProfileViewModel.swift in Sources */,
+				268696662C57E0320075E9DC /* VoteView.swift in Sources */,
 				2663C7A12C56A10E002EFD0C /* CustomTabBarView.swift in Sources */,
 				E1E497EB2C56D8500099440D /* DS.swift in Sources */,
 				2663C79B2C56A09B002EFD0C /* SignInView.swift in Sources */,
+				268696642C57DC330075E9DC /* StationPopularView.swift in Sources */,
 				E1E497DA2C56D14F0099440D /* Resources.swift in Sources */,
 				2663C7802C569E54002EFD0C /* WelcomeView.swift in Sources */,
 				E1E497E62C56D5380099440D /* NetworkService.swift in Sources */,
@@ -342,6 +353,7 @@
 				E1E498012C56EC900099440D /* Font + Ext.swift in Sources */,
 				2663C79D2C56A0AB002EFD0C /* SignUpView.swift in Sources */,
 				2663C7972C56A037002EFD0C /* ProfileEditView.swift in Sources */,
+				268696682C57EB6A0075E9DC /* TestView.swift in Sources */,
 				E1E497E92C56D7500099440D /* Color + Ext.swift in Sources */,
 				2663C77E2C569E54002EFD0C /* RadioAppApp.swift in Sources */,
 				2663C7992C56A060002EFD0C /* LegalPoliciesView.swift in Sources */,
