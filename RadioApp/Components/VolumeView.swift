@@ -11,7 +11,7 @@ struct VolumeView: View {
     @Binding var voulmeValue: CGFloat
     var body: some View {
         VStack{
-            Text("\((voulmeValue*100).formatted())%")
+            Text("\((Int(voulmeValue*100)).formatted())%")
                 .font(.system(size: 20))
                 .foregroundStyle(.black)
             GeometryReader { screen in
@@ -22,14 +22,29 @@ struct VolumeView: View {
                         RoundedRectangle(cornerRadius: .infinity)
                             .foregroundStyle(DS.Colors.blueNeon)
                             .frame(height: (screen.size.height * CGFloat(self.voulmeValue)))
-                        
-                        
-                    }//: ZSTACK ProgressBar
+                    }
                     .frame(width: 10)
-                        Circle()
-                            .foregroundStyle(DS.Colors.blueNeon)
-                            .position(CGPoint(x: 10.0, y: screen.size.height - (screen.size.height * CGFloat(self.voulmeValue)) ))
-                            .frame(width: 20)
+                    Circle()
+                        .foregroundStyle(DS.Colors.blueNeon)
+                        .position(CGPoint(x: 10.0, y: screen.size.height - (screen.size.height * CGFloat(self.voulmeValue)) ))
+                        .frame(width: 20)
+                        .gesture(
+                            DragGesture()
+                                .onChanged({ value in
+                                    withAnimation(.linear(duration: 1)){
+                                        if voulmeValue >= 0 && voulmeValue <= 1 {
+                                            voulmeValue -= (value.translation.height/screen.size.height/80)
+                                        }
+                                    }
+                                })
+                                .onEnded({ _ in
+                                    if voulmeValue >= 1 {
+                                        voulmeValue = 1
+                                    } else if voulmeValue <= 0 {
+                                        voulmeValue = 0
+                                    }
+                                })
+                        )
                 }
             }
             .frame(width: 10)
@@ -42,5 +57,5 @@ struct VolumeView: View {
 }
 
 #Preview {
-    VolumeView(voulmeValue: .constant(0.1))
+    VolumeView(voulmeValue: .constant(0.4))
 }
