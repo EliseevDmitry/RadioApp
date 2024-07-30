@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StationPopularView: View {
     @Binding var voteCount: Int?
+    var model: ViewModel
     var body: some View {
         GeometryReader{ geometry in
             Rectangle()
@@ -28,7 +29,7 @@ struct StationPopularView: View {
                             Text("votes \(voteCount ?? 0)")
                                 .font(.custom(DS.Fonts.sfRegular, size: geometry.size.width/11))
                                 .foregroundStyle(.white)
-                            VoteView()
+                            VoteView(model: model)
                                 .frame(
                                     width: geometry.size.width/7,
                                     height: geometry.size.width/7
@@ -54,5 +55,5 @@ struct StationPopularView: View {
 
 
 #Preview {
-    StationPopularView(voteCount: .constant(1))
+    StationPopularView(voteCount: .constant(1), model: ViewModel())
 }

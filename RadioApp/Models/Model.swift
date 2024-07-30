@@ -48,3 +48,9 @@ struct Station: Codable {
 //    let clicktimestamp_iso8601: String
 
 }
+
+
+struct Like: Codable {
+    var idUUID = UUID()
+    var likeSet: Set<Int>
+}

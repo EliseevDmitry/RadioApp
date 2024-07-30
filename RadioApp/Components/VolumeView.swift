@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct VolumeView: View {
     @Binding var voulmeValue: CGFloat
     var body: some View {
@@ -31,7 +32,7 @@ struct VolumeView: View {
                         .gesture(
                             DragGesture()
                                 .onChanged({ value in
-                                    withAnimation(.linear(duration: 1)){
+                                    withAnimation(.linear(duration: 2)){
                                         if voulmeValue >= 0 && voulmeValue <= 1 {
                                             voulmeValue -= (value.translation.height/screen.size.height/80)
                                         }
