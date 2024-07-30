@@ -1,5 +1,5 @@
 //
-//  SettingsButtonView.swift
+//  SettingsButton.swift
 //  RadioApp
 //
 //  Created by Келлер Дмитрий on 30.07.2024.
