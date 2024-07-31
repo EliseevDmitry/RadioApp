@@ -33,11 +33,11 @@ struct TestView2: View {
                         .font(.custom(DS.Fonts.sfRegular, size: 20))
                         .foregroundStyle(.white)
 
-                    VoteView()
-                        .frame(
-                            maxWidth: 50,
-                            maxHeight: 50
-                        )
+//                    VoteView(model: <#ViewModel#>)
+//                        .frame(
+//                            maxWidth: 50,
+//                            maxHeight: 50
+//                        )
                 }
                 .padding(.horizontal, 20)
 
