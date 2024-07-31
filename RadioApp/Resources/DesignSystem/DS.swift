@@ -23,9 +23,9 @@ enum DS {
     }
     
     enum Fonts: String {
-        case sfBold = "SF-Pro-Display-Bold"
-        case sfMedium = "SF-Pro-Display-Medium"
-        case sfRegular = "SF-Pro-Display-Regular"
-        case sfSemibold = "SF-Pro-Display-Semibold"
+        case sfBold = "SFProDisplay-Bold"
+        case sfMedium = "SFProDisplay-Medium"
+        case sfRegular = "SFProDisplay-Regular"
+        case sfSemibold = "SFProDisplay-Semibold"
     }
 }

@@ -39,7 +39,7 @@ struct StationPopularView: View {
                 .padding(.horizontal)
                 Text("POP")
                     .foregroundStyle(.white)
-                    .font(.custom(DS.Fonts.sfRegular, size: 80))
+                    .font(.custom(DS.Fonts.sfBold, size: 80))
                 Text("Radio Record")
                     .foregroundStyle(.white)
                     .font(.custom(DS.Fonts.sfBold, size: 20))
