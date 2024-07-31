@@ -37,6 +37,7 @@ struct PlayButtonView: View {
          //action
         } label: {
             Image(.play)
+                .resizable()
                 .frame(width: 37, height: 37)
         }
         .frame(width: 89, height: 89)
@@ -52,7 +53,7 @@ struct PlayButtonView: View {
         .background {
             PlayButtonShape()
                 .fill(DS.Colors.blueNeon)
-                .frame(width: 111, height: 111)
+                .frame(width: 111, height: 111)     
         }
         .background {
             PlayButtonShape()
