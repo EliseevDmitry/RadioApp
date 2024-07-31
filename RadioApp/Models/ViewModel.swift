@@ -16,7 +16,6 @@ final class ViewModel: ObservableObject {
     @Published var volume: CGFloat = 0.5
     @Published var showStation: Bool = true
     
-    
     let network = NetworkService()
     var likes = Like(likeSet: Set<Int>())
     

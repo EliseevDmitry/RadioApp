@@ -9,14 +9,14 @@ import SwiftUI
 
 struct PopularView: View {
     @EnvironmentObject var appManager: ViewModel
+    @State private var isShow = false
     let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
+        GridItem(.flexible(minimum: 139, maximum: 139)),
+        GridItem(.flexible(minimum: 139, maximum: 139))
     ]
-    @State private var stations = [Station]()
     var body: some View {
         VStack {
-            Spacer()
+           
             HStack {
                 Text("Popular")
                     .font(.custom(DS.Fonts.sfRegular, size: 40))
@@ -24,6 +24,7 @@ struct PopularView: View {
                 Spacer()
             }
             .padding(.horizontal)
+            .padding(.top, 60)
             Spacer()
             HStack{
                 VolumeView(voulmeValue: $appManager.volume)
@@ -31,31 +32,35 @@ struct PopularView: View {
                     .padding(.leading, 15)
                 ScrollView(.vertical, showsIndicators: false){
                     LazyVGrid(columns: columns) {
-//                        ForEach(stations, id: \.voteCount) {item in
-//                            item
-//                                //.padding(4)
-//                              
-//                        }
+                        ForEach(appManager.stations, id: \.changeuuid) {item in
+                                StationPopularView(isShow: $isShow, station: item)
+                                    .environmentObject(appManager)
+                                    .frame(width: 139, height: 139)
+                        }
                     }
                 }
                 .padding()
             }
             Spacer()
             PlayerMenuView()
-           Spacer()
+                .padding(.bottom, 50)
         }
         .ignoresSafeArea()
         .background(DS.Colors.darkBlue)
         .task {
-            stations = try await appManager.network.getTopStations(numberLimit: 20)
+            do {
+                appManager.stations = try await appManager.network.getTopStations(numberLimit: 20)
+            } catch {
+                // handle error
+            }
         }
     }
-        
+    
 }
 
 struct PopularView_Previews: PreviewProvider {
     static let previewAppManager = ViewModel()
-
+    
     static var previews: some View {
         PopularView()
             .environmentObject(previewAppManager)
