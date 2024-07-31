@@ -15,13 +15,13 @@ struct TestView: View {
         GridItem(.flexible())
     ]
     var body: some View {
-        let stations = [StationPopularView(voteCount: .constant(1), model: model),
-                        StationPopularView(voteCount: .constant(2), model: model),
-                        StationPopularView(voteCount: .constant(3), model: model),
-                        StationPopularView(voteCount: .constant(4), model: model),
-                        StationPopularView(voteCount: .constant(5), model: model),
-                        StationPopularView(voteCount: .constant(6), model: model),
-                        StationPopularView(voteCount: .constant(7), model: model)
+        let stations = [StationPopularView(voteCount: .constant(1), isShow: .constant(true), model: model),
+                        StationPopularView(voteCount: .constant(2), isShow: .constant(false), model: model),
+                        StationPopularView(voteCount: .constant(3), isShow: .constant(false), model: model),
+                        StationPopularView(voteCount: .constant(4), isShow: .constant(false), model: model),
+                        StationPopularView(voteCount: .constant(5), isShow: .constant(false), model: model),
+                        StationPopularView(voteCount: .constant(6), isShow: .constant(false), model: model),
+                        StationPopularView(voteCount: .constant(7), isShow: .constant(false), model: model)
         ]
         ScrollView(.vertical, showsIndicators: false){
             LazyVGrid(columns: columns) {
@@ -34,8 +34,9 @@ struct TestView: View {
         }
         .padding()
    
-        
+        .background(.green)
     }
+        
 }
 
 #Preview {

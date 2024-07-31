@@ -142,8 +142,8 @@
 				2663C77F2C569E54002EFD0C /* WelcomeView.swift */,
 				2663C7922C569FA4002EFD0C /* Autorization */,
 				2663C7932C56A009002EFD0C /* ProfileFlow */,
-				268696672C57EB6A0075E9DC /* TestView.swift */,
 				7A0ED5E02C592B280063F449 /* TestView2.swift */,
+				268696672C57EB6A0075E9DC /* TestView.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -151,11 +151,11 @@
 		2663C78D2C569EE8002EFD0C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				268696632C57DC330075E9DC /* StationPopularView.swift */,
 				2663C7A02C56A10E002EFD0C /* CustomTabBarView.swift */,
 				2663C7A22C56A1A5002EFD0C /* PlayerMenuView.swift */,
 				2663C7A42C56A1F2002EFD0C /* VolumeView.swift */,
 				2663C7A62C56A212002EFD0C /* SearchView.swift */,
-				268696632C57DC330075E9DC /* StationPopularView.swift */,
 				268696652C57E0320075E9DC /* VoteView.swift */,
 			);
 			path = Components;
