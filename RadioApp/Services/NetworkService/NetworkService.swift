@@ -14,7 +14,7 @@ actor NetworkService {
     func getTopStations(numberLimit: Int) async throws -> [Station] {
         var stations = [Station]()
 
-        guard let url = URLManager.shared.createURL(numberLimit: numberLimit) else {
+        guard let url = URLManager.shared.createURLTop(numberLimit: numberLimit) else {
             throw NetworkError.badURL
         }
         let urlRequest = URLRequest(url: url)
@@ -37,7 +37,7 @@ actor NetworkService {
     func getStationById(id: String) async throws -> [Station] {
         var stationById = [Station]()
 
-        guard let url = URLManager.shared.createURL(id: id) else {
+        guard let url = URLManager.shared.createURLUUID(id: id) else {
             throw NetworkError.badURL
         }
         let urlRequest = URLRequest(url: url)
@@ -54,7 +54,27 @@ actor NetworkService {
         stationById = decodedStation
         return stationById
     }
+
+
+    // MARK: - vote for station by UUID.
+
+    func voteStationById(id: String) async throws {
+
+        guard let url = URLManager.shared.createURLUUID(id: id) else {
+            throw NetworkError.badURL
+        }
+        let urlRequest = URLRequest(url: url)
+        let (_, response) = try await URLSession.shared.data(for: urlRequest)
+
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw NetworkError.badResponse
+        }
+    }
+
+
+
 }
+
 
 // MARK: - network errors
 
