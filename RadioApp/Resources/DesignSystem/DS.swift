@@ -20,6 +20,9 @@ enum DS {
         static let blueLight = Color(hex: "#D1F9FF")
         /// розовыйНеоновый.
         static let pinkNeon = Color(hex: "#FF296D")
+        //
+        static let frame = Color(hex: "#32324E")
+        
     }
     
     enum Fonts: String {

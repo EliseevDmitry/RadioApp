@@ -21,7 +21,7 @@ struct StationPopularView: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(
-                            isShow ? DS.Colors.pinkNeon : DS.Colors.darkBlue, lineWidth: 2
+                            isShow ? DS.Colors.pinkNeon : DS.Colors.frame, lineWidth: 2
                         )
                 )
             VStack{
@@ -37,7 +37,7 @@ struct StationPopularView: View {
                     Spacer()
                     Text("votes \(voteCount ?? 0)")
                         .font(.custom(DS.Fonts.sfRegular, size: 15))
-                        .foregroundStyle(isShow ? .white : DS.Colors.darkBlue)
+                        .foregroundStyle(isShow ? .white : DS.Colors.frame)
                     VoteView(model: model, isShow: $isShow)
                         .frame(
                             width: 14,
@@ -48,12 +48,11 @@ struct StationPopularView: View {
                 .padding(.top, 10)
                 Spacer()
                 Text("Radio Record")
-                    .foregroundStyle(isShow ? .white : DS.Colors.darkBlue)
+                    .foregroundStyle(isShow ? .white : DS.Colors.frame)
                     .font(.custom(DS.Fonts.sfRegular, size: 15))
-                Image(.testSpline)
-                    .resizable()
-                    .scaledToFit()
-                    .padding(.horizontal, 20)
+                SplineView(active: $isShow)
+                    .frame(height: 20)
+                    .padding(.horizontal)
             }
             .frame(maxWidth: 139, maxHeight: 139)
             .padding(.bottom, 10)
@@ -61,7 +60,7 @@ struct StationPopularView: View {
         .frame(maxWidth: 139, maxHeight: 139)
         .overlay {
             Text("POP")
-                .foregroundStyle(isShow ? .white : DS.Colors.darkBlue)
+                .foregroundStyle(isShow ? .white : DS.Colors.frame)
                 .font(.custom(DS.Fonts.sfBold, size: 40))
                 .offset(CGSize(width: 0.0, height: -15.0))
         }

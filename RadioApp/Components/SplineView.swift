@@ -41,7 +41,7 @@ struct PointOneView: Shape {
         var path = Path()
         let width = rect.size.width
         let height = rect.size.height
-        path.addArc(center: CGPoint(x: 0.00308*width, y: 0.33542*height), radius: 15, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 360), clockwise: true)
+        path.addArc(center: CGPoint(x: 0.00308*width, y: 0.33542*height), radius: 5, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 360), clockwise: true)
         return path
     }
 }
@@ -51,36 +51,69 @@ struct PointTwoView: Shape {
         var path = Path()
         let width = rect.size.width
         let height = rect.size.height
-        path.addArc(center: CGPoint(x: 0.99921*width, y: 0.30477*height), radius: 15, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 360), clockwise: true)
+        path.addArc(center: CGPoint(x: 0.99921*width, y: 0.30477*height), radius: 5, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 360), clockwise: true)
         return path
     }
 }
 
+struct PinColor {
+    static var ColorArr: [[Color]] = [
+        [.blue, .gray],
+        [.gray, .blue],
+        [.yellow, .blue],
+        [.blue, .yellow],
+        [.gray, .yellow],
+        [.yellow, .gray],
+        [.cyan, .yellow],
+        [.yellow, .cyan],
+        [.green, .yellow],
+        [.yellow, .green],
+        [.red, .green],
+        [.red, .blue],
+        [.green, .red],
+        [.blue, .red]
+    ]
+}
+
 struct SplineView: View {
+    @Binding var active: Bool
     @State private var startAnimation = false
-    @State private var startTwoAnimation = false
+    @State private var pinColor = PinColor.ColorArr.randomElement()
     var body: some View {
         ZStack{
-            SplineViewShape()
-                .trim(from:0, to: startAnimation ? 1 : 0)
-                .stroke(style: StrokeStyle(lineWidth: 5))
-                .fill(LinearGradient(colors: [.red, .green], startPoint: .leading, endPoint: .trailing))
+            if active {
+                SplineViewShape()
+                    .trim(from:0, to: startAnimation ? 1 : 0)
+                    .stroke(style: StrokeStyle(lineWidth: 2))
+                    .fill(LinearGradient(colors: pinColor ?? [.blue, .red], startPoint: .leading, endPoint: .trailing))
+            } else {
+                SplineViewShape()
+                    .stroke(style: StrokeStyle(lineWidth: 2))
+                    .fill(DS.Colors.turquoise)
+            }
             PointOneView()
-                .fill(.red)
-            PointTwoView()
-                .fill(.green)
-                .opacity(startAnimation ? 1 : 0)
-        }
-        .frame(width: .infinity, height: 100)
-        .padding(.horizontal)
-        .onAppear{
-            withAnimation(.easeInOut(duration: 1).delay(0).repeatForever()) {
-                startAnimation.toggle()
+                .fill(pinColor?.last ?? .red)
+            if active {
+                PointTwoView()
+                    .fill(pinColor?.first ?? .blue)
+                    .opacity(startAnimation ? 1 : 0)
+            } else {
+                PointTwoView()
+                    .fill(pinColor?.last ?? .red)
             }
         }
-    }
+        .onAppear{
+            withAnimation(.easeInOut(duration: 1).delay(0).repeatForever()) {
+                if active{
+                    startAnimation = true
+                } else {
+                    startAnimation = false
+                }
+                }
+            }
+        }
 }
 
 #Preview {
-    SplineView()
+    SplineView(active: .constant(true))
 }
