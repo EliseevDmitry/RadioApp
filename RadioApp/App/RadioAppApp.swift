@@ -14,7 +14,9 @@ struct RadioAppApp: App {
         WindowGroup {
 //            WelcomeView()
 //                .environmentObject(appManager)
-            TestView(model: appManager)
+           // TestView(model: appManager)
+            PopularView()
+                .environmentObject(appManager)
         }
     }
 }
