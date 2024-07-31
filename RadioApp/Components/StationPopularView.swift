@@ -16,9 +16,6 @@ struct StationPopularView: View {
         Button{
             isShow.toggle()
         } label: {
-            
-            
-            
             ZStack{
                 Rectangle()
                     .scaledToFit()
