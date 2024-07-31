@@ -160,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				2663C7A02C56A10E002EFD0C /* CustomTabBarView.swift */,
+				2663C7A42C56A1F2002EFD0C /* VolumeView.swift */,
 				2663C7A62C56A212002EFD0C /* SearchView.swift */,
 				268696632C57DC330075E9DC /* StationPopularView.swift */,
 				2663C7A42C56A1F2002EFD0C /* VolumeView.swift */,
