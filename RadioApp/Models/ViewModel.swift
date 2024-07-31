@@ -10,8 +10,9 @@ import Foundation
 @MainActor
 final class ViewModel: ObservableObject {
     
-    @Published var stations = [Station]()
     // добавляем сюда другие @Published свойства
+    @Published var stations = [Station]()
+    @Published var volume:CGFloat = 0.5
     
     let network = NetworkService()
     var likes = Like(likeSet: Set<Int>())
