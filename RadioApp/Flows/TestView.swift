@@ -8,24 +8,26 @@
 import SwiftUI
 
 struct TestView: View {
-    var stations = [StationPopularView(voteCount: .constant(1)), 
-                    StationPopularView(voteCount: .constant(2)),
-                    StationPopularView(voteCount: .constant(3)),
-                    StationPopularView(voteCount: .constant(4)),
-                    StationPopularView(voteCount: .constant(5)),
-                    StationPopularView(voteCount: .constant(6)),
-                    StationPopularView(voteCount: .constant(7)),
-                    StationPopularView(voteCount: .constant(8))
-    ]
+    var model: ViewModel
+
     var columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
     var body: some View {
+        let stations = [StationPopularView(voteCount: .constant(1), model: model),
+                        StationPopularView(voteCount: .constant(2), model: model),
+                        StationPopularView(voteCount: .constant(3), model: model),
+                        StationPopularView(voteCount: .constant(4), model: model),
+                        StationPopularView(voteCount: .constant(5), model: model),
+                        StationPopularView(voteCount: .constant(6), model: model),
+                        StationPopularView(voteCount: .constant(7), model: model)
+        ]
         ScrollView(.vertical, showsIndicators: false){
             LazyVGrid(columns: columns) {
                 ForEach(stations, id: \.voteCount) {item in
                     item
+                       .frame(height: 170)
                 }
             }
         }
@@ -36,5 +38,5 @@ struct TestView: View {
 }
 
 #Preview {
-    TestView()
+    TestView(model: ViewModel())
 }

@@ -79,3 +79,9 @@ extension Station {
         return station
     }
 }
+
+
+struct Like: Codable {
+    var idUUID = UUID()
+    var likeSet: Set<Int>
+}
