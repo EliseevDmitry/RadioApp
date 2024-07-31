@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct RadioAppApp: App {
+    @StateObject var appManager = ViewModel()
     var body: some Scene {
         WindowGroup {
             WelcomeView()
+                .environmentObject(appManager)
         }
     }
 }

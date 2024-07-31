@@ -11,47 +11,50 @@ struct StationPopularView: View {
     @Binding var voteCount: Int?
     var model: ViewModel
     var body: some View {
-        GeometryReader{ geometry in
+        ZStack{
             Rectangle()
                 .scaledToFit()
                 .foregroundStyle(DS.Colors.pinkNeon)
                 .clipShape(.rect(cornerRadius: 20))
-                .overlay {
-                    VStack {
-                        HStack{
-                            Image(.play)
-                                .resizable()
-                                .frame(
-                                    width: geometry.size.width/5,
-                                    height: geometry.size.width/5
-                                )
-                            Spacer()
-                            Text("votes \(voteCount ?? 0)")
-                                .font(.custom(DS.Fonts.sfRegular, size: geometry.size.width/11))
-                                .foregroundStyle(.white)
-                            VoteView(model: model)
-                                .frame(
-                                    width: geometry.size.width/7,
-                                    height: geometry.size.width/7
-                                )
-                        }
-                        .padding(.horizontal, geometry.size.width/20)
-                        Text("POP")
-                            .foregroundStyle(.white)
-                            .font(.custom(DS.Fonts.sfBold, size: geometry.size.width/5))
-                        Text("Radio Record")
-                            .foregroundStyle(.white)
-                            .font(.custom(DS.Fonts.sfBold, size: geometry.size.width/10))
-                        Image(.testSpline)
-                            .resizable()
-                            .scaledToFit()
-                            .padding(.horizontal, geometry.size.width/20)
-                    }
+              
+            VStack{
+                
+                HStack{
+                    Image(.play)
+                        .resizable()
+                        .frame(
+                            width: 50,
+                            height: 50
+                        )
+                    Spacer()
+                    Text("votes \(voteCount ?? 0)")
+                        .font(.custom(DS.Fonts.sfRegular, size: 50))
+                        .foregroundStyle(.white)
+                    VoteView(model: model)
+                        .frame(
+                            width: 30,
+                            height: 30
+                        )
                 }
+                .padding(.horizontal)
+                Text("POP")
+                    .foregroundStyle(.white)
+                    .font(.custom(DS.Fonts.sfRegular, size: 80))
+                Text("Radio Record")
+                    .foregroundStyle(.white)
+                    .font(.custom(DS.Fonts.sfBold, size: 20))
+                Image(.testSpline)
+                    .resizable()
+                    .scaledToFit()
+                    .padding(.horizontal, 20)
+                
+            }
+            .frame(maxWidth: 300, maxHeight: 300)
         }
-        Spacer()
+        .frame(maxWidth: 300, maxHeight: 300)
     }
 }
+
 
 
 #Preview {
