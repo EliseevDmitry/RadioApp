@@ -7,59 +7,91 @@
 
 import SwiftUI
 
+import SwiftUI
+
+// MARK: - ProfileInfoView
 struct ProfileInfoView: View {
-    
+    // MARK: - Properties
     var userName: String
     var email: String
     var avatar: UIImage
+    var editAction: () -> Void
     
+    // MARK: - Drawing Constants
+    private struct DrawingConstants {
+        static let avatarSize: CGFloat = 54
+        static let avatarLeadingPadding: CGFloat = 16
+        static let textSpacing: CGFloat = 8
+        static let textLeadingPadding: CGFloat = 8
+        static let cornerRadius: CGFloat = 16
+        static let strokeWidth: CGFloat = 1.0
+        static let strokeOpacity: CGFloat = 0.2
+        static let buttonSize: CGFloat = 24
+        static let buttonPadding: CGFloat = 16
+    }
+    
+    // MARK: - Body
     var body: some View {
         HStack {
             Image(uiImage: avatar)
                 .resizable()
-                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/, 
-                    style: FillStyle()
-                )
+                .aspectRatio(contentMode: .fill)
+                .clipShape(Circle())
                 .frame(
-                    width: 54,
-                    height: 54
+                    width: DrawingConstants.avatarSize,
+                    height: DrawingConstants.avatarSize
                 )
-                .padding(.leading, 16)
+                .padding(.leading, DrawingConstants.avatarLeadingPadding)
             
             VStack(
                 alignment: .leading,
-                spacing: 8
-            )  {
+                spacing: DrawingConstants.textSpacing
+            ) {
                 Text(userName)
-                    .font(Font.custom( .sfMedium, size: 16))
-                    .foregroundStyle(.white)
+                    .font(Font.custom(.sfMedium, size: 16))
+                    .foregroundColor(.white)
                 
                 Text(email)
                     .font(Font.custom(.sfMedium, size: 14))
                     .foregroundColor(Color.gray)
-                
             }
-            .padding(.leading, 8)
+            
+            .padding(.leading, DrawingConstants.textLeadingPadding)
             
             Spacer()
-            
+            // MARK: - Edit Button
+                       Button(action: editAction) {
+                           Image(Resources.Image.edit)
+                               .resizable()
+                               .frame(
+                                   width: DrawingConstants.buttonSize,
+                                   height: DrawingConstants.buttonSize
+                               )
+                               .padding(.trailing, DrawingConstants.buttonPadding)
+                       
+                   }
         }
+        
         .padding()
         .background(DS.Colors.darkBlue)
-        .cornerRadius(16)
+        .cornerRadius(DrawingConstants.cornerRadius)
         .overlay {
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.gray, lineWidth: 1.0)
-                .opacity(0.2)
+            RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
+                .stroke(
+                    Color.gray,
+                    lineWidth: DrawingConstants.strokeWidth
+                )
+                .opacity(DrawingConstants.strokeOpacity)
         }
     }
 }
 
+// MARK: - Preview
 #Preview {
     ProfileInfoView(
-        userName: "ds",
-        email: "ds@ds",
-        avatar: UIImage(named: "stephen")!)
+        userName: "Stephen",
+        email: "stephen@ds",
+        avatar: UIImage(named: "stephen")!, 
+        editAction: {}
+    )
 }
-
-

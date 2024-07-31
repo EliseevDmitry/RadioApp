@@ -42,6 +42,7 @@
 		E1E498062C58D3DF0099440D /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498052C58D3DF0099440D /* SettingView.swift */; };
 		E1E498082C58D60F0099440D /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498072C58D60F0099440D /* ProfileInfoView.swift */; };
 		E1E4980A2C5983450099440D /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498092C5983450099440D /* SettingsButton.swift */; };
+		E1E4980C2C5A10560099440D /* ChevronCyrcleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E4980B2C5A10560099440D /* ChevronCyrcleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		E1E498052C58D3DF0099440D /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		E1E498072C58D60F0099440D /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
 		E1E498092C5983450099440D /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
+		E1E4980B2C5A10560099440D /* ChevronCyrcleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronCyrcleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +271,7 @@
 				E1E498052C58D3DF0099440D /* SettingView.swift */,
 				E1E498072C58D60F0099440D /* ProfileInfoView.swift */,
 				E1E498092C5983450099440D /* SettingsButton.swift */,
+				E1E4980B2C5A10560099440D /* ChevronCyrcleView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				E1E498042C57EE6D0099440D /* CustomButton.swift in Sources */,
 				E1E497EE2C56DD670099440D /* ProfileViewModel.swift in Sources */,
 				268696662C57E0320075E9DC /* VoteView.swift in Sources */,
+				E1E4980C2C5A10560099440D /* ChevronCyrcleView.swift in Sources */,
 				2663C7A12C56A10E002EFD0C /* CustomTabBarView.swift in Sources */,
 				E1E497EB2C56D8500099440D /* DS.swift in Sources */,
 				2663C79B2C56A09B002EFD0C /* SignInView.swift in Sources */,

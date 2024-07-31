@@ -11,7 +11,7 @@ import SwiftUI
 struct RadioAppApp: App {
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+            ProfileView()
         }
     }
 }

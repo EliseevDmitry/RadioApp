@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct CustomButton: View {
-    
+    // MARK: - Button Type Enum
     enum ButtonType {
         case profile
         case onboarding
     }
     
+    // MARK: - Drawing Constants
     private enum Drawing {
         static let profileCornerRadius: CGFloat = 32
         static let onboardingCornerRadius: CGFloat = 0
@@ -22,10 +23,12 @@ struct CustomButton: View {
         static let textColor: Color = .white
     }
     
+    // MARK: - Properties
     let action: () -> Void
     let title: String
     let buttonType: ButtonType
     
+    // MARK: - Body
     var body: some View {
         Button(action: action) {
             Text(title)
@@ -48,6 +51,7 @@ struct CustomButton: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
-    CustomButton(action: {}, title: "Sing Out", buttonType: .onboarding)
+    CustomButton(action: {}, title: "Sign Out", buttonType: .onboarding)
 }

@@ -7,31 +7,39 @@
 
 import SwiftUI
 
-struct SettingsButton: View {
-    
+struct SettingsButton<Destination: View>: View {
+    // MARK: - Properties
     var imageIcon: String
     var titleText: String
-    let action: () -> Void
+    var destination: Destination
     
+    // MARK: - Drawing Constants
+    private struct Drawing {
+        let iconSize: CGFloat = 32
+        let iconPadding: CGFloat = 10
+        let textSize: CGFloat = 14
+        let buttonPadding: CGFloat = 10
+    }
+    
+    private let drawing = Drawing()
+    
+    // MARK: - Body
     var body: some View {
-        Button(action: action) {
+        NavigationLink(destination: destination) {
             HStack {
                 Image(imageIcon)
                     .resizable()
                     .frame(
-                        width: 24,
-                        height: 24
+                        width: drawing.iconSize,
+                        height: drawing.iconSize
                     )
-                    .padding(.leading, 10)
+                    .padding(.leading, drawing.iconPadding)
                 Text(titleText)
-                    .font(Font.custom(.sfMedium, size: 14))
+                    .font(Font.custom(.sfMedium, size: drawing.textSize))
                     .foregroundColor(.white)
                     .padding()
                 Spacer()
-                Image(systemName: "chevron.right")
-                    .resizable()
-                    .frame(width: 24, height: 24)
-                    .foregroundColor(DS.Colors.blueNeon)
+                ChevronCircleView()
             }
             .padding()
             .frame(maxWidth: .infinity)
@@ -40,10 +48,11 @@ struct SettingsButton: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     SettingsButton(
-        imageIcon: "Notification",
+        imageIcon: "notification",
         titleText: "Notification",
-        action: {}
+        destination: WelcomeView()
     )
 }
