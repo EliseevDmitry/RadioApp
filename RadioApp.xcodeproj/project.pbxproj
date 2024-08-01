@@ -27,6 +27,8 @@
 		268696642C57DC330075E9DC /* StationPopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268696632C57DC330075E9DC /* StationPopularView.swift */; };
 		268696662C57E0320075E9DC /* VoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268696652C57E0320075E9DC /* VoteView.swift */; };
 		268696682C57EB6A0075E9DC /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268696672C57EB6A0075E9DC /* TestView.swift */; };
+		7A5E57E32C59ECDC00F2B342 /* TabData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5E57E22C59ECDC00F2B342 /* TabData.swift */; };
+		7A5E57E52C59EDB500F2B342 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5E57E42C59EDB500F2B342 /* ContentView.swift */; };
 		7A6579FF2C57F34E00FFDBFD /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6579FE2C57F34E00FFDBFD /* URLManager.swift */; };
 		E1E497DA2C56D14F0099440D /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497D92C56D14F0099440D /* Resources.swift */; };
 		E1E497E62C56D5380099440D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497E52C56D5380099440D /* NetworkService.swift */; };
@@ -61,6 +63,8 @@
 		268696632C57DC330075E9DC /* StationPopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationPopularView.swift; sourceTree = "<group>"; };
 		268696652C57E0320075E9DC /* VoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteView.swift; sourceTree = "<group>"; };
 		268696672C57EB6A0075E9DC /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		7A5E57E22C59ECDC00F2B342 /* TabData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabData.swift; sourceTree = "<group>"; };
+		7A5E57E42C59EDB500F2B342 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7A6579FE2C57F34E00FFDBFD /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		E1E497D92C56D14F0099440D /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		E1E497E52C56D5380099440D /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				2663C77D2C569E54002EFD0C /* RadioAppApp.swift */,
+				7A5E57E42C59EDB500F2B342 /* ContentView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 		2663C78D2C569EE8002EFD0C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				7A5E57E12C59ECBB00F2B342 /* TabBar */,
 				2663C7A02C56A10E002EFD0C /* CustomTabBarView.swift */,
 				2663C7A22C56A1A5002EFD0C /* PlayerMenuView.swift */,
 				2663C7A42C56A1F2002EFD0C /* VolumeView.swift */,
@@ -185,6 +191,14 @@
 				E1E497EC2C56DD410099440D /* SubViews */,
 			);
 			path = ProfileFlow;
+			sourceTree = "<group>";
+		};
+		7A5E57E12C59ECBB00F2B342 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				7A5E57E22C59ECDC00F2B342 /* TabData.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		E1E497D82C56D0C70099440D /* Resources */ = {
@@ -344,6 +358,7 @@
 				E1E497DA2C56D14F0099440D /* Resources.swift in Sources */,
 				2663C7802C569E54002EFD0C /* WelcomeView.swift in Sources */,
 				E1E497E62C56D5380099440D /* NetworkService.swift in Sources */,
+				7A5E57E52C59EDB500F2B342 /* ContentView.swift in Sources */,
 				2663C7A72C56A212002EFD0C /* SearchView.swift in Sources */,
 				2663C7A52C56A1F2002EFD0C /* VolumeView.swift in Sources */,
 				2663C7A92C56A249002EFD0C /* ViewModel.swift in Sources */,
@@ -355,6 +370,7 @@
 				2663C7972C56A037002EFD0C /* ProfileEditView.swift in Sources */,
 				268696682C57EB6A0075E9DC /* TestView.swift in Sources */,
 				E1E497E92C56D7500099440D /* Color + Ext.swift in Sources */,
+				7A5E57E32C59ECDC00F2B342 /* TabData.swift in Sources */,
 				2663C77E2C569E54002EFD0C /* RadioAppApp.swift in Sources */,
 				2663C7992C56A060002EFD0C /* LegalPoliciesView.swift in Sources */,
 				7A6579FF2C57F34E00FFDBFD /* URLManager.swift in Sources */,
