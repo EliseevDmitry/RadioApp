@@ -9,14 +9,16 @@ import SwiftUI
 
 @main
 struct RadioAppApp: App {
-    @StateObject var appManager = ViewModel()
+    //@StateObject var appManager = ViewModel()
     var body: some Scene {
         WindowGroup {
 //            WelcomeView()
 //                .environmentObject(appManager)
            // TestView(model: appManager)
-            PopularView()
-                .environmentObject(appManager)
+//            PopularView()
+//                .environmentObject(appManager)
+            ContentView()
+
         }
     }
 }
