@@ -14,12 +14,21 @@ struct WelcomeView: View {
         VStack {
             Text("Let's Get Started")
                 .font(.custom(.sfSemibold, size: 49))
+            
+            Button {
+                getStartedAction()
+            } label: {
+                Rectangle()
+                    .frame(width: 310, height: 58)
+            }
 
-                VolumeView(voulmeValue: $appManager.volume)
+            VolumeView(voulmeValue: $appManager.volume)
  
         }
         .padding()
     }
+    
+    private func getStartedAction() {}
 }
 
 
