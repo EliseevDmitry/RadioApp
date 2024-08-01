@@ -12,7 +12,9 @@ final class ViewModel: ObservableObject {
     
     // добавляем сюда другие @Published свойства
     @Published var stations = [Station]()
-    @Published var volume:CGFloat = 0.5
+    
+    @Published var volume: CGFloat = 0.5
+    @Published var showStation: Bool = true
     
     let network = NetworkService()
     var likes = Like(likeSet: Set<Int>())

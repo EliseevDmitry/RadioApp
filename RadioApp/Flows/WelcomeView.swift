@@ -14,7 +14,9 @@ struct WelcomeView: View {
         VStack {
             Text("Let's Get Started")
                 .font(.custom(.sfSemibold, size: 49))
-            VolumeView(voulmeValue: $appManager.volume)
+
+                VolumeView(voulmeValue: $appManager.volume)
+ 
         }
         .padding()
     }

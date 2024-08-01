@@ -85,3 +85,6 @@ struct Like: Codable {
     var idUUID = UUID()
     var likeSet: Set<Int>
 }
+
+
+

@@ -20,12 +20,15 @@ enum DS {
         static let blueLight = Color(hex: "#D1F9FF")
         /// розовыйНеоновый.
         static let pinkNeon = Color(hex: "#FF296D")
+        //
+        static let frame = Color(hex: "#32324E")
+        
     }
     
     enum Fonts: String {
-        case sfBold = "SF-Pro-Display-Bold"
-        case sfMedium = "SF-Pro-Display-Medium"
-        case sfRegular = "SF-Pro-Display-Regular"
-        case sfSemibold = "SF-Pro-Display-Semibold"
+        case sfBold = "SFProDisplay-Bold"
+        case sfMedium = "SFProDisplay-Medium"
+        case sfRegular = "SFProDisplay-Regular"
+        case sfSemibold = "SFProDisplay-Semibold"
     }
 }

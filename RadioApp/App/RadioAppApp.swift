@@ -12,7 +12,10 @@ struct RadioAppApp: App {
     @StateObject var appManager = ViewModel()
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+//            WelcomeView()
+//                .environmentObject(appManager)
+           // TestView(model: appManager)
+            PopularView()
                 .environmentObject(appManager)
         }
     }
