@@ -54,8 +54,6 @@ struct PopularView: View {
                 Spacer()
             }
             Spacer()
-//            PlayerMenuView()
-//                .padding(.bottom, 50)
         }
         
         .ignoresSafeArea()
@@ -68,16 +66,6 @@ struct PopularView: View {
             }
         }
     }
-    
-//    func removeItems(at offsets: IndexSet, from arrayExpense: [ExpenseItem]) {
-//        for offset in offsets {
-//            let item = arrayExpense[offset]
-//            expenses.items.removeAll { element in
-//                element.id == item.id
-//            }
-//        }
-//    }
-    
 }
 
 struct PopularView_Previews: PreviewProvider {

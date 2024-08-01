@@ -9,7 +9,7 @@ import SwiftUI
 
 struct VoteView: View {
     var model: ViewModel
-    @Binding var isShow: Bool
+    var isShow: Bool
     @State private var islike = true
     var body: some View {
         Button{
@@ -34,6 +34,6 @@ struct VoteView: View {
     }
 }
 
-#Preview {
-    VoteView(model: ViewModel(), isShow: .constant(true))
-}
+//#Preview {
+//    VoteView(model: ViewModel(), isShow: .constant(true))
+//}
