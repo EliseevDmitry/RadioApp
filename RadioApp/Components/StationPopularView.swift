@@ -45,7 +45,7 @@ struct StationPopularView: View {
                             .font(.custom(DS.Fonts.sfRegular, size: 15))
                             .foregroundStyle(selectedStationID == station.changeuuid ? .white : DS.Colors.frame)
                         
-                        VoteView(model: appManager, isShow: selectedStationID == station.changeuuid ? true : false)
+                        VoteView(isShow: selectedStationID == station.changeuuid ? true : false, idStation: station.changeuuid)
                             .frame(
                                 width: 14,
                                 height: 14
