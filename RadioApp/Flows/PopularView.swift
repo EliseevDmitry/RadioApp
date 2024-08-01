@@ -42,11 +42,23 @@ struct PopularView: View {
                     }
                 }
                 .padding()
+                .overlay {
+                    HStack(spacing: 30){
+                        BackButtonView()
+                        PlayButtonView()
+                        ForwardButtonView()
+                            
+                    }
+                    .offset(CGSize(width: 0, height: 250))
+                }
+                
+                Spacer()
             }
             Spacer()
-            PlayerMenuView()
-                .padding(.bottom, 50)
+//            PlayerMenuView()
+//                .padding(.bottom, 50)
         }
+        
         .ignoresSafeArea()
         .background(DS.Colors.darkBlue)
         .task {

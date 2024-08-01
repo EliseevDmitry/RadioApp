@@ -18,7 +18,6 @@ struct RadioAppApp: App {
 //            PopularView()
 //                .environmentObject(appManager)
             ContentView()
-
         }
     }
 }
