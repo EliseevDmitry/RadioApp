@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct VoteView: View {
-    var model: ViewModel
+    @EnvironmentObject var appManager: ViewModel
+    
     var isShow: Bool
-    @State private var islike = true
+    var idStation: String
     var body: some View {
         Button{
             //заменить ID на ID из модели станции
-            if !model.saveIDLikes(id: 1) {
-                islike = false
+            if !appManager.saveIDLikes(id: idStation) {
+                appManager.islike = false
             } else {
-                islike = true
+                appManager.islike = true
             }
         } label: {
             Image(systemName: isShow ? "heart.fill" : "heart")
@@ -26,7 +27,7 @@ struct VoteView: View {
                 .foregroundStyle(.white)
         }
         .task {
-            if !islike {
+            if !appManager.islike {
                 print("отправляем запрос на сервер")
             }
         }

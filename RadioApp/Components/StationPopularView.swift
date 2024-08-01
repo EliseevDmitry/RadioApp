@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct StationPopularView: View {
-    @State private var isShow: Bool = false
-    @Binding var selectedStationID: String
-    //let action: () -> Void
+    //MARK: - PROPERTIES
     @EnvironmentObject var appManager: ViewModel
+    @Binding var selectedStationID: String
     var station: Station
+    //let action: () -> Void
+    //MARK: - BODY
     var body: some View {
-        Button{
+        Button{            
             selectedStationID = station.changeuuid
         } label: {
             ZStack{
@@ -44,8 +45,7 @@ struct StationPopularView: View {
                         Text("votes \(self.station.votes % 1000)")
                             .font(.custom(DS.Fonts.sfRegular, size: 15))
                             .foregroundStyle(selectedStationID == station.changeuuid ? .white : DS.Colors.frame)
-                        
-                        VoteView(model: appManager, isShow: selectedStationID == station.changeuuid ? true : false)
+                        VoteView(isShow: selectedStationID == station.changeuuid ? true : false, idStation: station.changeuuid)
                             .frame(
                                 width: 14,
                                 height: 14
@@ -82,10 +82,9 @@ struct StationPopularView: View {
 }
 
 
-
+//MARK: - PREVIEW
 struct StationPopularView_Previews: PreviewProvider {
     static let previewAppManager = ViewModel()
-
     static var previews: some View {
         StationPopularView(selectedStationID: .constant(""), station: .testStation())
             .environmentObject(previewAppManager)

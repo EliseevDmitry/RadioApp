@@ -12,12 +12,16 @@ final class ViewModel: ObservableObject {
     
     // добавляем сюда другие @Published свойства
     @Published var stations = [Station]()
-    
+    //VolumeView
     @Published var volume: CGFloat = 0.5
-    @Published var showStation: Bool = true
+    //PopularView
+    @Published var selectedStation = ""
+    //VoteView
+    @Published var islike: Bool = false
+
     
     let network = NetworkService()
-    var likes = Like(likeSet: Set<Int>())
+    var likes = Like(likeSet: Set<String>())
     
     func fetchTopStations() async throws {
         var fetchedStations: [Station]
@@ -43,7 +47,7 @@ final class ViewModel: ObservableObject {
     
     //проверка на наличие уже оставленного отзыва
     //возвращает false при уже оставленном like
-    func saveIDLikes(id: Int) -> Bool {
+    func saveIDLikes(id: String) -> Bool {
         defer {
             saveLikesData()
         }
