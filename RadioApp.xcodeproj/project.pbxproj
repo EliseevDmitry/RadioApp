@@ -44,6 +44,10 @@
 		E1E498082C58D60F0099440D /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498072C58D60F0099440D /* ProfileInfoView.swift */; };
 		E1E4980A2C5983450099440D /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498092C5983450099440D /* SettingsButton.swift */; };
 		E1E4980C2C5A10560099440D /* ChevronCyrcleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E4980B2C5A10560099440D /* ChevronCyrcleView.swift */; };
+		E1E4980E2C5A58F30099440D /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E4980D2C5A58F30099440D /* LanguageView.swift */; };
+		E1E498102C5AB6590099440D /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E4980F2C5AB6590099440D /* AboutUs.swift */; };
+		E1E498122C5AB7490099440D /* BackBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498112C5AB7490099440D /* BackBarButton.swift */; };
+		E1E498142C5BBB500099440D /* ProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498132C5BBB500099440D /* ProfileTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +89,10 @@
 		E1E498072C58D60F0099440D /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
 		E1E498092C5983450099440D /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
 		E1E4980B2C5A10560099440D /* ChevronCyrcleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronCyrcleView.swift; sourceTree = "<group>"; };
+		E1E4980D2C5A58F30099440D /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
+		E1E4980F2C5AB6590099440D /* AboutUs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUs.swift; sourceTree = "<group>"; };
+		E1E498112C5AB7490099440D /* BackBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBarButton.swift; sourceTree = "<group>"; };
+		E1E498132C5BBB500099440D /* ProfileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +176,7 @@
 				2663C7A62C56A212002EFD0C /* SearchView.swift */,
 				268696632C57DC330075E9DC /* StationPopularView.swift */,
 				268696652C57E0320075E9DC /* VoteView.swift */,
+				E1E498112C5AB7490099440D /* BackBarButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -253,6 +262,8 @@
 			children = (
 				2663C7962C56A037002EFD0C /* ProfileEditView.swift */,
 				2663C7982C56A060002EFD0C /* LegalPoliciesView.swift */,
+				E1E4980D2C5A58F30099440D /* LanguageView.swift */,
+				E1E4980F2C5AB6590099440D /* AboutUs.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -275,6 +286,7 @@
 				E1E498072C58D60F0099440D /* ProfileInfoView.swift */,
 				E1E498092C5983450099440D /* SettingsButton.swift */,
 				E1E4980B2C5A10560099440D /* ChevronCyrcleView.swift */,
+				E1E498132C5BBB500099440D /* ProfileTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -363,7 +375,9 @@
 				2663C7A32C56A1A5002EFD0C /* PlayerMenuView.swift in Sources */,
 				E1E498042C57EE6D0099440D /* CustomButton.swift in Sources */,
 				E1E497EE2C56DD670099440D /* ProfileViewModel.swift in Sources */,
+				E1E498142C5BBB500099440D /* ProfileTextField.swift in Sources */,
 				7A0ED5E12C592B280063F449 /* TestView2.swift in Sources */,
+				E1E4980E2C5A58F30099440D /* LanguageView.swift in Sources */,
 				268696662C57E0320075E9DC /* VoteView.swift in Sources */,
 				E1E4980C2C5A10560099440D /* ChevronCyrcleView.swift in Sources */,
 				2663C7A12C56A10E002EFD0C /* CustomTabBarView.swift in Sources */,
@@ -386,6 +400,8 @@
 				268696682C57EB6A0075E9DC /* TestView.swift in Sources */,
 				E1E497E92C56D7500099440D /* Color + Ext.swift in Sources */,
 				2663C77E2C569E54002EFD0C /* RadioAppApp.swift in Sources */,
+				E1E498102C5AB6590099440D /* AboutUs.swift in Sources */,
+				E1E498122C5AB7490099440D /* BackBarButton.swift in Sources */,
 				2663C7992C56A060002EFD0C /* LegalPoliciesView.swift in Sources */,
 				7A6579FF2C57F34E00FFDBFD /* URLManager.swift in Sources */,
 				E1E4980A2C5983450099440D /* SettingsButton.swift in Sources */,

@@ -7,44 +7,40 @@
 
 import SwiftUI
 
-struct SettingsButton<Destination: View>: View {
+// MARK: - SettingsButton
+struct SettingsButton: View {
     // MARK: - Properties
     var imageIcon: String
     var titleText: String
-    var destination: Destination
     
     // MARK: - Drawing Constants
-    private struct Drawing {
-        let iconSize: CGFloat = 32
-        let iconPadding: CGFloat = 10
-        let textSize: CGFloat = 14
-        let buttonPadding: CGFloat = 10
+    private struct DrawingConstants {
+        static let iconSize: CGFloat = 32
+        static let iconPadding: CGFloat = 10
+        static let textSize: CGFloat = 14
+        static let buttonPadding: CGFloat = 10
     }
-    
-    private let drawing = Drawing()
     
     // MARK: - Body
     var body: some View {
-        NavigationLink(destination: destination) {
-            HStack {
-                Image(imageIcon)
-                    .resizable()
-                    .frame(
-                        width: drawing.iconSize,
-                        height: drawing.iconSize
-                    )
-                    .padding(.leading, drawing.iconPadding)
-                Text(titleText)
-                    .font(Font.custom(.sfMedium, size: drawing.textSize))
-                    .foregroundColor(.white)
-                    .padding()
-                Spacer()
-                ChevronCircleView()
-            }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(DS.Colors.darkBlue)
+        HStack {
+            Image(imageIcon)
+                .resizable()
+                .frame(
+                    width: DrawingConstants.iconSize,
+                    height: DrawingConstants.iconSize
+                )
+                .padding(.leading, DrawingConstants.iconPadding)
+            Text(titleText)
+                .font(Font.custom(.sfMedium, size: DrawingConstants.textSize))
+                .foregroundColor(.white)
+                .padding()
+            Spacer()
+            ChevronCircleView()
         }
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background(DS.Colors.darkBlue)
     }
 }
 
@@ -52,7 +48,6 @@ struct SettingsButton<Destination: View>: View {
 #Preview {
     SettingsButton(
         imageIcon: "notification",
-        titleText: "Notification",
-        destination: WelcomeView()
+        titleText: "Notification"
     )
 }

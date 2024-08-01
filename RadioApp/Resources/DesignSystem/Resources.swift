@@ -28,7 +28,9 @@ enum Resources {
         static let fullName = "Full Name"
         static let email = "Email"
         static let saveChanges = "Save Changes"
-        static let globe = "globe"
+        static let english = "english"
+        static let russian = "russian"
+        
     }
     
     enum Image {
@@ -38,6 +40,7 @@ enum Resources {
         static let notification = "notification"
         static let shield = "shield"
         static let information = "information"
+        static let arrowLeft = "arrow.left"
     }
     
 }

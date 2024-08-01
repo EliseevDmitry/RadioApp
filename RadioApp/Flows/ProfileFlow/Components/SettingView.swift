@@ -7,30 +7,29 @@
 
 import SwiftUI
 
-struct SettingView<Destination: View>: View {
+// MARK: - SettingView
+struct SettingView: View {
     // MARK: - Properties
     var generalTitle: String
     
-    var destinationTitleFirst: String
-    var destinationFirst: Destination
-    var imageIconFirst: String
+    var firstTitle: String
+    var firstImageIcon: String
+    var firstDestination: AnyView
     
-    var destinationTitleSecond: String
-    var destinationSecond: Destination
-    var imageIconSecond: String
-    
+    var secondTitle: String
+    var secondImageIcon: String
+    var secondDestination: AnyView
+
     // MARK: - Drawing Constants
-    private struct Drawing {
-        let titleFontSize: CGFloat = 18
-        let titlePadding: CGFloat = 16
-        let dividerPadding: CGFloat = 16
-        let cornerRadius: CGFloat = 16
-        let strokeWidth: CGFloat = 1.0
-        let strokeOpacity: CGFloat = 0.2
-        let dividerOpacity: CGFloat = 0.3
+    private struct DrawingConstants {
+        static let titleFontSize: CGFloat = 18
+        static let titlePadding: CGFloat = 16
+        static let dividerPadding: CGFloat = 16
+        static let cornerRadius: CGFloat = 16
+        static let strokeWidth: CGFloat = 1.0
+        static let strokeOpacity: CGFloat = 0.2
+        static let dividerOpacity: CGFloat = 0.3
     }
-    
-    private let drawing = Drawing()
     
     // MARK: - Body
     var body: some View {
@@ -39,54 +38,49 @@ struct SettingView<Destination: View>: View {
             HStack {
                 Text(generalTitle)
                     .padding()
-                    .font(
-                        .custom(
-                            .sfBold,
-                            size: drawing.titleFontSize
-                        )
-                    )
+                    .font(.custom(.sfBold, size: DrawingConstants.titleFontSize))
                     .foregroundColor(.white)
-                    .padding(.leading, drawing.titlePadding)
+                    .padding(.leading, DrawingConstants.titlePadding)
                 Spacer()
             }
             
             // MARK: - Settings Buttons
-            SettingsButton(
-                imageIcon: imageIconFirst,
-                titleText: destinationTitleFirst,
-                destination: destinationFirst
-            )
+            NavigationLink(destination: firstDestination) {
+                SettingsButton(
+                    imageIcon: firstImageIcon,
+                    titleText: firstTitle
+                )
+            }
             
             Divider()
                 .background(.gray)
-                .padding(.horizontal, drawing.dividerPadding)
-                .opacity(drawing.dividerOpacity)
+                .padding(.horizontal, DrawingConstants.dividerPadding)
+                .opacity(DrawingConstants.dividerOpacity)
             
-            SettingsButton(
-                imageIcon: imageIconSecond,
-                titleText: destinationTitleSecond,
-                destination: destinationSecond
-            )
+            NavigationLink(destination: secondDestination) {
+                SettingsButton(
+                    imageIcon: secondImageIcon,
+                    titleText: secondTitle
+                )
+            }
         }
         .background(DS.Colors.darkBlue)
-        .cornerRadius(drawing.cornerRadius)
+        .cornerRadius(DrawingConstants.cornerRadius)
         .overlay {
-            RoundedRectangle(cornerRadius: drawing.cornerRadius)
-                .stroke(Color.gray, lineWidth: drawing.strokeWidth)
-                .opacity(drawing.strokeOpacity)
+            RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
+                .stroke(Color.gray, lineWidth: DrawingConstants.strokeWidth)
+                .opacity(DrawingConstants.strokeOpacity)
         }
     }
 }
 
-// MARK: - Preview
 #Preview {
     SettingView(
         generalTitle: "General",
-        destinationTitleFirst: "Natification",
-        destinationFirst: LegalPoliciesView(),
-        imageIconFirst: "notification",
-        destinationTitleSecond: "Language",
-        destinationSecond: LegalPoliciesView(),
-        imageIconSecond: "globe"
-    )
+        firstTitle: "Notification",
+        firstImageIcon: "notification",
+        firstDestination: AnyView(LegalPoliciesView()),
+        secondTitle: "Language",
+        secondImageIcon: "globe",
+        secondDestination:  AnyView(LegalPoliciesView()))
 }

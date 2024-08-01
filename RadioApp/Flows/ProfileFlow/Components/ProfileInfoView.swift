@@ -60,16 +60,16 @@ struct ProfileInfoView: View {
             
             Spacer()
             // MARK: - Edit Button
-                       Button(action: editAction) {
-                           Image(Resources.Image.edit)
-                               .resizable()
-                               .frame(
-                                   width: DrawingConstants.buttonSize,
-                                   height: DrawingConstants.buttonSize
-                               )
-                               .padding(.trailing, DrawingConstants.buttonPadding)
-                       
-                   }
+            Button(action: editAction) {
+                Image(Resources.Image.edit)
+                    .resizable()
+                    .frame(
+                        width: DrawingConstants.buttonSize,
+                        height: DrawingConstants.buttonSize
+                    )
+                    .padding(.trailing, DrawingConstants.buttonPadding)
+                
+            }
         }
         
         .padding()
@@ -91,7 +91,7 @@ struct ProfileInfoView: View {
     ProfileInfoView(
         userName: "Stephen",
         email: "stephen@ds",
-        avatar: UIImage(named: "stephen")!, 
+        avatar: UIImage(named: "stephen")!,
         editAction: {}
     )
 }

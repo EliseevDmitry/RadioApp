@@ -10,22 +10,18 @@ import SwiftUI
 struct LegalPoliciesView: View {
     var body: some View {
         ZStack {
-            if #available(iOS 17.0, *) {
-                Color(DS.Colors.darkBlue)
-                    .ignoresSafeArea()
-            } else {
-                // Fallback on earlier versions
-            }
+            DS.Colors.darkBlue
+                .ignoresSafeArea()
             ScrollView {
                 VStack(alignment: .leading) {
                     Text("Tearms")
                         .font(
                             .custom(
                                 .sfBold,
-                                size: 14
+                                size: 18
                             )
                         )
-
+                    
                     Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget ornare quam vel facilisis feugiat amet sagittis arcu, tortor. Sapien, consequat ultrices morbi orci semper sit nulla. Leo auctor ut etiam est, amet aliquet ut vivamus. Odio vulputate est id tincidunt fames.")
                         .padding(.top, 6)
                     
@@ -35,7 +31,7 @@ struct LegalPoliciesView: View {
                         .font(
                             .custom(
                                 .sfBold,
-                                size: 14
+                                size: 16
                             )
                         )
                         .padding(.top, 20)
@@ -50,7 +46,7 @@ struct LegalPoliciesView: View {
                 .font(
                     .custom(
                         .sfBold,
-                        size: 14
+                        size: 16
                     )
                 )
                 .foregroundColor(.white)
@@ -61,8 +57,8 @@ struct LegalPoliciesView: View {
         .navigationTitle(Resources.Text.legalAndPolicies)
         .navigationBarBackButtonHidden(true)
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-//                 CustomBackButton()
+            ToolbarItem(placement: .navigationBarLeading) {
+                BackBarButton()
             }
         }
     }

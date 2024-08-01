@@ -12,52 +12,59 @@ struct ProfileView: View {
     // MARK: - Body
     var body: some View {
         NavigationView {
-            VStack {
-                // MARK: - Profile Info
-                ProfileInfoView(
-                    userName: "Stephen",
-                    email: "stephen@ds",
-                    avatar: UIImage(named: "stephen")!, 
-                    editAction: {}
-                )
+            ZStack {
+                DS.Colors.darkBlue
+                    .ignoresSafeArea()
                 
-                // MARK: - General Settings
-                SettingView(
-                    generalTitle: Resources.Text.general,
-                    destinationTitleFirst: Resources.Text.notification,
-                    destinationFirst: LegalPoliciesView(),
-                    imageIconFirst: Resources.Image.notification,
-                    destinationTitleSecond: Resources.Text.language,
-                    destinationSecond: LegalPoliciesView(),
-                    imageIconSecond: Resources.Image.globe
-                )
-                
-                // MARK: - More Settings
-                SettingView(
-                    generalTitle: Resources.Text.more,
-                    destinationTitleFirst: Resources.Text.legalAndPolicies,
-                    destinationFirst: LegalPoliciesView(),
-                    imageIconFirst: Resources.Image.shield,
-                    destinationTitleSecond: Resources.Text.aboutUs,
-                    destinationSecond: LegalPoliciesView(),
-                    imageIconSecond: Resources.Image.information
-                )
-                
-                // MARK: - Logout Button
-                CustomButton(
-                    action: {},
-                    title: Resources.Text.logOut,
-                    buttonType: .profile)
+                VStack {
+                    // MARK: - Profile Info
+                    ProfileInfoView(
+                        userName: "Stephen",
+                        email: "stephen@ds",
+                        avatar: UIImage(named: "stephen")!,
+                        editAction: {
+                            // Navigation to ProfileEditView
+                        }
+                    )
+                    
+                    // MARK: - General Settings
+                    SettingView(
+                        generalTitle: Resources.Text.general,
+                        firstTitle: Resources.Text.notification,
+                        firstImageIcon: Resources.Image.notification,
+                        firstDestination: AnyView(LegalPoliciesView()),
+                        secondTitle: Resources.Text.language,
+                        secondImageIcon: Resources.Image.globe,
+                        secondDestination: AnyView(LanguageView())
+                    )
+                    
+                    // MARK: - More Settings
+                    SettingView(
+                        generalTitle: Resources.Text.more,
+                        firstTitle: Resources.Text.legalAndPolicies,
+                        firstImageIcon: Resources.Image.shield,
+                        firstDestination: AnyView(LegalPoliciesView()),
+                        secondTitle: Resources.Text.aboutUs,
+                        secondImageIcon: Resources.Image.information,
+                        secondDestination: AnyView(AboutUs())
+                    )
+                    
+                    // MARK: - Logout Button
+                    CustomButton(
+                        action: {},
+                        title: Resources.Text.logOut,
+                        buttonType: .profile)
+                }
+                .padding()
+                .foregroundColor(.white)
+                .navigationTitle(Resources.Text.settings)
+                .navigationBarTitleDisplayMode(.inline)
             }
-            .padding()
-            .background(DS.Colors.darkBlue.ignoresSafeArea())
-            .navigationTitle(Resources.Text.settings)
-            .foregroundColor(.white)
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
+// MARK: - Preview
 #Preview {
     ProfileView()
 }

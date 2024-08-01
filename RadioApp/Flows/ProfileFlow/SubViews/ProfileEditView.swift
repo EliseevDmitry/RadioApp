@@ -9,7 +9,21 @@ import SwiftUI
 
 struct ProfileEditView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ZStack {
+                DS.Colors.darkBlue
+                    .ignoresSafeArea()
+            }
+            
+            
+            .navigationTitle(Resources.Text.profile.capitalized)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    BackBarButton()
+                }
+            }
+        }
     }
 }
 
