@@ -8,21 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
-
-    @StateObject var appManager = ViewModel()
-
+    @EnvironmentObject var appManager: ViewModel
     @State var currentTab: Tab = .popular
     init() {
         UITabBar.appearance().isHidden = true
     }
 
     var body: some View {
-
         NavigationView {
-
             VStack(spacing: 0.0) {
                 TabView(selection: $currentTab) {
-                    PopularView(appManager: appManager)
+                    PopularView()
+                        .environmentObject(appManager)
                         .tag(Tab.popular)
 
                     FavoritesView()
@@ -39,6 +36,11 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    
+    static var previews: some View {
+        ContentView()
+            .environmentObject(previewAppManager)
+    }
 }

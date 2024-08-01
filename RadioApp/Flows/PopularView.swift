@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct PopularView: View {
-    //@EnvironmentObject var appManager: ViewModel
-    @ObservedObject var appManager: ViewModel
-
-    @State private var isShow = false
+    @EnvironmentObject var appManager: ViewModel
+   // @ObservedObject var appManager: ViewModel
+    @State private var selectedStation = ""
     let columns = [
         GridItem(.flexible(minimum: 139, maximum: 139)),
         GridItem(.flexible(minimum: 139, maximum: 139))
@@ -35,7 +34,7 @@ struct PopularView: View {
                 ScrollView(.vertical, showsIndicators: false){
                     LazyVGrid(columns: columns) {
                         ForEach(appManager.stations, id: \.changeuuid) {item in
-                                StationPopularView(isShow: $isShow, station: item)
+                            StationPopularView(selectedStationID: $selectedStation, station: item)
                                     .environmentObject(appManager)
                                     .frame(width: 139, height: 139)
                         }
@@ -49,7 +48,7 @@ struct PopularView: View {
                         ForwardButtonView()
                             
                     }
-                    .offset(CGSize(width: 0, height: 250))
+                    .offset(CGSize(width: 0, height: 260))
                 }
                 
                 Spacer()
@@ -70,13 +69,22 @@ struct PopularView: View {
         }
     }
     
+//    func removeItems(at offsets: IndexSet, from arrayExpense: [ExpenseItem]) {
+//        for offset in offsets {
+//            let item = arrayExpense[offset]
+//            expenses.items.removeAll { element in
+//                element.id == item.id
+//            }
+//        }
+//    }
+    
 }
 
 struct PopularView_Previews: PreviewProvider {
     static let previewAppManager = ViewModel()
     
     static var previews: some View {
-        PopularView(appManager: previewAppManager)
-            //.environmentObject(previewAppManager)
+        PopularView()
+            .environmentObject(previewAppManager)
     }
 }
