@@ -9,27 +9,33 @@ import SwiftUI
 
 struct ContentView: View {
 
+    @StateObject var appManager = ViewModel()
+
     @State var currentTab: Tab = .popular
     init() {
         UITabBar.appearance().isHidden = true
     }
 
     var body: some View {
-        VStack {
-            TabView(selection: $currentTab) {
-                Text("Popular")
-                    .tag(Tab.popular)
 
-                Text("Favorites")
-                    .tag(Tab.favorites)
+        NavigationView {
 
-                Text("All Stations")
-                    .tag(Tab.allStations)
+            VStack(spacing: 0.0) {
+                TabView(selection: $currentTab) {
+                    PopularView(appManager: appManager)
+                        .tag(Tab.popular)
+
+                    FavoritesView()
+                        .tag(Tab.favorites)
+
+                    AllStationsView()
+                        .tag(Tab.allStations)
+                }
+                CustomTabBarView(currentTab: $currentTab)
             }
-
-            CustomTabBarView(currentTab: $currentTab)
-            
+            .ignoresSafeArea(.keyboard)
         }
+        .dynamicTypeSize(.xSmall ... .xxLarge)
     }
 }
 
