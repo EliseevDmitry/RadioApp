@@ -19,12 +19,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct RadioAppApp: App {
+    @StateObject var appManager = ViewModel()
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+//            WelcomeView()
+//                .environmentObject(appManager)
+           // TestView(model: appManager)
+            PopularView()
+                .environmentObject(appManager)
         }
     }
 }
