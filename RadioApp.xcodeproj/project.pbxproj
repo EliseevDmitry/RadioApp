@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220E86A12C5CB98900F8B0D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 220E86A02C5CB98800F8B0D6 /* GoogleService-Info.plist */; };
 		22891AC52C5B5F5F00DE33E6 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22891AC42C5B5F5F00DE33E6 /* AuthService.swift */; };
 		22891AC92C5B689800DE33E6 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22891AC82C5B689800DE33E6 /* SignUpViewModel.swift */; };
 		22891ACB2C5B7BA900DE33E6 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22891ACA2C5B7BA900DE33E6 /* SignInViewModel.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220E86A02C5CB98800F8B0D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		22891AC42C5B5F5F00DE33E6 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		22891AC82C5B689800DE33E6 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		22891ACA2C5B7BA900DE33E6 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 		2663C77C2C569E54002EFD0C /* RadioApp */ = {
 			isa = PBXGroup;
 			children = (
+				220E86A02C5CB98800F8B0D6 /* GoogleService-Info.plist */,
 				2663C78B2C569EB6002EFD0C /* App */,
 				7A7A4B342C5B63F900CD8794 /* Screens */,
 				2663C7912C569F89002EFD0C /* Models */,
@@ -412,6 +415,7 @@
 				E1E497FE2C56E6230099440D /* SF-Pro-Display-Semibold.otf in Resources */,
 				2663C7822C569E55002EFD0C /* Assets.xcassets in Resources */,
 				E1E497FC2C56E6230099440D /* SF-Pro-Display-Regular.otf in Resources */,
+				220E86A12C5CB98900F8B0D6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
