@@ -60,6 +60,7 @@ struct PopularView: View {
             } catch {
                 // handle error
             }
+            appManager.playFirstStation()
         }
     }
 }
@@ -72,3 +73,7 @@ struct PopularView_Previews: PreviewProvider {
             .environmentObject(previewAppManager)
     }
 }
+
+
+
+

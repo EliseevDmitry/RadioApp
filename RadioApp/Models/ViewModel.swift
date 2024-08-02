@@ -77,7 +77,7 @@ final class ViewModel: ObservableObject {
         }
     }
     
-    func play(){
+    func playAudioStream(){
         player?.play()
         isPlay = true
     }
@@ -87,5 +87,61 @@ final class ViewModel: ObservableObject {
         isPlay = false
     }
     
+    func nextTrackAudioStream(){
+        var indexStation: Int?
+        for (index, station) in stations.enumerated() {
+            if selectedStation == station.changeuuid{
+                indexStation = index
+            }
+        }
+        if indexStation == nil && stations.count > 0{
+            selectedStation = stations[0].changeuuid
+            playAudio(url: stations[0].url)
+            return
+        }
+        guard var newIndex = indexStation else { return }
+        newIndex += 1
+        if isPlay && newIndex < stations.count{
+            pauseAudioStream()
+        }
+        if newIndex < stations.count {
+            selectedStation = stations[newIndex].changeuuid
+            playAudio(url: stations[newIndex].url)
+        } else {
+            return
+        }
+    }
+    
+    func backTrackAudioStream(){
+        var indexStation: Int?
+        for (index, station) in stations.enumerated() {
+            if selectedStation == station.changeuuid{
+                indexStation = index
+            }
+        }
+        if indexStation == nil && stations.count > 0{
+            selectedStation = stations[stations.count-1].changeuuid
+            playAudio(url: stations[stations.count-1].url)
+            return
+        }
+        guard var newIndex = indexStation else { return }
+        newIndex -= 1
+        if isPlay && newIndex >= 0{
+            pauseAudioStream()
+        }
+        if newIndex >= 0 {
+            selectedStation = stations[newIndex].changeuuid
+            playAudio(url: stations[newIndex].url)
+        } else {
+            return
+        }
+    }
+    
+    func playFirstStation(){
+        if stations.count > 0{
+            selectedStation = stations[0].changeuuid
+            playAudio(url: stations[0].url)
+        }
+    }
     
 }

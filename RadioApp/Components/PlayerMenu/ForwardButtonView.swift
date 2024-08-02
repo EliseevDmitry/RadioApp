@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ForwardButtonView: View {
+    //MARK: - PROPERTIES
+    @EnvironmentObject var appManager: ViewModel
+    //MARK: - BODY
     var body: some View {
         Button{
-         //action
+            appManager.nextTrackAudioStream()
         } label: {
             Image(.play)
                 .resizable()
@@ -22,8 +25,14 @@ struct ForwardButtonView: View {
                 .fill(DS.Colors.turquoise)
         }
     }
+    
 }
 
-#Preview {
-    ForwardButtonView()
+//MARK: - PREVIEW
+struct ForwardButtonView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    static var previews: some View {
+        ForwardButtonView()
+            .environmentObject(previewAppManager)
+    }
 }
