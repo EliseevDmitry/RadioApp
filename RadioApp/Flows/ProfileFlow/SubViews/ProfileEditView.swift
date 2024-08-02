@@ -19,7 +19,7 @@ struct ProfileEditView: View {
             
             VStack {
                 
-                ProfileTextField(
+                CustomTextField(
                     value: $name, placeHolder: Resources.Text.enterName, titleBorder: Resources.Text.fullName)
                 
                 CustomButton(action: {}, title: Resources.Text.saveChanges, buttonType: .profile

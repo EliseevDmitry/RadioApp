@@ -83,7 +83,7 @@ extension Station {
 
 struct Like: Codable {
     var idUUID = UUID()
-    var likeSet: Set<Int>
+    var likeSet: Set<String>
 }
 
 

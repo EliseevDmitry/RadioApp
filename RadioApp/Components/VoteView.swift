@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct VoteView: View {
-    var model: ViewModel
-    @Binding var isShow: Bool
+    @EnvironmentObject var appManager: ViewModel
     @State private var islike = true
+    var isShow: Bool
+    var idStation: String
     var body: some View {
         Button{
             //заменить ID на ID из модели станции
-            if !model.saveIDLikes(id: 1) {
+            if !appManager.saveIDLikes(id: idStation) {
                 islike = false
             } else {
                 islike = true
@@ -34,6 +35,6 @@ struct VoteView: View {
     }
 }
 
-#Preview {
-    VoteView(model: ViewModel(), isShow: .constant(true))
-}
+//#Preview {
+//    VoteView(model: ViewModel(), isShow: .constant(true))
+//}

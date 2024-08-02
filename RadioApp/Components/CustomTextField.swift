@@ -1,5 +1,5 @@
 //
-//  ProfileTextField.swift
+//  CustomTextField.swift
 //  RadioApp
 //
 //  Created by Келлер Дмитрий on 01.08.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileTextField: View {
+struct CustomTextField: View {
     
     @Binding var value: String
     var placeHolder: String
@@ -41,7 +41,7 @@ struct ProfileTextField: View {
 }
 
 #Preview {
-    ProfileTextField(
+    CustomTextField(
         value: .constant("Value"),
         placeHolder: "email",
         titleBorder: "email")
