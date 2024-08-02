@@ -61,7 +61,8 @@ struct ProfileInfoView: View {
             
             NavigationLink(destination: ProfileEditView(
                 userName: userName,
-                userEmail: userEmail
+                userEmail: userEmail,
+                avatar: avatar
             )
             )
             {

@@ -42,6 +42,7 @@ enum Resources {
         static let shield = "shield"
         static let information = "information"
         static let arrowLeft = "arrow.left"
+        static let editProfileAvatar = "editProfileAvatar"
     }
     
 }
