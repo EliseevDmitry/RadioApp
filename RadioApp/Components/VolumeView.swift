@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct VolumeView: View {
+    @EnvironmentObject var appManager: ViewModel
     @Binding var voulmeValue: CGFloat
     var body: some View {
         VStack{
@@ -35,6 +36,7 @@ struct VolumeView: View {
                                     withAnimation(.linear(duration: 2)){
                                         if voulmeValue >= 0 && voulmeValue <= 1 {
                                             voulmeValue -= (value.translation.height/screen.size.height/80)
+                                           
                                         }
                                     }
                                 })
@@ -44,7 +46,9 @@ struct VolumeView: View {
                                     } else if voulmeValue <= 0 {
                                         voulmeValue = 0
                                     }
+                               
                                 })
+                                
                         )
                 }
             }

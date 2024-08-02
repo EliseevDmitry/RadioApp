@@ -8,6 +8,7 @@
 import Foundation
 import AVKit
 
+
 @MainActor
 final class ViewModel: ObservableObject {
     
@@ -26,6 +27,7 @@ final class ViewModel: ObservableObject {
     let network = NetworkService()
     var likes = Like(likeSet: Set<String>())
     var player: AVPlayer?
+    var session = AVAudioSession.sharedInstance()
     
     func fetchTopStations() async throws {
         var fetchedStations: [Station]
@@ -144,4 +146,19 @@ final class ViewModel: ObservableObject {
         }
     }
     
+//    func setVolme(){
+//        do {
+//            try session.setActive(true)
+//            session.publisher(for: \.outputVolume){value in
+//                
+//            }
+//        } catch {
+//            
+//        }
+//    }
+    
+
+    
 }
+
+
