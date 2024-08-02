@@ -36,12 +36,17 @@ enum Resources {
     
     enum Image {
         /// Profile
+        static let stephen = "stephen"
         static let edit = "edit"
         static let globe = "globe"
         static let notification = "notification"
         static let shield = "shield"
         static let information = "information"
         static let arrowLeft = "arrow.left"
+        static let editProfileAvatar = "editProfileAvatar"
+        static let photoIcon = "photoIcon"
+        static let fileIcon = "fileIcon"
+        static let noPhoto = "noPhoto"
     }
     
 }

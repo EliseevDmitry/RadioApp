@@ -64,7 +64,7 @@ struct SettingView: View {
                 )
             }
         }
-        .background(DS.Colors.darkBlue)
+        .background(.clear)
         .cornerRadius(DrawingConstants.cornerRadius)
         .overlay {
             RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
