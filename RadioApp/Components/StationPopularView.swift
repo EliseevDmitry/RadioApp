@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct StationPopularView: View {
-    @State private var isShow: Bool = false
-    @Binding var selectedStationID: String
-    //let action: () -> Void
+    //MARK: - PROPERTIES
     @EnvironmentObject var appManager: ViewModel
+    @Binding var selectedStationID: String
     var station: Station
+    //let action: () -> Void
+    //MARK: - BODY
     var body: some View {
-        Button{
+        Button{            
             selectedStationID = station.changeuuid
+            appManager.playAudio(url: station.url)
         } label: {
             ZStack{
                 Rectangle()
@@ -34,23 +36,20 @@ struct StationPopularView: View {
                         if selectedStationID == station.changeuuid {
                             Image(.play)
                                 .resizable()
-                                .frame(
-                                    width: 25,
-                                    height: 25
-                                )
+                                .frame(width: 25)
                         }
                         Spacer()
                         //отобразить последние 100 голосов
                         Text("votes \(self.station.votes % 1000)")
-                            .font(.custom(DS.Fonts.sfRegular, size: 15))
+                            .font(.custom(DS.Fonts.sfRegular, size: 14))
                             .foregroundStyle(selectedStationID == station.changeuuid ? .white : DS.Colors.frame)
-                        
                         VoteView(isShow: selectedStationID == station.changeuuid ? true : false, idStation: station.changeuuid)
                             .frame(
                                 width: 14,
                                 height: 14
                             )
                     }
+                    .frame(height: 25)
                     .padding(.horizontal, 10)
                     .padding(.top, 10)
                     Spacer()
@@ -82,10 +81,9 @@ struct StationPopularView: View {
 }
 
 
-
+//MARK: - PREVIEW
 struct StationPopularView_Previews: PreviewProvider {
     static let previewAppManager = ViewModel()
-
     static var previews: some View {
         StationPopularView(selectedStationID: .constant(""), station: .testStation())
             .environmentObject(previewAppManager)
