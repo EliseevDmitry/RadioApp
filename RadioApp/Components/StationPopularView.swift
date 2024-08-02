@@ -35,15 +35,12 @@ struct StationPopularView: View {
                         if selectedStationID == station.changeuuid {
                             Image(.play)
                                 .resizable()
-                                .frame(
-                                    width: 25,
-                                    height: 25
-                                )
+                                .frame(width: 25)
                         }
                         Spacer()
                         //отобразить последние 100 голосов
                         Text("votes \(self.station.votes % 1000)")
-                            .font(.custom(DS.Fonts.sfRegular, size: 15))
+                            .font(.custom(DS.Fonts.sfRegular, size: 14))
                             .foregroundStyle(selectedStationID == station.changeuuid ? .white : DS.Colors.frame)
                         VoteView(isShow: selectedStationID == station.changeuuid ? true : false, idStation: station.changeuuid)
                             .frame(
@@ -51,6 +48,7 @@ struct StationPopularView: View {
                                 height: 14
                             )
                     }
+                    .frame(height: 25)
                     .padding(.horizontal, 10)
                     .padding(.top, 10)
                     Spacer()

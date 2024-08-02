@@ -31,6 +31,7 @@ struct VoteView: View {
                 print("отправляем запрос на сервер")
             }
         }
+       .disabled(!isShow ? true : false)
         
     }
 }

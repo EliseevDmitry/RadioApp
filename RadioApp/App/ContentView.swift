@@ -13,7 +13,6 @@ struct ContentView: View {
     init() {
         UITabBar.appearance().isHidden = true
     }
-
     var body: some View {
         NavigationView {
             VStack(spacing: 0.0) {
