@@ -22,7 +22,7 @@ struct SettingView: View {
 
     // MARK: - Drawing Constants
     private struct DrawingConstants {
-        static let titleFontSize: CGFloat = 18
+        static let titleFontSize: CGFloat = 22
         static let titlePadding: CGFloat = 16
         static let dividerPadding: CGFloat = 16
         static let cornerRadius: CGFloat = 16
