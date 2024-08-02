@@ -30,7 +30,7 @@ struct CustomTextField: View {
         static let filledBorderColor = Color.gray
         static let backgroundWidth: CGFloat = 100
         static let backgroundHeight: CGFloat = 20
-        static let backgroundColor = DS.Colors.darkBlue
+        static let backgroundColor = Color.clear
     }
     
     // MARK: - Body
@@ -40,8 +40,8 @@ struct CustomTextField: View {
             text: $value
         )
         .padding(.leading, Drawing.leadingPadding)
-        .foregroundStyle(Drawing.textColor)
         .padding(.vertical, Drawing.verticalPadding)
+        .foregroundStyle(Drawing.textColor)
         .disableAutocorrection(true)
         .overlay {
             ZStack {
@@ -53,20 +53,26 @@ struct CustomTextField: View {
                     .opacity(Drawing.strokeOpacity)
                 ZStack {
                     Drawing.backgroundColor
+                   
                         .frame(
                             width: Drawing.backgroundWidth,
                             height: Drawing.backgroundHeight
                         )
                         .cornerRadius(Drawing.cornerRadius)
-                        .offset(x: Drawing.titleOffsetX, y: Drawing.titleOffsetY)
+                        .offset(
+                            x: Drawing.titleOffsetX,
+                            y: Drawing.titleOffsetY
+                        )
                     Text(titleBorder.capitalized)
                         .foregroundStyle(Drawing.textColor)
                         .font(.custom(.sfBold, size: Drawing.titleFontSize))
-                        .offset(x: Drawing.titleOffsetX, y: Drawing.titleOffsetY)
+                        .offset(
+                            x: Drawing.titleOffsetX,
+                            y: Drawing.titleOffsetY
+                        )
                 }
             }
         }
-        .padding(.horizontal, Drawing.horizontalPadding)
     }
 }
 

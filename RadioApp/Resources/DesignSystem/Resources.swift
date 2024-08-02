@@ -36,6 +36,7 @@ enum Resources {
     
     enum Image {
         /// Profile
+        static let stephen = "stephen"
         static let edit = "edit"
         static let globe = "globe"
         static let notification = "notification"

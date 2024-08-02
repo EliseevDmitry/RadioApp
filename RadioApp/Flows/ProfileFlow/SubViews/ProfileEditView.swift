@@ -13,7 +13,10 @@ struct ProfileEditView: View {
     @State var userEmail: String
     @State var avatar: UIImage?
     
-    @State private var isImagePicker = false
+    @State private var showChangedView: Bool = false
+    @State private var blurBackground: Bool = false
+    @State private var isImagePickerPresented: Bool = false
+    @State private var imagePickerSource: UIImagePickerController.SourceType = .photoLibrary
     
     private struct Drawing {
         static let avatarSize: CGFloat = 100
@@ -26,46 +29,20 @@ struct ProfileEditView: View {
     }
     
     var body: some View {
-        VStack {
-            ZStack {
-                DS.Colors.darkBlue
-                    .ignoresSafeArea()
+        ZStack {
+            VStack {
+                ZStack {
+                    AnimatedBackgroundView()
+                        .ignoresSafeArea()
                     
                     VStack(spacing: Drawing.spacing) {
                         // MARK: - Profile Image Section
-                        Button {
-                            isImagePicker.toggle()
-                        } label: {
-                            ZStack {
-                                image(avatar)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .clipShape(Circle())
-                                    .frame(width: Drawing.avatarSize, height: Drawing.avatarSize)
-                                Image(Resources.Image.editProfileAvatar)
-                                    .offset(x: Drawing.iconOffset, y: Drawing.iconOffset)
-                                    .frame(width: Drawing.editIconSize, height: Drawing.editIconSize)
-                            }
-                        }
-                        
-                        // MARK: - User Info Section
-                        Text(userName)
-                            .foregroundStyle(.white)
-                            .font(
-                                .custom(
-                                    .sfSemibold, size: Drawing.textFontSize
-                                )
-                            )
-                        
-                        Text(verbatim: userEmail)
-                            .foregroundStyle(.gray)
-                            .font(
-                                .custom(
-                                    .sfSemibold,
-                                    size: Drawing.textFontSize
-                                )
-                            )
-                            .padding(.top, -8)
+                        ProfileHeaderView(
+                            userName: $userName,
+                            userEmail: $userEmail,
+                            avatar: $avatar,
+                            showChangedPhotoView: $showChangedView
+                        )
                         
                         // MARK: - Editable Fields Section
                         CustomTextField(
@@ -82,9 +59,11 @@ struct ProfileEditView: View {
                         )
                         .padding(.top, Drawing.fieldTopPadding)
                         
+                        Spacer()
+                        
                         CustomButton(action: {}, title: Resources.Text.saveChanges, buttonType: .profile
                         )
-                        .padding(.top, Drawing.fieldTopPadding)
+                        
                         Spacer()
                     }
                     .padding(.top, Drawing.topPadding)
@@ -96,17 +75,60 @@ struct ProfileEditView: View {
                             BackBarButton()
                         }
                     }
+                }
             }
+            .blur(radius: showChangedView ? 10 : 0)
+            
+            if showChangedView {
+                Color.black.opacity(0.4)
+                    .edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
+                        withAnimation {
+                            hideChangedPhotoView()
+                        }
+                    }
+                
+                ChangePhotoView(
+                    onTakePhoto: {
+                        showImagePicker(source: .camera)
+                    },
+                    onChoosePhoto: {
+                        showImagePicker(source: .photoLibrary)
+                    },
+                    onDeletePhoto: {
+                        avatar = UIImage(named: "NoPhoto")
+                        hideChangedPhotoView()
+                    }
+                )
+                .frame(width: 300, height: 200)
+                .background(Color.white)
+                .cornerRadius(12)
+                .shadow(radius: 10)
+                .transition(.move(edge: .bottom))
+                .zIndex(1)
+            }
+        }
+        .sheet(isPresented: $isImagePickerPresented) {
+//            ImagePicker(sourceType: imagePickerSource) { image in
+//                avatar = image
+//            }
         }
     }
     
     // MARK: - Helper Functions
-    func image(_ image: UIImage?) -> Image {
-        if let profileImage = image {
-            return Image(uiImage: profileImage)
-        } else {
-            return Image(uiImage: UIImage(named: "stephen")!)
-        }
+    func showChangedPhotoView() {
+        blurBackground = true
+        showChangedView = true
+    }
+    
+    func hideChangedPhotoView() {
+        blurBackground = false
+        showChangedView = false
+    }
+    
+    func showImagePicker(source: UIImagePickerController.SourceType) {
+        imagePickerSource = source
+        isImagePickerPresented = true
     }
 }
 
