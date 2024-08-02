@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import AVFAudio
-
 
 struct VolumeView: View {
     @EnvironmentObject var appManager: ViewModel
@@ -37,7 +35,7 @@ struct VolumeView: View {
                                     withAnimation(.linear(duration: 2)){
                                         if voulmeValue >= 0 && voulmeValue <= 1 {
                                             voulmeValue -= (value.translation.height/screen.size.height/80)
-                                           
+                                            appManager.setVolme()
                                         }
                                     }
                                 })
@@ -47,14 +45,11 @@ struct VolumeView: View {
                                     } else if voulmeValue <= 0 {
                                         voulmeValue = 0
                                     }
-                               
+                                    appManager.setVolme()
                                 })
-                                
-                                
+                               
                         )
-                        .onReceive(AVAudioSession.sharedInstance().publisher(for: \.outputVolume), perform: { value in
-                            appManager.volume = Double(value)
-                               })
+                       
                 }
             }
             .frame(width: 10)
@@ -63,6 +58,8 @@ struct VolumeView: View {
                 .offset(CGSize(width: 5.0, height: 5.0))
                 .frame(width: 18, height: 18)
                 .foregroundStyle(DS.Colors.frame)
+            
+           
         }
     }
 }
