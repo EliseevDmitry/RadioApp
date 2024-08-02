@@ -7,11 +7,10 @@
 
 import SwiftUI
 
-struct SignInView: View {
-    @StateObject private var signInViewModel = SignInViewModel()
-    
+struct SignInView: View {    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("///")
+//        CustomButton(action: {}, title: "", buttonType: <#T##CustomButton.ButtonType#>)
     }
 }
 

@@ -7,6 +7,7 @@
 
 import Foundation
 import AVKit
+import FirebaseAuth
 
 @MainActor
 final class ViewModel: ObservableObject {
@@ -22,6 +23,15 @@ final class ViewModel: ObservableObject {
     
     @Published var isPlay: Bool = false
 
+    
+    // свойства для аутентификации
+    @Published var email = "Franky@gmail.com"
+    @Published var password = "1212121"
+    @Published var username = "Frank"
+    @Published var showPassword = false
+    @Published var isUserRegistered = false
+    @Published var showSignInView = false
+    
     
     let network = NetworkService()
     var likes = Like(likeSet: Set<String>())
@@ -87,5 +97,23 @@ final class ViewModel: ObservableObject {
         isPlay = false
     }
     
+    // MARK: - Auth methods
+    func signIn() {
+        Task {
+            try await AuthService.shared.signIn(with: email, password: password)
+        }
+    }
     
+    func registerUser() {
+        Task {
+            try await AuthService.shared.registerUser(with: email, password: password, username: username)
+            isUserRegistered = true
+        }
+    }
+    
+    func signOut() {
+        Task {
+            AuthService.shared.signUserOut()
+        }
+    }
 }

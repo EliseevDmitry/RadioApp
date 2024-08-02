@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-struct SignUpView: View {
-    @StateObject private var signUpViewModel = SignUpViewModel()
-    
+struct SignUpView: View {    
     var body: some View {
         Text("Hello, World!")
     }
