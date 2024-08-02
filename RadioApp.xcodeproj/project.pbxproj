@@ -44,6 +44,7 @@
 		E18529D82C5D034800BBE649 /* AnimatedBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18529D72C5D034800BBE649 /* AnimatedBackgroundView.swift */; };
 		E18529DC2C5D08F000BBE649 /* ChangePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18529DB2C5D08F000BBE649 /* ChangePhotoView.swift */; };
 		E18529DF2C5D11AA00BBE649 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18529DE2C5D11AA00BBE649 /* ProfileHeaderView.swift */; };
+		E18529E12C5D30F800BBE649 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18529E02C5D30F800BBE649 /* ImagePicker.swift */; };
 		E1E497DA2C56D14F0099440D /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497D92C56D14F0099440D /* Resources.swift */; };
 		E1E497E62C56D5380099440D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497E52C56D5380099440D /* NetworkService.swift */; };
 		E1E497EB2C56D8500099440D /* DS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497EA2C56D8500099440D /* DS.swift */; };
@@ -100,6 +101,7 @@
 		E18529D72C5D034800BBE649 /* AnimatedBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedBackgroundView.swift; sourceTree = "<group>"; };
 		E18529DB2C5D08F000BBE649 /* ChangePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhotoView.swift; sourceTree = "<group>"; };
 		E18529DE2C5D11AA00BBE649 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		E18529E02C5D30F800BBE649 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		E1E497D92C56D14F0099440D /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		E1E497E52C56D5380099440D /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E1E497EA2C56D8500099440D /* DS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DS.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				E1E4980F2C5AB6590099440D /* AboutUs.swift */,
 				E18529DB2C5D08F000BBE649 /* ChangePhotoView.swift */,
 				E18529DE2C5D11AA00BBE649 /* ProfileHeaderView.swift */,
+				E18529E02C5D30F800BBE649 /* ImagePicker.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2663C7A32C56A1A5002EFD0C /* PlayerMenuView.swift in Sources */,
+				E18529E12C5D30F800BBE649 /* ImagePicker.swift in Sources */,
 				26A7379E2C5A6A670002F1E9 /* SplineView.swift in Sources */,
 				26A737992C5A4F850002F1E9 /* BackButtonView.swift in Sources */,
 				E18529D82C5D034800BBE649 /* AnimatedBackgroundView.swift in Sources */,

@@ -13,9 +13,9 @@ struct ProfileEditView: View {
     @State var userEmail: String
     @State var avatar: UIImage?
     
-    @State private var showChangedView: Bool = false
-    @State private var blurBackground: Bool = false
-    @State private var isImagePickerPresented: Bool = false
+    @State private var showChangedView = false
+    @State private var blurBackground  = false
+    @State private var isImagePickerPresented  = false
     @State private var imagePickerSource: UIImagePickerController.SourceType = .photoLibrary
     
     private struct Drawing {
@@ -109,9 +109,9 @@ struct ProfileEditView: View {
             }
         }
         .sheet(isPresented: $isImagePickerPresented) {
-//            ImagePicker(sourceType: imagePickerSource) { image in
-//                avatar = image
-//            }
+                   ImagePicker(sourceType: imagePickerSource) { image in
+                       avatar = image
+                   }
         }
     }
     

@@ -44,6 +44,9 @@ enum Resources {
         static let information = "information"
         static let arrowLeft = "arrow.left"
         static let editProfileAvatar = "editProfileAvatar"
+        static let photoIcon = "photoIcon"
+        static let fileIcon = "fileIcon"
+        static let noPhoto = "noPhoto"
     }
     
 }
