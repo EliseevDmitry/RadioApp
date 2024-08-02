@@ -17,6 +17,7 @@ struct StationPopularView: View {
     var body: some View {
         Button{            
             selectedStationID = station.changeuuid
+            appManager.playAudio(url: station.url)
         } label: {
             ZStack{
                 Rectangle()

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AVKit
 
 @MainActor
 final class ViewModel: ObservableObject {
@@ -18,10 +19,13 @@ final class ViewModel: ObservableObject {
     @Published var selectedStation = ""
     //VoteView
     @Published var islike: Bool = false
+    
+  
 
     
     let network = NetworkService()
     var likes = Like(likeSet: Set<String>())
+    private var player: AVPlayer?
     
     func fetchTopStations() async throws {
         var fetchedStations: [Station]
@@ -59,6 +63,17 @@ final class ViewModel: ObservableObject {
         }
         print("Такой ID уже существует!")
         return false
+    }
+    
+    func playAudio(url: String){
+        guard let url = URL.init(string: url) else { return }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+            player = AVPlayer(url: url)
+            player?.play()
+        } catch {
+            //
+        }
     }
     
 }
