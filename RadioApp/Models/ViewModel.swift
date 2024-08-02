@@ -20,12 +20,12 @@ final class ViewModel: ObservableObject {
     //VoteView
     @Published var islike: Bool = false
     
-  
+    @Published var isPlay: Bool = false
 
     
     let network = NetworkService()
     var likes = Like(likeSet: Set<String>())
-    private var player: AVPlayer?
+    var player: AVPlayer?
     
     func fetchTopStations() async throws {
         var fetchedStations: [Station]
@@ -71,9 +71,21 @@ final class ViewModel: ObservableObject {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
             player = AVPlayer(url: url)
             player?.play()
+            isPlay = true
         } catch {
             //
         }
     }
+    
+    func play(){
+        player?.play()
+        isPlay = true
+    }
+    
+    func pauseAudioStream(){
+            player?.pause()
+        isPlay = false
+    }
+    
     
 }

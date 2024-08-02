@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ProfileEditView: View {
     
-    @State var name: String
+    @State var userName: String
+    @State var userEmail: String
     
     var body: some View {
         VStack {
@@ -19,14 +20,43 @@ struct ProfileEditView: View {
             
             VStack {
                 
-                CustomTextField(
-                    value: $name, placeHolder: Resources.Text.enterName, titleBorder: Resources.Text.fullName)
+                Text(userName)
+                    .foregroundStyle(.white)
+                    .font(
+                        .custom(
+                            .sfSemibold, size: 14
+                        )
+                    )
                 
+                Text(verbatim: userEmail)
+                    .foregroundStyle(.gray)
+                    .font(
+                        .custom(
+                            .sfSemibold,
+                            size: 14
+                        )
+                    )
+                    .padding(.top, -8)
+                
+                CustomTextField(
+                    value: $userName, 
+                    placeHolder: Resources.Text.enterName,
+                    titleBorder: Resources.Text.fullName
+                )
+                .padding(.top, 40)
+                
+                CustomTextField(
+                    value: $userEmail,
+                    placeHolder: Resources.Text.enterEmail,
+                    titleBorder: Resources.Text.email
+                )
+                .padding(.top, 40)
                 CustomButton(action: {}, title: Resources.Text.saveChanges, buttonType: .profile
                 )
-//                Spacer()
+                .padding(.top, 40)
+               Spacer()
             }
-            
+            .padding(.top, 50)
             .navigationTitle(Resources.Text.profile.capitalized)
             .navigationBarBackButtonHidden(true)
             .toolbar {
@@ -40,5 +70,5 @@ struct ProfileEditView: View {
 }
 
 #Preview {
-    ProfileEditView(name: "Steven")
+    ProfileEditView(userName: "Steven", userEmail: "Steven@d.com")
 }
