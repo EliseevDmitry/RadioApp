@@ -20,11 +20,8 @@ struct ProfileView: View {
                     // MARK: - Profile Info
                     ProfileInfoView(
                         userName: "Stephen",
-                        email: "stephen@ds",
-                        avatar: UIImage(named: "stephen")!,
-                        editAction: {
-                            // Navigation to ProfileEditView
-                        }
+                        userEmail: "stephen@ds",
+                        avatar: UIImage(named: "stephen")!
                     )
                     
                     // MARK: - General Settings

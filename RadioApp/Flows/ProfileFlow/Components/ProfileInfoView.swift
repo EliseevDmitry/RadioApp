@@ -13,9 +13,8 @@ import SwiftUI
 struct ProfileInfoView: View {
     // MARK: - Properties
     var userName: String
-    var email: String
+    var userEmail: String
     var avatar: UIImage
-    var editAction: () -> Void
     
     // MARK: - Drawing Constants
     private struct DrawingConstants {
@@ -26,8 +25,8 @@ struct ProfileInfoView: View {
         static let cornerRadius: CGFloat = 16
         static let strokeWidth: CGFloat = 1.0
         static let strokeOpacity: CGFloat = 0.2
-        static let buttonSize: CGFloat = 24
-        static let buttonPadding: CGFloat = 16
+        static let padding: CGFloat = 16
+        
     }
     
     // MARK: - Body
@@ -51,7 +50,7 @@ struct ProfileInfoView: View {
                     .font(Font.custom(.sfMedium, size: 16))
                     .foregroundColor(.white)
                 
-                Text(email)
+                Text(userEmail)
                     .font(Font.custom(.sfMedium, size: 14))
                     .foregroundColor(Color.gray)
             }
@@ -59,17 +58,18 @@ struct ProfileInfoView: View {
             .padding(.leading, DrawingConstants.textLeadingPadding)
             
             Spacer()
-            // MARK: - Edit Button
-            Button(action: editAction) {
+            
+            NavigationLink(destination: ProfileEditView(
+                userName: userName,
+                userEmail: userEmail
+            )
+            )
+            {
                 Image(Resources.Image.edit)
-                    .resizable()
-                    .frame(
-                        width: DrawingConstants.buttonSize,
-                        height: DrawingConstants.buttonSize
-                    )
-                    .padding(.trailing, DrawingConstants.buttonPadding)
-                
+                    .foregroundColor(DS.Colors.blueNeon)
+                    .padding(.trailing, DrawingConstants.padding)
             }
+            
         }
         
         .padding()
@@ -90,8 +90,7 @@ struct ProfileInfoView: View {
 #Preview {
     ProfileInfoView(
         userName: "Stephen",
-        email: "stephen@ds",
-        avatar: UIImage(named: "stephen")!,
-        editAction: {}
+        userEmail: "stephen@ds",
+        avatar: UIImage(named: "stephen")!
     )
 }
