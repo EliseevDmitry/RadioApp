@@ -31,6 +31,7 @@ enum Resources {
         static let english = "english"
         static let russian = "russian"
         static let enterName = "Enter your full name"
+        static let enterEmail = "Enter your Email"
     }
     
     enum Image {
