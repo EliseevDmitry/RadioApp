@@ -61,7 +61,8 @@ struct ProfileInfoView: View {
             
             NavigationLink(destination: ProfileEditView(
                 userName: userName,
-                userEmail: userEmail
+                userEmail: userEmail,
+                avatar: avatar
             )
             )
             {
@@ -73,7 +74,7 @@ struct ProfileInfoView: View {
         }
         
         .padding()
-        .background(DS.Colors.darkBlue)
+        .background(.clear)
         .cornerRadius(DrawingConstants.cornerRadius)
         .overlay {
             RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)

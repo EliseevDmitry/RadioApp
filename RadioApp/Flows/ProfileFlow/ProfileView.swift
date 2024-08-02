@@ -9,11 +9,13 @@ import SwiftUI
 
 // MARK: - ProfileView
 struct ProfileView: View {
+    
+    
     // MARK: - Body
     var body: some View {
         NavigationView {
             ZStack {
-                DS.Colors.darkBlue
+                AnimatedBackgroundView()
                     .ignoresSafeArea()
                 
                 VStack {
@@ -45,7 +47,7 @@ struct ProfileView: View {
                         secondImageIcon: Resources.Image.information,
                         secondDestination: AnyView(AboutUs())
                     )
-                    
+                    Spacer()
                     // MARK: - Logout Button
                     CustomButton(
                         action: {},

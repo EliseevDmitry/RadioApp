@@ -27,7 +27,7 @@ final class ViewModel: ObservableObject {
     let network = NetworkService()
     var likes = Like(likeSet: Set<String>())
     var player: AVPlayer?
-    var session = AVAudioSession.sharedInstance()
+   // var session = AVAudioSession.sharedInstance()
     
     func fetchTopStations() async throws {
         var fetchedStations: [Station]

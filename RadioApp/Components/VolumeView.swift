@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFAudio
 
 
 struct VolumeView: View {
@@ -49,7 +50,11 @@ struct VolumeView: View {
                                
                                 })
                                 
+                                
                         )
+                        .onReceive(AVAudioSession.sharedInstance().publisher(for: \.outputVolume), perform: { value in
+                            appManager.volume = Double(value)
+                               })
                 }
             }
             .frame(width: 10)
@@ -62,6 +67,11 @@ struct VolumeView: View {
     }
 }
 
-#Preview {
-    VolumeView(voulmeValue: .constant(0.4))
+//MARK: - PREVIEW
+struct VolumeView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    static var previews: some View {
+        VolumeView(voulmeValue: .constant(0.5))
+            .environmentObject(previewAppManager)
+    }
 }
