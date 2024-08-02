@@ -41,7 +41,7 @@ struct PlayButtonView: View {
                 if appManager.isPlay {
                     appManager.pauseAudioStream()
                 } else {
-                    appManager.play()
+                    appManager.playAudioStream()
                 }
             }
            
