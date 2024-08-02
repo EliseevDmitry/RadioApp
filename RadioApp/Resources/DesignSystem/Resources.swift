@@ -30,7 +30,7 @@ enum Resources {
         static let saveChanges = "Save Changes"
         static let english = "english"
         static let russian = "russian"
-        
+        static let enterName = "Enter your full name"
     }
     
     enum Image {
