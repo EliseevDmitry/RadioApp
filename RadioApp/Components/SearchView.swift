@@ -8,8 +8,30 @@
 import SwiftUI
 
 struct SearchView: View {
+
+    @State var searchText = ""
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Image("search")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 16, height: 16)
+
+            TextField("Search radio station", text: $searchText)
+                .font(.custom(DS.Fonts.sfRegular, size: 14))
+                .foregroundColor(.white)
+
+            Image("searchArrow")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 40, height: 40)
+        }
+        .padding(EdgeInsets(top: 7, leading: 8, bottom: 7, trailing: 8))
+
+        .background(DS.Colors.graySearch)
+        //.foregroundColor(.white.opacity(0.6))
+        .cornerRadius(16)
     }
 }
 

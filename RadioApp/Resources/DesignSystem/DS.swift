@@ -22,7 +22,12 @@ enum DS {
         static let pinkNeon = Color(hex: "#FF296D")
         //
         static let frame = Color(hex: "#32324E")
-        
+
+        /// серый, SearchView
+        static let graySearch = Color(hex: "#525270")
+
+
+
     }
     
     enum Fonts: String {
