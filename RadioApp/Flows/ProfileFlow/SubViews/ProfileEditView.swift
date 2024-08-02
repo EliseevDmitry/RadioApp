@@ -8,11 +8,37 @@
 import SwiftUI
 
 struct ProfileEditView: View {
+    
+    @State var name: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ZStack {
+                DS.Colors.darkBlue
+                    .ignoresSafeArea()
+            
+            VStack {
+                
+                CustomTextField(
+                    value: $name, placeHolder: Resources.Text.enterName, titleBorder: Resources.Text.fullName)
+                
+                CustomButton(action: {}, title: Resources.Text.saveChanges, buttonType: .profile
+                )
+//                Spacer()
+            }
+            
+            .navigationTitle(Resources.Text.profile.capitalized)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    BackBarButton()
+                }
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    ProfileEditView()
+    ProfileEditView(name: "Steven")
 }

@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct StationPopularView: View {
-    //@State private var isShow: Bool = false
-    @Binding var selectedStationID: String
-    //let action: () -> Void
+    //MARK: - PROPERTIES
     @EnvironmentObject var appManager: ViewModel
+    @Binding var selectedStationID: String
     var station: Station
+    //let action: () -> Void
+    //MARK: - BODY
     var body: some View {
-        Button{
+        Button{            
             selectedStationID = station.changeuuid
+            appManager.playAudio(url: station.url)
         } label: {
             ZStack{
                 Rectangle()
@@ -34,31 +36,35 @@ struct StationPopularView: View {
                         if selectedStationID == station.changeuuid {
                             Image(.play)
                                 .resizable()
-                                .frame(
-                                    width: 25,
-                                    height: 25
-                                )
+                                .frame(width: 25)
                         }
                         Spacer()
                         //отобразить последние 100 голосов
-                        Text("votes \(self.station.votes/1000)")
-                            .font(.custom(DS.Fonts.sfRegular, size: 15))
+                        Text("votes \(self.station.votes % 1000)")
+                            .font(.custom(DS.Fonts.sfRegular, size: 14))
                             .foregroundStyle(selectedStationID == station.changeuuid ? .white : DS.Colors.frame)
-//                        VoteView(model: appManager, isShow: $isShow)
-//                            .frame(
-//                                width: 14,
-//                                height: 14
-//                            )
+                        VoteView(isShow: selectedStationID == station.changeuuid ? true : false, idStation: station.changeuuid)
+                            .frame(
+                                width: 14,
+                                height: 14
+                            )
                     }
+                    .frame(height: 25)
                     .padding(.horizontal, 10)
                     .padding(.top, 10)
                     Spacer()
                     Text(self.station.name)
                         .foregroundStyle(selectedStationID == station.changeuuid ? .white : DS.Colors.frame)
                         .font(.custom(DS.Fonts.sfRegular, size: 15))
-//                    SplineView(active: $isShow)
-//                        .frame(height: 20)
-//                        .padding(.horizontal)
+                    if selectedStationID == station.changeuuid {
+                        SplineView(isActive: true)
+                            .frame(height: 20)
+                            .padding(.horizontal)
+                    } else {
+                        SplineView(isActive: false)
+                            .frame(height: 20)
+                            .padding(.horizontal)
+                    }
                 }
                 .frame(maxWidth: 139, maxHeight: 139)
                 .padding(.bottom, 10)
@@ -70,19 +76,16 @@ struct StationPopularView: View {
                     .font(.custom(DS.Fonts.sfBold, size: 40))
                     .offset(CGSize(width: 0.0, height: -15.0))
             }
-            
         }
-            
     }
 }
 
 
-
-//struct StationPopularView_Previews: PreviewProvider {
-//    static let previewAppManager = ViewModel()
-//
-//    static var previews: some View {
-//        StationPopularView(isShow: .constant(false), station: Station.testStation())
-//            .environmentObject(previewAppManager)
-//    }
-//}
+//MARK: - PREVIEW
+struct StationPopularView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    static var previews: some View {
+        StationPopularView(selectedStationID: .constant(""), station: .testStation())
+            .environmentObject(previewAppManager)
+    }
+}

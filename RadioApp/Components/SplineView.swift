@@ -76,12 +76,14 @@ struct PinColor {
 }
 
 struct SplineView: View {
-    @Binding var active: Bool
-    @State private var startAnimation = false
+    //MARK: - PROPERTIES
     @State private var pinColor = PinColor.ColorArr.randomElement()
+    @State private var startAnimation: Bool = false
+    var isActive: Bool
+    //MARK: - BODY
     var body: some View {
         ZStack{
-            if active {
+            if isActive {
                 SplineViewShape()
                     .trim(from:0, to: startAnimation ? 1 : 0)
                     .stroke(style: StrokeStyle(lineWidth: 2))
@@ -93,10 +95,10 @@ struct SplineView: View {
             }
             PointOneView()
                 .fill(pinColor?.last ?? .red)
-            if active {
+            if isActive {
                 PointTwoView()
                     .fill(pinColor?.first ?? .blue)
-                    .opacity(startAnimation ? 1 : 0)
+                    .opacity( startAnimation ? 1 : 0)
             } else {
                 PointTwoView()
                     .fill(pinColor?.last ?? .red)
@@ -104,16 +106,17 @@ struct SplineView: View {
         }
         .onAppear{
             withAnimation(.easeInOut(duration: 1).delay(0).repeatForever()) {
-                if active{
-                    startAnimation = true
+                if isActive{
+                   startAnimation = true
                 } else {
-                    startAnimation = false
+                   startAnimation = false
                 }
                 }
             }
         }
 }
 
+//MARK: - PREVIEW
 #Preview {
-    SplineView(active: .constant(true))
+    SplineView(isActive: true)
 }

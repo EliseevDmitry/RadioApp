@@ -21,7 +21,6 @@
 		2663C7852C569E55002EFD0C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2663C7842C569E55002EFD0C /* Preview Assets.xcassets */; };
 		2663C7952C56A01F002EFD0C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C7942C56A01F002EFD0C /* ProfileView.swift */; };
 		2663C7972C56A037002EFD0C /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C7962C56A037002EFD0C /* ProfileEditView.swift */; };
-		2663C7992C56A060002EFD0C /* LegalPoliciesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C7982C56A060002EFD0C /* LegalPoliciesView.swift */; };
 		2663C79B2C56A09B002EFD0C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C79A2C56A09B002EFD0C /* SignInView.swift */; };
 		2663C79D2C56A0AB002EFD0C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C79C2C56A0AB002EFD0C /* SignUpView.swift */; };
 		2663C79F2C56A0CD002EFD0C /* ForgotPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C79E2C56A0CD002EFD0C /* ForgotPassView.swift */; };
@@ -45,16 +44,26 @@
 		7A7A4B332C5B520600CD8794 /* TabData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B312C5B520600CD8794 /* TabData.swift */; };
 		7A7A4B362C5B64CD00CD8794 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B352C5B64CD00CD8794 /* FavoritesView.swift */; };
 		7A7A4B382C5B64DE00CD8794 /* AllStationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B372C5B64DE00CD8794 /* AllStationsView.swift */; };
+		E16EBD552C5CADA50010BF71 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16EBD542C5CADA50010BF71 /* CustomButton.swift */; };
+		E16EBD572C5CB3F10010BF71 /* Color + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16EBD562C5CB3F10010BF71 /* Color + Ext.swift */; };
+		E16EBD592C5CB4060010BF71 /* LegalPoliciesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16EBD582C5CB4060010BF71 /* LegalPoliciesView.swift */; };
+		E16EBD5B2C5CB42A0010BF71 /* RadioAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16EBD5A2C5CB42A0010BF71 /* RadioAppApp.swift */; };
 		E1E497DA2C56D14F0099440D /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497D92C56D14F0099440D /* Resources.swift */; };
 		E1E497E62C56D5380099440D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497E52C56D5380099440D /* NetworkService.swift */; };
-		E1E497E92C56D7500099440D /* Color + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497E72C56D7500099440D /* Color + Ext.swift */; };
 		E1E497EB2C56D8500099440D /* DS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497EA2C56D8500099440D /* DS.swift */; };
-		E1E497EE2C56DD670099440D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E497ED2C56DD670099440D /* ProfileViewModel.swift */; };
 		E1E497FB2C56E6230099440D /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1E497F62C56E6230099440D /* SF-Pro-Display-Medium.otf */; };
 		E1E497FC2C56E6230099440D /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1E497F72C56E6230099440D /* SF-Pro-Display-Regular.otf */; };
 		E1E497FD2C56E6230099440D /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1E497F82C56E6230099440D /* SF-Pro-Display-Bold.otf */; };
 		E1E497FE2C56E6230099440D /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1E497F92C56E6230099440D /* SF-Pro-Display-Semibold.otf */; };
 		E1E498012C56EC900099440D /* Font + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498002C56EC900099440D /* Font + Ext.swift */; };
+		E1E498062C58D3DF0099440D /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498052C58D3DF0099440D /* SettingView.swift */; };
+		E1E498082C58D60F0099440D /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498072C58D60F0099440D /* ProfileInfoView.swift */; };
+		E1E4980A2C5983450099440D /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498092C5983450099440D /* SettingsButton.swift */; };
+		E1E4980C2C5A10560099440D /* ChevronCyrcleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E4980B2C5A10560099440D /* ChevronCyrcleView.swift */; };
+		E1E4980E2C5A58F30099440D /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E4980D2C5A58F30099440D /* LanguageView.swift */; };
+		E1E498102C5AB6590099440D /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E4980F2C5AB6590099440D /* AboutUs.swift */; };
+		E1E498122C5AB7490099440D /* BackBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498112C5AB7490099440D /* BackBarButton.swift */; };
+		E1E498142C5BBB500099440D /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498132C5BBB500099440D /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,13 +73,11 @@
 		22891ACA2C5B7BA900DE33E6 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		22891ACC2C5B7F2D00DE33E6 /* ForgotPassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassViewModel.swift; sourceTree = "<group>"; };
 		2663C77A2C569E54002EFD0C /* RadioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2663C77D2C569E54002EFD0C /* RadioAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioAppApp.swift; sourceTree = "<group>"; };
 		2663C77F2C569E54002EFD0C /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		2663C7812C569E55002EFD0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2663C7842C569E55002EFD0C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2663C7942C56A01F002EFD0C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2663C7962C56A037002EFD0C /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
-		2663C7982C56A060002EFD0C /* LegalPoliciesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalPoliciesView.swift; sourceTree = "<group>"; };
 		2663C79A2C56A09B002EFD0C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		2663C79C2C56A0AB002EFD0C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		2663C79E2C56A0CD002EFD0C /* ForgotPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassView.swift; sourceTree = "<group>"; };
@@ -93,9 +100,12 @@
 		7A7A4B312C5B520600CD8794 /* TabData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabData.swift; sourceTree = "<group>"; };
 		7A7A4B352C5B64CD00CD8794 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		7A7A4B372C5B64DE00CD8794 /* AllStationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStationsView.swift; sourceTree = "<group>"; };
+		E16EBD542C5CADA50010BF71 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		E16EBD562C5CB3F10010BF71 /* Color + Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color + Ext.swift"; sourceTree = "<group>"; };
+		E16EBD582C5CB4060010BF71 /* LegalPoliciesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalPoliciesView.swift; sourceTree = "<group>"; };
+		E16EBD5A2C5CB42A0010BF71 /* RadioAppApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioAppApp.swift; sourceTree = "<group>"; };
 		E1E497D92C56D14F0099440D /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		E1E497E52C56D5380099440D /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		E1E497E72C56D7500099440D /* Color + Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color + Ext.swift"; sourceTree = "<group>"; };
 		E1E497EA2C56D8500099440D /* DS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DS.swift; sourceTree = "<group>"; };
 		E1E497ED2C56DD670099440D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		E1E497F62C56E6230099440D /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
@@ -104,6 +114,15 @@
 		E1E497F92C56E6230099440D /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
 		E1E497FF2C56E6CF0099440D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1E498002C56EC900099440D /* Font + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font + Ext.swift"; sourceTree = "<group>"; };
+		E1E498032C57EE6D0099440D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		E1E498052C58D3DF0099440D /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		E1E498072C58D60F0099440D /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
+		E1E498092C5983450099440D /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
+		E1E4980B2C5A10560099440D /* ChevronCyrcleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronCyrcleView.swift; sourceTree = "<group>"; };
+		E1E4980D2C5A58F30099440D /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
+		E1E4980F2C5AB6590099440D /* AboutUs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUs.swift; sourceTree = "<group>"; };
+		E1E498112C5AB7490099440D /* BackBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBarButton.swift; sourceTree = "<group>"; };
+		E1E498132C5BBB500099440D /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +161,7 @@
 				2663C77C2C569E54002EFD0C /* RadioApp */,
 				2663C77B2C569E54002EFD0C /* Products */,
 				22CA8E922C59533A0009952D /* Frameworks */,
+				E16EBD532C5CAD860010BF71 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,7 +201,7 @@
 		2663C78B2C569EB6002EFD0C /* App */ = {
 			isa = PBXGroup;
 			children = (
-				2663C77D2C569E54002EFD0C /* RadioAppApp.swift */,
+				E16EBD5A2C5CB42A0010BF71 /* RadioAppApp.swift */,
 				7A7A4B2F2C5B51B000CD8794 /* ContentView.swift */,
 			);
 			path = App;
@@ -203,12 +223,15 @@
 			isa = PBXGroup;
 			children = (
 				7A7A4B322C5B520600CD8794 /* TabBar */,
+				26A7379C2C5A50AE0002F1E9 /* PlayerMenu */,
+				E16EBD542C5CADA50010BF71 /* CustomButton.swift */,
+				E1E498132C5BBB500099440D /* CustomTextField.swift */,
 				2663C7A62C56A212002EFD0C /* SearchView.swift */,
 				268696632C57DC330075E9DC /* StationPopularView.swift */,
 				2663C7A42C56A1F2002EFD0C /* VolumeView.swift */,
 				268696652C57E0320075E9DC /* VoteView.swift */,
 				26A7379D2C5A6A670002F1E9 /* SplineView.swift */,
-				26A7379C2C5A50AE0002F1E9 /* PlayerMenu */,
+				E1E498112C5AB7490099440D /* BackBarButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -238,6 +261,7 @@
 		2663C7932C56A009002EFD0C /* ProfileFlow */ = {
 			isa = PBXGroup;
 			children = (
+				E1E498022C57EE4C0099440D /* Components */,
 				2663C7942C56A01F002EFD0C /* ProfileView.swift */,
 				E1E497ED2C56DD670099440D /* ProfileViewModel.swift */,
 				E1E497EC2C56DD410099440D /* SubViews */,
@@ -274,11 +298,19 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
+		E16EBD532C5CAD860010BF71 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				E1E498032C57EE6D0099440D /* CustomButton.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		E1E497D82C56D0C70099440D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E1E497FF2C56E6CF0099440D /* Info.plist */,
 				E1E497DB2C56D1B40099440D /* DesignSystem */,
+				E1E497FF2C56E6CF0099440D /* Info.plist */,
 				2663C7812C569E55002EFD0C /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -315,7 +347,7 @@
 		E1E497E82C56D7500099440D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E1E497E72C56D7500099440D /* Color + Ext.swift */,
+				E16EBD562C5CB3F10010BF71 /* Color + Ext.swift */,
 				E1E498002C56EC900099440D /* Font + Ext.swift */,
 			);
 			path = Extensions;
@@ -324,8 +356,10 @@
 		E1E497EC2C56DD410099440D /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				E16EBD582C5CB4060010BF71 /* LegalPoliciesView.swift */,
 				2663C7962C56A037002EFD0C /* ProfileEditView.swift */,
-				2663C7982C56A060002EFD0C /* LegalPoliciesView.swift */,
+				E1E4980D2C5A58F30099440D /* LanguageView.swift */,
+				E1E4980F2C5AB6590099440D /* AboutUs.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -339,6 +373,17 @@
 				E1E497F92C56E6230099440D /* SF-Pro-Display-Semibold.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E1E498022C57EE4C0099440D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E1E498052C58D3DF0099440D /* SettingView.swift */,
+				E1E498072C58D60F0099440D /* ProfileInfoView.swift */,
+				E1E498092C5983450099440D /* SettingsButton.swift */,
+				E1E4980B2C5A10560099440D /* ChevronCyrcleView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,10 +473,12 @@
 			files = (
 				2663C7A32C56A1A5002EFD0C /* PlayerMenuView.swift in Sources */,
 				26A7379E2C5A6A670002F1E9 /* SplineView.swift in Sources */,
-				E1E497EE2C56DD670099440D /* ProfileViewModel.swift in Sources */,
 				26A737992C5A4F850002F1E9 /* BackButtonView.swift in Sources */,
+				E1E498142C5BBB500099440D /* CustomTextField.swift in Sources */,
 				7A0ED5E12C592B280063F449 /* TestView2.swift in Sources */,
+				E1E4980E2C5A58F30099440D /* LanguageView.swift in Sources */,
 				268696662C57E0320075E9DC /* VoteView.swift in Sources */,
+				E1E4980C2C5A10560099440D /* ChevronCyrcleView.swift in Sources */,
 				2663C7A12C56A10E002EFD0C /* CustomTabBarView.swift in Sources */,
 				26A7379B2C5A4FCB0002F1E9 /* ForwardButtonView.swift in Sources */,
 				E1E497EB2C56D8500099440D /* DS.swift in Sources */,
@@ -449,20 +496,27 @@
 				26D180992C5AA0A300D4EF68 /* PopularView.swift in Sources */,
 				2663C7A92C56A249002EFD0C /* ViewModel.swift in Sources */,
 				26A737972C5A49490002F1E9 /* PlayButtonView.swift in Sources */,
+				E16EBD5B2C5CB42A0010BF71 /* RadioAppApp.swift in Sources */,
 				2663C7AB2C56A257002EFD0C /* Model.swift in Sources */,
+				E16EBD572C5CB3F10010BF71 /* Color + Ext.swift in Sources */,
 				2663C79F2C56A0CD002EFD0C /* ForgotPassView.swift in Sources */,
 				7A7A4B382C5B64DE00CD8794 /* AllStationsView.swift in Sources */,
 				2663C7952C56A01F002EFD0C /* ProfileView.swift in Sources */,
 				E1E498012C56EC900099440D /* Font + Ext.swift in Sources */,
 				2663C79D2C56A0AB002EFD0C /* SignUpView.swift in Sources */,
+				E1E498082C58D60F0099440D /* ProfileInfoView.swift in Sources */,
 				2663C7972C56A037002EFD0C /* ProfileEditView.swift in Sources */,
 				E1E497E92C56D7500099440D /* Color + Ext.swift in Sources */,
 				22891ACB2C5B7BA900DE33E6 /* SignInViewModel.swift in Sources */,
 				7A7A4B302C5B51B000CD8794 /* ContentView.swift in Sources */,
 				7A7A4B362C5B64CD00CD8794 /* FavoritesView.swift in Sources */,
-				2663C77E2C569E54002EFD0C /* RadioAppApp.swift in Sources */,
-				2663C7992C56A060002EFD0C /* LegalPoliciesView.swift in Sources */,
+				E1E498102C5AB6590099440D /* AboutUs.swift in Sources */,
+				E16EBD592C5CB4060010BF71 /* LegalPoliciesView.swift in Sources */,
+				E1E498122C5AB7490099440D /* BackBarButton.swift in Sources */,
 				7A6579FF2C57F34E00FFDBFD /* URLManager.swift in Sources */,
+				E1E4980A2C5983450099440D /* SettingsButton.swift in Sources */,
+				E16EBD552C5CADA50010BF71 /* CustomButton.swift in Sources */,
+				E1E498062C58D3DF0099440D /* SettingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

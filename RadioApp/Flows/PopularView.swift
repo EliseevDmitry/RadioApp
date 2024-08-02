@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct PopularView: View {
+    //MARK: - PROPERTIES
     @EnvironmentObject var appManager: ViewModel
-   // @ObservedObject var appManager: ViewModel
-    @State private var selectedStation = ""
     let columns = [
         GridItem(.flexible(minimum: 139, maximum: 139)),
         GridItem(.flexible(minimum: 139, maximum: 139))
     ]
+    //MARK: - BODY
     var body: some View {
         VStack {
-           
             HStack {
                 Text("Popular")
                     .font(.custom(DS.Fonts.sfRegular, size: 40))
@@ -34,7 +33,7 @@ struct PopularView: View {
                 ScrollView(.vertical, showsIndicators: false){
                     LazyVGrid(columns: columns) {
                         ForEach(appManager.stations, id: \.changeuuid) {item in
-                            StationPopularView(selectedStationID: $selectedStation, station: item)
+                            StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
                                     .environmentObject(appManager)
                                     .frame(width: 139, height: 139)
                         }
@@ -46,18 +45,13 @@ struct PopularView: View {
                         BackButtonView()
                         PlayButtonView()
                         ForwardButtonView()
-                            
                     }
                     .offset(CGSize(width: 0, height: 260))
                 }
-                
                 Spacer()
             }
             Spacer()
-//            PlayerMenuView()
-//                .padding(.bottom, 50)
         }
-        
         .ignoresSafeArea()
         .background(DS.Colors.darkBlue)
         .task {
@@ -68,21 +62,11 @@ struct PopularView: View {
             }
         }
     }
-    
-//    func removeItems(at offsets: IndexSet, from arrayExpense: [ExpenseItem]) {
-//        for offset in offsets {
-//            let item = arrayExpense[offset]
-//            expenses.items.removeAll { element in
-//                element.id == item.id
-//            }
-//        }
-//    }
-    
 }
 
+//MARK: - PREVIEW
 struct PopularView_Previews: PreviewProvider {
     static let previewAppManager = ViewModel()
-    
     static var previews: some View {
         PopularView()
             .environmentObject(previewAppManager)
