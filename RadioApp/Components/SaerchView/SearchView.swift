@@ -22,13 +22,10 @@ struct SearchView: View {
                 .font(.custom(DS.Fonts.sfRegular, size: 14))
                 .foregroundColor(.white)
 
-            Image("searchArrow")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 40, height: 40)
+            ChevronSearchView()
         }
         .padding(EdgeInsets(top: 7, leading: 8, bottom: 7, trailing: 8))
-
+        .frame(height: 56)
         .background(DS.Colors.graySearch)
         //.foregroundColor(.white.opacity(0.6))
         .cornerRadius(16)

@@ -23,6 +23,8 @@ enum DS {
         //
         static let frame = Color(hex: "#32324E")
 
+        /// серый - текст, неактивный ТабБар
+        static let grayNotActive = Color(hex: "#4D4D6A")
         /// серый, SearchView
         static let graySearch = Color(hex: "#525270")
 

@@ -11,7 +11,10 @@ import Foundation
 struct Station: Codable {
 
     let changeuuid: String
+
+    // use this unique id
     let stationuuid: String
+
     let serveruuid: String?
     let name: String
 
@@ -83,7 +86,7 @@ extension Station {
 
 struct Like: Codable {
     var idUUID = UUID()
-    var likeSet: Set<Int>
+    var likeSet: Set<String>
 }
 
 

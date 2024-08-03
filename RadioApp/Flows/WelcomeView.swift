@@ -23,7 +23,7 @@ struct WelcomeView: View {
 }
 
 
-struct ContentView_Previews: PreviewProvider {
+struct WelcomeView_Previews: PreviewProvider {
     static let previewAppManager = ViewModel()
 
     static var previews: some View {
