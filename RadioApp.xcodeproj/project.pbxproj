@@ -147,18 +147,18 @@
 		220E86AB2C5D2DF600F8B0D6 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
-				222DC9702C5D90B7005DD0B2 /* New Group */,
+				222DC9702C5D90B7005DD0B2 /* Components */,
 				2663C77F2C569E54002EFD0C /* WelcomeView.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
 		};
-		222DC9702C5D90B7005DD0B2 /* New Group */ = {
+		222DC9702C5D90B7005DD0B2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				223406752C5DF7C200C701A3 /* WelcomeBackgroundView.swift */,
 			);
-			path = "New Group";
+			path = Components;
 			sourceTree = "<group>";
 		};
 		223406792C5E04A400C701A3 /* New Group */ = {
