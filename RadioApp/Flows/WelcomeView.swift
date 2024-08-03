@@ -15,7 +15,7 @@ struct WelcomeView: View {
             Text("Let's Get Started")
                 .font(.custom(.sfSemibold, size: 49))
 
-            VolumeView(voulmeGeometry: $appManager.geometryVolume)
+            VolumeView()
  
         }
         .padding()

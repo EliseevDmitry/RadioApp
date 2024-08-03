@@ -27,7 +27,7 @@ struct PopularView: View {
             .padding(.top, 60)
             Spacer()
             HStack{
-                VolumeView(voulmeGeometry: $appManager.geometryVolume)
+                VolumeView()
                     .frame(width: 33 ,height: 250)
                     .padding(.leading, 15)
                 ScrollView(.vertical, showsIndicators: false){
