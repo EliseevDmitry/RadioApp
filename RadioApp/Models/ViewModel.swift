@@ -15,7 +15,10 @@ final class ViewModel: ObservableObject {
     // добавляем сюда другие @Published свойства
     @Published var stations = [Station]()
     //VolumeView
-    @Published var volume: CGFloat = 0.5
+    //@Published var volume: CGFloat = 0
+@Published var volume: CGFloat = CGFloat(AVAudioSession.sharedInstance().outputVolume)
+    @Published var geometryVolume: CGFloat = 0.0
+//    @Published var volume: CGFloat = 0.5
     //PopularView
     @Published var selectedStation = ""
     //VoteView
@@ -27,7 +30,75 @@ final class ViewModel: ObservableObject {
     let network = NetworkService()
     var likes = Like(likeSet: Set<String>())
     var player: AVPlayer?
-    // var session = AVAudioSession.sharedInstance()
+
+    
+    // Audio session object
+    private let session = AVAudioSession.sharedInstance()
+    
+    // Observer
+    private var progressObserver: NSKeyValueObservation!
+    
+    func subscribe() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
+            try session.setActive(true, options: .notifyOthersOnDeactivation)
+        } catch {
+            print("cannot activate session")
+        }
+        
+        progressObserver = session.observe(\.outputVolume) { [self] (session, value) in
+            DispatchQueue.main.async {
+                self.volume = CGFloat(session.outputVolume)
+                self.geometryVolume = self.volume
+            }
+        }
+    }
+    
+    func unsubscribe() {
+        self.progressObserver.invalidate()
+    }
+    
+    init() {
+        subscribe()
+    }
+    
+    
+    
+    
+    
+//     init() {
+//            do {
+//                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
+//                try session.setActive(true, options: .notifyOthersOnDeactivation)
+//                self.volume = 0.5
+//            } catch {
+//                print("cannot activate session")
+//            }
+//    
+//            
+//         
+//        }
+//    
+//    func setValueVolume() async throws {
+//        progressObserver = session.observe(\.outputVolume) { [self] (session, value) in
+//                print(session.outputVolume)
+//                
+//                volume = CGFloat(session.outputVolume)
+//            }
+//        }
+//    }
+
+    
+//    
+//    //audio
+//    
+//    // Audio session object
+//    let session = AVAudioSession.sharedInstance()
+//       // Observer
+//    @Published var progressObserver: NSKeyValueObservation!
+//    
+//    
+    
     
     func fetchTopStations() async throws {
         var fetchedStations: [Station]
@@ -147,7 +218,8 @@ final class ViewModel: ObservableObject {
     }
     
     func setVolme(){
-        player?.volume = Float(volume)
+        player?.volume = Float(geometryVolume)
+
     }
     
     
