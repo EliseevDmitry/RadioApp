@@ -22,7 +22,7 @@ final class ViewModel: ObservableObject {
     @Published var islike: Bool = false
     
     @Published var isPlay: Bool = false
-
+    
     
     // свойства для аутентификации
     @Published var email = "Franky@gmail.com"
@@ -93,14 +93,12 @@ final class ViewModel: ObservableObject {
     }
     
     func pauseAudioStream(){
-            player?.pause()
+        player?.pause()
         isPlay = false
     }
     
-    // MARK: - Auth methods
-    func signIn() {
-        Task {
-            try await AuthService.shared.signIn(with: email, password: password)
+
+    
     func nextTrackAudioStream(){
         var indexStation: Int?
         for (index, station) in stations.enumerated() {
@@ -126,10 +124,10 @@ final class ViewModel: ObservableObject {
         }
     }
     
-    func backTrackAudioStream(){
+    func backTrackAudioStream() {
         var indexStation: Int?
         for (index, station) in stations.enumerated() {
-            if selectedStation == station.changeuuid{
+            if selectedStation == station.changeuuid {
                 indexStation = index
             }
         }
@@ -140,7 +138,7 @@ final class ViewModel: ObservableObject {
         }
         guard var newIndex = indexStation else { return }
         newIndex -= 1
-        if isPlay && newIndex >= 0{
+        if isPlay && newIndex >= 0 {
             pauseAudioStream()
         }
         if newIndex >= 0 {
@@ -151,10 +149,17 @@ final class ViewModel: ObservableObject {
         }
     }
     
-    func playFirstStation(){
-        if stations.count > 0{
+    func playFirstStation() {
+        if stations.count > 0 {
             selectedStation = stations[0].changeuuid
             playAudio(url: stations[0].url)
+        }
+    }
+
+    // MARK: - Auth methods
+    func signIn() {
+        Task {
+            try await AuthService.shared.signIn(with: email, password: password)
         }
     }
     

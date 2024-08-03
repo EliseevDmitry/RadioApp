@@ -17,7 +17,7 @@ struct CustomButton: View {
     // MARK: - Drawing Constants
     private enum Drawing {
         static let profileCornerRadius: CGFloat = 32
-        static let onboardingCornerRadius: CGFloat = 0
+        static let onboardingCornerRadius: CGFloat = 8
         static let profileBackground: Color = DS.Colors.blueNeon
         static let onboardingBackground: Color = DS.Colors.pinkNeon
         static let textColor: Color = .white
