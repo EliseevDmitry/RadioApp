@@ -15,10 +15,12 @@ struct SettingsButton: View {
     
     // MARK: - Drawing Constants
     private struct DrawingConstants {
-        static let iconSize: CGFloat = 32
+        static let iconSize: CGFloat = 40
         static let iconPadding: CGFloat = 10
         static let textSize: CGFloat = 14
         static let buttonPadding: CGFloat = 10
+        static let strokeWidth: CGFloat = 0.8
+        static let cornerRadius: CGFloat = 10
     }
     
     // MARK: - Body
@@ -37,12 +39,15 @@ struct SettingsButton: View {
                 .padding()
             Spacer()
             ChevronCircleView()
+
         }
         .padding()
         .frame(maxWidth: .infinity)
-        .background(DS.Colors.darkBlue)
+        .background(RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
+                               .stroke(Color.gray, lineWidth: DrawingConstants.strokeWidth)
+                    )
     }
-}
+    }
 
 // MARK: - Preview
 #Preview {
