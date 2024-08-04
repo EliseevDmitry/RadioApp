@@ -6,13 +6,20 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import FirebaseAuth
 
 @main
 struct RadioAppApp: App {
     @StateObject var appManager = ViewModel()
+    
+    // register app delegate for Firebase setup
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            TestAuthView()
                 .environmentObject(appManager)
         }
     }
