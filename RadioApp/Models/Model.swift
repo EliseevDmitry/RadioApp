@@ -11,7 +11,10 @@ import Foundation
 struct Station: Codable {
 
     let changeuuid: String
+
+    // use this unique id
     let stationuuid: String
+
     let serveruuid: String?
     let name: String
 
