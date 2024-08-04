@@ -79,6 +79,24 @@ enum Resources {
         static let takePhoto = "Take Photo"
         static let choosePhoto = "Choose Photo"
         static let deletePhoto = "Delete Photo"
+        
+        /// AboutUS
+        static let teamLead = "Team Lead"
+        static let developers = "Developers"
+        static let eliseev = "Eliseev Dmitry"
+        static let eliseevGit = "https://github.com/EliseevDmitry"
+        
+        static let gindulin = "Denis Gindulin"
+        static let gindulinGit = "https://github.com/denisgindulin"
+        
+        static let keller = "Keller Dmitry"
+        static let kellerGit = "https://github.com/KellerDmitriy"
+        
+        static let kukarskiy = "Evgeniy Kukarskiy"
+        static let kukarskiyGit = "https://github.com/EKukarskiy"
+        
+        
+        
     }
     
     enum Image {
@@ -94,6 +112,11 @@ enum Resources {
         static let photoIcon = "camera.shutter.button"
         static let fileIcon = "photo.badge.plus"
         static let noPhoto = "trash"
+        /// AboutUS
+        static let eliseev = "eliseev"
+        static let gindulin = "gindulin"
+        static let kukarskiy = "kukarskiy"
+        static let keller = "keller"
     }
     
 }
