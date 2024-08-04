@@ -32,6 +32,9 @@ enum Resources {
         static let russian = "russian"
         static let enterName = "Enter your full name"
         static let enterEmail = "Enter your Email"
+        static let takePhoto = "Take Photo"
+        static let choosePhoto = "Choose Photo"
+        static let deletePhoto = "Delete Photo"
     }
     
     enum Image {
@@ -44,9 +47,9 @@ enum Resources {
         static let information = "information"
         static let arrowLeft = "arrow.left"
         static let editProfileAvatar = "editProfileAvatar"
-        static let photoIcon = "photoIcon"
-        static let fileIcon = "fileIcon"
-        static let noPhoto = "noPhoto"
+        static let photoIcon = "camera.shutter.button"
+        static let fileIcon = "photo.badge.plus"
+        static let noPhoto = "trash"
     }
     
 }

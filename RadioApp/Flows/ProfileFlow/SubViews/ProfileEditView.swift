@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileEditView: View {
-    
+    // MARK: - Properties
     @State var userName: String
     @State var userEmail: String
     @State var avatar: UIImage?
@@ -16,7 +16,7 @@ struct ProfileEditView: View {
     @State private var showChangedView = false
     @State private var blurBackground  = false
     @State private var isImagePickerPresented  = false
-    @State private var imagePickerSource: UIImagePickerController.SourceType = .photoLibrary
+    @State private var imagePickerSource: UIImagePickerController.SourceType = .camera
     
     private struct Drawing {
         static let avatarSize: CGFloat = 100
@@ -96,7 +96,7 @@ struct ProfileEditView: View {
                         showImagePicker(source: .photoLibrary)
                     },
                     onDeletePhoto: {
-                        avatar = UIImage(named: "NoPhoto")
+                        avatar = UIImage(systemName: Resources.Image.fileIcon)
                         hideChangedPhotoView()
                     }
                 )

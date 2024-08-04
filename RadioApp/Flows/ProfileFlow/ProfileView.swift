@@ -9,7 +9,8 @@ import SwiftUI
 
 // MARK: - ProfileView
 struct ProfileView: View {
-    
+    // MARK: - Properties
+    @ObservedObject var viewModel: ProfileViewModel
     
     // MARK: - Body
     var body: some View {
@@ -21,9 +22,12 @@ struct ProfileView: View {
                 VStack {
                     // MARK: - Profile Info
                     ProfileInfoView(
-                        userName: "Stephen",
-                        userEmail: "stephen@ds",
-                        avatar: UIImage(named: "stephen")!
+                        userName: viewModel.currentUser?.userName ?? "Stephen",
+                        userEmail: viewModel.currentUser?.email ??  "stephen@ds",
+                        avatar: UIImage(named: viewModel.currentUser?.userPhoto
+                                        ?? UIImage(named: Resources.Image.stephen
+                                                  )
+                                       ) ?? <#default value#>
                     )
                     
                     // MARK: - General Settings
@@ -65,5 +69,5 @@ struct ProfileView: View {
 
 // MARK: - Preview
 #Preview {
-    ProfileView()
+    ProfileView(viewModel: ProfileViewModel())
 }

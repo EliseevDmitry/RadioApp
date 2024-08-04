@@ -35,6 +35,8 @@
 		7A7A4B332C5B520600CD8794 /* TabData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B312C5B520600CD8794 /* TabData.swift */; };
 		7A7A4B362C5B64CD00CD8794 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B352C5B64CD00CD8794 /* FavoritesView.swift */; };
 		7A7A4B382C5B64DE00CD8794 /* AllStationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B372C5B64DE00CD8794 /* AllStationsView.swift */; };
+		E14AA7862C5E234800BAC1BE /* EditPhotoButttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14AA7852C5E234800BAC1BE /* EditPhotoButttonView.swift */; };
+		E14AA7882C5E7A2A00BAC1BE /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14AA7872C5E7A2900BAC1BE /* ProfileViewModel.swift */; };
 		E16EBD552C5CADA50010BF71 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16EBD542C5CADA50010BF71 /* CustomButton.swift */; };
 		E16EBD572C5CB3F10010BF71 /* Color + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16EBD562C5CB3F10010BF71 /* Color + Ext.swift */; };
 		E16EBD592C5CB4060010BF71 /* LegalPoliciesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16EBD582C5CB4060010BF71 /* LegalPoliciesView.swift */; };
@@ -92,6 +94,8 @@
 		7A7A4B312C5B520600CD8794 /* TabData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabData.swift; sourceTree = "<group>"; };
 		7A7A4B352C5B64CD00CD8794 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		7A7A4B372C5B64DE00CD8794 /* AllStationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStationsView.swift; sourceTree = "<group>"; };
+		E14AA7852C5E234800BAC1BE /* EditPhotoButttonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotoButttonView.swift; sourceTree = "<group>"; };
+		E14AA7872C5E7A2900BAC1BE /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		E16EBD542C5CADA50010BF71 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		E16EBD562C5CB3F10010BF71 /* Color + Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color + Ext.swift"; sourceTree = "<group>"; };
 		E16EBD582C5CB4060010BF71 /* LegalPoliciesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalPoliciesView.swift; sourceTree = "<group>"; };
@@ -105,7 +109,6 @@
 		E1E497D92C56D14F0099440D /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		E1E497E52C56D5380099440D /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E1E497EA2C56D8500099440D /* DS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DS.swift; sourceTree = "<group>"; };
-		E1E497ED2C56DD670099440D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		E1E497F62C56E6230099440D /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		E1E497F72C56E6230099440D /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		E1E497F82C56E6230099440D /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
@@ -240,7 +243,7 @@
 				E18529DD2C5D118600BBE649 /* Models */,
 				E1E498022C57EE4C0099440D /* Components */,
 				2663C7942C56A01F002EFD0C /* ProfileView.swift */,
-				E1E497ED2C56DD670099440D /* ProfileViewModel.swift */,
+				E14AA7872C5E7A2900BAC1BE /* ProfileViewModel.swift */,
 				E1E497EC2C56DD410099440D /* SubViews */,
 			);
 			path = ProfileFlow;
@@ -345,9 +348,6 @@
 				2663C7962C56A037002EFD0C /* ProfileEditView.swift */,
 				E1E4980D2C5A58F30099440D /* LanguageView.swift */,
 				E1E4980F2C5AB6590099440D /* AboutUs.swift */,
-				E18529DB2C5D08F000BBE649 /* ChangePhotoView.swift */,
-				E18529DE2C5D11AA00BBE649 /* ProfileHeaderView.swift */,
-				E18529E02C5D30F800BBE649 /* ImagePicker.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -367,9 +367,13 @@
 			isa = PBXGroup;
 			children = (
 				E1E498052C58D3DF0099440D /* SettingView.swift */,
+				E18529E02C5D30F800BBE649 /* ImagePicker.swift */,
+				E18529DB2C5D08F000BBE649 /* ChangePhotoView.swift */,
 				E1E498072C58D60F0099440D /* ProfileInfoView.swift */,
 				E1E498092C5983450099440D /* SettingsButton.swift */,
 				E1E4980B2C5A10560099440D /* ChevronCyrcleView.swift */,
+				E14AA7852C5E234800BAC1BE /* EditPhotoButttonView.swift */,
+				E18529DE2C5D11AA00BBE649 /* ProfileHeaderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -471,6 +475,7 @@
 				E1E497EB2C56D8500099440D /* DS.swift in Sources */,
 				7A7A4B332C5B520600CD8794 /* TabData.swift in Sources */,
 				2663C79B2C56A09B002EFD0C /* SignInView.swift in Sources */,
+				E14AA7862C5E234800BAC1BE /* EditPhotoButttonView.swift in Sources */,
 				268696642C57DC330075E9DC /* StationPopularView.swift in Sources */,
 				E1E497DA2C56D14F0099440D /* Resources.swift in Sources */,
 				2663C7802C569E54002EFD0C /* WelcomeView.swift in Sources */,
@@ -495,6 +500,7 @@
 				7A7A4B362C5B64CD00CD8794 /* FavoritesView.swift in Sources */,
 				E1E498102C5AB6590099440D /* AboutUs.swift in Sources */,
 				E16EBD592C5CB4060010BF71 /* LegalPoliciesView.swift in Sources */,
+				E14AA7882C5E7A2A00BAC1BE /* ProfileViewModel.swift in Sources */,
 				E1E498122C5AB7490099440D /* BackBarButton.swift in Sources */,
 				7A6579FF2C57F34E00FFDBFD /* URLManager.swift in Sources */,
 				E1E4980A2C5983450099440D /* SettingsButton.swift in Sources */,
