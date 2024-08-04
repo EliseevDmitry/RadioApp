@@ -57,10 +57,14 @@ struct PopularView: View {
         .task {
             do {
                 appManager.stations = try await appManager.network.getTopStations(numberLimit: 20)
-            } catch {
+            } catch let err{
                 // handle error
+                print(err.localizedDescription)
             }
             appManager.playFirstStation()
+        }
+        .onAppear{
+            appManager.loadLikesData()
         }
     }
 }
