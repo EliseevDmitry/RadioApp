@@ -58,7 +58,6 @@ struct AboutUs: View {
                             gitURL: teamLead.git,
                             avatar: teamLead.avatar
                         )
-                        .padding(.vertical, Drawing.verticalPadding)
                     }
                 
                 Section(header: Text(Resources.Text.developers)
@@ -70,12 +69,11 @@ struct AboutUs: View {
                                 gitURL: developer.git,
                                 avatar: developer.avatar
                             )
-                            
                         }
                     }
             }
+            
             .listStyle(PlainListStyle())
-            .listRowInsets((EdgeInsets()) )
             .background(Color.clear)
             
         }

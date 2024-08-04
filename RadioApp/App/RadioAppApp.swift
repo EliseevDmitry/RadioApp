@@ -20,7 +20,7 @@ struct RadioAppApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            ProfileView(viewModel: ProfileViewModel())
+            TestAuthView()
                 .environmentObject(appManager)
         }
     }
