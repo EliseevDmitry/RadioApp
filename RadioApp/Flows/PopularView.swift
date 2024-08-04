@@ -27,7 +27,7 @@ struct PopularView: View {
             .padding(.top, 60)
             Spacer()
             HStack{
-                VolumeView(voulmeValue: $appManager.volume)
+                VolumeView()
                     .frame(width: 33 ,height: 250)
                     .padding(.leading, 15)
                 ScrollView(.vertical, showsIndicators: false){
@@ -57,10 +57,14 @@ struct PopularView: View {
         .task {
             do {
                 appManager.stations = try await appManager.network.getTopStations(numberLimit: 20)
-            } catch {
+            } catch let err{
                 // handle error
+                print(err.localizedDescription)
             }
             appManager.playFirstStation()
+        }
+        .onAppear{
+            appManager.loadLikesData()
         }
     }
 }

@@ -41,6 +41,7 @@
 		26A7379B2C5A4FCB0002F1E9 /* ForwardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */; };
 		26A7379E2C5A6A670002F1E9 /* SplineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379D2C5A6A670002F1E9 /* SplineView.swift */; };
 		26D180992C5AA0A300D4EF68 /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D180982C5AA0A300D4EF68 /* PopularView.swift */; };
+		26FDA1C62C5EAB8B0091B665 /* TestFavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FDA1C52C5EAB8B0091B665 /* TestFavoriteView.swift */; };
 		7A0ED5E12C592B280063F449 /* TestView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0ED5E02C592B280063F449 /* TestView2.swift */; };
 		7A6579FF2C57F34E00FFDBFD /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6579FE2C57F34E00FFDBFD /* URLManager.swift */; };
 		7A7A4B302C5B51B000CD8794 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B2F2C5B51B000CD8794 /* ContentView.swift */; };
@@ -107,6 +108,7 @@
 		26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButtonView.swift; sourceTree = "<group>"; };
 		26A7379D2C5A6A670002F1E9 /* SplineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplineView.swift; sourceTree = "<group>"; };
 		26D180982C5AA0A300D4EF68 /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
+		26FDA1C52C5EAB8B0091B665 /* TestFavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFavoriteView.swift; sourceTree = "<group>"; };
 		7A0ED5E02C592B280063F449 /* TestView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView2.swift; sourceTree = "<group>"; };
 		7A6579FE2C57F34E00FFDBFD /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		7A7A4B2F2C5B51B000CD8794 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				2663C7932C56A009002EFD0C /* ProfileFlow */,
 				7A0ED5E02C592B280063F449 /* TestView2.swift */,
 				26D180982C5AA0A300D4EF68 /* PopularView.swift */,
+				26FDA1C52C5EAB8B0091B665 /* TestFavoriteView.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				7A6579FF2C57F34E00FFDBFD /* URLManager.swift in Sources */,
 				E1E4980A2C5983450099440D /* SettingsButton.swift in Sources */,
 				E18529D62C5D01E100BBE649 /* LocalizationService.swift in Sources */,
+				26FDA1C62C5EAB8B0091B665 /* TestFavoriteView.swift in Sources */,
 				E16EBD552C5CADA50010BF71 /* CustomButton.swift in Sources */,
 				E18529DC2C5D08F000BBE649 /* ChangePhotoView.swift in Sources */,
 				220E86AA2C5D018900F8B0D6 /* TestAuthView.swift in Sources */,
@@ -733,7 +737,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RadioApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 689Q9C7S84;
+				DEVELOPMENT_TEAM = LT54Q8Z33F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RadioApp/Resources/Info.plist;
@@ -771,7 +775,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RadioApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 689Q9C7S84;
+				DEVELOPMENT_TEAM = LT54Q8Z33F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RadioApp/Resources/Info.plist;

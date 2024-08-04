@@ -30,19 +30,18 @@ struct AllStationsView: View {
                 Spacer()
 
                 HStack {
-
                     // sound control
                     VStack {
-                        VolumeView(voulmeValue: $appManager.volume)
-                            .frame(width: 30 ,height: 253)
-                            .padding(.leading, 5)
+                        VolumeView()
+                            .frame(width: 33 ,height: 250)
+                            .padding(.leading, 15)
                     }
 
                     // stations
                     VStack {
                         ScrollView(.vertical, showsIndicators: false) {
                             LazyVStack {
-                                ForEach(appManager.stations, id: \.stationuuid) { station in
+                                ForEach(appManager.allStations, id: \.stationuuid) { station in
                                     StationView(selectedStationID: $appManager.selectedStation, station: station)
                                 }
                             }
@@ -67,6 +66,14 @@ struct AllStationsView: View {
                 Spacer()
             }
             .background(DS.Colors.darkBlue)
+        }
+        .navigationViewStyle(.stack)
+        .task {
+            do {
+                try await appManager.fetchAllStations()
+            } catch {
+                print(error)
+            }
         }
     }
 }
