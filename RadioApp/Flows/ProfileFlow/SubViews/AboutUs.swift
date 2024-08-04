@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - AboutUs View
 struct AboutUs: View {
     // MARK: - Properties
     let teamLead = (
@@ -51,48 +52,32 @@ struct AboutUs: View {
             List {
                 Section(header: Text(Resources.Text.teamLead)
                     .font(.title)
-                    .foregroundStyle(.white)) {
-                    HStack {
-                        AvatarInCyrcleView(avatar: teamLead.avatar)
-                            .frame(width: Drawing.avatarSize)
-                        VStack(alignment: .leading) {
-                            Text(teamLead.name)
-                                .foregroundStyle(.white)
-                                .font(.custom(DS.Fonts.sfBold, size: Drawing.nameFontSize))
-                                .padding(.leading, Drawing.horizontalPadding)
-                            Link(teamLead.git, destination: URL(string: teamLead.git)!)
-                                .foregroundStyle(DS.Colors.blueNeon)
-                                .font(.custom(DS.Fonts.sfBold, size: Drawing.gitFontSize))
-                                .padding(.leading, Drawing.horizontalPadding)
-                        }
+                    .foregroundColor(.white)) {
+                        AboutUsCell(
+                            name: teamLead.name,
+                            gitURL: teamLead.git,
+                            avatar: teamLead.avatar
+                        )
+                        .padding(.vertical, Drawing.verticalPadding)
                     }
-                    .padding(.vertical, Drawing.verticalPadding)
-                }
                 
                 Section(header: Text(Resources.Text.developers)
                     .font(.title)
-                    .foregroundStyle(.white)) {
-                    ForEach(developers, id: \.name) { developer in
-                        HStack {
-                            AvatarInCyrcleView(avatar: developer.avatar)
-                                .frame(width: Drawing.avatarSize)
-                            VStack(alignment: .leading) {
-                                Text(developer.name)
-                                    .foregroundStyle(.white)
-                                    .font(.custom(DS.Fonts.sfBold, size: Drawing.nameFontSize))
-                                    .padding(.leading, Drawing.horizontalPadding)
-                                Link(developer.git, destination: URL(string: developer.git)!)
-                                    .foregroundStyle(DS.Colors.blueNeon)
-                                    .font(.custom(DS.Fonts.sfBold, size: Drawing.gitFontSize))
-                                    .padding(.leading, Drawing.horizontalPadding)
-                            }
+                    .foregroundColor(.white)) {
+                        ForEach(developers, id: \.name) { developer in
+                            AboutUsCell(
+                                name: developer.name,
+                                gitURL: developer.git,
+                                avatar: developer.avatar
+                            )
+                            
                         }
-                        .padding(.vertical, Drawing.verticalPadding)
                     }
-                }
             }
-            .listStyle(InsetGroupedListStyle())
-            .background(Color.clear)  
+            .listStyle(PlainListStyle())
+            .listRowInsets((EdgeInsets()) )
+            .background(Color.clear)
+            
         }
         .navigationTitle(Resources.Text.aboutUs.capitalized)
         .navigationBarBackButtonHidden(true)
