@@ -8,6 +8,7 @@
 import Foundation
 import AVKit
 import FirebaseAuth
+import CoreData
 
 
 @MainActor
@@ -56,6 +57,8 @@ final class ViewModel: ObservableObject {
     let session = AVAudioSession.sharedInstance()
     // Observer
     var progressObserver: NSKeyValueObservation!
+    //CoreData
+    let container = NSPersistentContainer(name: "LikeStations")
     
     func setVolme(){
         do {
@@ -82,7 +85,18 @@ final class ViewModel: ObservableObject {
         self.volume = CGFloat(session.outputVolume)
         print("init volume value - \(self.volume)")
         setVolme()
+        
+        //инициализация PersistentContainer CoreData
+        container.loadPersistentStores{description, error in
+            if let error = error {
+                print("CoreData failed to load \(error.localizedDescription)")
+            }
+        }
     }
+    
+    
+    
+    
     
     //тестовая функция
 //    func setVolme(){
@@ -154,6 +168,20 @@ final class ViewModel: ObservableObject {
         isPlay = false
     }
     
+    //запрос данных станции при нажатии на сердечно like
+    func getStationForID(id: String) -> Station? {
+        var indexStation: Int?
+        for (index, station) in stations.enumerated() {
+            if selectedStation == station.changeuuid{
+                indexStation = index
+            }
+        }
+        if let id = indexStation {
+            return stations[id]
+        } else {
+            return nil
+        }
+    }
 
     
     func nextTrackAudioStream(){
