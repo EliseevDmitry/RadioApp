@@ -42,6 +42,11 @@ final class ViewModel: ObservableObject {
     
     
     
+
+    //search
+    @Published var searchText: String = ""
+    @Published var searchStations: [Station] = []
+
     let network = NetworkService()
     var likes = Like(likeSet: Set<String>())
     var player: AVPlayer?
