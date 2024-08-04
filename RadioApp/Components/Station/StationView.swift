@@ -31,37 +31,38 @@ struct StationView: View {
                     // now playing
 
                     Spacer()
-            }
+                }
 
                 Spacer()
 
                 HStack {
                     VStack(alignment: .trailing) {
-//                        VoteView(isShow: selectedStationID == station.stationuuid ? true : false, idStation: station.stationuuid)
+                        //                        VoteView(isShow: selectedStationID == station.stationuuid ? true : false, idStation: station.stationuuid)
 
                         SplineView(isActive: true)
                             .frame(width: 94, height: 23)
                             .foregroundStyle(selectedStationID == station.changeuuid ? .white : DS.Colors.grayNotActive)
                     }
                 }
-
             }
             .padding()
 
         }
         .foregroundStyle(selectedStationID == station.changeuuid ? .white : DS.Colors.grayNotActive)
-        .frame(maxHeight: 123)
+        .frame(maxWidth: 293, maxHeight: 90)
         .padding(.vertical)
         .clipShape(.rect(cornerRadius: 20))
         .overlay {
             RoundedRectangle(cornerRadius: 20)
                 .stroke(selectedStationID == station.changeuuid ? DS.Colors.pinkNeon : DS.Colors.frame, lineWidth: 2.0)
         }
-        .padding(.horizontal)
+        .padding(.trailing, 20)
+        .padding(.vertical, 5)
 
     }
 }
 
 #Preview {
-    StationView(selectedStationID: .constant(""), station: Station.testStation())
+    ContentView()
+        .environmentObject(ViewModel())
 }
