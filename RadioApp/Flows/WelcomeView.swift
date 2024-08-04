@@ -2,30 +2,57 @@
 //  ContentView.swift
 //  RadioApp
 //
-//  Created by Dmitriy Eliseev on 28.07.2024.
+//  Created by Денис Гиндулин on 28.07.2024.
 //
 
-import Kingfisher
 import SwiftUI
 
 struct WelcomeView: View {
     @EnvironmentObject var appManager: ViewModel
+    
     var body: some View {
-        VStack {
-            Text("Let's Get Started")
-                .font(.custom(.sfSemibold, size: 49))
+        ZStack {
+            WelcomeBackgroundView()
+            
+            VStack(alignment: .leading) {
+                Spacer()
+                
+                VStack(alignment: .leading) {
+                    // MARK: Title Text
+                    Text(Resources.Text.letsGetStarted)
+                        .font(.custom(.sfBold, size: UIScreen.height * 1/16))
+                        .padding(.bottom, UIScreen.height * 1/32)
 
-                VolumeView(voulmeValue: $appManager.volume)
- 
+                    // MARK: Explanation Text
+                    Text(Resources.Text.enjoyTheBestRadio)
+                        .font(.custom(.sfRegular, size: UIScreen.height * 1/48))
+                        .frame(maxWidth: UIScreen.width * 1/3)
+                }
+                .foregroundColor(.white)
+                
+                Spacer()
+                Spacer()
+                
+                // MARK: GetStarted Button
+                CustomButton(
+                    action: {},
+                    title: Resources.Text.getStarted,
+                    buttonType: .onboarding)
+            }
+            .frame(maxWidth: UIScreen.width * 2/3)
+            .padding(.bottom, UIScreen.width * 1/6)
         }
-        .padding()
     }
 }
 
+extension UIScreen {
+    static let width = UIScreen.main.bounds.size.width
+    static let height = UIScreen.main.bounds.size.height
+}
 
 struct WelcomeView_Previews: PreviewProvider {
     static let previewAppManager = ViewModel()
-
+    
     static var previews: some View {
         WelcomeView()
             .environmentObject(previewAppManager)

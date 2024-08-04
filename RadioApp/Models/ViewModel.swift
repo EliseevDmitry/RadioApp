@@ -7,6 +7,7 @@
 
 import Foundation
 import AVKit
+import FirebaseAuth
 
 @MainActor
 final class ViewModel: ObservableObject {
@@ -21,6 +22,23 @@ final class ViewModel: ObservableObject {
     @Published var islike: Bool = false
     
     @Published var isPlay: Bool = false
+    
+    
+    // свойства для аутентификации пользователя
+    @Published var email = ""
+    @Published var password = ""
+    @Published var username = ""
+    
+    @Published var showPassword = false
+    @Published var isUserRegistered = false
+    @Published var showSignInView = false
+    
+    @Published var testUserEmail = "Franky@gmail.com"
+    @Published var testUserPassword = "1212121"
+    @Published var testUserUsername = "Frank"
+    
+    
+    
 
     //search
     @Published var searchText: String = ""
@@ -86,9 +104,11 @@ final class ViewModel: ObservableObject {
     }
     
     func pauseAudioStream(){
-            player?.pause()
+        player?.pause()
         isPlay = false
     }
+    
+
     
     func nextTrackAudioStream(){
         var indexStation: Int?
@@ -115,10 +135,10 @@ final class ViewModel: ObservableObject {
         }
     }
     
-    func backTrackAudioStream(){
+    func backTrackAudioStream() {
         var indexStation: Int?
         for (index, station) in stations.enumerated() {
-            if selectedStation == station.changeuuid{
+            if selectedStation == station.changeuuid {
                 indexStation = index
             }
         }
@@ -129,7 +149,7 @@ final class ViewModel: ObservableObject {
         }
         guard var newIndex = indexStation else { return }
         newIndex -= 1
-        if isPlay && newIndex >= 0{
+        if isPlay && newIndex >= 0 {
             pauseAudioStream()
         }
         if newIndex >= 0 {
@@ -140,11 +160,30 @@ final class ViewModel: ObservableObject {
         }
     }
     
-    func playFirstStation(){
-        if stations.count > 0{
+    func playFirstStation() {
+        if stations.count > 0 {
             selectedStation = stations[0].changeuuid
             playAudio(url: stations[0].url)
         }
     }
+
+    // MARK: - Auth methods
+    func signIn() {
+        Task {
+            try await AuthService.shared.signIn(with: email, password: password)
+        }
+    }
     
+    func registerUser() {
+        Task {
+            try await AuthService.shared.registerUser(with: email, password: password, username: username)
+            isUserRegistered = true
+        }
+    }
+    
+    func signOut() {
+        Task {
+            AuthService.shared.signUserOut()
+        }
+    }
 }
