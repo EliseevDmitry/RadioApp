@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProfileEditView: View {
     // MARK: - Properties
+    var saveChangesAction: () -> Void
+    
     @State var userName: String
     @State var userEmail: String
     @State var avatar: UIImage?
@@ -68,7 +70,11 @@ struct ProfileEditView: View {
                         
                         Spacer()
                         
-                        CustomButton(action: {}, title: Resources.Text.saveChanges, buttonType: .profile)
+                        CustomButton(
+                            action: saveChangesAction,
+                            title: Resources.Text.saveChanges,
+                            buttonType: .profile
+                        )
                         
                         Spacer()
                     }
@@ -120,6 +126,7 @@ struct ProfileEditView: View {
             ImagePicker(sourceType: imagePickerSource) { image in
                 avatar = image
             }
+            .edgesIgnoringSafeArea(.all)
         }
     }
     
@@ -144,6 +151,7 @@ struct ProfileEditView: View {
 struct ProfileEditView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileEditView(
+            saveChangesAction: {},
             userName: "Stephen",
             userEmail: "stephen@ds",
             avatar: UIImage(named: "stephen")!

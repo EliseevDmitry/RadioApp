@@ -27,7 +27,7 @@ struct SettingView: View {
         static let dividerPadding: CGFloat = 16
         static let cornerRadius: CGFloat = 16
         static let strokeWidth: CGFloat = 1.0
-        static let strokeOpacity: CGFloat = 0.2
+        static let strokeOpacity: CGFloat = 0.3
         static let dividerOpacity: CGFloat = 0.3
     }
     
@@ -64,6 +64,7 @@ struct SettingView: View {
                 )
             }
         }
+        .padding()
         .background(.clear)
         .cornerRadius(DrawingConstants.cornerRadius)
         .overlay {
