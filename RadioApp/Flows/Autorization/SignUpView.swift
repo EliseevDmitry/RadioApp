@@ -37,7 +37,8 @@ struct SignUpView: View {
                 SecureField(Resources.Text.SignUp.password, text: $appManager.password)
                     .font(.title)
                                 
-                CustomButton(action: appManager.registerUser, title: Resources.Text.SignUp.title, buttonType: .onboarding) // TODO: изменить тип кнопки
+                CustomButton(action: appManager.registerUser, title: Resources.Text.SignUp.title, buttonType: .onboarding)
+                // TODO: изменить тип кнопки
                 
                 Button(action: {}) {
                     Text(Resources.Text.SignUp.orSignIn)

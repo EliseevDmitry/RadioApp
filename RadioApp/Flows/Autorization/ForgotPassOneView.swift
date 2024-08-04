@@ -30,7 +30,8 @@ struct ForgotPassOneView: View {
                 TextField(Resources.Text.ForgotPassOne.email, text: $appManager.email)
                     .font(.title)
                                 
-                CustomButton(action: {}, title: Resources.Text.ForgotPassOne.sent, buttonType: .onboarding) // TODO: изменить тип кнопки и добавить действие
+                CustomButton(action: {}, title: Resources.Text.ForgotPassOne.sent, buttonType: .onboarding)
+                // TODO: изменить тип кнопки и добавить действие
                 
                 Spacer()
             }

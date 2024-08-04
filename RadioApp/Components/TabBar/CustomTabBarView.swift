@@ -47,5 +47,5 @@ struct CustomTabBarView: View {
 }
 
 #Preview {
-    ContentView()
+    CustomTabBarView(currentTab: .constant(.popular))
 }
