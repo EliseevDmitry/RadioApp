@@ -11,10 +11,54 @@ enum Resources {
     
     enum Text {
         /// Onboarding
-        static let letSGetStarted = "Let’s Get Started"
-        static let enjpiTheBestRadio = "Enjoy the best radio stations from your home, don't miss out on anything"
+        static let letsGetStarted = "Let’s Get Started"
+        static let enjoyTheBestRadio = "Enjoy the best radio stations from your home, don't miss out on anything"
         static let getStarted = "Get Started"
         
+        /// SignIn
+        enum SignIn {
+            static let title = "Sign In"
+            static let toStartPlay = "to start play"
+            static let email = "Email"
+            static let emailPlaceholder = "Your email"
+            static let password = "Password"
+            static let passwordPlaceholder = "Your password"
+            static let forgotPassword = "Forgot Password?"
+            static let orConnectWith = "Or connect with"
+            static let orSignUp = "Or Sign Up"
+        }
+
+        /// SignUp
+        enum SignUp {
+            static let title = "Sign Up"
+            static let toStartPlay = "to start play"
+            static let name = "Name"
+            static let namePlaceholder = "Your name"
+            static let email = "Email"
+            static let emailPlaceholder = "Your email"
+            static let password = "Password"
+            static let passwordPlaceholder = "Your password"
+            static let orSignIn = "Or Sign In"
+        }
+        
+        /// ForgotPassOne
+        enum ForgotPassOne {
+            static let title = "Forgot Password"
+            static let email = "Email"
+            static let emailPlaceholder = "Your email"
+            static let sent = "Sent"
+        }
+        
+        /// ForgotPassTwo
+        enum ForgotPassTwo {
+            static let title = "Forgot Password"
+            static let password = "Password"
+            static let passwordPlaceholder = "Your password"
+            static let confirmPassword = "Confirm password"
+            static let confirmPasswordPlaceholder = "Your password"
+            static let changePassword = "Change password"
+        }
+
         /// Profile
         static let settings = "Settings"
         static let profile = "Profile"

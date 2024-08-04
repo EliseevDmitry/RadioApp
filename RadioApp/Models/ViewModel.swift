@@ -24,13 +24,19 @@ final class ViewModel: ObservableObject {
     @Published var isPlay: Bool = false
     
     
-    // свойства для аутентификации
-    @Published var email = "Franky@gmail.com"
-    @Published var password = "1212121"
-    @Published var username = "Frank"
+    // свойства для аутентификации пользователя
+    @Published var email = ""
+    @Published var password = ""
+    @Published var username = ""
+    
     @Published var showPassword = false
     @Published var isUserRegistered = false
     @Published var showSignInView = false
+    
+    @Published var testUserEmail = "Franky@gmail.com"
+    @Published var testUserPassword = "1212121"
+    @Published var testUserUsername = "Frank"
+    
     
     
     let network = NetworkService()

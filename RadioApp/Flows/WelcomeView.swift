@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  RadioApp
 //
-//  Created by Denis Gindulin on 28.07.2024.
+//  Created by Денис Гиндулин on 28.07.2024.
 //
 
 import SwiftUI
@@ -18,13 +18,13 @@ struct WelcomeView: View {
                 Spacer()
                 
                 VStack(alignment: .leading) {
-                    // MARK: - Title Text
-                    Text(Resources.Text.letSGetStarted)
+                    // MARK: Title Text
+                    Text(Resources.Text.letsGetStarted)
                         .font(.custom(.sfBold, size: UIScreen.height * 1/16))
                         .padding(.bottom, UIScreen.height * 1/32)
 
-                    // MARK: - Explanation Text
-                    Text(Resources.Text.enjpiTheBestRadio)
+                    // MARK: Explanation Text
+                    Text(Resources.Text.enjoyTheBestRadio)
                         .font(.custom(.sfRegular, size: UIScreen.height * 1/48))
                         .frame(maxWidth: UIScreen.width * 1/3)
                 }
@@ -33,7 +33,7 @@ struct WelcomeView: View {
                 Spacer()
                 Spacer()
                 
-                // MARK: - GetStarted Button
+                // MARK: GetStarted Button
                 CustomButton(
                     action: {},
                     title: Resources.Text.getStarted,
