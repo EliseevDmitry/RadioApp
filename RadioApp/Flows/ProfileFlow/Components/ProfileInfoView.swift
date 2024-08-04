@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 // MARK: - ProfileInfoView
 struct ProfileInfoView: View {
     // MARK: - Properties

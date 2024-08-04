@@ -10,5 +10,5 @@ import SwiftUI
 final class ProfileViewModel: ObservableObject {
     // MARK: Stored Properties
     @Published var currentUser: UserModel?
-    
+    @Published var userAvatar: UIImage?
 }

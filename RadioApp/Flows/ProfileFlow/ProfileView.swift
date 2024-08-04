@@ -11,6 +11,7 @@ import SwiftUI
 struct ProfileView: View {
     // MARK: - Properties
     @ObservedObject var viewModel: ProfileViewModel
+    @State private var inputImage = UIImage(named: Resources.Image.stephen)
     
     // MARK: - Body
     var body: some View {
@@ -24,12 +25,8 @@ struct ProfileView: View {
                     ProfileInfoView(
                         userName: viewModel.currentUser?.userName ?? "Stephen",
                         userEmail: viewModel.currentUser?.email ??  "stephen@ds",
-                        avatar: UIImage(named: viewModel.currentUser?.userPhoto
-                                        ?? UIImage(named: Resources.Image.stephen
-                                                  )
-                                       ) ?? <#default value#>
+                        avatar: inputImage ?? UIImage(systemName: "person.fill")!
                     )
-                    
                     // MARK: - General Settings
                     SettingView(
                         generalTitle: Resources.Text.general,

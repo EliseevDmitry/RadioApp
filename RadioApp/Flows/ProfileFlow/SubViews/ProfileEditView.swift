@@ -14,10 +14,11 @@ struct ProfileEditView: View {
     @State var avatar: UIImage?
     
     @State private var showChangedView = false
-    @State private var blurBackground  = false
-    @State private var isImagePickerPresented  = false
+    @State private var blurBackground = false
+    @State private var isImagePickerPresented = false
     @State private var imagePickerSource: UIImagePickerController.SourceType = .camera
     
+    // MARK: - Drawing Constants
     private struct Drawing {
         static let avatarSize: CGFloat = 100
         static let editIconSize: CGFloat = 32
@@ -26,6 +27,12 @@ struct ProfileEditView: View {
         static let fieldTopPadding: CGFloat = 40
         static let iconOffset: CGFloat = 35
         static let textFontSize: CGFloat = 14
+        static let blurRadius: CGFloat = 10
+        static let overlayOpacity: CGFloat = 0.4
+        static let changePhotoViewWidth: CGFloat = 300
+        static let changePhotoViewHeight: CGFloat = 200
+        static let changePhotoViewCornerRadius: CGFloat = 12
+        static let changePhotoViewShadowRadius: CGFloat = 10
     }
     
     var body: some View {
@@ -61,8 +68,7 @@ struct ProfileEditView: View {
                         
                         Spacer()
                         
-                        CustomButton(action: {}, title: Resources.Text.saveChanges, buttonType: .profile
-                        )
+                        CustomButton(action: {}, title: Resources.Text.saveChanges, buttonType: .profile)
                         
                         Spacer()
                     }
@@ -77,10 +83,10 @@ struct ProfileEditView: View {
                     }
                 }
             }
-            .blur(radius: showChangedView ? 10 : 0)
+            .blur(radius: showChangedView ? Drawing.blurRadius : 0)
             
             if showChangedView {
-                Color.black.opacity(0.4)
+                Color.black.opacity(Drawing.overlayOpacity)
                     .edgesIgnoringSafeArea(.all)
                     .onTapGesture {
                         withAnimation {
@@ -91,27 +97,29 @@ struct ProfileEditView: View {
                 ChangePhotoView(
                     onTakePhoto: {
                         showImagePicker(source: .camera)
+                        hideChangedPhotoView()
                     },
                     onChoosePhoto: {
                         showImagePicker(source: .photoLibrary)
+                        hideChangedPhotoView()
                     },
                     onDeletePhoto: {
                         avatar = UIImage(systemName: Resources.Image.fileIcon)
                         hideChangedPhotoView()
                     }
                 )
-                .frame(width: 300, height: 200)
+                .frame(width: Drawing.changePhotoViewWidth, height: Drawing.changePhotoViewHeight)
                 .background(Color.white)
-                .cornerRadius(12)
-                .shadow(radius: 10)
-                .transition(.move(edge: .bottom))
+                .cornerRadius(Drawing.changePhotoViewCornerRadius)
+                .shadow(radius: Drawing.changePhotoViewShadowRadius)
+                .transition(.move(edge: .top))
                 .zIndex(1)
             }
         }
         .sheet(isPresented: $isImagePickerPresented) {
-                   ImagePicker(sourceType: imagePickerSource) { image in
-                       avatar = image
-                   }
+            ImagePicker(sourceType: imagePickerSource) { image in
+                avatar = image
+            }
         }
     }
     
