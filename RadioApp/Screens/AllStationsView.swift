@@ -49,7 +49,7 @@ struct AllStationsView: View {
                         }
 
                         // play buttons
-                        // вынести в единый компонент ?
+                        // вынести в единый компонент с единым позиционированием?
                         VStack {
                             Spacer()
 
