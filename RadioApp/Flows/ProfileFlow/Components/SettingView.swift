@@ -22,7 +22,7 @@ struct SettingView: View {
 
     // MARK: - Drawing Constants
     private struct DrawingConstants {
-        static let titleFontSize: CGFloat = 18
+        static let titleFontSize: CGFloat = 22
         static let titlePadding: CGFloat = 16
         static let dividerPadding: CGFloat = 16
         static let cornerRadius: CGFloat = 16
@@ -64,7 +64,7 @@ struct SettingView: View {
                 )
             }
         }
-        .background(DS.Colors.darkBlue)
+        .background(.clear)
         .cornerRadius(DrawingConstants.cornerRadius)
         .overlay {
             RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)

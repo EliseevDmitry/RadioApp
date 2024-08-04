@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct BackButtonView: View {
+    @EnvironmentObject var appManager: ViewModel
     var body: some View {
         Button{
-         //action
+            appManager.backTrackAudioStream()
         } label: {
             Image(.play)
                 .resizable()

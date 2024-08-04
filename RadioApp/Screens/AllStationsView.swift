@@ -19,7 +19,7 @@ struct AllStationsView: View {
                     .font(.custom(DS.Fonts.sfRegular, size: 30))
                     .foregroundStyle(.white)
 
-                SearchView()
+                SearchView(searchText: "")
 
                 Spacer()
 

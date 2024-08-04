@@ -32,9 +32,19 @@ struct PlayButtonShape: Shape {
 
 
 struct PlayButtonView: View {
+    @EnvironmentObject var appManager: ViewModel
     var body: some View {
         Button{
          //action
+
+            if appManager.player != nil {
+                if appManager.isPlay {
+                    appManager.pauseAudioStream()
+                } else {
+                    appManager.playAudioStream()
+                }
+            }
+           
         } label: {
             Image(.play)
                 .resizable()

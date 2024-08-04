@@ -20,12 +20,15 @@ final class ViewModel: ObservableObject {
     //VoteView
     @Published var islike: Bool = false
     
-  
+    @Published var isPlay: Bool = false
 
-    
+    //search
+    @Published var searchText: String = ""
+    @Published var searchStations: [Station] = []
+
     let network = NetworkService()
     var likes = Like(likeSet: Set<String>())
-    private var player: AVPlayer?
+    var player: AVPlayer?
     
     func fetchTopStations() async throws {
         var fetchedStations: [Station]
@@ -71,8 +74,76 @@ final class ViewModel: ObservableObject {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
             player = AVPlayer(url: url)
             player?.play()
+            isPlay = true
         } catch {
             //
+        }
+    }
+    
+    func playAudioStream(){
+        player?.play()
+        isPlay = true
+    }
+    
+    func pauseAudioStream(){
+            player?.pause()
+        isPlay = false
+    }
+    
+    func nextTrackAudioStream(){
+        var indexStation: Int?
+        for (index, station) in stations.enumerated() {
+            if selectedStation == station.changeuuid{
+                indexStation = index
+            }
+        }
+        if indexStation == nil && stations.count > 0{
+            selectedStation = stations[0].changeuuid
+            playAudio(url: stations[0].url)
+            return
+        }
+        guard var newIndex = indexStation else { return }
+        newIndex += 1
+        if isPlay && newIndex < stations.count{
+            pauseAudioStream()
+        }
+        if newIndex < stations.count {
+            selectedStation = stations[newIndex].changeuuid
+            playAudio(url: stations[newIndex].url)
+        } else {
+            return
+        }
+    }
+    
+    func backTrackAudioStream(){
+        var indexStation: Int?
+        for (index, station) in stations.enumerated() {
+            if selectedStation == station.changeuuid{
+                indexStation = index
+            }
+        }
+        if indexStation == nil && stations.count > 0{
+            selectedStation = stations[stations.count-1].changeuuid
+            playAudio(url: stations[stations.count-1].url)
+            return
+        }
+        guard var newIndex = indexStation else { return }
+        newIndex -= 1
+        if isPlay && newIndex >= 0{
+            pauseAudioStream()
+        }
+        if newIndex >= 0 {
+            selectedStation = stations[newIndex].changeuuid
+            playAudio(url: stations[newIndex].url)
+        } else {
+            return
+        }
+    }
+    
+    func playFirstStation(){
+        if stations.count > 0{
+            selectedStation = stations[0].changeuuid
+            playAudio(url: stations[0].url)
         }
     }
     
