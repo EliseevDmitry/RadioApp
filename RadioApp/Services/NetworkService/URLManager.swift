@@ -31,5 +31,11 @@ class URLManager {
     func createURLVote(id: String) -> URL? {
         URL(string: "http://all.api.radio-browser.info/json/url/" + id)
     }
+
+    // MARK: - get URL for search
+    func createURLSearch(searchText: String) -> URL? {
+        URL(string: "http://all.api.radio-browser.info/json/stations/search?name=" + searchText)
+    }
     
 }
+
