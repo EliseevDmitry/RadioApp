@@ -116,6 +116,30 @@ final class ViewModel: ObservableObject {
         fetchedAllStations = try await network.getAllStations()
         stations = fetchedAllStations
     }
+    
+    func voteStationByID(id: String) async throws {
+        try await network.voteStationById(id: id)
+    }
+    
+    
+    //обновление текущей станции
+    func getOneStationByID(id: String) async throws {
+        var fetchedStation: [Station]
+        var indexStation: Int?
+        fetchedStation = try await network.getStationById(id: id)
+        for (index, station) in stations.enumerated() {
+            if id == station.stationuuid{
+                indexStation = index
+            }
+        }
+        guard let newStation = fetchedStation.first else { return }
+        if let id = indexStation {
+            print("изменяем данные")
+            stations[id] = newStation
+            print(newStation.votes)
+        }
+    }
+    
 
     //save likes
     func saveLikesData(){
@@ -175,7 +199,7 @@ final class ViewModel: ObservableObject {
     func getStationForID(id: String) -> Station? {
         var indexStation: Int?
         for (index, station) in stations.enumerated() {
-            if selectedStation == station.changeuuid{
+            if selectedStation == station.stationuuid{
                 indexStation = index
             }
         }
@@ -191,12 +215,12 @@ final class ViewModel: ObservableObject {
     func nextTrackAudioStream(){
         var indexStation: Int?
         for (index, station) in stations.enumerated() {
-            if selectedStation == station.changeuuid{
+            if selectedStation == station.stationuuid{
                 indexStation = index
             }
         }
         if indexStation == nil && stations.count > 0{
-            selectedStation = stations[0].changeuuid
+            selectedStation = stations[0].stationuuid
             playAudio(url: stations[0].url)
             return
         }
@@ -206,7 +230,7 @@ final class ViewModel: ObservableObject {
             pauseAudioStream()
         }
         if newIndex < stations.count {
-            selectedStation = stations[newIndex].changeuuid
+            selectedStation = stations[newIndex].stationuuid
             playAudio(url: stations[newIndex].url)
         } else {
             return
@@ -216,12 +240,12 @@ final class ViewModel: ObservableObject {
     func backTrackAudioStream() {
         var indexStation: Int?
         for (index, station) in stations.enumerated() {
-            if selectedStation == station.changeuuid {
+            if selectedStation == station.stationuuid {
                 indexStation = index
             }
         }
         if indexStation == nil && stations.count > 0{
-            selectedStation = stations[stations.count-1].changeuuid
+            selectedStation = stations[stations.count-1].stationuuid
             playAudio(url: stations[stations.count-1].url)
             return
         }
@@ -231,7 +255,7 @@ final class ViewModel: ObservableObject {
             pauseAudioStream()
         }
         if newIndex >= 0 {
-            selectedStation = stations[newIndex].changeuuid
+            selectedStation = stations[newIndex].stationuuid
             playAudio(url: stations[newIndex].url)
         } else {
             return
@@ -248,7 +272,7 @@ final class ViewModel: ObservableObject {
 
     func playFirstStation() {
         if stations.count > 0 {
-            selectedStation = stations[0].changeuuid
+            selectedStation = stations[0].stationuuid
             playAudio(url: stations[0].url)
         }
     }
