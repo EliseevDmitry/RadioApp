@@ -71,11 +71,21 @@ struct StationPopularView: View {
             }
             .frame(maxWidth: 139, maxHeight: 139)
             .overlay {
-                Text(self.station.countrycode)
+                //массив строк через запятую
+                //Text(self.station.countrycode)
+                Text(getString(tags: self.station.tags) ?? "NON")
                     .foregroundStyle(selectedStationID == station.changeuuid ? .white : DS.Colors.frame)
-                    .font(.custom(DS.Fonts.sfBold, size: 40))
+                    .font(.custom(DS.Fonts.sfBold, size: 25))
                     .offset(CGSize(width: 0.0, height: -15.0))
             }
+        }
+    }
+    func getString(tags: String)->String? {
+        let tagsArr = tags.components(separatedBy: ",")
+        if tagsArr.count > 0 {
+            return tagsArr[0]
+        } else {
+            return nil
         }
     }
 }

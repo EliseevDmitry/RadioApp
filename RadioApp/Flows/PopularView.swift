@@ -32,7 +32,7 @@ struct PopularView: View {
                     .padding(.leading, 15)
                 ScrollView(.vertical, showsIndicators: false){
                     LazyVGrid(columns: columns) {
-                        ForEach(appManager.stations, id: \.changeuuid) {item in
+                        ForEach(appManager.stations.shuffled(), id: \.changeuuid) {item in
                             StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
                                     .environmentObject(appManager)
                                     .frame(width: 139, height: 139)
