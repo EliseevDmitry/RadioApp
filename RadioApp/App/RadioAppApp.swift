@@ -26,6 +26,7 @@ struct RadioAppApp: App {
                 .environmentObject(appManager)
             //CoreData
                 .environment(\.managedObjectContext, appManager.container.viewContext)
+            
         }
     }
 }

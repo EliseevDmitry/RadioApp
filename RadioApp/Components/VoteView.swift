@@ -19,6 +19,14 @@ struct VoteView: View {
                 appManager.islike = false
             } else {
                 appManager.islike = true
+                //голосование
+                Task{
+                    print(idStation)
+                   try? await appManager.voteStationByID(id: idStation)
+                    try? await appManager.getOneStationByID(id: idStation)
+                    //обновление view
+                   // appManager.objectWillChange.send()
+                }
             }
             //пока без проверки на наличие в базе элемента - тестовый вариант
             if let dataStation = appManager.getStationForID(id: idStation) {
