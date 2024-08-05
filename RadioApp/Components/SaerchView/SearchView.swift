@@ -40,7 +40,6 @@ struct SearchView: View {
         }
         .frame(width: .infinity, height: 56)
         .padding(.horizontal, 8)
-        .cornerRadius(16)
     }
 
     struct CustomTextField: View {
