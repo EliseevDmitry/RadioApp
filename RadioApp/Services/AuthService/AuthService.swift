@@ -11,12 +11,12 @@ import Firebase
 
 //this service class will consist of login, sign up and logout auth
 
-class AuthService {
+final class AuthService {
     static let shared = AuthService()
     
     @Published var userSession: FirebaseAuth.User?
     
-    init() {
+    private init() {
         self.userSession = Auth.auth().currentUser
     }
     
@@ -40,12 +40,12 @@ class AuthService {
         }
     }
     
-    func signUserOut() {
+    func signUserOut() throws {
         do {
             try Auth.auth().signOut()
             self.userSession = nil
         } catch {
-            print("DEBUG: Could not log user out")
+            throw error
         }
     }
 }
