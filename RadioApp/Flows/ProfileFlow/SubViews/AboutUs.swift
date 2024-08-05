@@ -58,6 +58,7 @@ struct AboutUs: View {
                             gitURL: teamLead.git,
                             avatar: teamLead.avatar
                         )
+                        .listRowBackground(Color.clear)
                     }
                 
                 Section(header: Text(Resources.Text.developers)
@@ -71,6 +72,7 @@ struct AboutUs: View {
                             )
                         }
                     }
+                    .listRowBackground(Color.clear)
             }
             
             .listStyle(PlainListStyle())

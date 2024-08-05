@@ -53,7 +53,7 @@ struct AboutUsCell: View {
             Spacer()
         }
         .padding(.vertical, Drawing.verticalPadding)
-        .background(DS.Colors.darkBlue)
+        .background(Color.clear)
         .cornerRadius(CGFloat(Drawing.cornerRadius))
         .frame(maxWidth: .infinity)
     }
