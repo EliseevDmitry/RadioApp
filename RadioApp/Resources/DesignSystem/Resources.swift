@@ -83,13 +83,13 @@ enum Resources {
         /// AboutUS
         static let teamLead = "Team Lead"
         static let developers = "Developers"
-        static let eliseev = "Eliseev Dmitry"
+        static let eliseev = "Dmitry Eliseev"
         static let eliseevGit = "https://github.com/EliseevDmitry"
         
         static let gindulin = "Denis Gindulin"
         static let gindulinGit = "https://github.com/denisgindulin"
         
-        static let keller = "Keller Dmitry"
+        static let keller = "Dmitry Keller"
         static let kellerGit = "https://github.com/KellerDmitriy"
         
         static let kukarskiy = "Evgeniy Kukarskiy"
