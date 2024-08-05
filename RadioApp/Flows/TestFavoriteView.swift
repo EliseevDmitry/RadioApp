@@ -24,4 +24,5 @@ struct TestFavoriteView: View {
 
 #Preview {
     TestFavoriteView()
+        .environmentObject(ViewModel())
 }

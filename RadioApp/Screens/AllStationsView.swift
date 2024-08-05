@@ -14,17 +14,22 @@ struct AllStationsView: View {
     var body: some View {
         NavigationView {
 
+            // text
             VStack {
-                Text("All stations")
-                    .font(.custom(DS.Fonts.sfRegular, size: 30))
-                    .foregroundStyle(.white)
+                HStack {
+                    Text("All stations")
+                        .font(.custom(DS.Fonts.sfRegular, size: 30))
+                        .foregroundStyle(.white)
+                    Spacer()
+                }
+                .padding(.leading, 60)
 
+                // search view
                 SearchView(searchText: "")
 
                 Spacer()
 
                 HStack {
-
                     // sound control
                     VStack {
                         VolumeView()
@@ -32,21 +37,48 @@ struct AllStationsView: View {
                             .padding(.leading, 15)
                     }
 
-                    // stations + play buttons
+                    // stations
                     VStack {
-//                        StationView(station: appManager.stations)
-                    }
+                        ScrollView(.vertical, showsIndicators: false) {
+                            LazyVStack {
+                                ForEach(appManager.stations.shuffled(), id: \.stationuuid) { station in
+                                    StationView(selectedStationID: $appManager.selectedStation, station: station)
+                                }
+                            }
+                        }
 
+                        // play buttons
+                        // вынести в единый компонент с единым позиционированием?
+                        VStack {
+                            Spacer()
+
+                            HStack(spacing: 45) {
+                                BackButtonView()
+                                PlayButtonView()
+                                ForwardButtonView()
+                            }
+                        }
+                        .frame(width: 255, height: 150)
+                        .offset(x: -15, y: -20)
+                    }
                     Spacer()
                 }
-
+                Spacer()
             }
             .background(DS.Colors.darkBlue)
         }
+        .task {
+            do {
+                try await appManager.fetchAllStations()
+            } catch {
+                print(error)
+            }
+        }
+        .navigationViewStyle(.stack)
     }
 }
 
 #Preview {
-    AllStationsView()
+    ContentView()
         .environmentObject(ViewModel())
 }
