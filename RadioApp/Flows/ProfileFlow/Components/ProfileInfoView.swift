@@ -7,14 +7,13 @@
 
 import SwiftUI
 
-import SwiftUI
-
 // MARK: - ProfileInfoView
 struct ProfileInfoView: View {
     // MARK: - Properties
     var userName: String
     var userEmail: String
     var avatar: UIImage
+    var saveChangesAction: () -> Void
     
     // MARK: - Drawing Constants
     private struct DrawingConstants {
@@ -60,6 +59,7 @@ struct ProfileInfoView: View {
             Spacer()
             
             NavigationLink(destination: ProfileEditView(
+                saveChangesAction: saveChangesAction,
                 userName: userName,
                 userEmail: userEmail,
                 avatar: avatar
@@ -92,6 +92,7 @@ struct ProfileInfoView: View {
     ProfileInfoView(
         userName: "Stephen",
         userEmail: "stephen@ds",
-        avatar: UIImage(named: "stephen")!
+        avatar: UIImage(named: "stephen")!, 
+        saveChangesAction: {}
     )
 }
