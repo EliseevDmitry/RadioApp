@@ -13,9 +13,8 @@ import FirebaseAuth
 @MainActor
 final class ViewModel: ObservableObject {
 
-    // добавляем сюда другие @Published свойства
+    let network = NetworkService()
     @Published var stations = [Station]()
-    @Published var allStations = [Station]()
 
     //VolumeView
     //@Published var volume: CGFloat = 0
@@ -42,17 +41,12 @@ final class ViewModel: ObservableObject {
     @Published var testUserPassword = "1212121"
     @Published var testUserUsername = "Frank"
 
-
-
-
     //search
     @Published var searchText: String = ""
     @Published var searchStations: [Station] = []
 
-    let network = NetworkService()
     var likes = Like(likeSet: Set<String>())
     var player: AVPlayer?
-
 
     // Audio session object
     let session = AVAudioSession.sharedInstance()
@@ -98,14 +92,14 @@ final class ViewModel: ObservableObject {
 
     func fetchTopStations() async throws {
         var fetchedStations: [Station]
-        fetchedStations = try await network.getTopStations(numberLimit: 15)
+        fetchedStations = try await network.getTopStations(numberLimit: 20)
         stations = fetchedStations
     }
 
     func fetchAllStations() async throws {
         var fetchedAllStations: [Station]
         fetchedAllStations = try await network.getAllStations()
-        allStations = fetchedAllStations
+        stations = fetchedAllStations
     }
 
     //save likes

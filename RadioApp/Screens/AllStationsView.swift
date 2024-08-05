@@ -41,7 +41,7 @@ struct AllStationsView: View {
                     VStack {
                         ScrollView(.vertical, showsIndicators: false) {
                             LazyVStack {
-                                ForEach(appManager.allStations, id: \.stationuuid) { station in
+                                ForEach(appManager.stations.shuffled(), id: \.stationuuid) { station in
                                     StationView(selectedStationID: $appManager.selectedStation, station: station)
                                 }
                             }
@@ -67,7 +67,6 @@ struct AllStationsView: View {
             }
             .background(DS.Colors.darkBlue)
         }
-        .navigationViewStyle(.stack)
         .task {
             do {
                 try await appManager.fetchAllStations()
@@ -75,6 +74,7 @@ struct AllStationsView: View {
                 print(error)
             }
         }
+        .navigationViewStyle(.stack)
     }
 }
 

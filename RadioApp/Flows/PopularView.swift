@@ -34,8 +34,8 @@ struct PopularView: View {
                     LazyVGrid(columns: columns) {
                         ForEach(appManager.stations, id: \.changeuuid) {item in
                             StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
-                                    .environmentObject(appManager)
-                                    .frame(width: 139, height: 139)
+                                .environmentObject(appManager)
+                                .frame(width: 139, height: 139)
                         }
                     }
                 }
@@ -56,7 +56,7 @@ struct PopularView: View {
         .background(DS.Colors.darkBlue)
         .task {
             do {
-                appManager.stations = try await appManager.network.getTopStations(numberLimit: 20)
+                try await appManager.fetchTopStations()
             } catch let err{
                 // handle error
                 print(err.localizedDescription)
