@@ -45,8 +45,6 @@ final class ViewModel: ObservableObject {
     //search
     @Published var searchText: String = ""
     @Published var searchStations: [Station] = []
-    
-    @Published var isShowCountryCode: Bool = false
 
     var likes = Like(likeSet: Set<String>())
     var player: AVPlayer?
@@ -156,16 +154,16 @@ final class ViewModel: ObservableObject {
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
             player = AVPlayer(url: url)
-            //player?.play()
-            //isPlay = true
+            player?.play()
+            isPlay = true
         } catch let err {
             print(err.localizedDescription)
         }
     }
 
     func playAudioStream(){
-        //player?.play()
-        //isPlay = true
+        player?.play()
+        isPlay = true
     }
 
     func pauseAudioStream(){
@@ -274,4 +272,20 @@ final class ViewModel: ObservableObject {
             try AuthService.shared.signUserOut()
         }
     }
+    
+    //get Tag in String with ","
+    func getString(tags: String)->String? {
+        let tagsArr = tags.components(separatedBy: ",")
+        if tagsArr.count > 0 {
+            if tagsArr[0] == "" {
+                return nil
+            } else {
+                return tagsArr[0]
+            }
+        } else {
+            return nil
+        }
+    }
+    
+    
 }

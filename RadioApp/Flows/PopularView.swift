@@ -56,7 +56,7 @@ struct PopularView: View {
         .background(DS.Colors.darkBlue)
         .task {
             do {
-                try await appManager.fetchTopStations()
+               try await appManager.fetchTopStations()  
             } catch let err{
                 // handle error
                 print(err.localizedDescription)
