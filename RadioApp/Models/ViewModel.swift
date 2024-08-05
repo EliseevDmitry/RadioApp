@@ -8,6 +8,7 @@
 import Foundation
 import AVKit
 import FirebaseAuth
+import CoreData
 
 
 @MainActor
@@ -58,7 +59,9 @@ final class ViewModel: ObservableObject {
     let session = AVAudioSession.sharedInstance()
     // Observer
     var progressObserver: NSKeyValueObservation!
-
+    //CoreData
+    let container = NSPersistentContainer(name: "LikeStations")
+    
     func setVolme(){
         do {
             try session.setCategory(AVAudioSession.Category.ambient)
@@ -84,8 +87,20 @@ final class ViewModel: ObservableObject {
         self.volume = CGFloat(session.outputVolume)
         print("init volume value - \(self.volume)")
         setVolme()
+        
+        //инициализация PersistentContainer CoreData
+        container.loadPersistentStores{description, error in
+            if let error = error {
+                print("CoreData failed to load \(error.localizedDescription)")
+            }
+        }
     }
 
+    
+    
+    
+    
+    
     //тестовая функция
     //    func setVolme(){
     //        //        progressObserver = session.observe(\.outputVolume) { [self] (session, value) in
@@ -107,6 +122,30 @@ final class ViewModel: ObservableObject {
         fetchedAllStations = try await network.getAllStations()
         stations = fetchedAllStations
     }
+    
+    func voteStationByID(id: String) async throws {
+        try await network.voteStationById(id: id)
+    }
+    
+    
+    //обновление текущей станции
+    func getOneStationByID(id: String) async throws {
+        var fetchedStation: [Station]
+        var indexStation: Int?
+        fetchedStation = try await network.getStationById(id: id)
+        for (index, station) in stations.enumerated() {
+            if id == station.stationuuid{
+                indexStation = index
+            }
+        }
+        guard let newStation = fetchedStation.first else { return }
+        if let id = indexStation {
+            print("изменяем данные")
+            stations[id] = newStation
+            print(newStation.votes)
+        }
+    }
+    
 
 //    func fetchSearchStations() async throws {
 //        var fetchSearchStations: [Station]
@@ -151,21 +190,36 @@ final class ViewModel: ObservableObject {
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
             player = AVPlayer(url: url)
-            //player?.play()
-            //isPlay = true
+            player?.play()
+            isPlay = true
         } catch let err {
             print(err.localizedDescription)
         }
     }
 
     func playAudioStream(){
-        //player?.play()
-        //isPlay = true
+        player?.play()
+        isPlay = true
     }
 
     func pauseAudioStream(){
         player?.pause()
         isPlay = false
+    }
+    
+    //запрос данных станции при нажатии на сердечно like
+    func getStationForID(id: String) -> Station? {
+        var indexStation: Int?
+        for (index, station) in stations.enumerated() {
+            if selectedStation == station.stationuuid{
+                indexStation = index
+            }
+        }
+        if let id = indexStation {
+            return stations[id]
+        } else {
+            return nil
+        }
     }
 
 
@@ -173,12 +227,12 @@ final class ViewModel: ObservableObject {
     func nextTrackAudioStream(){
         var indexStation: Int?
         for (index, station) in stations.enumerated() {
-            if selectedStation == station.changeuuid{
+            if selectedStation == station.stationuuid{
                 indexStation = index
             }
         }
         if indexStation == nil && stations.count > 0{
-            selectedStation = stations[0].changeuuid
+            selectedStation = stations[0].stationuuid
             playAudio(url: stations[0].url)
             return
         }
@@ -188,7 +242,7 @@ final class ViewModel: ObservableObject {
             pauseAudioStream()
         }
         if newIndex < stations.count {
-            selectedStation = stations[newIndex].changeuuid
+            selectedStation = stations[newIndex].stationuuid
             playAudio(url: stations[newIndex].url)
         } else {
             return
@@ -198,12 +252,12 @@ final class ViewModel: ObservableObject {
     func backTrackAudioStream() {
         var indexStation: Int?
         for (index, station) in stations.enumerated() {
-            if selectedStation == station.changeuuid {
+            if selectedStation == station.stationuuid {
                 indexStation = index
             }
         }
         if indexStation == nil && stations.count > 0{
-            selectedStation = stations[stations.count-1].changeuuid
+            selectedStation = stations[stations.count-1].stationuuid
             playAudio(url: stations[stations.count-1].url)
             return
         }
@@ -213,7 +267,7 @@ final class ViewModel: ObservableObject {
             pauseAudioStream()
         }
         if newIndex >= 0 {
-            selectedStation = stations[newIndex].changeuuid
+            selectedStation = stations[newIndex].stationuuid
             playAudio(url: stations[newIndex].url)
         } else {
             return
@@ -230,7 +284,7 @@ final class ViewModel: ObservableObject {
 
     func playFirstStation() {
         if stations.count > 0 {
-            selectedStation = stations[0].changeuuid
+            selectedStation = stations[0].stationuuid
             playAudio(url: stations[0].url)
         }
     }
@@ -254,4 +308,20 @@ final class ViewModel: ObservableObject {
             try AuthService.shared.signUserOut()
         }
     }
+    
+    //get Tag in String with ","
+    func getString(tags: String)->String? {
+        let tagsArr = tags.components(separatedBy: ",")
+        if tagsArr.count > 0 {
+            if tagsArr[0] == "" {
+                return nil
+            } else {
+                return tagsArr[0]
+            }
+        } else {
+            return nil
+        }
+    }
+    
+    
 }

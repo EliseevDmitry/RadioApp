@@ -20,8 +20,13 @@ struct RadioAppApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            TestAuthView()
+            PopularView()
+           // TestAuthView()
+            //TestVoteCoreDataView()
                 .environmentObject(appManager)
+            //CoreData
+                .environment(\.managedObjectContext, appManager.container.viewContext)
+            
         }
     }
 }

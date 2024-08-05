@@ -16,24 +16,24 @@ struct StationPopularView: View {
     //MARK: - BODY
     var body: some View {
         Button{            
-            selectedStationID = station.changeuuid
+            selectedStationID = station.stationuuid
             appManager.playAudio(url: station.url)
         } label: {
             ZStack{
                 Rectangle()
                     .scaledToFit()
-                    .foregroundStyle(selectedStationID == station.changeuuid ? DS.Colors.pinkNeon : Color.clear)
+                    .foregroundStyle(selectedStationID == station.stationuuid ? DS.Colors.pinkNeon : Color.clear)
                 
                     .clipShape(.rect(cornerRadius: 20))
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
                             .stroke(
-                                selectedStationID == station.changeuuid ? DS.Colors.pinkNeon : DS.Colors.frame, lineWidth: 2
+                                selectedStationID == station.stationuuid ? DS.Colors.pinkNeon : DS.Colors.frame, lineWidth: 2
                             )
                     )
                 VStack{
                     HStack{
-                        if selectedStationID == station.changeuuid {
+                        if selectedStationID == station.stationuuid {
                             Image(.play)
                                 .resizable()
                                 .frame(width: 25)
@@ -42,8 +42,8 @@ struct StationPopularView: View {
                         //отобразить последние 100 голосов
                         Text("votes \(self.station.votes % 1000)")
                             .font(.custom(DS.Fonts.sfRegular, size: 14))
-                            .foregroundStyle(selectedStationID == station.changeuuid ? .white : DS.Colors.frame)
-                        VoteView(isShow: selectedStationID == station.changeuuid ? true : false, idStation: station.changeuuid)
+                            .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.frame)
+                        VoteView(isShow: selectedStationID == station.stationuuid ? true : false, idStation: station.stationuuid)
                             .frame(
                                 width: 14,
                                 height: 14
@@ -54,9 +54,9 @@ struct StationPopularView: View {
                     .padding(.top, 10)
                     Spacer()
                     Text(self.station.name)
-                        .foregroundStyle(selectedStationID == station.changeuuid ? .white : DS.Colors.frame)
+                        .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.frame)
                         .font(.custom(DS.Fonts.sfRegular, size: 15))
-                    if selectedStationID == station.changeuuid {
+                    if selectedStationID == station.stationuuid {
                         SplineView(isActive: true)
                             .frame(height: 20)
                             .padding(.horizontal)
@@ -71,13 +71,19 @@ struct StationPopularView: View {
             }
             .frame(maxWidth: 139, maxHeight: 139)
             .overlay {
-                Text(self.station.countrycode)
-                    .foregroundStyle(selectedStationID == station.changeuuid ? .white : DS.Colors.frame)
-                    .font(.custom(DS.Fonts.sfBold, size: 40))
+                
+                Text(appManager.getString(tags: self.station.tags)?.uppercased() ?? self.station.countrycode)
+                    .lineLimit(2)
+                    .truncationMode(.tail)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.frame)
+//                    .font(.custom(DS.Fonts.sfBold, size: nameStation != nil ? 20 : 30))
                     .offset(CGSize(width: 0.0, height: -15.0))
             }
         }
     }
+
 }
 
 
