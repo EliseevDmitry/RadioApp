@@ -14,13 +14,14 @@ struct SettingsButton: View {
     var titleText: String
     
     // MARK: - Drawing Constants
-    private struct DrawingConstants {
+    private struct Drawing {
         static let iconSize: CGFloat = 40
         static let iconPadding: CGFloat = 10
         static let textSize: CGFloat = 14
         static let buttonPadding: CGFloat = 10
         static let strokeWidth: CGFloat = 0.8
         static let cornerRadius: CGFloat = 10
+        static let strokeOpacity: CGFloat = 0.3
     }
     
     // MARK: - Body
@@ -29,25 +30,26 @@ struct SettingsButton: View {
             Image(imageIcon)
                 .resizable()
                 .frame(
-                    width: DrawingConstants.iconSize,
-                    height: DrawingConstants.iconSize
+                    width: Drawing.iconSize,
+                    height: Drawing.iconSize
                 )
-                .padding(.leading, DrawingConstants.iconPadding)
+                .padding(.leading, Drawing.iconPadding)
             Text(titleText)
-                .font(Font.custom(.sfMedium, size: DrawingConstants.textSize))
+                .font(Font.custom(.sfMedium, size: Drawing.textSize))
                 .foregroundColor(.white)
                 .padding()
             Spacer()
             ChevronCircleView()
-
+            
         }
         .padding()
         .frame(maxWidth: .infinity)
-        .background(RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
-                               .stroke(Color.gray, lineWidth: DrawingConstants.strokeWidth)
-                    )
+        .background(RoundedRectangle(cornerRadius: Drawing.cornerRadius)
+            .stroke(Color.gray, lineWidth: Drawing.strokeWidth)
+            .opacity(Drawing.strokeOpacity)
+        )
     }
-    }
+}
 
 // MARK: - Preview
 #Preview {
