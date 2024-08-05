@@ -239,7 +239,7 @@ final class ViewModel: ObservableObject {
 
     func signOut() {
         Task {
-            AuthService.shared.signUserOut()
+            try AuthService.shared.signUserOut()
         }
     }
 }

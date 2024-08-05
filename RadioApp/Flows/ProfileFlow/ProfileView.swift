@@ -9,8 +9,10 @@ import SwiftUI
 
 // MARK: - ProfileView
 struct ProfileView: View {
-    
-    
+    // MARK: - Properties
+    @ObservedObject var viewModel: ProfileViewModel
+    @State private var inputImage = UIImage(named: Resources.Image.stephen)
+    @State private var errorAlert: AnyAppAlert? = nil
     // MARK: - Body
     var body: some View {
         NavigationView {
@@ -21,11 +23,11 @@ struct ProfileView: View {
                 VStack {
                     // MARK: - Profile Info
                     ProfileInfoView(
-                        userName: "Stephen",
-                        userEmail: "stephen@ds",
-                        avatar: UIImage(named: "stephen")!
+                        userName: viewModel.currentUser?.userName ?? "Stephen",
+                        userEmail: viewModel.currentUser?.email ??  "stephen@ds",
+                        avatar: inputImage ?? UIImage(systemName: "person.fill")!,
+                        saveChangesAction: saveChanges
                     )
-                    
                     // MARK: - General Settings
                     SettingView(
                         generalTitle: Resources.Text.general,
@@ -50,20 +52,36 @@ struct ProfileView: View {
                     Spacer()
                     // MARK: - Logout Button
                     CustomButton(
-                        action: {},
+                        action: logOut,
                         title: Resources.Text.logOut,
                         buttonType: .profile)
                 }
                 .padding()
                 .foregroundColor(.white)
+                .showCustomAlert(alert: $errorAlert)
                 .navigationTitle(Resources.Text.settings)
                 .navigationBarTitleDisplayMode(.inline)
             }
         }
+        .onReceive(viewModel.$error) { error in
+            if let error = error {
+                errorAlert = AnyAppAlert(error: error)
+                viewModel.clearError()
+            }
+        }
+    }
+    
+    //    MARK: - Private Methods
+    private func saveChanges() {
+        viewModel.updateUserInfo()
+    }
+    
+    private func logOut() {
+        viewModel.logOut()
     }
 }
 
 // MARK: - Preview
 #Preview {
-    ProfileView()
+    ProfileView(viewModel: ProfileViewModel())
 }

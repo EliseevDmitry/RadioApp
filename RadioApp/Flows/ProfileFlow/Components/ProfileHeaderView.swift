@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct ProfileHeaderView: View {
+    // MARK: - Properties
     @Binding var userName: String
     @Binding var userEmail: String
     @Binding var avatar: UIImage?
     @Binding var showChangedPhotoView: Bool
     
+    // MARK: - Drawing Constants
     private struct Drawing {
         static let avatarSize: CGFloat = 100
         static let editIconSize: CGFloat = 32
@@ -23,8 +25,10 @@ struct ProfileHeaderView: View {
         static let textFontSize: CGFloat = 14
     }
     
+    // MARK: - Body
     var body: some View {
         VStack {
+            // MARK: - Avatar Section
             Button {
                 showChangedPhotoView.toggle()
             } label: {
@@ -39,6 +43,7 @@ struct ProfileHeaderView: View {
                         .frame(width: Drawing.editIconSize, height: Drawing.editIconSize)
                 }
             }
+            
             // MARK: - User Info Section
             Text(userName)
                 .foregroundStyle(.white)
@@ -50,11 +55,6 @@ struct ProfileHeaderView: View {
                 .padding(.top, -8)
         }
         .padding()
-//        .onTapGesture {
-//            withAnimation {
-//                showChangedPhotoView.toggle()
-//            }
-//        }
     }
     
     // MARK: - Helper Functions
@@ -67,14 +67,14 @@ struct ProfileHeaderView: View {
     }
 }
 
-
-
-#Preview {
-    ProfileHeaderView(
-        userName: .constant("Stephen"),
-        userEmail: .constant("stephen@ds"),
-        avatar: .constant(UIImage(named: "stephen")!),
-        showChangedPhotoView: .constant(false)
-    )
+// MARK: - Preview
+struct ProfileHeaderView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileHeaderView(
+            userName: .constant("Stephen"),
+            userEmail: .constant("stephen@ds"),
+            avatar: .constant(UIImage(named: "stephen")),
+            showChangedPhotoView: .constant(false)
+        )
+    }
 }
-
