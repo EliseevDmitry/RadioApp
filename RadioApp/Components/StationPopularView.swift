@@ -73,9 +73,13 @@ struct StationPopularView: View {
             .overlay {
                 //массив строк через запятую
                 //Text(self.station.countrycode)
-                Text(getString(tags: self.station.tags) ?? "NON")
+                Text(getString(tags: self.station.tags)?.uppercased() ?? self.station.countrycode)
+                    .lineLimit(2)
+                    .truncationMode(.tail)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
                     .foregroundStyle(selectedStationID == station.changeuuid ? .white : DS.Colors.frame)
-                    .font(.custom(DS.Fonts.sfBold, size: 25))
+//                    .font(.custom(DS.Fonts.sfBold, size: appManager.isShowCountryCode ? 20 : 30))
                     .offset(CGSize(width: 0.0, height: -15.0))
             }
         }
@@ -83,8 +87,15 @@ struct StationPopularView: View {
     func getString(tags: String)->String? {
         let tagsArr = tags.components(separatedBy: ",")
         if tagsArr.count > 0 {
-            return tagsArr[0]
+            if tagsArr[0] == "" {
+                appManager.isShowCountryCode = true
+                return nil
+            } else {
+                appManager.isShowCountryCode = false
+                return tagsArr[0]
+            }
         } else {
+            appManager.isShowCountryCode = true
             return nil
         }
     }

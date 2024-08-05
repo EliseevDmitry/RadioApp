@@ -13,9 +13,10 @@ import CoreData
 
 @MainActor
 final class ViewModel: ObservableObject {
-    
-    // добавляем сюда другие @Published свойства
+
+    let network = NetworkService()
     @Published var stations = [Station]()
+
     //VolumeView
     //@Published var volume: CGFloat = 0
     //@Published var volume: CGFloat = CGFloat(AVAudioSession.sharedInstance().outputVolume)
@@ -24,35 +25,32 @@ final class ViewModel: ObservableObject {
     @Published var selectedStation = ""
     //VoteView
     @Published var islike: Bool = false
-    
+
     @Published var isPlay: Bool = false
-    
-    
+
+
     // свойства для аутентификации пользователя
     @Published var email = ""
     @Published var password = ""
     @Published var username = ""
-    
+
     @Published var showPassword = false
     @Published var isUserRegistered = false
     @Published var showSignInView = false
-    
+
     @Published var testUserEmail = "Franky@gmail.com"
     @Published var testUserPassword = "1212121"
     @Published var testUserUsername = "Frank"
-    
-    
-    
 
     //search
     @Published var searchText: String = ""
     @Published var searchStations: [Station] = []
+    
+    @Published var isShowCountryCode: Bool = false
 
-    let network = NetworkService()
     var likes = Like(likeSet: Set<String>())
     var player: AVPlayer?
-    
-    
+
     // Audio session object
     let session = AVAudioSession.sharedInstance()
     // Observer
@@ -74,12 +72,12 @@ final class ViewModel: ObservableObject {
             }
         }
     }
-    
+
     //delete Observer
     func unsubscribe() {
         self.progressObserver.invalidate()
     }
-    
+
     //инициализируем - начальную громкость устройства
     init() {
         self.volume = CGFloat(session.outputVolume)
@@ -93,76 +91,83 @@ final class ViewModel: ObservableObject {
             }
         }
     }
+
     
     
     
     
     
     //тестовая функция
-//    func setVolme(){
-//        //        progressObserver = session.observe(\.outputVolume) { [self] (session, value) in
-//        //            DispatchQueue.main.async {
-//        //                self.volume = CGFloat(session.outputVolume)
-//        //            }
-//        //        }
-//        //    }
-        
-        
-        func fetchTopStations() async throws {
-            var fetchedStations: [Station]
-            fetchedStations = try await network.getTopStations(numberLimit: 15)
-            stations = fetchedStations
+    //    func setVolme(){
+    //        //        progressObserver = session.observe(\.outputVolume) { [self] (session, value) in
+    //        //            DispatchQueue.main.async {
+    //        //                self.volume = CGFloat(session.outputVolume)
+    //        //            }
+    //        //        }
+    //        //    }
+
+
+    func fetchTopStations() async throws {
+        var fetchedStations: [Station]
+        fetchedStations = try await network.getTopStations(numberLimit: 20)
+        stations = fetchedStations
+    }
+
+    func fetchAllStations() async throws {
+        var fetchedAllStations: [Station]
+        fetchedAllStations = try await network.getAllStations()
+        stations = fetchedAllStations
+    }
+
+    //save likes
+    func saveLikesData(){
+        let encoder = JSONEncoder()
+        if let data = try? encoder.encode(likes) {
+            UserDefaults.standard.set(data, forKey: "likes")
         }
-        
-        //save likes
-        func saveLikesData(){
-            let encoder = JSONEncoder()
-            if let data = try? encoder.encode(likes) {
-                UserDefaults.standard.set(data, forKey: "likes")
-            }
+    }
+
+    //load likes
+    func loadLikesData(){
+        let decoder = JSONDecoder()
+        guard let data = UserDefaults.standard.data(forKey: "likes") else { return }
+        guard let loadData = try? decoder.decode(Like.self, from: data) else {return}
+        likes.likeSet = loadData.likeSet
+    }
+
+    //проверка на наличие уже оставленного отзыва
+    //возвращает false при уже оставленном like
+    func saveIDLikes(id: String) -> Bool {
+        defer {
+            saveLikesData()
         }
-        
-        //load likes
-        func loadLikesData(){
-            let decoder = JSONDecoder()
-            guard let data = UserDefaults.standard.data(forKey: "likes") else { return }
-            guard let loadData = try? decoder.decode(Like.self, from: data) else {return}
-            likes.likeSet = loadData.likeSet
+        if !likes.likeSet.contains(id) {
+            print("ID будет добавлен - \(id)")
+            likes.likeSet.insert(id)
+            print(likes.likeSet)
+            return true
         }
-        
-        //проверка на наличие уже оставленного отзыва
-        //возвращает false при уже оставленном like
-        func saveIDLikes(id: String) -> Bool {
-            defer {
-                saveLikesData()
-            }
-            if !likes.likeSet.contains(id) {
-                print("ID будет добавлен - \(id)")
-                likes.likeSet.insert(id)
-                print(likes.likeSet)
-                return true
-            }
-            print("Такой ID уже существует!")
-            return false
+        print("Такой ID уже существует!")
+        return false
+    }
+
+    func playAudio(url: String){
+        guard let url = URL.init(string: url) else { return }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+            player = AVPlayer(url: url)
+            //player?.play()
+            //isPlay = true
+        } catch let err {
+            print(err.localizedDescription)
         }
-        
-        func playAudio(url: String){
-            guard let url = URL.init(string: url) else { return }
-            do {
-                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-                player = AVPlayer(url: url)
-                player?.play()
-                isPlay = true
-            } catch let err {
-                print(err.localizedDescription)
-            }
-        }
-        
-        func playAudioStream(){
-            player?.play()
-            isPlay = true
-        }
-    
+    }
+
+    func playAudioStream(){
+        //player?.play()
+        //isPlay = true
+    }
+
     func pauseAudioStream(){
         player?.pause()
         isPlay = false
@@ -183,7 +188,8 @@ final class ViewModel: ObservableObject {
         }
     }
 
-    
+
+
     func nextTrackAudioStream(){
         var indexStation: Int?
         for (index, station) in stations.enumerated() {
@@ -208,7 +214,7 @@ final class ViewModel: ObservableObject {
             return
         }
     }
-    
+
     func backTrackAudioStream() {
         var indexStation: Int?
         for (index, station) in stations.enumerated() {
@@ -232,16 +238,16 @@ final class ViewModel: ObservableObject {
         } else {
             return
         }
-        
-        
+
+
         //функция не нужна при отсутствии изменять музыку бегунком
-//        func setVolmePlayer(){
-//            player?.volume = Float(self.volume)
-//            print(player?.volume)
-//        }
-        
+        //        func setVolmePlayer(){
+        //            player?.volume = Float(self.volume)
+        //            print(player?.volume)
+        //        }
+
     }
-    
+
     func playFirstStation() {
         if stations.count > 0 {
             selectedStation = stations[0].changeuuid
@@ -255,14 +261,14 @@ final class ViewModel: ObservableObject {
             try await AuthService.shared.signIn(with: email, password: password)
         }
     }
-    
+
     func registerUser() {
         Task {
             try await AuthService.shared.registerUser(with: email, password: password, username: username)
             isUserRegistered = true
         }
     }
-    
+
     func signOut() {
         Task {
             try AuthService.shared.signUserOut()

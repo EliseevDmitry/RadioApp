@@ -38,7 +38,7 @@ struct VoteView: View {
         }
         .task {
             if !appManager.islike {
-                print("отправляем запрос на сервер")
+                //print("отправляем запрос на сервер")
             }
         }
        .disabled(!isShow ? true : false)

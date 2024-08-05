@@ -17,11 +17,15 @@ class URLManager {
         URL(string: "http://at1.api.radio-browser.info/json/stations/topvote/" + "\(numberLimit)")
     }
 
+    // MARK: - get URL for All stations
+    func createURLAll() -> URL? {
+        URL(string: "http://all.api.radio-browser.info/json/stations?limit=100")
+    }
+
     // MARK: - get URL for station by StationUUID
     func createURLUUID(id: String) -> URL? {
         URL(string: "http://at1.api.radio-browser.info/json/stations/byuuid/" + id)
     }
-
 
     // MARK: - get URL to vote for station
     func createURLVote(id: String) -> URL? {
