@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
-
+import MediaPlayer
 
 struct VolumeView: View {
-    @Binding var voulmeValue: CGFloat
+    @EnvironmentObject var appManager: ViewModel
     var body: some View {
         VStack{
-            Text("\((Int(voulmeValue*100)).formatted())%")
+            Text("\((Int(appManager.volume*100)).formatted())%")
                 .font(.system(size: 12))
                 .foregroundStyle(.white)
             GeometryReader { screen in
@@ -22,34 +22,39 @@ struct VolumeView: View {
                             .foregroundStyle(DS.Colors.frame)
                         RoundedRectangle(cornerRadius: .infinity)
                             .foregroundStyle(DS.Colors.blueNeon)
-                            .frame(height: (screen.size.height * CGFloat(self.voulmeValue)))
+                            .frame(height: (screen.size.height * CGFloat(self.appManager.volume)))
                     }
                     .frame(width: 4)
                     Circle()
                         .foregroundStyle(DS.Colors.blueNeon)
-                        .position(CGPoint(x: 5.0, y: screen.size.height - (screen.size.height * CGFloat(self.voulmeValue)) ))
+                        .position(CGPoint(x: 5.0, y: screen.size.height - (screen.size.height * CGFloat(self.appManager.volume)) ))
                         .frame(width: 10)
-                        .gesture(
-                            DragGesture()
-                                .onChanged({ value in
-                                    withAnimation(.linear(duration: 2)){
-                                        if voulmeValue >= 0 && voulmeValue <= 1 {
-                                            voulmeValue -= (value.translation.height/screen.size.height/80)
-                                        }
-                                    }
-                                })
-                                .onEnded({ _ in
-                                    if voulmeValue >= 1 {
-                                        voulmeValue = 1
-                                    } else if voulmeValue <= 0 {
-                                        voulmeValue = 0
-                                    }
-                                })
-                        )
+                    //запретили менять - только показывать!
+                    //                        .gesture(
+                    //                            DragGesture()
+                    //                                .onChanged({ value in
+                    //                                    withAnimation(.linear(duration: 2)){
+                    //                                        if appManager.volume >= 0 && appManager.volume <= 1 {
+                    //                                            appManager.volume -= CGFloat(Float((value.translation.height/screen.size.height/50)))
+                    //                                            appManager.setVolme()
+                    //
+                    //                                        }
+                    //                                    }
+                    //                                })
+                    //                                .onEnded({ _ in
+                    //                                    if appManager.volume >= 1 {
+                    //                                        appManager.volume = 1
+                    //                                    } else if appManager.volume <= 0 {
+                    //                                        appManager.volume = 0
+                    //                                    }
+                    //                                    appManager.setVolme()
+                    //
+                    //                                })
+                    //                        )
                 }
             }
             .frame(width: 10)
-            Image(systemName: voulmeValue == 0 ? "speaker.slash" : "speaker.wave.2")
+            Image(systemName: appManager.volume == 0 ? "speaker.slash" : "speaker.wave.2")
                 .resizable()
                 .offset(CGSize(width: 5.0, height: 5.0))
                 .frame(width: 18, height: 18)
@@ -58,6 +63,11 @@ struct VolumeView: View {
     }
 }
 
-#Preview {
-    VolumeView(voulmeValue: .constant(0.4))
+//MARK: - PREVIEW
+struct VolumeView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    static var previews: some View {
+        VolumeView()
+            .environmentObject(previewAppManager)
+    }
 }

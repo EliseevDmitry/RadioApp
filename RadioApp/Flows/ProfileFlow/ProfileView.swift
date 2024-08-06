@@ -9,7 +9,10 @@ import SwiftUI
 
 // MARK: - ProfileView
 struct ProfileView: View {
-    
+    // MARK: - Properties
+    @ObservedObject var viewModel: ProfileViewModel
+
+    @State private var errorAlert: AnyAppAlert? = nil
     
     // MARK: - Body
     var body: some View {
@@ -21,11 +24,11 @@ struct ProfileView: View {
                 VStack {
                     // MARK: - Profile Info
                     ProfileInfoView(
-                        userName: "Stephen",
-                        userEmail: "stephen@ds",
-                        avatar: UIImage(named: "stephen")!
+                        userName: viewModel.currentUser?.userName ?? "Stephen",
+                        userEmail: viewModel.currentUser?.email ??  "stephen@ds",
+                        avatar: loadImage(from: viewModel.currentUser?.avatarURL),
+                        saveChangesAction: saveChanges
                     )
-                    
                     // MARK: - General Settings
                     SettingView(
                         generalTitle: Resources.Text.general,
@@ -50,20 +53,51 @@ struct ProfileView: View {
                     Spacer()
                     // MARK: - Logout Button
                     CustomButton(
-                        action: {},
+                        action: logOut,
                         title: Resources.Text.logOut,
                         buttonType: .profile)
                 }
                 .padding()
                 .foregroundColor(.white)
+                .showCustomAlert(alert: $errorAlert)
                 .navigationTitle(Resources.Text.settings)
                 .navigationBarTitleDisplayMode(.inline)
             }
         }
+        .onReceive(viewModel.$error) { error in
+            if let error = error {
+                errorAlert = AnyAppAlert(error: error)
+                viewModel.clearError()
+            }
+        }
+    }
+    
+    //    MARK: - Private Methods
+    private func saveChanges(_ userName: String, _ userEmail: String, _ avatar: UIImage?) {
+        viewModel.updateUserProfile(
+            userName,
+            userEmail,
+            avatar
+        )
+    }
+    
+    private func logOut() {
+        viewModel.logOut()
+    }
+    
+    private func loadImage(from urlString: String?) -> UIImage {
+        guard let urlString = urlString, !urlString.isEmpty,
+              let url = URL(string: urlString),
+              let data = try? Data(contentsOf: url),
+              let image = UIImage(data: data) else {
+            return UIImage(named: "stephen") ?? UIImage()
+        }
+        return image
     }
 }
 
+
 // MARK: - Preview
 #Preview {
-    ProfileView()
+    ProfileView(viewModel: ProfileViewModel())
 }

@@ -27,6 +27,13 @@ enum DS {
 
         /// серый - текст, неактивный ТабБар
         static let grayNotActive = Color(hex: "#4D4D6A")
+        /// серый, SearchView
+        static let graySearch = Color(hex: "#525270")
+        /// серый, SearchViewImage
+        static let graySearchImage = Color(hex: "#1F1D2B")
+        /// розовый, PlayingNow
+        static let pinkPlaying = Color(hex: "#B02854")
+
 
     }
     

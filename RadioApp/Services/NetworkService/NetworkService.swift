@@ -32,6 +32,29 @@ actor NetworkService {
         return stations
     }
 
+    // MARK: - get top stations
+
+    func getAllStations() async throws -> [Station] {
+        var allStations = [Station]()
+
+        guard let url = URLManager.shared.createURLAll() else {
+            throw NetworkError.badURL
+        }
+        let urlRequest = URLRequest(url: url)
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw NetworkError.badResponse
+        }
+
+        guard let decodedStations = try? JSONDecoder().decode([Station].self, from: data) else {
+            throw NetworkError.decodingError
+        }
+
+        allStations = decodedStations
+        return allStations
+    }
+
     // MARK: - get station by UUID
 
     func getStationById(id: String) async throws -> [Station] {
@@ -71,6 +94,28 @@ actor NetworkService {
         }
     }
 
+    // MARK: - search Station
+
+    func searchByName(searchText: String) async throws -> [Station] {
+        var searchByName = [Station]()
+
+        guard let url = URLManager.shared.createURLSearch(searchText: searchText) else {
+            throw NetworkError.badURL
+        }
+        let urlRequest = URLRequest(url: url)
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw NetworkError.badResponse
+        }
+
+        guard let decodedStation = try? JSONDecoder().decode([Station].self, from: data) else {
+            throw NetworkError.decodingError
+        }
+
+        searchByName = decodedStation
+        return searchByName
+    }
 
 
 }

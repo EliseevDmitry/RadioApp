@@ -11,5 +11,5 @@ struct UserModel: Identifiable, Codable {
     let id: String
     let userName: String
     let email: String
-    var userPhoto: String?
+    let avatarURL: String?
 }

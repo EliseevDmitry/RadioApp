@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFAudio
 import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
@@ -23,7 +24,12 @@ struct RadioAppApp: App {
 //            ContentView()
 //            TestAuthView()
             SignInView()
+            ProfileView(viewModel: ProfileViewModel())
+           // TestAuthView()
+            //TestVoteCoreDataView()
                 .environmentObject(appManager)
+            //CoreData
+                .environment(\.managedObjectContext, appManager.container.viewContext)
         }
     }
 }
