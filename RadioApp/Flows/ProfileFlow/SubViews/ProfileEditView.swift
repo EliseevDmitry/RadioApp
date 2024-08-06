@@ -32,7 +32,7 @@ struct ProfileEditView: View {
         ZStack {
             VStack {
                 ZStack {
-                    AnimatedBackgroundView()
+                    AnimatedBackgroundView(screenType: .profile)
                         .ignoresSafeArea()
                     
                     VStack(spacing: Drawing.spacing) {

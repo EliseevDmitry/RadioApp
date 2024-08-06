@@ -6,9 +6,9 @@
 //
 
 import Firebase
-import GoogleSignIn
 import FirebaseCore
 import FirebaseAuth
+import GoogleSignIn
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(

@@ -12,14 +12,17 @@ struct CustomButton: View {
     enum ButtonType {
         case profile
         case onboarding
+        case authentication
     }
     
     // MARK: - Drawing Constants
     private enum Drawing {
         static let profileCornerRadius: CGFloat = 32
         static let onboardingCornerRadius: CGFloat = 8
+        static let authenticationCornerRadius: CGFloat = 0
         static let profileBackground: Color = DS.Colors.blueNeon
         static let onboardingBackground: Color = DS.Colors.pinkNeon
+        static let authenticationBackground = DS.Colors.blueNeon
         static let textColor: Color = .white
     }
     
@@ -36,20 +39,37 @@ struct CustomButton: View {
                 .foregroundColor(Drawing.textColor)
                 .font(.custom(.sfRegular, size: 25))
                 .padding()
-                .background(
-                    buttonType == .profile
-                    ? Drawing.profileBackground
-                    : Drawing.onboardingBackground
-                )
-                .clipShape(RoundedRectangle(cornerRadius:
-                    buttonType == .profile
-                    ? Drawing.profileCornerRadius
-                    : Drawing.onboardingCornerRadius
-                )
+                .background(setBackground(for: buttonType))
+                .clipShape(RoundedRectangle(cornerRadius: setCornerRadius(for: buttonType))
             )
         }
     }
+    
+    // MARK: - Private Methods
+    private func setBackground(for buttonType: ButtonType) -> Color {
+        switch buttonType {
+        case .profile: 
+            return Drawing.profileBackground
+        case .onboarding:
+            return Drawing.onboardingBackground
+        case .authentication:
+            return Drawing.authenticationBackground
+        }
+    }
+    
+    private func setCornerRadius(for buttonType: ButtonType) -> CGFloat {
+        switch buttonType {
+        case .profile:
+            return Drawing.profileCornerRadius
+        case .onboarding:
+            return Drawing.onboardingCornerRadius
+        case .authentication:
+            return Drawing.authenticationCornerRadius
+        }
+    }
 }
+
+
 
 // MARK: - Preview
 #Preview {

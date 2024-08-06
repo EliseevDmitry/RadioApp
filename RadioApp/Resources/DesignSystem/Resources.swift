@@ -16,49 +16,30 @@ enum Resources {
         static let getStarted = "Get Started"
         
         /// SignIn
-        enum SignIn {
-            static let title = "Sign In"
-            static let toStartPlay = "to start play"
-            static let email = "Email"
-            static let emailPlaceholder = "Your email"
-            static let password = "Password"
-            static let passwordPlaceholder = "Your password"
-            static let forgotPassword = "Forgot Password?"
-            static let orConnectWith = "Or connect with"
-            static let orSignUp = "Or Sign Up"
-        }
-
+        static let signIn = "Sign In"
+        static let toStartPlay = "to start play"
+        static let email = "Email"
+        static let yourEmail = "Your email"
+        static let password = "Password"
+        static let yourPassword = "Your password"
+        static let forgotPassword = "Forgot Password?"
+        static let orConnectWith = "Or connect with"
+        static let orSignUp = "Or Sign Up"
+        
         /// SignUp
-        enum SignUp {
-            static let title = "Sign Up"
-            static let toStartPlay = "to start play"
-            static let name = "Name"
-            static let namePlaceholder = "Your name"
-            static let email = "Email"
-            static let emailPlaceholder = "Your email"
-            static let password = "Password"
-            static let passwordPlaceholder = "Your password"
-            static let orSignIn = "Or Sign In"
-        }
+        static let signUp = "Sign Up"
+        static let name = "Name"
+        static let yourName = "Your name"
+        static let orSignIn = "Or Sign In"
         
         /// ForgotPassOne
-        enum ForgotPassOne {
-            static let title = "Forgot Password"
-            static let email = "Email"
-            static let emailPlaceholder = "Your email"
-            static let sent = "Sent"
-        }
+        static let sent = "Sent"
         
         /// ForgotPassTwo
-        enum ForgotPassTwo {
-            static let title = "Forgot Password"
-            static let password = "Password"
-            static let passwordPlaceholder = "Your password"
-            static let confirmPassword = "Confirm password"
-            static let confirmPasswordPlaceholder = "Your password"
-            static let changePassword = "Change password"
-        }
-
+        static let title = "Forgot Password"
+        static let confirmPassword = "Confirm password"
+        static let changePassword = "Change password"
+        
         /// Profile
         static let settings = "Settings"
         static let profile = "Profile"
@@ -70,7 +51,6 @@ enum Resources {
         static let aboutUs = "About Us"
         static let logOut = "Log Out"
         static let fullName = "Full Name"
-        static let email = "Email"
         static let saveChanges = "Save Changes"
         static let english = "english"
         static let russian = "russian"

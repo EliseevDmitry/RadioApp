@@ -20,6 +20,8 @@ enum DS {
         static let blueLight = Color(hex: "#D1F9FF")
         /// розовыйНеоновый.
         static let pinkNeon = Color(hex: "#FF296D")
+        /// рыжеватый
+        static let reddish = Color(hex: "#DC4E41")
         //
         static let frame = Color(hex: "#32324E")
 

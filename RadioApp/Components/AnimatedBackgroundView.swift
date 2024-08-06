@@ -8,8 +8,18 @@
 
 import SwiftUI
 
+// MARK: - Background Type Enum
+enum ScreenType {
+    case profile
+    case authentication
+}
+
 struct AnimatedBackgroundView: View {
+    
     @State private var animate = false
+    
+    
+    let screenType: ScreenType
     
     var body: some View {
         ZStack {
@@ -17,7 +27,7 @@ struct AnimatedBackgroundView: View {
                 .ignoresSafeArea()
             
             ForEach(0..<5, id: \.self) { index in
-                BlobView()
+                BlobView(screenType: screenType)
                     .frame(width: 200, height: 200)
                     .modifier(BlobModifier(animate: $animate))
                     .animation(
@@ -34,12 +44,18 @@ struct AnimatedBackgroundView: View {
     }
 }
 
+// MARK: - BlobView
 struct BlobView: View {
+    
+    let screenType: ScreenType
+
+    
+    // MARK: - Body
     var body: some View {
         Circle()
             .fill(
                 LinearGradient(
-                    gradient: Gradient(colors: [DS.Colors.pinkNeon, DS.Colors.blueNeon]),
+                    gradient: screenType == .profile ? Gradient(colors: [DS.Colors.pinkNeon, DS.Colors.blueNeon]) : Gradient(colors: [DS.Colors.pinkNeon, DS.Colors.darkBlue]),
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
@@ -48,6 +64,7 @@ struct BlobView: View {
     }
 }
 
+// MARK: - BlobModifier
 struct BlobModifier: ViewModifier {
     @Binding var animate: Bool
     
@@ -62,5 +79,5 @@ struct BlobModifier: ViewModifier {
 
 // MARK: - Preview
 #Preview {
-    AnimatedBackgroundView()
+    AnimatedBackgroundView(screenType: .authentication)
 }

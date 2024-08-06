@@ -16,7 +16,7 @@ struct BackBarButton: View {
             dismiss()
         }) {
             Image(systemName: Resources.Image.arrowLeft)
-                .foregroundColor(.white)
+                .foregroundColor(.primary)
         }
     }
 }

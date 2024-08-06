@@ -8,6 +8,8 @@
 import Foundation
 import AVKit
 import FirebaseAuth
+import GoogleSignIn
+import GoogleSignInSwift
 
 @MainActor
 final class ViewModel: ObservableObject {
@@ -26,8 +28,10 @@ final class ViewModel: ObservableObject {
     
     // свойства для аутентификации пользователя
     @Published var email = ""
-    @Published var password = ""
     @Published var username = ""
+    @Published var password = ""
+    @Published var confirmPassword = ""
+    @Published var isSignedIn = false
     
     @Published var showPassword = false
     @Published var isUserRegistered = false
@@ -166,6 +170,12 @@ final class ViewModel: ObservableObject {
     func signIn() {
         Task {
             try await AuthService.shared.signIn(with: email, password: password)
+        }
+    }
+    
+    func signInWithGoogle() {
+        Task {
+            try await AuthService.shared.signInWithGoogle
         }
     }
     

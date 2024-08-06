@@ -10,37 +10,48 @@ import SwiftUI
 struct SignUpView: View {    
     @EnvironmentObject var appManager: ViewModel
     
+    private struct DrawingConstants {
+        // размеры - адаптивные: привязаны к ширине и высоте экрана (UIScreen)
+        static let screenLogoImageWidth = UIScreen.width * 1/4
+        static let screenLogoImageHeight = UIScreen.width * 1/4
+        static let screenTitleFontSize = UIScreen.height * 1/16
+        static let screenTitleBottomPadding = UIScreen.height * 1/32
+        static let screenSubTitleFontSize = UIScreen.height * 1/48
+        static let screenSubTitleFrameWidth = UIScreen.width * 1/3
+    }
+    
     var body: some View {
         ZStack {
-            AnimatedBackgroundView()
+            AnimatedBackgroundView(screenType: .authentication)
             AuthBackgroundView()
             
             VStack(alignment: .leading) {
                 Spacer()
                 
                 Image("Group 3").resizable()
-                    .frame(width: UIScreen.width * 1/4, height: UIScreen.width * 1/4)
-                Text(Resources.Text.SignUp.title)
-                    .font(.custom(.sfBold, size: UIScreen.height * 1/16))
-                    .padding(.bottom, UIScreen.height * 1/32)
+                    .frame(width: DrawingConstants.screenLogoImageWidth,
+                           height: DrawingConstants.screenLogoImageHeight)
+                Text(Resources.Text.signUp)
+                    .font(.custom(.sfBold, size: DrawingConstants.screenTitleFontSize))
+                    .padding(.bottom, DrawingConstants.screenTitleBottomPadding)
                 
-                Text(Resources.Text.SignUp.toStartPlay)
-                    .font(.custom(.sfRegular, size: UIScreen.height * 1/48))
-                    .frame(maxWidth: UIScreen.width * 1/3)
+                Text(Resources.Text.toStartPlay)
+                    .font(.custom(.sfRegular, size: DrawingConstants.screenSubTitleFontSize))
+                    .frame(maxWidth: DrawingConstants.screenSubTitleFrameWidth)
                 
-                TextField(Resources.Text.SignUp.name, text: $appManager.email)
+                TextField(Resources.Text.name, text: $appManager.email)
                     .font(.title)
                 
-                TextField(Resources.Text.SignUp.email, text: $appManager.email)
+                TextField(Resources.Text.email, text: $appManager.email)
                     .font(.title)
                 
-                SecureField(Resources.Text.SignUp.password, text: $appManager.password)
+                SecureField(Resources.Text.password, text: $appManager.password)
                     .font(.title)
                                 
-                CustomButton(action: appManager.registerUser, title: Resources.Text.SignUp.title, buttonType: .onboarding) // TODO: изменить тип кнопки
+                CustomButton(action: appManager.registerUser, title: Resources.Text.signUp, buttonType: .onboarding) // TODO: изменить тип кнопки
                 
                 Button(action: {}) {
-                    Text(Resources.Text.SignUp.orSignIn)
+                    Text(Resources.Text.orSignIn)
                         .foregroundStyle(.white)
                 }
                 

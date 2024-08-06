@@ -11,11 +11,16 @@ struct ForgotPassOneView: View {
     @EnvironmentObject var appManager: ViewModel
     // свойство, обеспечивающее работу кнопки "стрелка назад", возвращающей на предыдущий экран
     @Environment(\.dismiss) var dismiss
-
+    
+    private struct DrawingConstants {
+        // размеры - адаптивные: привязаны к ширине и высоте экрана (UIScreen)
+        static let screenTitleFontSize = UIScreen.height * 1/16
+        static let screenTitleBottomPadding = UIScreen.height * 1/32
+    }
     
     var body: some View {
         ZStack {
-            AnimatedBackgroundView()
+            AnimatedBackgroundView(screenType: .authentication)
             AuthBackgroundView()
             
             VStack(alignment: .leading) {
@@ -23,14 +28,14 @@ struct ForgotPassOneView: View {
                 
                 BackBarButton()
                 
-                Text(Resources.Text.ForgotPassOne.title)
-                    .font(.custom(.sfBold, size: UIScreen.height * 1/16))
-                    .padding(.bottom, UIScreen.height * 1/32)
+                Text(Resources.Text.forgotPassword)
+                    .font(.custom(.sfBold, size: DrawingConstants.screenTitleFontSize))
+                    .padding(.bottom, DrawingConstants.screenTitleBottomPadding)
                 
-                TextField(Resources.Text.ForgotPassOne.email, text: $appManager.email)
+                TextField(Resources.Text.email, text: $appManager.email)
                     .font(.title)
-                                
-                CustomButton(action: {}, title: Resources.Text.ForgotPassOne.sent, buttonType: .onboarding) // TODO: изменить тип кнопки и добавить действие
+                
+                CustomButton(action: {}, title: Resources.Text.sent, buttonType: .onboarding) // TODO: изменить тип кнопки и добавить действие
                 
                 Spacer()
             }
@@ -43,12 +48,20 @@ struct ForgotPassOneView: View {
                 Button {
                     dismiss()
                 } label: {
-                    BackBarButton()
-//                    Image(systemName: "arrow.left")
+                    //                    BackBarButton()
+                    Image(systemName: Resources.Image.arrowLeft)
                         .foregroundStyle(.primary)
                 }
             }
+            /*
+             ToolbarItem(placement: .topBarTrailing) {
+             Text(Resources.Text.settings)
+             .offset(-UIScreen.width / 2)
+             }
+             */
         }
+        
+        
     }
 }
 

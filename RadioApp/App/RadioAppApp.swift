@@ -8,6 +8,8 @@
 import SwiftUI
 import FirebaseCore
 import FirebaseAuth
+import GoogleSignIn
+import GoogleSignInSwift
 
 @main
 struct RadioAppApp: App {
@@ -19,7 +21,8 @@ struct RadioAppApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            TestAuthView()
+//            TestAuthView()
+            SignInView()
                 .environmentObject(appManager)
         }
     }

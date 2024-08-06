@@ -26,7 +26,7 @@ struct ChangePhotoView: View {
     
     var body: some View {
         ZStack {
-            AnimatedBackgroundView()
+            AnimatedBackgroundView(screenType: .profile)
                 
             VStack {
                 HStack {
