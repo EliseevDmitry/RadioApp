@@ -79,6 +79,7 @@ enum Resources {
         static let takePhoto = "Take Photo"
         static let choosePhoto = "Choose Photo"
         static let deletePhoto = "Delete Photo"
+        static let areYouWantLogOut = "Are you sure you want to log out?"
         
         /// AboutUS
         static let teamLead = "Team Lead"

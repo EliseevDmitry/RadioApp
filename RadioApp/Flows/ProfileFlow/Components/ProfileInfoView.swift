@@ -12,7 +12,7 @@ struct ProfileInfoView: View {
     // MARK: - Properties
     var userName: String
     var userEmail: String
-    var avatar: UIImage
+    var profileImage: UIImage
     var saveChangesAction: (String, String, UIImage?) -> Void
     
     // MARK: - Drawing Constants
@@ -31,7 +31,7 @@ struct ProfileInfoView: View {
     // MARK: - Body
     var body: some View {
         HStack {
-            Image(uiImage: avatar)
+            Image(uiImage: profileImage)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())
@@ -62,7 +62,7 @@ struct ProfileInfoView: View {
                 saveChangesAction: saveChangesAction,
                 userName: userName,
                 userEmail: userEmail,
-                avatar: avatar
+                profileImage: profileImage
             )
             )
             {
@@ -92,7 +92,7 @@ struct ProfileInfoView: View {
     ProfileInfoView(
         userName: "Stephen",
         userEmail: "stephen@ds",
-        avatar: UIImage(named: "stephen")!, 
+        profileImage: UIImage(named: "stephen")!, 
         saveChangesAction: {_,_,_ in }
     )
 }

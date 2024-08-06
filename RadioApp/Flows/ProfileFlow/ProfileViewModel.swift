@@ -9,12 +9,12 @@ import SwiftUI
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import _PhotosUI_SwiftUI
 
 
 final class ProfileViewModel: ObservableObject {
     // MARK: - Stored Properties
     @Published var currentUser: UserModel?
-    @Published var userAvatar: UIImage?
     @Published var error: Error?
     
     private let authService = AuthService.shared
@@ -26,7 +26,19 @@ final class ProfileViewModel: ObservableObject {
     
     // MARK: - Methods
     func fetchUser() {
-        currentUser = authService.getCurrentUserModel()
+        Task { @MainActor in
+            currentUser = authService.getCurrentUserModel()
+        }
+    }
+    
+    @available(iOS 16.0, *)
+    func saveProfileImage(item: PhotosPickerItem) {
+        guard let currentUser else { return }
+        
+        Task {
+            guard let data = try await item.loadTransferable(type: Data.self) else { return }
+            let (path, name) = try await authService.saveImage(data: data, userID: currentUser.id)
+        }
     }
     
     func updateUserProfile(_ name: String?, _ email: String?, _ avatar: UIImage?) {
@@ -34,9 +46,9 @@ final class ProfileViewModel: ObservableObject {
             do {
                 var photoURL: URL? = nil
                 
-                if let avatar = avatar {
-                    photoURL = try await authService.uploadAvatar(image: avatar, userId: currentUser?.id ?? "")
-                }
+//                if let avatar = avatar {
+//                    photoURL = try await authService.uploadAvatar(image: avatar, userId: currentUser?.id ?? "")
+//                }
                 
                 if let email = email {
                     try await authService.updateEmail(email)
@@ -44,9 +56,13 @@ final class ProfileViewModel: ObservableObject {
                 
                 try await authService.updateUserProfile(displayName: name, photoURL: photoURL)
                 
-                fetchUser()
+                await MainActor.run {
+                    fetchUser()
+                }
             } catch {
-                self.error = error
+                await MainActor.run {
+                    self.error = error
+                }
             }
         }
     }
@@ -55,11 +71,15 @@ final class ProfileViewModel: ObservableObject {
         do {
             try authService.signUserOut()
         } catch {
-            self.error = error
+            Task { @MainActor in
+                self.error = error
+            }
         }
     }
     
     func clearError() {
-        self.error = nil
+        Task { @MainActor in
+            self.error = nil
+        }
     }
 }
