@@ -9,7 +9,6 @@ import Foundation
 
 // MARK: - JSON Model
 struct Station: Codable {
-
     let changeuuid: String
 
     // use this unique id
@@ -33,7 +32,7 @@ struct Station: Codable {
     let state: String
     let language: String
     let languagecodes: String
-    let votes: Int32
+    var votes: Int32
 
     //    let lastchangetime: String
     //    let lastchangetime_iso8601: String

@@ -33,9 +33,9 @@ struct PopularView: View {
                 ScrollView(.vertical, showsIndicators: false){
                     LazyVGrid(columns: columns) {
                         ForEach(appManager.stations, id: \.stationuuid) {item in
-                            StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
-                                .environmentObject(appManager)
-                                .frame(width: 139, height: 139)
+                                StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
+                                    .environmentObject(appManager)
+                                    .frame(width: 139, height: 139)
                         }
                     }
                 }
@@ -66,8 +66,8 @@ struct PopularView: View {
         .onAppear{
             appManager.loadLikesData()
             //clear Set Likes
-            //appManager.likes.likeSet.removeAll()
-            //appManager.saveLikesData()
+            appManager.likes.likeSet.removeAll()
+            appManager.saveLikesData()
         }
     }
 }
