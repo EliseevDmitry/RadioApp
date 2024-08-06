@@ -55,7 +55,6 @@ struct VoteView: View {
             }
         }
         .disabled(!isShow ? true : false)
-        
     }
 }
 
