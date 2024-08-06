@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct UserIcon: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        let width = rect.size.width
-        let height = rect.size.height
-        path.move(to: CGPoint(x: 0.90768*width, y: 0.58868*height))
-        path.addCurve(to: CGPoint(x: 0.90768*width, y: 0.4031*height), control1: CGPoint(x: 0.9846*width, y: 0.54744*height), control2: CGPoint(x: 0.9846*width, y: 0.44434*height))
-        path.addLine(to: CGPoint(x: 0.18652*width, y: 0.01648*height))
-        path.addCurve(to: CGPoint(x: 0.01345*width, y: 0.10927*height), control1: CGPoint(x: 0.1096*width, y: -0.02476*height), control2: CGPoint(x: 0.01345*width, y: 0.02679*height))
-        path.addLine(to: CGPoint(x: 0.01345*width, y: 0.8825*height))
-        path.addCurve(to: CGPoint(x: 0.18652*width, y: 0.97529*height), control1: CGPoint(x: 0.01345*width, y: 0.96498*height), control2: CGPoint(x: 0.1096*width, y: 1.01653*height))
-        path.addLine(to: CGPoint(x: 0.90768*width, y: 0.58868*height))
-        path.closeSubpath()
-        return path
+        func path(in rect: CGRect) -> Path {
+            var path = Path()
+            let width = rect.size.width
+            let height = rect.size.height
+            path.move(to: CGPoint(x: 0.76179*width, y: 0.66313*height))
+            path.addCurve(to: CGPoint(x: 0.76179*width, y: 0.33786*height), control1: CGPoint(x: 0.93222*width, y: 0.58821*height), control2: CGPoint(x: 0.93222*width, y: 0.41278*height))
+            path.addLine(to: CGPoint(x: 0.52988*width, y: 0.23593*height))
+            path.addCurve(to: CGPoint(x: 0.116*width, y: 0.39854*height), control1: CGPoint(x: 0.34951*width, y: 0.15658*height), control2: CGPoint(x: 0.116*width, y: 0.24833*height))
+            path.addLine(to: CGPoint(x: 0.116*width, y: 0.60245*height))
+            path.addCurve(to: CGPoint(x: 0.52988*width, y: 0.76506*height), control1: CGPoint(x: 0.116*width, y: 0.75266*height), control2: CGPoint(x: 0.34951*width, y: 0.84441*height))
+            path.addLine(to: CGPoint(x: 0.76179*width, y: 0.66313*height))
+            path.closeSubpath()
+            return path
+        }
     }
-}
 
 
 struct PopularView: View {
@@ -36,20 +36,20 @@ struct PopularView: View {
     var body: some View {
         NavigationView{
             VStack {
-                HStack {
-                    Text("Popular")
-                        .font(.custom(DS.Fonts.sfRegular, size: 40))
-                        .foregroundStyle(.white)
-                    Spacer()
-                }
-                .padding(.horizontal)
-                .padding(.top, 30)
-                Spacer()
                 HStack{
                     VolumeView()
                         .frame(width: 33 ,height: 250)
                         .padding(.leading, 15)
+                    
                     ScrollView(.vertical, showsIndicators: false){
+                        HStack {
+                            Text("Popular")
+                                .font(.custom(DS.Fonts.sfRegular, size: 35))
+                                .foregroundStyle(.white)
+                            Spacer()
+                        }
+                        .padding(.top, 30)
+                        .padding(.bottom, 10)
                         LazyVGrid(columns: columns) {
                             ForEach(appManager.stations, id: \.stationuuid) {item in
                                 StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
@@ -72,27 +72,38 @@ struct PopularView: View {
                 Spacer()
             }
             .background(DS.Colors.darkBlue)
+            
+            //NavigationToolBar
             .toolbar {
                 ToolbarItemGroup(placement: .topBarLeading) {
                     Image(.toolbarplay)
                         .padding(.leading, 10)
                     Text("Hello")
                         .foregroundStyle(.white)
-                    Text("Mark")
-                        .foregroundStyle(.white)
-                }
-                ToolbarItemGroup(placement: .topBarTrailing) {
-                    Image(.eliseev)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 65, height: 65)
-                        .mask {
-                            UserIcon()
-                        }
+                        .font(.custom(DS.Fonts.sfMedium, size: 30))
+                    //@Published var username = "Mark" - наблюдаемое свойство имени
+                    Text("\(appManager.username)")
+                        .foregroundStyle(DS.Colors.pinkNeon)
+                        .font(.custom(DS.Fonts.sfMedium, size: 30))
                 }
                 
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    Button{
+                        //action перехода на Profile
+                    } label: {
+                        Image(.eliseev)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 60, height: 70)
+                            .mask {
+                                UserIcon()
+                                    .frame(width: 60, height: 70)
+                            }
+                    }
+                    .padding(.trailing, 10)
+                }
             }
-            //.frame(height: 800)
+            
         }
         .ignoresSafeArea()
         
