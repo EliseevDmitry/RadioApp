@@ -34,8 +34,9 @@ struct StationPopularView: View {
                 VStack{
                     HStack{
                         if selectedStationID == station.stationuuid {
-                            Image(.play)
+                            Image(systemName: appManager.isPlay ? "play.fill" : "pause.fill")
                                 .resizable()
+                                .foregroundStyle(.white)
                                 .frame(width: 25)
                         }
                         Spacer()
