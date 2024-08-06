@@ -16,7 +16,7 @@ struct ChangePhotoView: View {
     // MARK: - Body
     var body: some View {
         ZStack {
-            AnimatedBackgroundView()
+            AnimatedBackgroundView(screenType: .profile)
                 
             VStack(alignment: .leading) {
                 // MARK: - Take Photo Button

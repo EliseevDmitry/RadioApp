@@ -24,7 +24,7 @@ struct RadioAppApp: App {
 //            ContentView()
 //            TestAuthView()
             SignInView()
-            ProfileView(viewModel: ProfileViewModel())
+//            ProfileView(viewModel: ProfileViewModel())
            // TestAuthView()
             //TestVoteCoreDataView()
                 .environmentObject(appManager)

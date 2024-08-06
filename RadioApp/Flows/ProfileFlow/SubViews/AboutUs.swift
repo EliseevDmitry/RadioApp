@@ -46,7 +46,7 @@ struct AboutUs: View {
     // MARK: - Body
     var body: some View {
         ZStack {
-            AnimatedBackgroundView()
+            AnimatedBackgroundView(screenType: .profile)
                 .ignoresSafeArea()
             
             List {

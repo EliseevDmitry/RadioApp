@@ -36,8 +36,6 @@ final class ViewModel: ObservableObject {
     @Published var password = ""
     @Published var username = "Mark"
 
-    @Published var username = ""
-    @Published var password = ""
     @Published var confirmPassword = ""
     @Published var isSignedIn = false
     
@@ -327,7 +325,7 @@ final class ViewModel: ObservableObject {
     
     func signInWithGoogle() {
         Task {
-            try await AuthService.shared.signInWithGoogle
+            try await AuthService.shared.signInWithGoogle()
         }
     }
     
