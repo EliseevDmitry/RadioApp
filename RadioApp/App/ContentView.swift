@@ -25,6 +25,7 @@ struct ContentView: View {
                         .tag(Tab.favorites)
 
                     AllStationsView()
+                        .environmentObject(appManager)
                         .tag(Tab.allStations)
                 }
                 CustomTabBarView(currentTab: $currentTab)
