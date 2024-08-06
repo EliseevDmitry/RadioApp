@@ -15,7 +15,7 @@ struct StationPopularView: View {
     //let action: () -> Void
     //MARK: - BODY
     var body: some View {
-        Button{            
+        Button{
             selectedStationID = station.stationuuid
             appManager.playAudio(url: station.url)
         } label: {
@@ -34,11 +34,13 @@ struct StationPopularView: View {
                 VStack{
                     HStack{
                         if selectedStationID == station.stationuuid {
-                            Image(.play)
+                            Image(systemName: appManager.isPlay ? "play.fill" : "pause.fill")
                                 .resizable()
+                                .foregroundStyle(.white)
                                 .frame(width: 25)
                         }
                         Spacer()
+             
                         //отобразить последние 100 голосов
                         Text("votes \(self.station.votes % 1000)")
                             .font(.custom(DS.Fonts.sfRegular, size: 14))
@@ -78,12 +80,12 @@ struct StationPopularView: View {
                     .fixedSize(horizontal: false, vertical: true)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.frame)
-//                    .font(.custom(DS.Fonts.sfBold, size: nameStation != nil ? 20 : 30))
+                //                    .font(.custom(DS.Fonts.sfBold, size: nameStation != nil ? 20 : 30))
                     .offset(CGSize(width: 0.0, height: -15.0))
             }
         }
     }
-
+    
 }
 
 

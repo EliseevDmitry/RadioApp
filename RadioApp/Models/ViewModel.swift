@@ -44,8 +44,14 @@ final class ViewModel: ObservableObject {
 
     //search
     @Published var searchText: String = ""
-    @Published var searchStations: [Station] = []
 
+    func fetchSearchStations() async throws {
+        var fetchSearchStations: [Station]
+        fetchSearchStations = try await network.searchByName(searchText: searchText)
+        stations = fetchSearchStations
+    }
+
+    // likes
     var likes = Like(likeSet: Set<String>())
     var player: AVPlayer?
 
@@ -122,7 +128,7 @@ final class ViewModel: ObservableObject {
     }
     
     
-    //обновление текущей станции
+    //обновление (votes) текущей станции в случае успешного запроса
     func getOneStationByID(id: String) async throws {
         var fetchedStation: [Station]
         var indexStation: Int?
@@ -134,12 +140,40 @@ final class ViewModel: ObservableObject {
         }
         guard let newStation = fetchedStation.first else { return }
         if let id = indexStation {
-            print("изменяем данные")
-            stations[id] = newStation
-            print(newStation.votes)
+            print("Изменяем данные (votes) по текущей станции - \(stations[id].votes)")
+            stations[id].votes = newStation.votes
+            print("Данные (votes) по текущей станции изменены - \(stations[id].votes)")
         }
     }
     
+    //Обновление (votes) аудиостанций не дожидаясь обновления сервера
+    func updateVotesWithoutRequest(idStation: String){
+        if var updateStation = getStationForID(id:idStation){
+            updateStation.votes += 1
+            if let id = getIndexStations(idStation: idStation) {
+                print("Изменяем данные (votes) по текущей станции - \(stations[id].votes)")
+                stations[id].votes = updateStation.votes
+                print("Данные (votes) по текущей станции изменены - \(stations[id].votes)")
+            }
+        }
+    }
+    
+    //Внутрянняя функция поиска индекса в массиве [Station]()
+    private func getIndexStations(idStation: String)->Int?{
+        for (index, station) in stations.enumerated() {
+            if idStation == station.stationuuid{
+                return index
+            }
+        }
+        return nil
+    }
+    
+
+//    func fetchSearchStations() async throws {
+//        var fetchSearchStations: [Station]
+//        fetchSearchStations = try await network.getAllStations()
+//        stations = fetchSearchStations
+//    }
 
     //save likes
     func saveLikesData(){

@@ -27,7 +27,7 @@ struct StationView: View {
                 // code, name, playing now
                 HStack {
                     VStack(alignment: .leading, spacing: 10) {
-                        Text(station.countrycode.uppercased())
+                        Text(station.tags.uppercased())
                             .font(.custom(.sfBold, size: 30))
 
                         Text(station.name)
@@ -38,7 +38,6 @@ struct StationView: View {
                             Text("Playing now")
                                 .font((.custom(.sfBold, size: 14)))
                                 .foregroundStyle(DS.Colors.pinkPlaying)
-                                //.opacity(0.4)
                         }
 
                         Spacer()

@@ -90,7 +90,7 @@ struct ProfileView: View {
               let url = URL(string: urlString),
               let data = try? Data(contentsOf: url),
               let image = UIImage(data: data) else {
-            return UIImage(named: "default_avatar") ?? UIImage()
+            return UIImage(named: "stephen") ?? UIImage()
         }
         return image
     }
