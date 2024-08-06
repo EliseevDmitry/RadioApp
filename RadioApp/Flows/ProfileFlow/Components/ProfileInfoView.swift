@@ -13,7 +13,7 @@ struct ProfileInfoView: View {
     var userName: String
     var userEmail: String
     var avatar: UIImage
-    var saveChangesAction: () -> Void
+    var saveChangesAction: (String, String, UIImage?) -> Void
     
     // MARK: - Drawing Constants
     private struct DrawingConstants {
@@ -93,6 +93,6 @@ struct ProfileInfoView: View {
         userName: "Stephen",
         userEmail: "stephen@ds",
         avatar: UIImage(named: "stephen")!, 
-        saveChangesAction: {}
+        saveChangesAction: {_,_,_ in }
     )
 }
