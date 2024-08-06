@@ -21,9 +21,24 @@ struct VoteView: View {
                 appManager.islike = true
                 //голосование
                 Task{
-                    print(idStation)
-                   try? await appManager.voteStationByID(id: idStation)
-                    try? await appManager.getOneStationByID(id: idStation)
+                   //test update station
+                    if var testUpdate = appManager.getStationForID(id:idStation){
+                        testUpdate.votes = 666
+                        var indexStation: Int?
+                        for (index, station) in appManager.stations.enumerated() {
+                            if idStation == station.stationuuid{
+                                indexStation = index
+                            }
+                        }
+                        
+                        if let id = indexStation {
+                            print("изменяем данные")
+                            appManager.stations[id].votes = testUpdate.votes
+                            print("\(appManager.stations[id].votes) - текущее значение")
+                        }
+                    }
+                   //try? await appManager.voteStationByID(id: idStation)
+                    //try? await appManager.getOneStationByID(id: idStation)
                     //обновление view
                    // appManager.objectWillChange.send()
                 }
