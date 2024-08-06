@@ -32,7 +32,7 @@ final class ViewModel: ObservableObject {
     // свойства для аутентификации пользователя
     @Published var email = ""
     @Published var password = ""
-    @Published var username = ""
+    @Published var username = "Mark"
 
     @Published var showPassword = false
     @Published var isUserRegistered = false
