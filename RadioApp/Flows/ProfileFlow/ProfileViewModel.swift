@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
-import FirebaseStorage
+
 
 final class ProfileViewModel: ObservableObject {
     // MARK: - Stored Properties
@@ -35,7 +35,7 @@ final class ProfileViewModel: ObservableObject {
                 var photoURL: URL? = nil
                 
                 if let avatar = avatar {
-                    photoURL = try await uploadAvatar(image: avatar, userId: currentUser?.id ?? "")
+                    photoURL = try await authService.uploadAvatar(image: avatar, userId: currentUser?.id ?? "")
                 }
                 
                 if let email = email {
@@ -47,29 +47,6 @@ final class ProfileViewModel: ObservableObject {
                 fetchUser()
             } catch {
                 self.error = error
-            }
-        }
-    }
-    
-    private func uploadAvatar(image: UIImage, userId: String) async throws -> URL {
-        guard let imageData = image.jpegData(compressionQuality: 0.8) else {
-            throw NSError(domain: "Invalid image data", code: -1, userInfo: nil)
-        }
-        
-        let storageRef = Storage.storage().reference().child("avatars/\(userId).jpg")
-        return try await withCheckedThrowingContinuation { continuation in
-            let _ = storageRef.putData(imageData, metadata: nil) { metadata, error in
-                if let error = error {
-                    continuation.resume(throwing: error)
-                } else {
-                    storageRef.downloadURL { url, error in
-                        if let error = error {
-                            continuation.resume(throwing: error)
-                        } else if let url = url {
-                            continuation.resume(returning: url)
-                        }
-                    }
-                }
             }
         }
     }

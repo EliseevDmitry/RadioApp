@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseAuth
 import Firebase
+import FirebaseStorage
 
 //this service class will consist of login, sign up and logout auth
 
@@ -65,6 +66,29 @@ final class AuthService {
         changeRequest.photoURL = photoURL
         
         try await changeRequest.commitChanges()
+    }
+    
+    func uploadAvatar(image: UIImage, userId: String) async throws -> URL {
+        guard let imageData = image.jpegData(compressionQuality: 0.8) else {
+            throw NSError(domain: "Invalid image data", code: -1, userInfo: nil)
+        }
+        
+        let storageRef = Storage.storage().reference().child("avatars/\(userId).jpg")
+        return try await withCheckedThrowingContinuation { continuation in
+            let _ = storageRef.putData(imageData, metadata: nil) { metadata, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                } else {
+                    storageRef.downloadURL { url, error in
+                        if let error = error {
+                            continuation.resume(throwing: error)
+                        } else if let url = url {
+                            continuation.resume(returning: url)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func updateEmail(_ email: String) async throws {
