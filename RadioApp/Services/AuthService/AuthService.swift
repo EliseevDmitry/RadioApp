@@ -18,6 +18,7 @@ final class AuthService {
     
     private init() {
         self.userSession = Auth.auth().currentUser
+        print("userSession\(userSession)")
     }
     
     func registerUser(with email: String, password: String, username: String) async throws {
@@ -39,6 +40,41 @@ final class AuthService {
             print(error.localizedDescription)
         }
     }
+    
+    
+    func getCurrentUserModel() -> UserModel? {
+        guard let user = Auth.auth().currentUser else {
+            return nil
+        }
+        
+        return UserModel(
+            id: user.uid,
+            userName: user.displayName ?? "",
+            email: user.email ?? "",
+            avatarURL: user.photoURL?.absoluteString
+        )
+    }
+    
+    func updateUserProfile(displayName: String?, photoURL: URL?) async throws {
+        guard let user = Auth.auth().currentUser else {
+            throw NSError(domain: "No user is signed in", code: -1, userInfo: nil)
+        }
+        
+        let changeRequest = user.createProfileChangeRequest()
+        changeRequest.displayName = displayName
+        changeRequest.photoURL = photoURL
+        
+        try await changeRequest.commitChanges()
+    }
+    
+    func updateEmail(_ email: String) async throws {
+        guard let user = Auth.auth().currentUser else {
+            throw NSError(domain: "No user is signed in", code: -1, userInfo: nil)
+        }
+        
+        try await user.sendEmailVerification(beforeUpdatingEmail: email)
+    }
+    
     
     func signUserOut() throws {
         do {

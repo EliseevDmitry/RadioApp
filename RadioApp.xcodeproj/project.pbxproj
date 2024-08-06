@@ -51,6 +51,7 @@
 		7A98A3682C5CCE820049DE5F /* SearchButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A98A3672C5CCE820049DE5F /* SearchButtonView.swift */; };
 		7A98A36F2C5CEC720049DE5F /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A98A36E2C5CEC720049DE5F /* StationView.swift */; };
 		E133D7BF2C61FF3000BA4E84 /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E133D7BD2C61FF3000BA4E84 /* LikeStations.xcdatamodeld */; };
+		E133D7C22C6220B100BA4E84 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E133D7C12C6220B100BA4E84 /* FirebaseStorage */; };
 		E14AA7862C5E234800BAC1BE /* EditPhotoButttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14AA7852C5E234800BAC1BE /* EditPhotoButttonView.swift */; };
 		E14AA7882C5E7A2A00BAC1BE /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14AA7872C5E7A2900BAC1BE /* ProfileViewModel.swift */; };
 		E14AA78E2C5FB5AD00BAC1BE /* LanguageElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14AA78D2C5FB5AD00BAC1BE /* LanguageElementView.swift */; };
@@ -170,6 +171,7 @@
 				22CA8E962C5953440009952D /* FirebaseDatabase in Frameworks */,
 				22CA8E982C59534D0009952D /* FirebaseFirestore in Frameworks */,
 				220E86A82C5CE34D00F8B0D6 /* GoogleSignInSwift in Frameworks */,
+				E133D7C22C6220B100BA4E84 /* FirebaseStorage in Frameworks */,
 				2663C7AE2C56A2B9002EFD0C /* Kingfisher in Frameworks */,
 				22CA8E942C59533A0009952D /* FirebaseAuth in Frameworks */,
 			);
@@ -217,6 +219,7 @@
 				2663C77C2C569E54002EFD0C /* RadioApp */,
 				2663C77B2C569E54002EFD0C /* Products */,
 				E14AA7912C600C2300BAC1BE /* Recovered References */,
+				E133D7C02C6220B100BA4E84 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -376,6 +379,13 @@
 			path = Station;
 			sourceTree = "<group>";
 		};
+		E133D7C02C6220B100BA4E84 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E14AA7912C600C2300BAC1BE /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -512,6 +522,7 @@
 				22CA8E972C59534D0009952D /* FirebaseFirestore */,
 				220E86A52C5CE34D00F8B0D6 /* GoogleSignIn */,
 				220E86A72C5CE34D00F8B0D6 /* GoogleSignInSwift */,
+				E133D7C12C6220B100BA4E84 /* FirebaseStorage */,
 			);
 			productName = RadioApp;
 			productReference = 2663C77A2C569E54002EFD0C /* RadioApp.app */;
@@ -925,6 +936,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2663C7AC2C56A2B9002EFD0C /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		E133D7C12C6220B100BA4E84 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2663C7AF2C56A337002EFD0C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 
