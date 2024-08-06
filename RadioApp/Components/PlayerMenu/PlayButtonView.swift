@@ -46,9 +46,12 @@ struct PlayButtonView: View {
             }
            
         } label: {
-            Image(.play)
+            //Image(.play)
+            Image(systemName: appManager.isPlay ? "play.fill" : "pause.fill")
                 .resizable()
+                .foregroundStyle(.white)
                 .frame(width: 37, height: 37)
+             
         }
         .frame(width: 89, height: 89)
         .background {

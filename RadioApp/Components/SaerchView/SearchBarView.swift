@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct SearchView: View {
+struct SearchBarView: View {
 
     @EnvironmentObject var appManager: ViewModel
     @State var searchText: String = ""
-    @State var submit: Bool = true
+    @Binding var isSearching: Bool
 
     var body: some View {
         ZStack {
@@ -29,14 +29,20 @@ struct SearchView: View {
                     .foregroundColor(.white)
 
                 Button {
-                    appManager.searchText = ""
-                    submit = false
+                    Task {
+                        if isSearching {
+                            try await appManager.fetchAllStations()
+                            appManager.searchText = searchText
+                        } else {
+                            try await appManager.fetchSearchStations()
+                        }
+                        isSearching.toggle()
+                    }
                 } label: {
-                    SearchButtonView(submit: $submit)
+                    SearchButtonView(isSearching: $isSearching)
                 }
             }
             .padding(.horizontal)
-
         }
         .frame(width: .infinity, height: 56)
         .padding(.horizontal, 8)
@@ -61,6 +67,6 @@ struct SearchView: View {
 }
 
 #Preview {
-    SearchView()
+    SearchBarView(isSearching: .constant(false))
         .environmentObject(ViewModel())
 }

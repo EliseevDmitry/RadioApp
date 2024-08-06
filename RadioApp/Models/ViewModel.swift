@@ -44,8 +44,14 @@ final class ViewModel: ObservableObject {
 
     //search
     @Published var searchText: String = ""
-    @Published var searchStations: [Station] = []
 
+    func fetchSearchStations() async throws {
+        var fetchSearchStations: [Station]
+        fetchSearchStations = try await network.searchByName(searchText: searchText)
+        stations = fetchSearchStations
+    }
+
+    // likes
     var likes = Like(likeSet: Set<String>())
     var player: AVPlayer?
 
@@ -162,6 +168,12 @@ final class ViewModel: ObservableObject {
         return nil
     }
     
+
+//    func fetchSearchStations() async throws {
+//        var fetchSearchStations: [Station]
+//        fetchSearchStations = try await network.getAllStations()
+//        stations = fetchSearchStations
+//    }
 
     //save likes
     func saveLikesData(){

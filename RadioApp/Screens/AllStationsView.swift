@@ -10,6 +10,7 @@ import SwiftUI
 struct AllStationsView: View {
 
     @EnvironmentObject var appManager: ViewModel
+    @State private var isSearching: Bool = false
 
     var body: some View {
         NavigationView {
@@ -25,7 +26,7 @@ struct AllStationsView: View {
                 .padding(.leading, 60)
 
                 // search view
-                SearchView(searchText: "")
+                SearchBarView(isSearching: $isSearching)
 
                 Spacer()
 
@@ -41,7 +42,7 @@ struct AllStationsView: View {
                     VStack {
                         ScrollView(.vertical, showsIndicators: false) {
                             LazyVStack {
-                                ForEach(appManager.stations.shuffled(), id: \.stationuuid) { station in
+                                ForEach(appManager.stations, id: \.stationuuid) { station in
                                     StationView(selectedStationID: $appManager.selectedStation, station: station)
                                 }
                             }

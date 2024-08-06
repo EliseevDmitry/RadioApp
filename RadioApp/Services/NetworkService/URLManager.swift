@@ -33,5 +33,11 @@ class URLManager {
         URL(string: "http://at1.api.radio-browser.info/json/vote/" + id)
         //http://all.api.radio-browser.info/json/vote/9616a843-0601-11e8-ae97-52543be04c81
     }
+
+    // MARK: - get URL for search
+    func createURLSearch(searchText: String) -> URL? {
+        URL(string: "http://all.api.radio-browser.info/json/stations/search?name=" + searchText)
+    }
     
 }
+
