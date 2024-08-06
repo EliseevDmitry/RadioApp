@@ -20,7 +20,7 @@ struct RadioAppApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            PopularView()
+            ProfileView(viewModel: ProfileViewModel())
            // TestAuthView()
             //TestVoteCoreDataView()
                 .environmentObject(appManager)

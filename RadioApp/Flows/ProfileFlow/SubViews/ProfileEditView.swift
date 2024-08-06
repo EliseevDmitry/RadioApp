@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileEditView: View {
     // MARK: - Properties
-    var saveChangesAction: () -> Void
+    var saveChangesAction: (String, String, UIImage?) -> Void
     
     @State var userName: String
     @State var userEmail: String
@@ -71,7 +71,9 @@ struct ProfileEditView: View {
                         Spacer()
                         
                         CustomButton(
-                            action: saveChangesAction,
+                            action: {
+                                saveChangesAction(userName, userEmail, avatar)
+                            },
                             title: Resources.Text.saveChanges,
                             buttonType: .profile
                         )
@@ -151,7 +153,7 @@ struct ProfileEditView: View {
 struct ProfileEditView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileEditView(
-            saveChangesAction: {},
+            saveChangesAction: {_,_,_ in },
             userName: "Stephen",
             userEmail: "stephen@ds",
             avatar: UIImage(named: "stephen")!

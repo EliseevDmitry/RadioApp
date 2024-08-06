@@ -91,7 +91,8 @@ struct PopularView: View {
                     Button{
                         //action перехода на Profile
                     } label: {
-                        Image(.eliseev)
+                        //изображение пользователя
+                        Image(.eliseevd)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 60, height: 70)

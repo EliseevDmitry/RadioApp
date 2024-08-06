@@ -40,8 +40,8 @@
 		26A737992C5A4F850002F1E9 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A737982C5A4F850002F1E9 /* BackButtonView.swift */; };
 		26A7379B2C5A4FCB0002F1E9 /* ForwardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */; };
 		26A7379E2C5A6A670002F1E9 /* SplineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379D2C5A6A670002F1E9 /* SplineView.swift */; };
+		26B995BF2C6236A600B6F76D /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26B995BD2C6236A600B6F76D /* LikeStations.xcdatamodeld */; };
 		26D180992C5AA0A300D4EF68 /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D180982C5AA0A300D4EF68 /* PopularView.swift */; };
-		26E24F262C6209E0000D7870 /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26E24F242C6209E0000D7870 /* LikeStations.xcdatamodeld */; };
 		7A0ED5E12C592B280063F449 /* TestView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0ED5E02C592B280063F449 /* TestView2.swift */; };
 		7A6579FF2C57F34E00FFDBFD /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6579FE2C57F34E00FFDBFD /* URLManager.swift */; };
 		7A7A4B302C5B51B000CD8794 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B2F2C5B51B000CD8794 /* ContentView.swift */; };
@@ -50,6 +50,7 @@
 		7A7A4B382C5B64DE00CD8794 /* AllStationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B372C5B64DE00CD8794 /* AllStationsView.swift */; };
 		7A98A3682C5CCE820049DE5F /* SearchButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A98A3672C5CCE820049DE5F /* SearchButtonView.swift */; };
 		7A98A36F2C5CEC720049DE5F /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A98A36E2C5CEC720049DE5F /* StationView.swift */; };
+		E133D7C22C6220B100BA4E84 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E133D7C12C6220B100BA4E84 /* FirebaseStorage */; };
 		E14AA7862C5E234800BAC1BE /* EditPhotoButttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14AA7852C5E234800BAC1BE /* EditPhotoButttonView.swift */; };
 		E14AA7882C5E7A2A00BAC1BE /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14AA7872C5E7A2900BAC1BE /* ProfileViewModel.swift */; };
 		E14AA78E2C5FB5AD00BAC1BE /* LanguageElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14AA78D2C5FB5AD00BAC1BE /* LanguageElementView.swift */; };
@@ -113,8 +114,8 @@
 		26A737982C5A4F850002F1E9 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButtonView.swift; sourceTree = "<group>"; };
 		26A7379D2C5A6A670002F1E9 /* SplineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplineView.swift; sourceTree = "<group>"; };
+		26B995BE2C6236A600B6F76D /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		26D180982C5AA0A300D4EF68 /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
-		26E24F252C6209E0000D7870 /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		7A0ED5E02C592B280063F449 /* TestView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView2.swift; sourceTree = "<group>"; };
 		7A6579FE2C57F34E00FFDBFD /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		7A7A4B2F2C5B51B000CD8794 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -168,6 +169,7 @@
 				22CA8E962C5953440009952D /* FirebaseDatabase in Frameworks */,
 				22CA8E982C59534D0009952D /* FirebaseFirestore in Frameworks */,
 				220E86A82C5CE34D00F8B0D6 /* GoogleSignInSwift in Frameworks */,
+				E133D7C22C6220B100BA4E84 /* FirebaseStorage in Frameworks */,
 				2663C7AE2C56A2B9002EFD0C /* Kingfisher in Frameworks */,
 				22CA8E942C59533A0009952D /* FirebaseAuth in Frameworks */,
 			);
@@ -215,6 +217,7 @@
 				2663C77C2C569E54002EFD0C /* RadioApp */,
 				2663C77B2C569E54002EFD0C /* Products */,
 				E14AA7912C600C2300BAC1BE /* Recovered References */,
+				E133D7C02C6220B100BA4E84 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -373,6 +376,13 @@
 			path = Station;
 			sourceTree = "<group>";
 		};
+		E133D7C02C6220B100BA4E84 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E14AA7912C600C2300BAC1BE /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,7 +431,7 @@
 		E1E497E32C56D4DF0099440D /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				26E24F242C6209E0000D7870 /* LikeStations.xcdatamodeld */,
+				26B995BD2C6236A600B6F76D /* LikeStations.xcdatamodeld */,
 				22891AC32C5B5EF700DE33E6 /* AuthService */,
 				E1E497E42C56D4F70099440D /* NetworkService */,
 				E18529D52C5D01E100BBE649 /* LocalizationService.swift */,
@@ -509,6 +519,7 @@
 				22CA8E972C59534D0009952D /* FirebaseFirestore */,
 				220E86A52C5CE34D00F8B0D6 /* GoogleSignIn */,
 				220E86A72C5CE34D00F8B0D6 /* GoogleSignInSwift */,
+				E133D7C12C6220B100BA4E84 /* FirebaseStorage */,
 			);
 			productName = RadioApp;
 			productReference = 2663C77A2C569E54002EFD0C /* RadioApp.app */;
@@ -599,7 +610,6 @@
 				E14AA7862C5E234800BAC1BE /* EditPhotoButttonView.swift in Sources */,
 				268696642C57DC330075E9DC /* StationPopularView.swift in Sources */,
 				22891AC52C5B5F5F00DE33E6 /* AuthService.swift in Sources */,
-				26E24F262C6209E0000D7870 /* LikeStations.xcdatamodeld in Sources */,
 				E1E497DA2C56D14F0099440D /* Resources.swift in Sources */,
 				2663C7802C569E54002EFD0C /* WelcomeView.swift in Sources */,
 				7A98A3682C5CCE820049DE5F /* SearchButtonView.swift in Sources */,
@@ -632,6 +642,7 @@
 				E16EBD592C5CB4060010BF71 /* LegalPoliciesView.swift in Sources */,
 				E14AA7882C5E7A2A00BAC1BE /* ProfileViewModel.swift in Sources */,
 				E1E498122C5AB7490099440D /* BackBarButton.swift in Sources */,
+				26B995BF2C6236A600B6F76D /* LikeStations.xcdatamodeld in Sources */,
 				7A6579FF2C57F34E00FFDBFD /* URLManager.swift in Sources */,
 				E1E4980A2C5983450099440D /* SettingsButton.swift in Sources */,
 				E18529D62C5D01E100BBE649 /* LocalizationService.swift in Sources */,
@@ -922,15 +933,20 @@
 			package = 2663C7AC2C56A2B9002EFD0C /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
+		E133D7C12C6220B100BA4E84 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2663C7AF2C56A337002EFD0C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		26E24F242C6209E0000D7870 /* LikeStations.xcdatamodeld */ = {
+		26B995BD2C6236A600B6F76D /* LikeStations.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				26E24F252C6209E0000D7870 /* LikeStations.xcdatamodel */,
+				26B995BE2C6236A600B6F76D /* LikeStations.xcdatamodel */,
 			);
-			currentVersion = 26E24F252C6209E0000D7870 /* LikeStations.xcdatamodel */;
+			currentVersion = 26B995BE2C6236A600B6F76D /* LikeStations.xcdatamodel */;
 			name = LikeStations.xcdatamodeld;
 			path = /Users/dmitriyeliseev/Desktop/Challenge3/RadioApp/RadioApp/Services/LikeStations.xcdatamodeld;
 			sourceTree = "<group>";
