@@ -7,6 +7,24 @@
 
 import SwiftUI
 
+struct UserIcon: Shape {
+        func path(in rect: CGRect) -> Path {
+            var path = Path()
+            let width = rect.size.width
+            let height = rect.size.height
+            path.move(to: CGPoint(x: 0.76179*width, y: 0.66313*height))
+            path.addCurve(to: CGPoint(x: 0.76179*width, y: 0.33786*height), control1: CGPoint(x: 0.93222*width, y: 0.58821*height), control2: CGPoint(x: 0.93222*width, y: 0.41278*height))
+            path.addLine(to: CGPoint(x: 0.52988*width, y: 0.23593*height))
+            path.addCurve(to: CGPoint(x: 0.116*width, y: 0.39854*height), control1: CGPoint(x: 0.34951*width, y: 0.15658*height), control2: CGPoint(x: 0.116*width, y: 0.24833*height))
+            path.addLine(to: CGPoint(x: 0.116*width, y: 0.60245*height))
+            path.addCurve(to: CGPoint(x: 0.52988*width, y: 0.76506*height), control1: CGPoint(x: 0.116*width, y: 0.75266*height), control2: CGPoint(x: 0.34951*width, y: 0.84441*height))
+            path.addLine(to: CGPoint(x: 0.76179*width, y: 0.66313*height))
+            path.closeSubpath()
+            return path
+        }
+    }
+
+
 struct PopularView: View {
     //MARK: - PROPERTIES
     @EnvironmentObject var appManager: ViewModel
@@ -16,47 +34,83 @@ struct PopularView: View {
     ]
     //MARK: - BODY
     var body: some View {
-        VStack {
-            HStack {
-                Text("Popular")
-                    .font(.custom(DS.Fonts.sfRegular, size: 40))
-                    .foregroundStyle(.white)
-                Spacer()
-            }
-            .padding(.horizontal)
-            .padding(.top, 60)
-            Spacer()
-            HStack{
-                VolumeView()
-                    .frame(width: 33 ,height: 250)
-                    .padding(.leading, 15)
-                ScrollView(.vertical, showsIndicators: false){
-                    LazyVGrid(columns: columns) {
-                        ForEach(appManager.stations, id: \.stationuuid) {item in
+        NavigationView{
+            VStack {
+                HStack{
+                    VolumeView()
+                        .frame(width: 33 ,height: 250)
+                        .padding(.leading, 15)
+                    
+                    ScrollView(.vertical, showsIndicators: false){
+                        HStack {
+                            Text("Popular")
+                                .font(.custom(DS.Fonts.sfRegular, size: 35))
+                                .foregroundStyle(.white)
+                            Spacer()
+                        }
+                        .padding(.top, 30)
+                        .padding(.bottom, 10)
+                        LazyVGrid(columns: columns) {
+                            ForEach(appManager.stations, id: \.stationuuid) {item in
                                 StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
                                     .environmentObject(appManager)
                                     .frame(width: 139, height: 139)
+                            }
                         }
                     }
-                }
-                .padding()
-                .overlay {
-                    HStack(spacing: 30){
-                        BackButtonView()
-                        PlayButtonView()
-                        ForwardButtonView()
+                    .padding()
+                    .overlay {
+                        HStack(spacing: 30){
+                            BackButtonView()
+                            PlayButtonView()
+                            ForwardButtonView()
+                        }
+                        .offset(CGSize(width: 0, height: 260))
                     }
-                    .offset(CGSize(width: 0, height: 260))
+                    Spacer()
                 }
                 Spacer()
             }
-            Spacer()
+            .background(DS.Colors.darkBlue)
+            
+            //NavigationToolBar
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarLeading) {
+                    Image(.toolbarplay)
+                        .padding(.leading, 10)
+                    Text("Hello")
+                        .foregroundStyle(.white)
+                        .font(.custom(DS.Fonts.sfMedium, size: 30))
+                    //@Published var username = "Mark" - наблюдаемое свойство имени
+                    Text("\(appManager.username)")
+                        .foregroundStyle(DS.Colors.pinkNeon)
+                        .font(.custom(DS.Fonts.sfMedium, size: 30))
+                }
+                
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    Button{
+                        //action перехода на Profile
+                    } label: {
+                        //изображение пользователя
+                        Image(.eliseevd)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 60, height: 70)
+                            .mask {
+                                UserIcon()
+                                    .frame(width: 60, height: 70)
+                            }
+                    }
+                    .padding(.trailing, 10)
+                }
+            }
+            
         }
         .ignoresSafeArea()
-        .background(DS.Colors.darkBlue)
+        
         .task {
             do {
-               try await appManager.fetchTopStations()  
+                try await appManager.fetchTopStations()
             } catch let err{
                 // handle error
                 print(err.localizedDescription)
@@ -66,8 +120,8 @@ struct PopularView: View {
         .onAppear{
             appManager.loadLikesData()
             //clear Set Likes
-//            appManager.likes.likeSet.removeAll()
-//            appManager.saveLikesData()
+            //            appManager.likes.likeSet.removeAll()
+            //            appManager.saveLikesData()
         }
     }
 }

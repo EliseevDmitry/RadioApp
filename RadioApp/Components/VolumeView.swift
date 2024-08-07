@@ -30,27 +30,27 @@ struct VolumeView: View {
                         .position(CGPoint(x: 5.0, y: screen.size.height - (screen.size.height * CGFloat(self.appManager.volume)) ))
                         .frame(width: 10)
                     //запретили менять - только показывать!
-//                        .gesture(
-//                            DragGesture()
-//                                .onChanged({ value in
-//                                    withAnimation(.linear(duration: 2)){
-//                                        if appManager.volume >= 0 && appManager.volume <= 1 {
-//                                            appManager.volume -= CGFloat(Float((value.translation.height/screen.size.height/50)))
-//                                            appManager.setVolme()
-//                                           
-//                                        }
-//                                    }
-//                                })
-//                                .onEnded({ _ in
-//                                    if appManager.volume >= 1 {
-//                                        appManager.volume = 1
-//                                    } else if appManager.volume <= 0 {
-//                                        appManager.volume = 0
-//                                    }
-//                                    appManager.setVolme()
-//                                    
-//                                })
-//                        )
+                    //                        .gesture(
+                    //                            DragGesture()
+                    //                                .onChanged({ value in
+                    //                                    withAnimation(.linear(duration: 2)){
+                    //                                        if appManager.volume >= 0 && appManager.volume <= 1 {
+                    //                                            appManager.volume -= CGFloat(Float((value.translation.height/screen.size.height/50)))
+                    //                                            appManager.setVolme()
+                    //
+                    //                                        }
+                    //                                    }
+                    //                                })
+                    //                                .onEnded({ _ in
+                    //                                    if appManager.volume >= 1 {
+                    //                                        appManager.volume = 1
+                    //                                    } else if appManager.volume <= 0 {
+                    //                                        appManager.volume = 0
+                    //                                    }
+                    //                                    appManager.setVolme()
+                    //
+                    //                                })
+                    //                        )
                 }
             }
             .frame(width: 10)
@@ -61,15 +61,13 @@ struct VolumeView: View {
                 .foregroundStyle(DS.Colors.frame)
         }
     }
-    
-    
 }
 
 //MARK: - PREVIEW
-//struct VolumeView_Previews: PreviewProvider {
-//    static let previewAppManager = ViewModel()
-//    static var previews: some View {
-//        VolumeView(voulmeValue: .constant(0.5))
-//            .environmentObject(previewAppManager)
-//    }
-//}
+struct VolumeView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    static var previews: some View {
+        VolumeView()
+            .environmentObject(previewAppManager)
+    }
+}
