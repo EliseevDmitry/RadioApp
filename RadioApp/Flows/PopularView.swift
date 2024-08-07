@@ -88,8 +88,9 @@ struct PopularView: View {
                 }
                 
                 ToolbarItemGroup(placement: .topBarTrailing) {
+                    /*
                     Button{
-                        //action перехода на Profile
+                        ProfileView()
                     } label: {
                         //изображение пользователя
                         Image(.eliseevd)
@@ -102,6 +103,43 @@ struct PopularView: View {
                             }
                     }
                     .padding(.trailing, 10)
+                    
+                    */
+                    /*
+                    NavigationLink(
+                        destination: ProfileView()
+                            .environmentObject(appManager)
+                            .navigationBarBackButtonHidden()
+                    ) {
+                        //изображение пользователя
+                        Image(.eliseevd)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 60, height: 70)
+                            .mask {
+                                UserIcon()
+                                    .frame(width: 60, height: 70)
+                            }
+                    }
+                    .padding(.trailing, 10)
+                    */
+                    
+                    /*
+                     NavigationLink(
+                         destination: SignUpView()
+                             .environmentObject(appManager)
+                             .navigationBarBackButtonHidden()
+                     ) {
+                         Text(Resources.Text.orSignUp)
+                             .foregroundStyle(.white)
+                         /*
+                         CustomButton(
+                             action: {},
+                             title: Resources.Text.getStarted,
+                             buttonType: .onboarding)
+                         */
+                     }
+                    */
                 }
             }
             

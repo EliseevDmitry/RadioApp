@@ -7,40 +7,89 @@
 
 import SwiftUI
 
+// MARK: - WelcomeView
 struct WelcomeView: View {
+    // MARK: - Properties
     @EnvironmentObject var appManager: ViewModel
     
+    // MARK: - Drawing Constants
+    private struct DrawingConstants {
+        // размеры - адаптивные: привязаны к ширине и высоте экрана (UIScreen)
+        static let screenTitleFontSize = UIScreen.height * 1/16
+        static let screenTitleBottomPadding = UIScreen.height * 1/32
+        static let screenSubtitleFontSize = UIScreen.height * 1/48
+        static let screenSubtitleFrameWidth = UIScreen.width * 1/3
+        static let screenContentFrameWidth = UIScreen.width * 2/3
+        static let screenContentBottomPadding = (UIScreen.width - screenContentFrameWidth) / 2
+    }
+    
+    // MARK: - Body
     var body: some View {
-        ZStack {
-            WelcomeBackgroundView()
-            
-            VStack(alignment: .leading) {
-                Spacer()
+        NavigationView {
+            ZStack {
+                WelcomeBackgroundView()
                 
                 VStack(alignment: .leading) {
-                    // MARK: Title Text
-                    Text(Resources.Text.letsGetStarted)
-                        .font(.custom(.sfBold, size: UIScreen.height * 1/16))
-                        .padding(.bottom, UIScreen.height * 1/32)
+                    Spacer()
+                    
+                    VStack(alignment: .leading) {
+                        // MARK: - Title
+                        Text(Resources.Text.letsGetStarted)
+                            .font(.custom(.sfBold, size: DrawingConstants.screenTitleFontSize))
+                            .padding(.bottom, DrawingConstants.screenTitleBottomPadding)
 
-                    // MARK: Explanation Text
-                    Text(Resources.Text.enjoyTheBestRadio)
-                        .font(.custom(.sfRegular, size: UIScreen.height * 1/48))
-                        .frame(maxWidth: UIScreen.width * 1/3)
+                        // MARK: - Subtitle
+                        Text(Resources.Text.enjoyTheBestRadio)
+                            .font(.custom(.sfRegular, size: DrawingConstants.screenSubtitleFontSize))
+                            .frame(maxWidth: DrawingConstants.screenSubtitleFrameWidth)
+                    }
+                    .foregroundColor(.white)
+                    
+                    Spacer()
+                    Spacer()
+                    
+                    // MARK: GetStarted Button
+                    NavigationLink(isActive: $appManager.onboardingIsShown) {
+                        SignInView()
+                            .navigationBarBackButtonHidden()
+                            .environmentObject(appManager)
+                    } label: {
+                        CustomButton(action: {appManager.onboardingIsShown.toggle()}, title: Resources.Text.getStarted, buttonType: .onboarding)
+                    }
+                    
+                    /*
+                    NavigationLink(
+                        destination: SignInView()
+                            .navigationBarBackButtonHidden()
+                            .environmentObject(appManager)
+                    ) {
+                        Text(Resources.Text.getStarted)
+                            .foregroundStyle(.white)
+                    }
+                    */
+                    
+                    /*
+                    NavigationLink(isActive: $onboardingPage1ViewIsOn) {
+                        OnboardingPage1View(appManager: appManager)
+                            .navigationBarBackButtonHidden()
+                    } label: {
+                        StartButtonView(title: "Get Started") {
+                            onboardingPage1ViewIsOn.toggle()
+                        }
+                    }
+                    */
+                    
+                    /*
+                    // MARK: GetStarted Button
+                    CustomButton(
+                        action: {},
+                        title: Resources.Text.getStarted,
+                        buttonType: .onboarding)
+                    */
                 }
-                .foregroundColor(.white)
-                
-                Spacer()
-                Spacer()
-                
-                // MARK: GetStarted Button
-                CustomButton(
-                    action: {},
-                    title: Resources.Text.getStarted,
-                    buttonType: .onboarding)
+                .frame(maxWidth: DrawingConstants.screenContentFrameWidth)
+                .padding(.bottom, DrawingConstants.screenContentBottomPadding)
             }
-            .frame(maxWidth: UIScreen.width * 2/3)
-            .padding(.bottom, UIScreen.width * 1/6)
         }
     }
 }

@@ -29,7 +29,9 @@ final class ViewModel: ObservableObject {
     @Published var islike: Bool = false
 
     @Published var isPlay: Bool = false
-
+    
+    // свойства для онбординга
+    @Published var onboardingIsShown = false
 
     // свойства для аутентификации пользователя
     @Published var email = ""

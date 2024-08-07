@@ -35,7 +35,16 @@ struct ForgotPassOneView: View {
                 TextField(Resources.Text.email, text: $appManager.email)
                     .font(.title)
                 
-                CustomButton(action: {}, title: Resources.Text.sent, buttonType: .onboarding) // TODO: изменить тип кнопки и добавить действие
+                CustomButton(action: {
+                    NavigationLink(
+                        destination: ForgotPassTwoView()
+                            .navigationBarBackButtonHidden()
+                            .environmentObject(appManager)
+                    ) {
+                        Text(Resources.Text.forgotPassword)
+                            .foregroundStyle(.white)
+                    }
+                }, title: Resources.Text.sent, buttonType: .onboarding) // TODO: изменить тип кнопки и добавить действие
                 
                 Spacer()
             }
