@@ -19,16 +19,9 @@ final class AuthService {
     @Published var userSession: FirebaseAuth.User?
     
     private let storage = Storage.storage().reference()
-    private var imagesReferance: StorageReference {
+    
+    private var imagesReference: StorageReference {
         storage.child("images")
-    }
-    
-    private func userReferance(userID: String) -> StorageReference {
-        storage.child("users").child(userID)
-    }
-    
-    func getUrlForImage(path: String) async throws -> URL {
-        try await Storage.storage().reference(withPath: path).downloadURL()
     }
     
     // MARK: - Initializer
@@ -99,6 +92,34 @@ final class AuthService {
         try await changeRequest.commitChanges()
     }
     
+    /// Updates the email of the current user
+    /// - Parameter email: The new email for the user
+    func updateEmail(_ email: String) async throws {
+        guard let user = Auth.auth().currentUser else {
+            throw NSError(domain: "No user is signed in", code: -1, userInfo: nil)
+        }
+        
+        try await user.sendEmailVerification(beforeUpdatingEmail: email)
+    }
+    
+    /// Signs out the current user
+    func signUserOut() throws {
+        do {
+            try Auth.auth().signOut()
+            self.userSession = nil
+        } catch {
+            throw error
+        }
+    }
+
+    private func userReferance(userID: String) -> StorageReference {
+        storage.child("users").child(userID)
+    }
+    
+    func getUrlForImage(path: String) async throws -> URL {
+        try await Storage.storage().reference(withPath: path).downloadURL()
+    }
+    
     func getData(userID: String, path: String) async throws -> Data {
         try await storage.child(path).data(maxSize: 3 * 1024 * 1024)
     }
@@ -133,23 +154,4 @@ final class AuthService {
         return try await saveImage(data: data, userID: userID)
     }
     
-    /// Updates the email of the current user
-    /// - Parameter email: The new email for the user
-    func updateEmail(_ email: String) async throws {
-        guard let user = Auth.auth().currentUser else {
-            throw NSError(domain: "No user is signed in", code: -1, userInfo: nil)
-        }
-        
-        try await user.sendEmailVerification(beforeUpdatingEmail: email)
-    }
-    
-    /// Signs out the current user
-    func signUserOut() throws {
-        do {
-            try Auth.auth().signOut()
-            self.userSession = nil
-        } catch {
-            throw error
-        }
-    }
 }

@@ -13,7 +13,7 @@ struct ProfileEditView: View {
     
     @State var userName: String
     @State var userEmail: String
-    @State var profileImage: UIImage?
+    @State var profileImage: UIImage? = nil
     
     @State private var showChangedView = false
     @State private var blurBackground = false
@@ -49,7 +49,7 @@ struct ProfileEditView: View {
                         ProfileHeaderView(
                             userName: $userName,
                             userEmail: $userEmail,
-                            avatar: $profileImage,
+                            profileImage: $profileImage,
                             showChangedPhotoView: $showChangedView
                         )
                         
@@ -146,6 +146,13 @@ struct ProfileEditView: View {
     func showImagePicker(source: UIImagePickerController.SourceType) {
         imagePickerSource = source
         isImagePickerPresented = true
+    }
+    
+    func saveImageURL() {
+//        viewModel.saveProfileImage(
+//            profileImage
+//            ?? UIImage(systemName: Resources.Image.fileIcon)!
+//        )
     }
 }
 

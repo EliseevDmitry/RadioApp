@@ -20,6 +20,7 @@ struct RadioAppApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
+//            SignInView()
             ProfileView(viewModel: ProfileViewModel())
            // TestAuthView()
             //TestVoteCoreDataView()

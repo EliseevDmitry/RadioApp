@@ -84,6 +84,8 @@
 		E1E498102C5AB6590099440D /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E4980F2C5AB6590099440D /* AboutUs.swift */; };
 		E1E498122C5AB7490099440D /* BackBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498112C5AB7490099440D /* BackBarButton.swift */; };
 		E1E498142C5BBB500099440D /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E498132C5BBB500099440D /* CustomTextField.swift */; };
+		E1E87BB12C640CE10070D855 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BB02C640CE10070D855 /* NotificationView.swift */; };
+		E1E87BB32C64122F0070D855 /* TimeAndDaysPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BB22C64122F0070D855 /* TimeAndDaysPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,6 +164,8 @@
 		E1E87BAD2C63471A0070D855 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = RadioApp/de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E1E87BAE2C6347270070D855 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = RadioApp/it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E1E87BAF2C6347310070D855 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = RadioApp/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E1E87BB02C640CE10070D855 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		E1E87BB22C64122F0070D855 /* TimeAndDaysPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAndDaysPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -468,6 +472,7 @@
 				2663C7962C56A037002EFD0C /* ProfileEditView.swift */,
 				E1E4980D2C5A58F30099440D /* LanguageView.swift */,
 				E1E4980F2C5AB6590099440D /* AboutUs.swift */,
+				E1E87BB02C640CE10070D855 /* NotificationView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -486,6 +491,7 @@
 		E1E498022C57EE4C0099440D /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E1E87BB22C64122F0070D855 /* TimeAndDaysPicker.swift */,
 				E1E498052C58D3DF0099440D /* SettingView.swift */,
 				E18529E02C5D30F800BBE649 /* ImagePicker.swift */,
 				E18529DB2C5D08F000BBE649 /* ChangePhotoView.swift */,
@@ -597,6 +603,7 @@
 				E18529E12C5D30F800BBE649 /* ImagePicker.swift in Sources */,
 				26A7379E2C5A6A670002F1E9 /* SplineView.swift in Sources */,
 				26A737992C5A4F850002F1E9 /* BackButtonView.swift in Sources */,
+				E1E87BB32C64122F0070D855 /* TimeAndDaysPicker.swift in Sources */,
 				2277BB472C5E881700317DD2 /* AuthBackgroundView.swift in Sources */,
 				E18529D82C5D034800BBE649 /* AnimatedBackgroundView.swift in Sources */,
 				E1E498142C5BBB500099440D /* CustomTextField.swift in Sources */,
@@ -638,6 +645,7 @@
 				2663C79D2C56A0AB002EFD0C /* SignUpView.swift in Sources */,
 				E14AA7942C600C6900BAC1BE /* AppAllert.swift in Sources */,
 				2277BB4C2C5F2D5700317DD2 /* ForgotPassTwoView.swift in Sources */,
+				E1E87BB12C640CE10070D855 /* NotificationView.swift in Sources */,
 				E1E498082C58D60F0099440D /* ProfileInfoView.swift in Sources */,
 				E14AA78E2C5FB5AD00BAC1BE /* LanguageElementView.swift in Sources */,
 				2663C7972C56A037002EFD0C /* ProfileEditView.swift in Sources */,

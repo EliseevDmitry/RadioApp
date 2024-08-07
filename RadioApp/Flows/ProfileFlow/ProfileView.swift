@@ -16,6 +16,7 @@ struct ProfileView: View {
     
     @State private var showLogoutAlert: Bool = false
     @State private var errorAlert: AnyAppAlert? = nil
+    
     @State private var imageURL: URL? = nil
     
     // MARK: - Body
@@ -38,7 +39,7 @@ struct ProfileView: View {
                         generalTitle: Resources.Text.general.localized(language),
                         firstTitle: Resources.Text.notification.localized(language),
                         firstImageIcon: Resources.Image.notification,
-                        firstDestination: AnyView(LegalPoliciesView()),
+                        firstDestination: AnyView(NotificationView(notificationAction: notificationAction)),
                         secondTitle: Resources.Text.language.localized(language),
                         secondImageIcon: Resources.Image.globe.localized(language),
                         secondDestination: AnyView(LanguageView())
@@ -93,6 +94,10 @@ struct ProfileView: View {
             userEmail,
             avatar
         )
+    }
+    
+    private func notificationAction() {
+        viewModel.notificationAction()
     }
     
     private func logOut() {

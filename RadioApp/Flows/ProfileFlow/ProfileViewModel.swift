@@ -9,9 +9,8 @@ import SwiftUI
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
-import _PhotosUI_SwiftUI
 
-
+@MainActor
 final class ProfileViewModel: ObservableObject {
     // MARK: - Stored Properties
     @Published var currentUser: UserModel?
@@ -21,23 +20,29 @@ final class ProfileViewModel: ObservableObject {
     
     // MARK: - Initializer
     init() {
+        notification()
         fetchUser()
     }
     
     // MARK: - Methods
     func fetchUser() {
-        Task { @MainActor in
+        Task {
             currentUser = authService.getCurrentUserModel()
         }
     }
     
-    @available(iOS 16.0, *)
-    func saveProfileImage(item: PhotosPickerItem) {
+    func getProfileImage(path: String) {
+        guard currentUser != nil else { return }
+        Task {
+          try await authService.getUrlForImage(path: path)
+        }
+    }
+    
+    func saveProfileImage(_ image: UIImage) {
         guard let currentUser else { return }
         
         Task {
-            guard let data = try await item.loadTransferable(type: Data.self) else { return }
-            let (path, name) = try await authService.saveImage(data: data, userID: currentUser.id)
+            let (path, name) = try await authService.saveImage(image: image, userID: currentUser.id)
         }
     }
     
@@ -71,15 +76,41 @@ final class ProfileViewModel: ObservableObject {
         do {
             try authService.signUserOut()
         } catch {
-            Task { @MainActor in
+            Task {
                 self.error = error
             }
         }
     }
     
     func clearError() {
-        Task { @MainActor in
+        Task {
             self.error = nil
         }
+    }
+    
+    func notification() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            if success {
+                print("All set!")
+            } else if let error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func notificationAction() {
+        let content = UNMutableNotificationContent()
+        content.title = "Feed the cat"
+        content.subtitle = "It looks hungry"
+        content.sound = UNNotificationSound.default
+
+        // show this notification five seconds from now
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+
+        // choose a random identifier
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+        // add our notification request
+        UNUserNotificationCenter.current().add(request)
     }
 }

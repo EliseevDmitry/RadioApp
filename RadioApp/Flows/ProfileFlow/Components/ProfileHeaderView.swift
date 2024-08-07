@@ -11,7 +11,7 @@ struct ProfileHeaderView: View {
     // MARK: - Properties
     @Binding var userName: String
     @Binding var userEmail: String
-    @Binding var avatar: UIImage?
+    @Binding var profileImage: UIImage?
     @Binding var showChangedPhotoView: Bool
     
     // MARK: - Drawing Constants
@@ -33,7 +33,7 @@ struct ProfileHeaderView: View {
                 showChangedPhotoView.toggle()
             } label: {
                 ZStack {
-                    image(avatar)
+                    image(profileImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .clipShape(Circle())
@@ -62,7 +62,7 @@ struct ProfileHeaderView: View {
         if let profileImage = image {
             return Image(uiImage: profileImage)
         } else {
-            return Image(uiImage: UIImage(named: "stephen")!)
+            return Image(uiImage: UIImage(systemName: "person.fill")!)
         }
     }
 }
@@ -73,7 +73,7 @@ struct ProfileHeaderView_Previews: PreviewProvider {
         ProfileHeaderView(
             userName: .constant("Stephen"),
             userEmail: .constant("stephen@ds"),
-            avatar: .constant(UIImage(named: "stephen")),
+            profileImage: .constant(UIImage(named: "stephen")),
             showChangedPhotoView: .constant(false)
         )
     }

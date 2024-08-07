@@ -60,6 +60,11 @@ enum Resources {
         }
 
         /// Profile
+        static let messagesNotifications = "Messages Notifications"
+        static let showNotifications = "Show Notifications"
+        static let selectTime = "Select Time"
+        static let selectTimeAndDays = "Select Time and Days"
+        static let exceptions = "Exceptions"
         static let settings = "Settings"
         static let profile = "Profile"
         static let general = "General"
