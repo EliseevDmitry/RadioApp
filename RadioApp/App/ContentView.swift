@@ -14,7 +14,6 @@ struct ContentView: View {
     init() {
         UITabBar.appearance().isHidden = true
     }
-    
     var body: some View {
         NavigationView {
             VStack(spacing: 0.0) {
@@ -40,6 +39,14 @@ struct ContentView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     ToolbarProfile()
                 }
+            }
+            .overlay {
+                HStack(spacing: 30){
+                    BackButtonView()
+                    PlayButtonView()
+                    ForwardButtonView()
+                }
+                .offset(CGSize(width: 4, height: 240))
             }
         }
         .navigationViewStyle(.stack)

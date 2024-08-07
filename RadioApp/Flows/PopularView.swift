@@ -18,20 +18,19 @@ struct PopularView: View {
     var body: some View {
         NavigationView{
             VStack {
+                HStack {
+                    Text("Popular")
+                        .font(.custom(DS.Fonts.sfRegular, size: 35))
+                        .foregroundStyle(.white)
+                    Spacer()
+                }
+                .padding(.leading, 60)
+                .padding(.top, 10)
                 HStack{
                     VolumeView()
                         .frame(width: 33 ,height: 250)
                         .padding(.leading, 15)
-                    
                     ScrollView(.vertical, showsIndicators: false){
-                        HStack {
-                            Text("Popular")
-                                .font(.custom(DS.Fonts.sfRegular, size: 35))
-                                .foregroundStyle(.white)
-                            Spacer()
-                        }
-                        .padding(.top, 30)
-                        .padding(.bottom, 10)
                         LazyVGrid(columns: columns) {
                             ForEach(appManager.stations, id: \.stationuuid) {item in
                                 StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
@@ -40,23 +39,13 @@ struct PopularView: View {
                             }
                         }
                     }
-                    .padding()
-                    .overlay {
-                        HStack(spacing: 30){
-                            BackButtonView()
-                            PlayButtonView()
-                            ForwardButtonView()
-                        }
-                        .offset(CGSize(width: 0, height: 260))
-                    }
                     Spacer()
                 }
                 Spacer()
             }
             .background(DS.Colors.darkBlue)
         }
-        .ignoresSafeArea()
-        
+        .navigationViewStyle(.stack)
         .task {
             do {
                 try await appManager.fetchTopStations()
@@ -69,8 +58,11 @@ struct PopularView: View {
         .onAppear{
             appManager.loadLikesData()
             //clear Set Likes
-            //            appManager.likes.likeSet.removeAll()
-            //            appManager.saveLikesData()
+            //appManager.likes.likeSet.removeAll()
+            //appManager.saveLikesData()
+        }
+        .onDisappear{
+            appManager.isPlay = false
         }
     }
 }
