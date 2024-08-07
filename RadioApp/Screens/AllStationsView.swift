@@ -14,7 +14,6 @@ struct AllStationsView: View {
 
     var body: some View {
         NavigationView {
-
             // text
             VStack {
                 HStack {
@@ -24,6 +23,7 @@ struct AllStationsView: View {
                     Spacer()
                 }
                 .padding(.leading, 60)
+                .padding(.top, 10)
 
                 // search view
                 SearchBarView(isSearching: $isSearching)
@@ -47,20 +47,6 @@ struct AllStationsView: View {
                                 }
                             }
                         }
-
-                        // play buttons
-                        // вынести в единый компонент с единым позиционированием?
-                        VStack {
-                            Spacer()
-
-                            HStack(spacing: 45) {
-                                BackButtonView()
-                                PlayButtonView()
-                                ForwardButtonView()
-                            }
-                        }
-                        .frame(width: 255, height: 150)
-                        .offset(x: -15, y: -20)
                     }
                     Spacer()
                 }
@@ -74,12 +60,20 @@ struct AllStationsView: View {
             } catch {
                 print(error)
             }
+            appManager.playFirstStation()
+        }
+        .onDisappear{
+            appManager.isPlay = false
         }
         .navigationViewStyle(.stack)
     }
 }
 
-#Preview {
-    ContentView()
-        .environmentObject(ViewModel())
+//MARK: - PREVIEW
+struct AllStationsView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    static var previews: some View {
+        AllStationsView()
+            .environmentObject(previewAppManager)
+    }
 }
