@@ -17,24 +17,26 @@ struct StationView: View {
 
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .fill(selectedStationID == station.changeuuid ? DS.Colors.pinkNeon : .clear)
+                .fill(selectedStationID == station.stationuuid ? DS.Colors.pinkNeon : .clear)
 
             Button {
                 // on tap
-                selectedStationID = station.changeuuid
+                selectedStationID = station.stationuuid
                 appManager.playAudio(url: station.url)
             } label: {
                 // code, name, playing now
                 HStack {
                     VStack(alignment: .leading, spacing: 10) {
-                        Text(station.tags.uppercased())
+                        
+                        Text(station.tags)
                             .font(.custom(.sfBold, size: 30))
 
                         Text(station.name)
                             .font(.custom(.sfRegular, size: 15))
 
+
                         // now playing
-                        if selectedStationID == station.changeuuid {
+                        if selectedStationID == station.stationuuid {
                             Text("Playing now")
                                 .font((.custom(.sfBold, size: 14)))
                                 .foregroundStyle(DS.Colors.pinkPlaying)
@@ -42,17 +44,29 @@ struct StationView: View {
 
                         Spacer()
                     }
-                    .foregroundStyle(selectedStationID == station.changeuuid ? .white : DS.Colors.grayNotActive)
+                    .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.grayNotActive)
 
                     Spacer()
 
                     HStack {
                         VStack(alignment: .trailing) {
-                            //                        VoteView(isShow: selectedStationID == station.stationuuid ? true : false, idStation: station.stationuuid)
+                            HStack {
+                                Text("votes \(self.station.votes % 1000)")
+                                    .font(.custom(DS.Fonts.sfRegular, size: 14))
+                                    .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.frame)
 
-                            SplineView(isActive: selectedStationID == station.changeuuid ? true : false)
-                                .frame(width: 94, height: 23)
-                                .foregroundStyle(selectedStationID == station.changeuuid ? .white : DS.Colors.grayNotActive)
+                                VoteView(isShow: selectedStationID == station.stationuuid ? true : false, idStation: station.stationuuid)
+                                    .frame(width: 14, height: 14)
+                            }
+
+                            Spacer(minLength: 20)
+
+                                SplineView(isActive: selectedStationID == station.stationuuid ? true : false)
+                                    .frame(width: 90, height: 18)
+                                    .padding(.horizontal)
+                                    .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.grayNotActive)
+
+                            Spacer()
                         }
                     }
                 }
@@ -64,7 +78,7 @@ struct StationView: View {
         .clipShape(.rect(cornerRadius: 20))
         .overlay {
             RoundedRectangle(cornerRadius: 20)
-                .stroke(selectedStationID == station.changeuuid ? DS.Colors.pinkNeon : DS.Colors.frame, lineWidth: 2)
+                .stroke(selectedStationID == station.stationuuid ? DS.Colors.pinkNeon : DS.Colors.frame, lineWidth: 2)
         }
         .padding(.trailing, 20)
         .padding(.vertical, 5)

@@ -211,17 +211,17 @@ final class ViewModel: ObservableObject {
         guard let url = URL.init(string: url) else { return }
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-            player = AVPlayer(url: url)
-            player?.play()
-            isPlay = true
+            //player = AVPlayer(url: url)
+            //player?.play()
+            //isPlay = true
         } catch let err {
             print(err.localizedDescription)
         }
     }
 
     func playAudioStream(){
-        player?.play()
-        isPlay = true
+        //player?.play()
+        //isPlay = true
     }
 
     func pauseAudioStream(){
