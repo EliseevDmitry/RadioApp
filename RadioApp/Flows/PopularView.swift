@@ -7,24 +7,6 @@
 
 import SwiftUI
 
-struct UserIcon: Shape {
-        func path(in rect: CGRect) -> Path {
-            var path = Path()
-            let width = rect.size.width
-            let height = rect.size.height
-            path.move(to: CGPoint(x: 0.76179*width, y: 0.66313*height))
-            path.addCurve(to: CGPoint(x: 0.76179*width, y: 0.33786*height), control1: CGPoint(x: 0.93222*width, y: 0.58821*height), control2: CGPoint(x: 0.93222*width, y: 0.41278*height))
-            path.addLine(to: CGPoint(x: 0.52988*width, y: 0.23593*height))
-            path.addCurve(to: CGPoint(x: 0.116*width, y: 0.39854*height), control1: CGPoint(x: 0.34951*width, y: 0.15658*height), control2: CGPoint(x: 0.116*width, y: 0.24833*height))
-            path.addLine(to: CGPoint(x: 0.116*width, y: 0.60245*height))
-            path.addCurve(to: CGPoint(x: 0.52988*width, y: 0.76506*height), control1: CGPoint(x: 0.116*width, y: 0.75266*height), control2: CGPoint(x: 0.34951*width, y: 0.84441*height))
-            path.addLine(to: CGPoint(x: 0.76179*width, y: 0.66313*height))
-            path.closeSubpath()
-            return path
-        }
-    }
-
-
 struct PopularView: View {
     //MARK: - PROPERTIES
     @EnvironmentObject var appManager: ViewModel
@@ -72,39 +54,6 @@ struct PopularView: View {
                 Spacer()
             }
             .background(DS.Colors.darkBlue)
-            
-            //NavigationToolBar
-            .toolbar {
-                ToolbarItemGroup(placement: .topBarLeading) {
-                    Image(.toolbarplay)
-                        .padding(.leading, 10)
-                    Text("Hello")
-                        .foregroundStyle(.white)
-                        .font(.custom(DS.Fonts.sfMedium, size: 30))
-                    //@Published var username = "Mark" - наблюдаемое свойство имени
-                    Text("\(appManager.username)")
-                        .foregroundStyle(DS.Colors.pinkNeon)
-                        .font(.custom(DS.Fonts.sfMedium, size: 30))
-                }
-                
-                ToolbarItemGroup(placement: .topBarTrailing) {
-                    Button{
-                        //action перехода на Profile
-                    } label: {
-                        //изображение пользователя
-                        Image(.eliseevd)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 60, height: 70)
-                            .mask {
-                                UserIcon()
-                                    .frame(width: 60, height: 70)
-                            }
-                    }
-                    .padding(.trailing, 10)
-                }
-            }
-            
         }
         .ignoresSafeArea()
         

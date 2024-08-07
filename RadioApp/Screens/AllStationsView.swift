@@ -14,7 +14,6 @@ struct AllStationsView: View {
 
     var body: some View {
         NavigationView {
-
             // text
             VStack {
                 HStack {
@@ -24,6 +23,7 @@ struct AllStationsView: View {
                     Spacer()
                 }
                 .padding(.leading, 60)
+                .padding(.top, 10)
 
                 // search view
                 SearchBarView(isSearching: $isSearching)
@@ -59,7 +59,7 @@ struct AllStationsView: View {
                                 ForwardButtonView()
                             }
                         }
-                        .frame(width: 255, height: 150)
+                        .frame(width: 255, height: 120)
                         .offset(x: -15, y: -20)
                     }
                     Spacer()
