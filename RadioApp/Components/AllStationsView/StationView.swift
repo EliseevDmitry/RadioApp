@@ -28,12 +28,13 @@ struct StationView: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 10) {
                         
-                        Text(station.tags)
-                            .font(.custom(.sfBold, size: 30))
+                        Text(appManager.getString(tags: self.station.tags)?.uppercased() ?? self.station.countrycode)
+                            .font(.custom(DS.Fonts.sfBold, size: appManager.getString(tags: self.station.tags) != nil ? 20 : 30))
+                            .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.frame)
 
                         Text(station.name)
                             .font(.custom(.sfRegular, size: 15))
-
+                            .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.frame)
 
                         // now playing
                         if selectedStationID == station.stationuuid {
@@ -60,12 +61,24 @@ struct StationView: View {
                             }
 
                             Spacer(minLength: 20)
-
-                                SplineView(isActive: selectedStationID == station.stationuuid ? true : false)
-                                    .frame(width: 90, height: 18)
+                            if selectedStationID == station.stationuuid {
+                                SplineView(isActive: true)
+                                    .frame(height: 20)
                                     .padding(.horizontal)
-                                    .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.grayNotActive)
-
+                            } else {
+                                SplineView(isActive: false)
+                                    .frame(height: 20)
+                                    .padding(.horizontal)
+                            }
+                            
+                            
+                            //этот код корректно работать не будет!!!!!
+                            //----------------
+//                                SplineView(isActive: selectedStationID == station.stationuuid ? true : false)
+//                                    .frame(width: 90, height: 18)
+//                                    .padding(.horizontal)
+//                                    .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.grayNotActive)
+                            //----------------
                             Spacer()
                         }
                     }
@@ -85,7 +98,11 @@ struct StationView: View {
     }
 }
 
-#Preview {
-    ContentView()
-        .environmentObject(ViewModel())
+//MARK: - PREVIEW
+struct StationView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    static var previews: some View {
+        StationView(selectedStationID: .constant(""), station: .testStation())
+            .environmentObject(previewAppManager)
+    }
 }
