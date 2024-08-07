@@ -50,7 +50,18 @@ struct SignUpView: View {
                                 
                 CustomButton(action: appManager.registerUser, title: Resources.Text.signUp, buttonType: .onboarding) // TODO: изменить тип кнопки
                 
+                /*
                 Button(action: {}) {
+                    Text(Resources.Text.orSignIn)
+                        .foregroundStyle(.white)
+                }
+                */
+                
+                NavigationLink(
+                    destination: SignInView()
+                        .environmentObject(appManager)
+                        .navigationBarBackButtonHidden()
+                ) {
                     Text(Resources.Text.orSignIn)
                         .foregroundStyle(.white)
                 }

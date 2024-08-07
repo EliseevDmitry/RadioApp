@@ -20,7 +20,6 @@
 		22CA8E942C59533A0009952D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 22CA8E932C59533A0009952D /* FirebaseAuth */; };
 		22CA8E962C5953440009952D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 22CA8E952C5953440009952D /* FirebaseDatabase */; };
 		22CA8E982C59534D0009952D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 22CA8E972C59534D0009952D /* FirebaseFirestore */; };
-		22EEE4BB2C62A72A006AE988 /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22EEE4B92C62A72A006AE988 /* LikeStations.xcdatamodeld */; };
 		260588492C5FDACC002F54C1 /* TestVoteCoreDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260588482C5FDACC002F54C1 /* TestVoteCoreDataView.swift */; };
 		2663C7802C569E54002EFD0C /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C77F2C569E54002EFD0C /* WelcomeView.swift */; };
 		2663C7822C569E55002EFD0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2663C7812C569E55002EFD0C /* Assets.xcassets */; };
@@ -42,6 +41,7 @@
 		26A7379B2C5A4FCB0002F1E9 /* ForwardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */; };
 		26A7379E2C5A6A670002F1E9 /* SplineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379D2C5A6A670002F1E9 /* SplineView.swift */; };
 		26D180992C5AA0A300D4EF68 /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D180982C5AA0A300D4EF68 /* PopularView.swift */; };
+		26DBC23D2C63CCBA0092D2B5 /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26DBC23B2C63CCBA0092D2B5 /* LikeStations.xcdatamodeld */; };
 		7A0ED5E12C592B280063F449 /* TestView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0ED5E02C592B280063F449 /* TestView2.swift */; };
 		7A6579FF2C57F34E00FFDBFD /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6579FE2C57F34E00FFDBFD /* URLManager.swift */; };
 		7A7A4B302C5B51B000CD8794 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B2F2C5B51B000CD8794 /* ContentView.swift */; };
@@ -94,7 +94,6 @@
 		2277BB492C5F2D0E00317DD2 /* ForgotPassOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassOneView.swift; sourceTree = "<group>"; };
 		2277BB4B2C5F2D5700317DD2 /* ForgotPassTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassTwoView.swift; sourceTree = "<group>"; };
 		22891AC42C5B5F5F00DE33E6 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		22EEE4BA2C62A72A006AE988 /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		260588482C5FDACC002F54C1 /* TestVoteCoreDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVoteCoreDataView.swift; sourceTree = "<group>"; };
 		2663C77A2C569E54002EFD0C /* RadioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2663C77F2C569E54002EFD0C /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeView.swift; path = ../WelcomeView.swift; sourceTree = "<group>"; };
@@ -116,6 +115,7 @@
 		26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButtonView.swift; sourceTree = "<group>"; };
 		26A7379D2C5A6A670002F1E9 /* SplineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplineView.swift; sourceTree = "<group>"; };
 		26D180982C5AA0A300D4EF68 /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
+		26DBC23C2C63CCBA0092D2B5 /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		7A0ED5E02C592B280063F449 /* TestView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView2.swift; sourceTree = "<group>"; };
 		7A6579FE2C57F34E00FFDBFD /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		7A7A4B2F2C5B51B000CD8794 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -431,7 +431,7 @@
 		E1E497E32C56D4DF0099440D /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				22EEE4B92C62A72A006AE988 /* LikeStations.xcdatamodeld */,
+				26DBC23B2C63CCBA0092D2B5 /* LikeStations.xcdatamodeld */,
 				22891AC32C5B5EF700DE33E6 /* AuthService */,
 				E1E497E42C56D4F70099440D /* NetworkService */,
 				E18529D52C5D01E100BBE649 /* LocalizationService.swift */,
@@ -642,7 +642,7 @@
 				E16EBD592C5CB4060010BF71 /* LegalPoliciesView.swift in Sources */,
 				E14AA7882C5E7A2A00BAC1BE /* ProfileViewModel.swift in Sources */,
 				E1E498122C5AB7490099440D /* BackBarButton.swift in Sources */,
-				22EEE4BB2C62A72A006AE988 /* LikeStations.xcdatamodeld in Sources */,
+				26DBC23D2C63CCBA0092D2B5 /* LikeStations.xcdatamodeld in Sources */,
 				7A6579FF2C57F34E00FFDBFD /* URLManager.swift in Sources */,
 				E1E4980A2C5983450099440D /* SettingsButton.swift in Sources */,
 				E18529D62C5D01E100BBE649 /* LocalizationService.swift in Sources */,
@@ -941,14 +941,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		22EEE4B92C62A72A006AE988 /* LikeStations.xcdatamodeld */ = {
+		26DBC23B2C63CCBA0092D2B5 /* LikeStations.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				22EEE4BA2C62A72A006AE988 /* LikeStations.xcdatamodel */,
+				26DBC23C2C63CCBA0092D2B5 /* LikeStations.xcdatamodel */,
 			);
-			currentVersion = 22EEE4BA2C62A72A006AE988 /* LikeStations.xcdatamodel */;
+			currentVersion = 26DBC23C2C63CCBA0092D2B5 /* LikeStations.xcdatamodel */;
 			name = LikeStations.xcdatamodeld;
-			path = /Users/gdr/Desktop/SecondBrain/RadioAppChalenge/RadioApp/RadioApp/Services/LikeStations.xcdatamodeld;
+			path = /Users/dmitriyeliseev/Desktop/Challenge3/RadioApp/RadioApp/Services/LikeStations.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -24,7 +24,7 @@ struct SignInView: View {
     
     // MARK: - Body
     var body: some View {
-        NavigationView {
+        NavigationView{
             ZStack {
                 AnimatedBackgroundView(screenType: .authentication)
                 AuthBackgroundView()
@@ -49,11 +49,20 @@ struct SignInView: View {
                     SecureField(Resources.Text.password, text: $appManager.password)
                         .font(.title)
                     
-                    NavigationLink(destination: ForgotPassOneView().environmentObject(appManager)) {
-                        Button(action: {}) {
-                            Text(Resources.Text.forgotPassword)
-                                .foregroundStyle(.white)
-                        }
+                    /*
+                     NavigationLink(destination: ForgotPassOneView().environmentObject(appManager)) {
+                     Text(Resources.Text.forgotPassword)
+                     .foregroundStyle(.white)
+                     }
+                     */
+                    
+                    NavigationLink(
+                        destination: ForgotPassOneView()
+                            .navigationBarBackButtonHidden()
+                            .environmentObject(appManager)
+                    ) {
+                        Text(Resources.Text.forgotPassword)
+                            .foregroundStyle(.white)
                     }
                     
                     HStack {
@@ -70,22 +79,65 @@ struct SignInView: View {
                             .foregroundStyle(.white)
                     }
                     
-                    CustomButton(action: appManager.signIn, title: Resources.Text.signIn, buttonType: .authentication)
-                    // TODO: добавить в типы кнопок третий тип - для этой группы экранов и при выборе типа заменить тернарный оператор на switch (обсудить с Димой Келлером)
+                    // MARK: SignIn Button
+                    NavigationLink(isActive: $appManager.isSignedIn) {
+                        PopularView()
+                            .navigationBarBackButtonHidden()
+                        //                            .environmentObject(appManager)
+                    } label: {
+                        CustomButton(
+                            action: {
+                                /*
+                                 if (AuthService.userSession != nil) {
+                                 
+                                 }
+                                 appManager.isSignedIn = true
+                                 appManager.signIn()
+                                 */
+                                
+                                appManager.isSignedIn.toggle()
+                                appManager.signIn()
+                            },
+                            title: Resources.Text.signIn,
+                            buttonType: .authentication)
+                    }
                     
-                    NavigationLink(destination: SignUpView().environmentObject(appManager)) {
-                        Button(action: {}) {
-                            Text(Resources.Text.orSignUp)
-                                .foregroundStyle(.white)
-                        }
+                    /*
+                     CustomButton(action: appManager.signIn, title: Resources.Text.signIn, buttonType: .authentication)
+                     */
+                    
+                    /*
+                     NavigationLink(destination: SignUpView().environmentObject(appManager)) {
+                     Text(Resources.Text.orSignUp)
+                     .foregroundStyle(.white)
+                     }
+                     */
+                    
+                    // MARK: SignUp Button
+                    NavigationLink(
+                        destination: SignUpView()
+                            .environmentObject(appManager)
+                            .navigationBarBackButtonHidden()
+                    ) {
+                        Text(Resources.Text.orSignUp)
+                            .foregroundStyle(.white)
+                        /*
+                         CustomButton(
+                         action: {},
+                         title: Resources.Text.getStarted,
+                         buttonType: .onboarding)
+                         */
                     }
                     
                     Spacer()
                 }
                 .padding()
             }
+            .navigationBarBackButtonHidden()
         }
+        .navigationViewStyle(.stack)
     }
+    
 }
 
 struct SignInView_Previews: PreviewProvider {
