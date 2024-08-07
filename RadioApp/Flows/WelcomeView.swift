@@ -25,6 +25,7 @@ struct WelcomeView: View {
     
     // MARK: - Body
     var body: some View {
+        //test
         NavigationView {
             ZStack {
                 WelcomeBackgroundView()
