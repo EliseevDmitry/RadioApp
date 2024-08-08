@@ -11,7 +11,7 @@ import SwiftUI
 
 
 
-struct FaviritesComponentView: View {
+struct FavoritesComponentView: View {
     //MARK: - PROPERTIES
     @EnvironmentObject var appManager: ViewModel
     @Binding var selectedStationID: String
@@ -74,7 +74,7 @@ struct FaviritesComponentView: View {
 struct FaviritesComponentView_Previews: PreviewProvider {
     static let previewAppManager = ViewModel()
     static var previews: some View {
-        FaviritesComponentView(selectedStationID: .constant(""), station: .testStation())
+        FavoritesComponentView(selectedStationID: .constant(""), station: .testStation())
             .environmentObject(previewAppManager)
     }
 }

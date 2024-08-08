@@ -8,14 +8,28 @@
 import SwiftUI
 
 struct FavoritesView: View {
-    
+    @EnvironmentObject var appManager: ViewModel
+    @FetchRequest(sortDescriptors: []) var stationData: FetchedResults<StationData>
     var body: some View {
-        VStack {
-            Text("Favorites")
+        VStack{
+            ScrollView(.vertical, showsIndicators: false){
+                ForEach(stationData, id: \.stationuuid) {item in
+                    
+                    let station = Station(stationuuid: item.stationuuid ?? "", name: item.name ?? "", url: item.url ?? "", favicon: "", tags: "", countrycode: "", votes: item.votes)
+                        
+                    FavoritesComponentView(selectedStationID: $appManager.selectedStation, station: station) 
+                    }
+                
+            }
         }
     }
 }
 
-#Preview {
-    FavoritesView()
+//MARK: - PREVIEW
+struct FavoritesView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    static var previews: some View {
+        FavoritesView()
+            .environmentObject(previewAppManager)
+    }
 }

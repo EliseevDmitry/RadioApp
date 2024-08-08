@@ -27,6 +27,7 @@ struct AllStationsView: View {
 
                 // search view
                 SearchBarView(isSearching: $isSearching)
+                    .frame(height: 56)
 
                 Spacer()
 
