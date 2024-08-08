@@ -165,5 +165,5 @@ struct ProfileEditView_Previews: PreviewProvider {
             userEmail: "stephen@ds",
             profileImage: .constant(UIImage(named: "stephen")!)
         )
-2    }
+    }
 }

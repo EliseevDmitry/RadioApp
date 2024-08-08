@@ -17,10 +17,11 @@ final class ProfileViewModel: ObservableObject {
     @Published var error: Error?
     
     private let authService = AuthService.shared
+    private let notificationService = NotificationsService.shared
     
     // MARK: - Initializer
     init() {
-        notification()
+        addNotification() 
         fetchUser()
     }
     
@@ -87,30 +88,12 @@ final class ProfileViewModel: ObservableObject {
             self.error = nil
         }
     }
-    
-    func notification() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-            if success {
-                print("All set!")
-            } else if let error {
-                print(error.localizedDescription)
-            }
-        }
+//    MARK: - Notifications
+    func addNotification() {
+        notificationService.addNotifications()
     }
-    
+   
     func notificationAction() {
-        let content = UNMutableNotificationContent()
-        content.title = "Feed the cat"
-        content.subtitle = "It looks hungry"
-        content.sound = UNNotificationSound.default
-
-        // show this notification five seconds from now
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-
-        // choose a random identifier
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
-        // add our notification request
-        UNUserNotificationCenter.current().add(request)
+        notificationService.notificationAction()
     }
 }

@@ -39,7 +39,7 @@ struct ProfileView: View {
                         generalTitle: Resources.Text.general.localized(language),
                         firstTitle: Resources.Text.notification.localized(language),
                         firstImageIcon: Resources.Image.notification,
-                        firstDestination: AnyView(NotificationView(notificationAction: notificationAction)),
+                        firstDestination: AnyView(NotificationsView(notificationAction: notificationAction)),
                         secondTitle: Resources.Text.language.localized(language),
                         secondImageIcon: Resources.Image.globe.localized(language),
                         secondDestination: AnyView(LanguageView())

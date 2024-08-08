@@ -8,7 +8,7 @@
 import SwiftUI
 import UserNotifications
 
-struct NotificationView: View {
+struct NotificationsView: View {
     // MARK: - Properties
     @AppStorage("selectedLanguage") private var language = LocalizationService.shared.language
     
@@ -99,7 +99,7 @@ struct NotificationView: View {
 }
 
 #Preview {
-    NotificationView(notificationAction: {
+    NotificationsView(notificationAction: {
         print("Notification toggle changed")
     })
 }
