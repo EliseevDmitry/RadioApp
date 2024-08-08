@@ -14,6 +14,8 @@ import SwiftUI
 struct FavoritesComponentView: View {
     //MARK: - PROPERTIES
     @EnvironmentObject var appManager: ViewModel
+    @FetchRequest(sortDescriptors: []) var stationData: FetchedResults<StationData>
+    @Environment(\.managedObjectContext) var moc
     @Binding var selectedStationID: String
     var station: Station
     //MARK: - BODY
@@ -55,12 +57,12 @@ struct FavoritesComponentView: View {
                     .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.grayNotActive)
                     Spacer(minLength: 80)
                     Button{
-                        
+                        deleteItem()
                     } label: {
-                    Image(systemName: "heart.fill")
-                        .resizable()
-                        .frame(width: 62, height: 54)
-                        .foregroundStyle(DS.Colors.blueNeon)
+                        Image(systemName: "heart.fill")
+                            .resizable()
+                            .frame(width: 62, height: 54)
+                            .foregroundStyle(DS.Colors.blueNeon)
                     }
                 }
                 .padding()
@@ -73,16 +75,30 @@ struct FavoritesComponentView: View {
                 .stroke(selectedStationID == station.stationuuid ? DS.Colors.pinkNeon : DS.Colors.frame, lineWidth: 2)
         }
     }
+    func deleteItem(){
+        appManager.pauseAudioStream()
+        if let id = appManager.getIndexStations(idStation: station.stationuuid){
+            let station = stationData[id]
+            moc.delete(station)
+            try? moc.save()
+            _ = appManager.setStations(stationData: Array(stationData))
+            if appManager.stations.count >= 0 {
+                appManager.playFirstStation()
+            } else {
+                appManager.player?.replaceCurrentItem(with: nil)
+            }
+        }
+    }
 }
 
 
 //MARK: - PREVIEW
-struct FaviritesComponentView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
-    static var previews: some View {
-        FavoritesComponentView(selectedStationID: .constant(""), station: .testStation())
-            .environmentObject(previewAppManager)
-    }
-}
+//struct FaviritesComponentView_Previews: PreviewProvider {
+//    static let previewAppManager = ViewModel()
+//    static var previews: some View {
+//        FavoritesComponentView(selectedStationID: .constant(""), station: .testStation())
+//            .environmentObject(previewAppManager)
+//    }
+//}
 
 

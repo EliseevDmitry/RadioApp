@@ -34,14 +34,13 @@ struct FavoritesView: View {
                         .padding(.leading, 15)
                     ScrollView(.vertical, showsIndicators: false){
                         LazyVStack {
-                            
                             ForEach(appManager.stations, id: \.stationuuid) {item in
                                 FavoritesComponentView(
                                     selectedStationID: $appManager.selectedStation,
                                     station: item
-                                        
                                 )
                             }
+                            
                         }
                     }
                 }
@@ -52,7 +51,7 @@ struct FavoritesView: View {
                 appManager.isPlay = false
             }
             .onAppear{
-                if setStations() {
+                if appManager.setStations(stationData: Array(stationData)) {
                     appManager.playFirstStation()
                 }
             }
@@ -60,6 +59,8 @@ struct FavoritesView: View {
         }
 
     }
+    
+
     
     // delete all records
     func deleteRecords() {
@@ -72,20 +73,11 @@ struct FavoritesView: View {
         } catch let error as NSError {
             print("Fetch failed. \(error.localizedDescription)")
         }
+//        try? moc.save()
+//        setStations()
     }
     
-    func setStations() -> Bool{
-        appManager.stations.removeAll()
-        if stationData.count >= 0 {
-            for station in stationData {
-                let likeStation = Station(stationuuid: station.stationuuid ?? "", name: station.name ?? "", url: station.url ?? "", favicon: station.favicon ?? "", tags: station.tags ?? "", countrycode: station.tags ?? "", votes: station.votes)
-                appManager.stations.append(likeStation)
-            }
-            return true
-        } else {
-            return false
-        }
-    }
+
 }
 
 //MARK: - PREVIEW

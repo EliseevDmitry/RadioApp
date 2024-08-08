@@ -13,7 +13,7 @@ import CoreData
 
 @MainActor
 final class ViewModel: ObservableObject {
-
+    
     let network = NetworkService()
     @Published var stations = [Station]()
 
@@ -159,13 +159,26 @@ final class ViewModel: ObservableObject {
     }
     
     //Внутрянняя функция поиска индекса в массиве [Station]()
-    private func getIndexStations(idStation: String)->Int?{
+    func getIndexStations(idStation: String)->Int?{
         for (index, station) in stations.enumerated() {
             if idStation == station.stationuuid{
                 return index
             }
         }
         return nil
+    }
+    
+    func setStations(stationData: [StationData]) -> Bool{
+        stations.removeAll()
+        if stationData.count >= 0 {
+            for station in stationData {
+                let likeStation = Station(stationuuid: station.stationuuid ?? "", name: station.name ?? "", url: station.url ?? "", favicon: station.favicon ?? "", tags: station.tags ?? "", countrycode: station.tags ?? "", votes: station.votes)
+                stations.append(likeStation)
+            }
+            return true
+        } else {
+            return false
+        }
     }
     
 
