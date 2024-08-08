@@ -12,10 +12,10 @@ import SwiftUI
 // MARK: - Language Enum
 enum Language: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
-    case ru = "Russian"
-    case en = "English"
-    case german = "German"
-    case italian = "Italian"
+    case ru = "ru"
+    case en = "en"
+    case de = "de"
+    case it = "it"
 }
 
 final class LocalizationService {
