@@ -13,7 +13,7 @@ struct ProfileEditView: View {
     
     @State var userName: String
     @State var userEmail: String
-    @State var profileImage: UIImage? = nil
+    @Binding var profileImage: UIImage?
     
     @State private var showChangedView = false
     @State private var blurBackground = false
@@ -163,7 +163,7 @@ struct ProfileEditView_Previews: PreviewProvider {
             saveChangesAction: {_,_,_ in },
             userName: "Stephen",
             userEmail: "stephen@ds",
-            profileImage: UIImage(named: "stephen")!
+            profileImage: .constant(UIImage(named: "stephen")!)
         )
-    }
+2    }
 }

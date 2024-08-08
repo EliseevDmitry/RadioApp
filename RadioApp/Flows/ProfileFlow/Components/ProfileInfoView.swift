@@ -12,7 +12,8 @@ struct ProfileInfoView: View {
     // MARK: - Properties
     var userName: String
     var userEmail: String
-    var profileImage: UIImage
+    @State var profileImage: UIImage?
+    
     var saveChangesAction: (String, String, UIImage?) -> Void
     
     // MARK: - Drawing Constants
@@ -31,7 +32,7 @@ struct ProfileInfoView: View {
     // MARK: - Body
     var body: some View {
         HStack {
-            Image(uiImage: profileImage)
+            image(image: profileImage)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())
@@ -62,7 +63,7 @@ struct ProfileInfoView: View {
                 saveChangesAction: saveChangesAction,
                 userName: userName,
                 userEmail: userEmail,
-                profileImage: profileImage
+                profileImage: $profileImage
             )
             )
             {
@@ -83,6 +84,14 @@ struct ProfileInfoView: View {
                     lineWidth: DrawingConstants.strokeWidth
                 )
                 .opacity(DrawingConstants.strokeOpacity)
+        }
+    }
+    
+    func image(image: UIImage?) -> Image {
+        if let profileImage = image {
+            return Image(uiImage: profileImage)
+        } else {
+            return Image(uiImage: UIImage(named: "stephen")!)
         }
     }
 }
