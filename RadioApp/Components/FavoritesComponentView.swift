@@ -23,7 +23,8 @@ struct FavoritesComponentView: View {
                 .fill(selectedStationID == station.stationuuid ? DS.Colors.pinkNeon : .clear)
             Button {
                 // on tap
-                
+                selectedStationID = station.stationuuid
+                appManager.playAudio(url: station.url)
             } label: {
                 // code, name, playing now
                 HStack{

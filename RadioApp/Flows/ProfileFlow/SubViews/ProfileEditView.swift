@@ -13,7 +13,7 @@ struct ProfileEditView: View {
     
     @State var userName: String
     @State var userEmail: String
-    @State var avatar: UIImage?
+    @Binding var profileImage: UIImage?
     
     @State private var showChangedView = false
     @State private var blurBackground = false
@@ -49,7 +49,7 @@ struct ProfileEditView: View {
                         ProfileHeaderView(
                             userName: $userName,
                             userEmail: $userEmail,
-                            avatar: $avatar,
+                            profileImage: $profileImage,
                             showChangedPhotoView: $showChangedView
                         )
                         
@@ -72,7 +72,7 @@ struct ProfileEditView: View {
                         
                         CustomButton(
                             action: {
-                                saveChangesAction(userName, userEmail, avatar)
+                                saveChangesAction(userName, userEmail, profileImage)
                             },
                             title: Resources.Text.saveChanges,
                             buttonType: .profile
@@ -112,7 +112,7 @@ struct ProfileEditView: View {
                         hideChangedPhotoView()
                     },
                     onDeletePhoto: {
-                        avatar = UIImage(systemName: Resources.Image.fileIcon)
+                        profileImage = UIImage(systemName: Resources.Image.fileIcon)
                         hideChangedPhotoView()
                     }
                 )
@@ -126,7 +126,7 @@ struct ProfileEditView: View {
         }
         .sheet(isPresented: $isImagePickerPresented) {
             ImagePicker(sourceType: imagePickerSource) { image in
-                avatar = image
+                profileImage = image
             }
             .edgesIgnoringSafeArea(.all)
         }
@@ -147,6 +147,13 @@ struct ProfileEditView: View {
         imagePickerSource = source
         isImagePickerPresented = true
     }
+    
+    func saveImageURL() {
+//        viewModel.saveProfileImage(
+//            profileImage
+//            ?? UIImage(systemName: Resources.Image.fileIcon)!
+//        )
+    }
 }
 
 // MARK: - Preview
@@ -156,7 +163,7 @@ struct ProfileEditView_Previews: PreviewProvider {
             saveChangesAction: {_,_,_ in },
             userName: "Stephen",
             userEmail: "stephen@ds",
-            avatar: UIImage(named: "stephen")!
+            profileImage: .constant(UIImage(named: "stephen")!)
         )
     }
 }
