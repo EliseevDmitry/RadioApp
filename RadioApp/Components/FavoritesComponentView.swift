@@ -23,23 +23,23 @@ struct FavoritesComponentView: View {
                 .fill(selectedStationID == station.stationuuid ? DS.Colors.pinkNeon : .clear)
             Button {
                 // on tap
-               
+                
             } label: {
                 // code, name, playing now
                 HStack{
                     VStack(alignment: .leading, spacing: 10) {
-                            Text(appManager.getString(tags: self.station.tags)?.uppercased() ?? self.station.countrycode)
-                                .font(.custom(DS.Fonts.sfBold, size: appManager.getString(tags: self.station.tags) != nil ? 20 : 30))
-                            .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.frame)
-                        HStack {
+                        Text(appManager.getString(tags: self.station.tags)?.uppercased() ?? self.station.countrycode)
+                            .font(.custom(DS.Fonts.sfBold, size: appManager.getString(tags: self.station.tags) != nil ? 20 : 30))
+                            .foregroundStyle(selectedStationID == station.stationuuid ? .blue : DS.Colors.frame)
+                        HStack() {
                             Spacer()
                             Text(station.name)
-                                        .lineLimit(2)
-                                        .truncationMode(.tail)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .font(.custom(.sfRegular, size: 10))
-                                    .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.frame)
+                                .lineLimit(2)
+                                .truncationMode(.tail)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .multilineTextAlignment(.center)
+                                .font(.custom(.sfRegular, size: 10))
+                                .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.frame)
                             Spacer()
                         }
                         if selectedStationID == station.stationuuid {
@@ -50,12 +50,17 @@ struct FavoritesComponentView: View {
                                 .frame(height: 20)
                         }
                     }
+                    .frame(width: 120, height: 120)
                     .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.grayNotActive)
                     Spacer(minLength: 80)
+                    Button{
+                        
+                    } label: {
                     Image(systemName: "heart.fill")
                         .resizable()
                         .frame(width: 62, height: 54)
                         .foregroundStyle(DS.Colors.blueNeon)
+                    }
                 }
                 .padding()
             }

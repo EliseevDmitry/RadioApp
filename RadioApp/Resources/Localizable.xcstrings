@@ -50,6 +50,9 @@
         }
       }
     },
+    "DeleteData" : {
+
+    },
     "deletePhoto" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -134,6 +137,9 @@
           }
         }
       }
+    },
+    "Favorites" : {
+
     },
     "fullName" : {
       "extractionState" : "manual",
