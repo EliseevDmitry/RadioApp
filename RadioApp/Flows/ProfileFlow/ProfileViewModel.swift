@@ -10,23 +10,41 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-
+@MainActor
 final class ProfileViewModel: ObservableObject {
     // MARK: - Stored Properties
     @Published var currentUser: UserModel?
-    @Published var userAvatar: UIImage?
     @Published var error: Error?
     
     private let authService = AuthService.shared
+    private let notificationService = NotificationsService.shared
     
     // MARK: - Initializer
     init() {
+        addNotification() 
         fetchUser()
     }
     
     // MARK: - Methods
     func fetchUser() {
-        currentUser = authService.getCurrentUserModel()
+        Task {
+            currentUser = authService.getCurrentUserModel()
+        }
+    }
+    
+    func getProfileImage(path: String) {
+        guard currentUser != nil else { return }
+        Task {
+          try await authService.getUrlForImage(path: path)
+        }
+    }
+    
+    func saveProfileImage(_ image: UIImage) {
+        guard let currentUser else { return }
+        
+        Task {
+            let (path, name) = try await authService.saveImage(image: image, userID: currentUser.id)
+        }
     }
     
     func updateUserProfile(_ name: String?, _ email: String?, _ avatar: UIImage?) {
@@ -34,9 +52,9 @@ final class ProfileViewModel: ObservableObject {
             do {
                 var photoURL: URL? = nil
                 
-                if let avatar = avatar {
-                    photoURL = try await authService.uploadAvatar(image: avatar, userId: currentUser?.id ?? "")
-                }
+//                if let avatar = avatar {
+//                    photoURL = try await authService.uploadAvatar(image: avatar, userId: currentUser?.id ?? "")
+//                }
                 
                 if let email = email {
                     try await authService.updateEmail(email)
@@ -44,9 +62,13 @@ final class ProfileViewModel: ObservableObject {
                 
                 try await authService.updateUserProfile(displayName: name, photoURL: photoURL)
                 
-                fetchUser()
+                await MainActor.run {
+                    fetchUser()
+                }
             } catch {
-                self.error = error
+                await MainActor.run {
+                    self.error = error
+                }
             }
         }
     }
@@ -55,11 +77,23 @@ final class ProfileViewModel: ObservableObject {
         do {
             try authService.signUserOut()
         } catch {
-            self.error = error
+            Task {
+                self.error = error
+            }
         }
     }
     
     func clearError() {
-        self.error = nil
+        Task {
+            self.error = nil
+        }
+    }
+//    MARK: - Notifications
+    func addNotification() {
+        notificationService.addNotifications()
+    }
+   
+    func notificationAction() {
+        notificationService.notificationAction()
     }
 }
