@@ -34,19 +34,5 @@ struct RadioAppApp: App {
                     .environmentObject(appManager)
             }
         }
-        
-        
-//        // register app delegate for Firebase setup
-//        @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-//        
-//        var body: some Scene {
-//            WindowGroup {
-//                
-//    //          ProfileView(viewModel: ProfileViewModel())
-//                appManager.selectedView
-//                    .environmentObject(appManager)
-//                    .environment(\.managedObjectContext, appManager.container.viewContext)
-        
-        
     }
 }
