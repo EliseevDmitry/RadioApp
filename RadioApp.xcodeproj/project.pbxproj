@@ -35,6 +35,7 @@
 		2663C7AE2C56A2B9002EFD0C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2663C7AD2C56A2B9002EFD0C /* Kingfisher */; };
 		268696642C57DC330075E9DC /* StationPopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268696632C57DC330075E9DC /* StationPopularView.swift */; };
 		268696662C57E0320075E9DC /* VoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268696652C57E0320075E9DC /* VoteView.swift */; };
+		269FCD0C2C6629B00060FFD8 /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 269FCD0A2C6629B00060FFD8 /* LikeStations.xcdatamodeld */; };
 		26A737972C5A49490002F1E9 /* PlayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A737962C5A49490002F1E9 /* PlayButtonView.swift */; };
 		26A737992C5A4F850002F1E9 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A737982C5A4F850002F1E9 /* BackButtonView.swift */; };
 		26A7379B2C5A4FCB0002F1E9 /* ForwardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */; };
@@ -42,7 +43,10 @@
 		26D180992C5AA0A300D4EF68 /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D180982C5AA0A300D4EF68 /* PopularView.swift */; };
 		26FB42E62C64994F00F9C2A2 /* FavoritesComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB42E52C64994F00F9C2A2 /* FavoritesComponentView.swift */; };
 		7A0ED5E12C592B280063F449 /* TestView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0ED5E02C592B280063F449 /* TestView2.swift */; };
+		7A1194752C64F49A0050515E /* (null) in Sources */ = {isa = PBXBuildFile; };
+		7A1194782C6502BE0050515E /* EqualizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1194772C6502BE0050515E /* EqualizerView.swift */; };
 		7A6579FF2C57F34E00FFDBFD /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6579FE2C57F34E00FFDBFD /* URLManager.swift */; };
+		7A67B1542C65F718006EBE13 /* AmplitudeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67B1532C65F718006EBE13 /* AmplitudeService.swift */; };
 		7A7A4B302C5B51B000CD8794 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B2F2C5B51B000CD8794 /* ContentView.swift */; };
 		7A7A4B332C5B520600CD8794 /* TabData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B312C5B520600CD8794 /* TabData.swift */; };
 		7A7A4B362C5B64CD00CD8794 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B352C5B64CD00CD8794 /* FavoritesView.swift */; };
@@ -115,6 +119,7 @@
 		2663C7AA2C56A257002EFD0C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		268696632C57DC330075E9DC /* StationPopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationPopularView.swift; sourceTree = "<group>"; };
 		268696652C57E0320075E9DC /* VoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteView.swift; sourceTree = "<group>"; };
+		269FCD0B2C6629B00060FFD8 /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		26A737962C5A49490002F1E9 /* PlayButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButtonView.swift; sourceTree = "<group>"; };
 		26A737982C5A4F850002F1E9 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButtonView.swift; sourceTree = "<group>"; };
@@ -122,7 +127,9 @@
 		26D180982C5AA0A300D4EF68 /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
 		26FB42E52C64994F00F9C2A2 /* FavoritesComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoritesComponentView.swift; path = RadioApp/Components/FavoritesComponentView.swift; sourceTree = SOURCE_ROOT; };
 		7A0ED5E02C592B280063F449 /* TestView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView2.swift; sourceTree = "<group>"; };
+		7A1194772C6502BE0050515E /* EqualizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualizerView.swift; sourceTree = "<group>"; };
 		7A6579FE2C57F34E00FFDBFD /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
+		7A67B1532C65F718006EBE13 /* AmplitudeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplitudeService.swift; sourceTree = "<group>"; };
 		7A7A4B2F2C5B51B000CD8794 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7A7A4B312C5B520600CD8794 /* TabData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabData.swift; sourceTree = "<group>"; };
 		7A7A4B352C5B64CD00CD8794 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
@@ -301,6 +308,7 @@
 				7A98A36D2C5CEBE10049DE5F /* AllStationsView */,
 				26A7379C2C5A50AE0002F1E9 /* PlayerMenu */,
 				7A7A4B322C5B520600CD8794 /* TabBar */,
+				7A1194762C6502A60050515E /* Equalizer */,
 				E16EBD542C5CADA50010BF71 /* CustomButton.swift */,
 				E1E498132C5BBB500099440D /* CustomTextField.swift */,
 				2663C7A42C56A1F2002EFD0C /* VolumeView.swift */,
@@ -353,6 +361,14 @@
 				26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */,
 			);
 			path = PlayerMenu;
+			sourceTree = "<group>";
+		};
+		7A1194762C6502A60050515E /* Equalizer */ = {
+			isa = PBXGroup;
+			children = (
+				7A1194772C6502BE0050515E /* EqualizerView.swift */,
+			);
+			path = Equalizer;
 			sourceTree = "<group>";
 		};
 		7A7A4B322C5B520600CD8794 /* TabBar */ = {
@@ -462,11 +478,13 @@
 		E1E497E32C56D4DF0099440D /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				E1E87BBD2C661A670070D855 /* LikeStations.xcdatamodeld */,
-				22891AC32C5B5EF700DE33E6 /* AuthService */,
-				E1E497E42C56D4F70099440D /* NetworkService */,
+				269FCD0A2C6629B00060FFD8 /* LikeStations.xcdatamodeld */,
 				E1E87BB42C649F450070D855 /* NotificationsService.swift */,
 				E1E87BBB2C65E7C10070D855 /* LocalizationService.swift */,
+				E1E87BB92C65E0E20070D855 /* StartService.swift */,
+				22891AC32C5B5EF700DE33E6 /* AuthService */,
+				E1E497E42C56D4F70099440D /* NetworkService */,
+				7A67B1532C65F718006EBE13 /* AmplitudeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -638,6 +656,7 @@
 				268696662C57E0320075E9DC /* VoteView.swift in Sources */,
 				E1E4980C2C5A10560099440D /* ChevronCyrcleView.swift in Sources */,
 				2663C7A12C56A10E002EFD0C /* CustomTabBarView.swift in Sources */,
+				269FCD0C2C6629B00060FFD8 /* LikeStations.xcdatamodeld in Sources */,
 				26A7379B2C5A4FCB0002F1E9 /* ForwardButtonView.swift in Sources */,
 				E18529DF2C5D11AA00BBE649 /* ProfileHeaderView.swift in Sources */,
 				E1E497EB2C56D8500099440D /* DS.swift in Sources */,
@@ -648,6 +667,7 @@
 				268696642C57DC330075E9DC /* StationPopularView.swift in Sources */,
 				22891AC52C5B5F5F00DE33E6 /* AuthService.swift in Sources */,
 				E1E497DA2C56D14F0099440D /* Resources.swift in Sources */,
+				7A1194752C64F49A0050515E /* (null) in Sources */,
 				2663C7802C569E54002EFD0C /* WelcomeView.swift in Sources */,
 				7A98A3682C5CCE820049DE5F /* SearchButtonView.swift in Sources */,
 				7AAEB6F62C6330FB004D7424 /* ToolbarName.swift in Sources */,
@@ -659,6 +679,7 @@
 				2663C7A52C56A1F2002EFD0C /* VolumeView.swift in Sources */,
 				E14AA7962C600FF900BAC1BE /* AboutUsCell.swift in Sources */,
 				220E86A32C5CD94B00F8B0D6 /* AppDelegate.swift in Sources */,
+				7A67B1542C65F718006EBE13 /* AmplitudeService.swift in Sources */,
 				26D180992C5AA0A300D4EF68 /* PopularView.swift in Sources */,
 				2663C7A92C56A249002EFD0C /* ViewModel.swift in Sources */,
 				26A737972C5A49490002F1E9 /* PlayButtonView.swift in Sources */,
@@ -670,6 +691,7 @@
 				7A7A4B382C5B64DE00CD8794 /* AllStationsView.swift in Sources */,
 				2663C7952C56A01F002EFD0C /* ProfileView.swift in Sources */,
 				E1E87BB52C649F450070D855 /* NotificationsService.swift in Sources */,
+				7A1194782C6502BE0050515E /* EqualizerView.swift in Sources */,
 				E1E498012C56EC900099440D /* Font + Ext.swift in Sources */,
 				2663C79D2C56A0AB002EFD0C /* SignUpView.swift in Sources */,
 				E14AA7942C600C6900BAC1BE /* AppAllert.swift in Sources */,
@@ -691,7 +713,6 @@
 				E18529DC2C5D08F000BBE649 /* ChangePhotoView.swift in Sources */,
 				220E86AA2C5D018900F8B0D6 /* TestAuthView.swift in Sources */,
 				E1E498062C58D3DF0099440D /* SettingView.swift in Sources */,
-				E1E87BBF2C661A670070D855 /* LikeStations.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -996,12 +1017,12 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		E1E87BBD2C661A670070D855 /* LikeStations.xcdatamodeld */ = {
+		269FCD0A2C6629B00060FFD8 /* LikeStations.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E1E87BBE2C661A670070D855 /* LikeStations.xcdatamodel */,
+				269FCD0B2C6629B00060FFD8 /* LikeStations.xcdatamodel */,
 			);
-			currentVersion = E1E87BBE2C661A670070D855 /* LikeStations.xcdatamodel */;
+			currentVersion = 269FCD0B2C6629B00060FFD8 /* LikeStations.xcdatamodel */;
 			name = LikeStations.xcdatamodeld;
 			path = /Users/kellerdm/RadioApp/RadioApp/Services/LikeStations.xcdatamodeld;
 			sourceTree = "<group>";

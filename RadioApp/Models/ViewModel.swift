@@ -9,13 +9,23 @@ import SwiftUI
 import AVKit
 import FirebaseAuth
 import CoreData
+import AVFoundation
+import Combine
 
 
 @MainActor
 final class ViewModel: ObservableObject {
     private let authService = AuthService.shared
     let network = NetworkService()
+    private var amplitudeService = AmplitudeService()
+    //
+
+    @Published var amplitude: CGFloat = 0.0
+    //
+
     @Published var stations = [Station]()
+//    для выбора стартового экрана
+    @Published var selectedView: AnyView = AnyView(ContentView())//AnyView(WelcomeView())
     
     //VolumeView
     //@Published var volume: CGFloat = 0
@@ -174,10 +184,11 @@ final class ViewModel: ObservableObject {
     }
     
     func setStations(stationData: [StationData]) -> Bool{
+        print(stationData)
         stations.removeAll()
         if stationData.count > 0 {
             for station in stationData {
-                let likeStation = Station(stationuuid: station.stationuuid ?? "", name: station.name ?? "", url: station.url ?? "", favicon: station.favicon ?? "", tags: station.tags ?? "", countrycode: station.tags ?? "", votes: station.votes)
+                let likeStation = Station(stationuuid: station.stationuuid ?? "", name: station.name ?? "", url: station.url ?? "", favicon: station.favicon ?? "", tags: station.tags ?? "", countrycode: station.countrycode ?? "", votes: station.votes)
                 stations.append(likeStation)
             }
             return true
@@ -238,9 +249,14 @@ final class ViewModel: ObservableObject {
         guard let url = URL.init(string: url) else { return }
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+
             player = AVPlayer(url: url)
             player?.play()
             isPlay = true
+
+            //
+            amplitudeService.startUpdatingAmplitude(viewModel: self)
+
         } catch let err {
             print(err.localizedDescription)
         }
@@ -249,11 +265,17 @@ final class ViewModel: ObservableObject {
     func playAudioStream(){
         player?.play()
         isPlay = true
+
+        //
+        amplitudeService.startUpdatingAmplitude(viewModel: self)
     }
 
     func pauseAudioStream(){
         player?.pause()
         isPlay = false
+
+        //
+        amplitudeService.startUpdatingAmplitude(viewModel: self)
     }
     
     func stopAudioStream() {
