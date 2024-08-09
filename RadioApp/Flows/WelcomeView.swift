@@ -11,6 +11,8 @@ import SwiftUI
 struct WelcomeView: View {
     // MARK: - Properties
     @EnvironmentObject var appManager: ViewModel
+    @AppStorage("isOnboarding") var isOnboarding = false
+
     
     // MARK: - Drawing Constants
     private struct DrawingConstants {
@@ -70,6 +72,19 @@ struct WelcomeView: View {
                     */
                     
                 }
+                .foregroundColor(.white)
+                
+                Spacer()
+                Spacer()
+                
+                // MARK: GetStarted Button
+                CustomButton(
+                    action: {
+                        isOnboarding.toggle()
+                        appManager.updateContext()
+                    },
+                    title: Resources.Text.getStarted,
+                    buttonType: .onboarding)
                 .frame(maxWidth: DrawingConstants.screenContentFrameWidth)
                 .padding(.bottom, DrawingConstants.screenContentBottomPadding)
             }

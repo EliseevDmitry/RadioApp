@@ -62,7 +62,8 @@ struct AllStationsView: View {
             appManager.playFirstStation()
         }
         .onDisappear{
-            appManager.isPlay = false
+           // appManager.isPlay = false
+            appManager.stopAudioStream()
         }
         .navigationViewStyle(.stack)
     }

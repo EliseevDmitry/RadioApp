@@ -20,10 +20,10 @@ struct FavoritesView: View {
                     Text("Favorites")
                         .font(.custom(DS.Fonts.sfRegular, size: 30))
                         .foregroundStyle(.white)
-                    Button("DeleteData"){
-                        deleteRecords()
-                        
-                    }
+                    //deleteRecords()
+                    //Button("DeleteData"){
+                    //deleteRecords()
+                    //}
                     Spacer()
                 }
                 .padding(.leading, 60)
@@ -34,14 +34,13 @@ struct FavoritesView: View {
                         .padding(.leading, 15)
                     ScrollView(.vertical, showsIndicators: false){
                         LazyVStack {
-                            
                             ForEach(appManager.stations, id: \.stationuuid) {item in
                                 FavoritesComponentView(
                                     selectedStationID: $appManager.selectedStation,
                                     station: item
-                                        
                                 )
                             }
+                            
                         }
                     }
                 }
@@ -49,18 +48,19 @@ struct FavoritesView: View {
             .background(DS.Colors.darkBlue)
             .navigationViewStyle(.stack)
             .onDisappear{
-                appManager.isPlay = false
+                appManager.stopAudioStream()
             }
             .onAppear{
-                if setStations() {
-                    appManager.playFirstStation()
+                if appManager.setStations(stationData: Array(stationData)) {
+                    DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+                        appManager.playFirstStation()
+                    }
+                    print(appManager.stations)
                 }
             }
-
         }
-
+        
     }
-    
     // delete all records
     func deleteRecords() {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "StationData")
@@ -72,19 +72,8 @@ struct FavoritesView: View {
         } catch let error as NSError {
             print("Fetch failed. \(error.localizedDescription)")
         }
-    }
-    
-    func setStations() -> Bool{
-        appManager.stations.removeAll()
-        if stationData.count >= 0 {
-            for station in stationData {
-                let likeStation = Station(stationuuid: station.stationuuid ?? "", name: station.name ?? "", url: station.url ?? "", favicon: station.favicon ?? "", tags: station.tags ?? "", countrycode: station.tags ?? "", votes: station.votes)
-                appManager.stations.append(likeStation)
-            }
-            return true
-        } else {
-            return false
-        }
+        try? moc.save()
+        _ = appManager.setStations(stationData: Array(stationData))
     }
 }
 

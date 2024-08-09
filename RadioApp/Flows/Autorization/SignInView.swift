@@ -44,6 +44,21 @@ struct SignInView: View {
                         .font(.custom(.sfBold, size: DrawingConstants.screenTitleFontSize))
                         .padding(.bottom, DrawingConstants.screenTitleBottomPadding)
                         .foregroundStyle(.white)
+                }
+                
+                CustomButton(action: {
+                    appManager.signIn()
+                    appManager.updateContext()
+                },
+                             title: Resources.Text.SignIn.title,
+                             buttonType: .onboarding
+                )
+                // TODO: добавить в типы кнопок третий тип - для этой группы экранов и при выборе типа заменить тернарный оператор на switch (обсудить с Димой Келлером)
+                
+                Button(action: {
+                    
+                }) {
+                    Text(Resources.Text.SignIn.orSignUp)
                     
                     // MARK: Subtitle
                     Text(Resources.Text.toStartPlay)

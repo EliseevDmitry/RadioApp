@@ -23,6 +23,9 @@ struct RadioAppApp: App {
     
     var body: some Scene {
         WindowGroup {
+            
+//          ProfileView(viewModel: ProfileViewModel())
+            appManager.selectedView
             /*
              // это вариант настройки, при которой если онбординг не пройден, то сначала показывают экран WelcomeView и далее экран SignIn, а если онбординг пройден, то показывают экран SignInView вне зависимости от аутентификации пользователя (независимо от того, залогинен ли пользователь)
             NavigationView {

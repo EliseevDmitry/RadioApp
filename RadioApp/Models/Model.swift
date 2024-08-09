@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - JSON Model
-struct Station: Codable {
+struct Station: Codable, Hashable {
     let stationuuid: String
     let name: String
     let url: String

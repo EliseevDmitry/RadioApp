@@ -34,6 +34,9 @@ final class AuthService {
     }
     
     // MARK: - Methods
+    func isAuthenticated() -> Bool {
+        return Auth.auth().currentUser?.uid != nil
+    }
     
     /// Registers a new user with the given email, password, and username
     /// - Parameters:

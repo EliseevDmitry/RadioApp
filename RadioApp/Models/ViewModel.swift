@@ -5,7 +5,7 @@
 //  Created by Dmitriy Eliseev on 28.07.2024.
 //
 
-import Foundation
+import SwiftUI
 import AVKit
 import FirebaseAuth
 import GoogleSignIn
@@ -15,10 +15,12 @@ import CoreData
 
 @MainActor
 final class ViewModel: ObservableObject {
-
+    
     let network = NetworkService()
     @Published var stations = [Station]()
-
+//    для выбора стартового экрана
+    @Published var selectedView: AnyView = AnyView(WelcomeView())
+    
     //VolumeView
     //@Published var volume: CGFloat = 0
     //@Published var volume: CGFloat = CGFloat(AVAudioSession.sharedInstance().outputVolume)
@@ -71,6 +73,13 @@ final class ViewModel: ObservableObject {
     var progressObserver: NSKeyValueObservation!
     //CoreData
     let container = NSPersistentContainer(name: "LikeStations")
+    
+//    метод для выбора загрузки стартового экрана
+    func updateContext() {
+            let context = ContextForStart()
+            let startFlow = StartService().selectStartFlow(context: context)
+            self.selectedView = startFlow
+        }
     
     func setVolme(){
         do {
@@ -169,13 +178,35 @@ final class ViewModel: ObservableObject {
     }
     
     //Внутрянняя функция поиска индекса в массиве [Station]()
-    private func getIndexStations(idStation: String)->Int?{
+    func getIndexStations(idStation: String)->Int?{
         for (index, station) in stations.enumerated() {
             if idStation == station.stationuuid{
                 return index
             }
         }
         return nil
+    }
+    
+    func setStations(stationData: [StationData]) -> Bool{
+        stations.removeAll()
+        if stationData.count > 0 {
+            for station in stationData {
+                let likeStation = Station(stationuuid: station.stationuuid ?? "", name: station.name ?? "", url: station.url ?? "", favicon: station.favicon ?? "", tags: station.tags ?? "", countrycode: station.tags ?? "", votes: station.votes)
+                stations.append(likeStation)
+            }
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func containsElementCoreData(stationData: [StationData], idStation: String) -> Bool{
+        for station in stationData {
+            if station.stationuuid == idStation {
+                return true
+            }
+        }
+        return false
     }
     
 
@@ -238,6 +269,13 @@ final class ViewModel: ObservableObject {
         player?.pause()
         isPlay = false
     }
+    
+    func stopAudioStream() {
+            player = nil
+            isPlay = false
+        selectedStation = ""
+    }
+    
     
     //запрос данных станции при нажатии на сердечно like
     func getStationForID(id: String) -> Station? {
@@ -316,6 +354,7 @@ final class ViewModel: ObservableObject {
 
     func playFirstStation() {
         if stations.count > 0 {
+            print(stations.count)
             selectedStation = stations[0].stationuuid
             playAudio(url: stations[0].url)
         }

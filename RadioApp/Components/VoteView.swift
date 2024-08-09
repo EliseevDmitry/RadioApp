@@ -11,6 +11,7 @@ struct VoteView: View {
     //MARK: - PROPERTIES
     @EnvironmentObject var appManager: ViewModel
     @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var stationsData: FetchedResults<StationData>
     var isShow: Bool
     var idStation: String
     //MARK: - BODY
@@ -33,19 +34,24 @@ struct VoteView: View {
                     appManager.updateVotesWithoutRequest(idStation: idStation)
                 }
             }
-           
-            //пока без проверки на наличие в базе элемента - тестовый вариант
             //вынести в функцию appManager
             if let dataStation = appManager.getStationForID(id: idStation) {
                 let stationData = StationData(context: moc)
-                stationData.stationuuid = dataStation.stationuuid
-                stationData.name = dataStation.name
-                stationData.url = dataStation.url
-                stationData.favicon = dataStation.favicon
-                stationData.tags = dataStation.tags
-                stationData.countrycode = dataStation.countrycode
-                stationData.votes = Int32(dataStation.votes)
-                try? moc.save()
+                if !appManager.containsElementCoreData(
+                    stationData: Array(stationsData),
+                    idStation: idStation)
+                {
+                    stationData.stationuuid = dataStation.stationuuid
+                    stationData.name = dataStation.name
+                    stationData.url = dataStation.url
+                    stationData.favicon = dataStation.favicon
+                    stationData.tags = dataStation.tags
+                    stationData.countrycode = dataStation.countrycode
+                    stationData.votes = Int32(dataStation.votes)
+                    try? moc.save()
+                } else {
+                    moc.reset()
+                }   
             }
         } label: {
             Image(systemName: isShow ? "heart.fill" : "heart")
@@ -53,11 +59,11 @@ struct VoteView: View {
                 .scaledToFit()
                 .foregroundStyle(.white)
         }
-        .task {
-            if !appManager.islike {
-                //print("отправляем запрос на сервер")
-            }
-        }
+//        .task {
+//            if !appManager.islike {
+//                //print("отправляем запрос на сервер")
+//            }
+//        }
         .disabled(!isShow ? true : false)
     }
 }
