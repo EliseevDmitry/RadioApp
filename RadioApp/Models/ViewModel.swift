@@ -9,12 +9,20 @@ import SwiftUI
 import AVKit
 import FirebaseAuth
 import CoreData
+import AVFoundation
+import Combine
 
 
 @MainActor
 final class ViewModel: ObservableObject {
     
     let network = NetworkService()
+    private var amplitudeService = AmplitudeService()
+    //
+
+    @Published var amplitude: CGFloat = 0.0
+    //
+
     @Published var stations = [Station]()
 //    для выбора стартового экрана
     @Published var selectedView: AnyView = AnyView(ContentView())//AnyView(WelcomeView())
@@ -243,9 +251,14 @@ final class ViewModel: ObservableObject {
         guard let url = URL.init(string: url) else { return }
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+
             player = AVPlayer(url: url)
             player?.play()
             isPlay = true
+
+            //
+            amplitudeService.startUpdatingAmplitude(viewModel: self)
+
         } catch let err {
             print(err.localizedDescription)
         }
@@ -254,11 +267,17 @@ final class ViewModel: ObservableObject {
     func playAudioStream(){
         player?.play()
         isPlay = true
+
+        //
+        amplitudeService.startUpdatingAmplitude(viewModel: self)
     }
 
     func pauseAudioStream(){
         player?.pause()
         isPlay = false
+
+        //
+        amplitudeService.startUpdatingAmplitude(viewModel: self)
     }
     
     func stopAudioStream() {
