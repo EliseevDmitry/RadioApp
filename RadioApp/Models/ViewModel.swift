@@ -15,7 +15,7 @@ import Combine
 
 @MainActor
 final class ViewModel: ObservableObject {
-    
+    private let authService = AuthService.shared
     let network = NetworkService()
     private var amplitudeService = AmplitudeService()
     //
@@ -43,7 +43,8 @@ final class ViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var username = "Mark"
-
+    @Published var userProfileImage: UIImage? = nil
+    
     @Published var showPassword = false
     @Published var isUserRegistered = false
     @Published var showSignInView = false
@@ -51,7 +52,8 @@ final class ViewModel: ObservableObject {
     @Published var testUserEmail = "Franky@gmail.com"
     @Published var testUserPassword = "1212121"
     @Published var testUserUsername = "Frank"
-
+    @Published var error: Error?
+    
     //search
     @Published var searchText: String = ""
 
@@ -72,12 +74,6 @@ final class ViewModel: ObservableObject {
     //CoreData
     let container = NSPersistentContainer(name: "LikeStations")
     
-//    метод для выбора загрузки стартового экрана
-    func updateContext() {
-            let context = ContextForStart()
-            let startFlow = StartService().selectStartFlow(context: context)
-            self.selectedView = startFlow
-        }
     
     func setVolme(){
         do {
@@ -104,6 +100,8 @@ final class ViewModel: ObservableObject {
         self.volume = CGFloat(session.outputVolume)
         print("init volume value - \(self.volume)")
         setVolme()
+        
+        getUserInfo()
         
         //инициализация PersistentContainer CoreData
         container.loadPersistentStores{description, error in
@@ -371,11 +369,19 @@ final class ViewModel: ObservableObject {
     }
 
     // MARK: - Auth methods
-    func signIn() {
-        Task {
-            try await AuthService.shared.signIn(with: email, password: password)
-        }
+    func getUserInfo() {
+        let user = authService.getCurrentUserModel()
+        username = user?.userName ?? ""
+        userProfileImage = UIImage(named: user?.profileImage ?? Resources.Image.eliseev)
     }
+    
+    func signIn() async {
+            do {
+                try await AuthService.shared.signIn(with: email, password: password)
+            } catch {
+                self.error = error
+            }
+        }
 
     func registerUser() {
         Task {

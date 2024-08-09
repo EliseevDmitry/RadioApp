@@ -10,6 +10,11 @@ import SwiftUI
 struct SignInView: View {
     @EnvironmentObject var appManager: ViewModel
     
+    @State private var isAuthenticated = false
+    @State private var showAlert = false
+    @State private var alert: AnyAppAlert?
+    @State private var errorAlert: AnyAppAlert? = nil
+    
     var body: some View {
         ZStack {
             AnimatedBackgroundView()
@@ -42,8 +47,9 @@ struct SignInView: View {
                 }
                 
                 CustomButton(action: {
-                    appManager.signIn()
-                    appManager.updateContext()
+                    Task {
+                        await signIn()
+                    }
                 },
                              title: Resources.Text.SignIn.title,
                              buttonType: .onboarding
@@ -55,11 +61,26 @@ struct SignInView: View {
                 }) {
                     Text(Resources.Text.SignIn.orSignUp)
                         .foregroundStyle(.white)
+                        .showCustomAlert(alert: $alert)
+                        .showCustomAlert(alert: $alert)
+                        .background(
+                            NavigationLink(destination: ContentView(), isActive: $isAuthenticated) { EmptyView() }
+                        )
                 }
                 
                 Spacer()
             }
             .padding()
+        }
+    }
+    
+    private func signIn() async {
+        await appManager.signIn()
+        if appManager.error != nil {
+            alert = AnyAppAlert(error: appManager.error!)
+            showAlert = true
+        } else {
+            isAuthenticated = true
         }
     }
 }

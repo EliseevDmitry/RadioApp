@@ -91,8 +91,8 @@
 		E1E87BB12C640CE10070D855 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BB02C640CE10070D855 /* NotificationsView.swift */; };
 		E1E87BB32C64122F0070D855 /* TimeAndDaysPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BB22C64122F0070D855 /* TimeAndDaysPicker.swift */; };
 		E1E87BB52C649F450070D855 /* NotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BB42C649F450070D855 /* NotificationsService.swift */; };
-		E1E87BBA2C65E0E20070D855 /* StartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BB92C65E0E20070D855 /* StartService.swift */; };
 		E1E87BBC2C65E7C10070D855 /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BBB2C65E7C10070D855 /* LocalizationService.swift */; };
+		E1E87BBF2C661A670070D855 /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BBD2C661A670070D855 /* LikeStations.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -177,8 +177,8 @@
 		E1E87BB02C640CE10070D855 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		E1E87BB22C64122F0070D855 /* TimeAndDaysPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAndDaysPicker.swift; sourceTree = "<group>"; };
 		E1E87BB42C649F450070D855 /* NotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsService.swift; sourceTree = "<group>"; };
-		E1E87BB92C65E0E20070D855 /* StartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartService.swift; sourceTree = "<group>"; };
 		E1E87BBB2C65E7C10070D855 /* LocalizationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationService.swift; sourceTree = "<group>"; };
+		E1E87BBE2C661A670070D855 /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -699,7 +699,6 @@
 				E1E87BB12C640CE10070D855 /* NotificationsView.swift in Sources */,
 				E1E498082C58D60F0099440D /* ProfileInfoView.swift in Sources */,
 				E14AA78E2C5FB5AD00BAC1BE /* LanguageElementView.swift in Sources */,
-				E1E87BBA2C65E0E20070D855 /* StartService.swift in Sources */,
 				2663C7972C56A037002EFD0C /* ProfileEditView.swift in Sources */,
 				7A7A4B302C5B51B000CD8794 /* ContentView.swift in Sources */,
 				26FB42E62C64994F00F9C2A2 /* FavoritesComponentView.swift in Sources */,
@@ -1025,7 +1024,7 @@
 			);
 			currentVersion = 269FCD0B2C6629B00060FFD8 /* LikeStations.xcdatamodel */;
 			name = LikeStations.xcdatamodeld;
-			path = /Users/dmitriyeliseev/Desktop/Challenge3/RadioApp/RadioApp/Services/LikeStations.xcdatamodeld;
+			path = /Users/kellerdm/RadioApp/RadioApp/Services/LikeStations.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
