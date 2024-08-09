@@ -55,6 +55,7 @@ struct FavoritesView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now()+1) {
                         appManager.playFirstStation()
                     }
+                    print(appManager.stations)
                 }
             }
         }
