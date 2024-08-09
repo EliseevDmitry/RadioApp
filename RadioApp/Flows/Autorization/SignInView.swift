@@ -109,6 +109,7 @@ struct SignInView: View {
                     // MARK: SignIn Button
                     CustomButton(action: { appManager.signIn() }, title: Resources.Text.signIn, buttonType: .authentication)
                     
+                    /*
                     CustomButton(
                         action: {
                             Task {
@@ -123,6 +124,7 @@ struct SignInView: View {
                         title: Resources.Text.logOut,
                         buttonType: .profile
                     )
+                    */
                     
                     /*
                      // версия 08.08.2024.14:32
