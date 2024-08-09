@@ -78,15 +78,15 @@ struct ProfileView: View {
                     title: Text(Resources.Text.logOut.localized(language)),
                     message: Text(Resources.Text.areYouWantLogOut.localized(language)),
                     primaryButton: .destructive(Text(Resources.Text.logOut.localized(language))) {
-                        DispatchQueue.main.async {
                             logOut()
-                        }
                     },
                     secondaryButton: .cancel()
                 )
             }
         }
         
+                    
+               
         .onReceive(viewModel.$error) { error in
             if let error = error {
                 errorAlert = AnyAppAlert(error: error)
@@ -105,15 +105,12 @@ struct ProfileView: View {
     }
     
     private func notificationAction() {
-        viewModel.notificationAction()
+//        viewModel.configureNotifications()
     }
     
     private func logOut() {
-        Task {
-            viewModel.logOut()
-
-            
-        }
+        viewModel.logOut()
+        isOnboarding = false
     }
 }
 
