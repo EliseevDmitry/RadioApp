@@ -22,9 +22,6 @@
 		22CA8E962C5953440009952D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 22CA8E952C5953440009952D /* FirebaseDatabase */; };
 		22CA8E982C59534D0009952D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 22CA8E972C59534D0009952D /* FirebaseFirestore */; };
 		22E317132C64E59D000E4C10 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E317122C64E59C000E4C10 /* AuthManager.swift */; };
-		22E317152C64FCA5000E4C10 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E317142C64FCA5000E4C10 /* RootView.swift */; };
-		22EEE4BB2C62A72A006AE988 /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22EEE4B92C62A72A006AE988 /* LikeStations.xcdatamodeld */; };
-		260588492C5FDACC002F54C1 /* TestVoteCoreDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260588482C5FDACC002F54C1 /* TestVoteCoreDataView.swift */; };
 		2663C7802C569E54002EFD0C /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C77F2C569E54002EFD0C /* WelcomeView.swift */; };
 		2663C7822C569E55002EFD0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2663C7812C569E55002EFD0C /* Assets.xcassets */; };
 		2663C7852C569E55002EFD0C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2663C7842C569E55002EFD0C /* Preview Assets.xcassets */; };
@@ -108,9 +105,6 @@
 		2277BB4B2C5F2D5700317DD2 /* ForgotPassTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassTwoView.swift; sourceTree = "<group>"; };
 		22891AC42C5B5F5F00DE33E6 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		22E317122C64E59C000E4C10 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
-		22E317142C64FCA5000E4C10 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		22EEE4BA2C62A72A006AE988 /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
-		260588482C5FDACC002F54C1 /* TestVoteCoreDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVoteCoreDataView.swift; sourceTree = "<group>"; };
 		2663C77A2C569E54002EFD0C /* RadioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2663C77F2C569E54002EFD0C /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeView.swift; path = ../WelcomeView.swift; sourceTree = "<group>"; };
 		2663C7812C569E55002EFD0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -209,7 +203,6 @@
 			children = (
 				222DC9702C5D90B7005DD0B2 /* Components */,
 				2663C77F2C569E54002EFD0C /* WelcomeView.swift */,
-				22E317142C64FCA5000E4C10 /* RootView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -686,7 +679,6 @@
 				2663C7AB2C56A257002EFD0C /* Model.swift in Sources */,
 				E16EBD572C5CB3F10010BF71 /* Color + Ext.swift in Sources */,
 				7A7A4B382C5B64DE00CD8794 /* AllStationsView.swift in Sources */,
-				22E317152C64FCA5000E4C10 /* RootView.swift in Sources */,
 				2663C7952C56A01F002EFD0C /* ProfileView.swift in Sources */,
 				E1E87BB52C649F450070D855 /* NotificationsService.swift in Sources */,
 				E1E498012C56EC900099440D /* Font + Ext.swift in Sources */,

@@ -44,21 +44,23 @@ struct SignInView: View {
                         .font(.custom(.sfBold, size: DrawingConstants.screenTitleFontSize))
                         .padding(.bottom, DrawingConstants.screenTitleBottomPadding)
                         .foregroundStyle(.white)
-                }
-                
-                CustomButton(action: {
-                    appManager.signIn()
-                    appManager.updateContext()
-                },
-                             title: Resources.Text.SignIn.title,
-                             buttonType: .onboarding
-                )
-                // TODO: добавить в типы кнопок третий тип - для этой группы экранов и при выборе типа заменить тернарный оператор на switch (обсудить с Димой Келлером)
-                
-                Button(action: {
                     
-                }) {
-                    Text(Resources.Text.SignIn.orSignUp)
+                    
+                    /*
+                     CustomButton(action: {
+                     appManager.signIn()
+                     appManager.updateContext()
+                     },
+                     title: Resources.Text.signIn,
+                     buttonType: .authentication
+                     )
+                     // TODO: добавить в типы кнопок третий тип - для этой группы экранов и при выборе типа заменить тернарный оператор на switch (обсудить с Димой Келлером)
+                     
+                     Button(action: {
+                     
+                     }) {
+                     Text(Resources.Text.orSignUp)
+                     */
                     
                     // MARK: Subtitle
                     Text(Resources.Text.toStartPlay)
@@ -122,48 +124,52 @@ struct SignInView: View {
                     }
                     
                     // MARK: SignIn Button
-                    CustomButton(action: { appManager.signIn() }, title: Resources.Text.signIn, buttonType: .authentication)
+                    CustomButton(
+                        action: { appManager.signIn() },
+                        title: Resources.Text.signIn,
+                        buttonType: .authentication
+                    )
                     
                     /*
-                    CustomButton(
-                        action: {
-                            Task {
-                                do {
-                                    try appManager.logOut()
-                                    appManager.showSignInView = true
-                                } catch {
-                                    print(error)
-                                }
-                            }
-                        },
-                        title: Resources.Text.logOut,
-                        buttonType: .profile
-                    )
-                    */
+                     CustomButton(
+                     action: {
+                     Task {
+                     do {
+                     try appManager.logOut()
+                     appManager.showSignInView = true
+                     } catch {
+                     print(error)
+                     }
+                     }
+                     },
+                     title: Resources.Text.logOut,
+                     buttonType: .profile
+                     )
+                     */
                     
                     /*
                      // версия 08.08.2024.14:32
-                    NavigationLink(isActive: $appManager.isSignedIn) {
-                        PopularView()
-                            .navigationBarBackButtonHidden()
-                    } label: {
-                        CustomButton(
-                            action: {
-                                /*
-                                 if (AuthService.userSession != nil) {
-                                 
-                                 }
-                                 appManager.isSignedIn = true
-                                 appManager.signIn()
-                                 */
-                                
-                                appManager.isSignedIn.toggle()
-                                appManager.signIn()
-                            },
-                            title: Resources.Text.signIn,
-                            buttonType: .authentication)
-                    }
-                    */
+                     NavigationLink(isActive: $appManager.isSignedIn) {
+                     PopularView()
+                     .navigationBarBackButtonHidden()
+                     } label: {
+                     CustomButton(
+                     action: {
+                     /*
+                      if (AuthService.userSession != nil) {
+                      
+                      }
+                      appManager.isSignedIn = true
+                      appManager.signIn()
+                      */
+                     
+                     appManager.isSignedIn.toggle()
+                     appManager.signIn()
+                     },
+                     title: Resources.Text.signIn,
+                     buttonType: .authentication)
+                     }
+                     */
                     
                     /*
                      CustomButton(action: appManager.signIn, title: Resources.Text.signIn, buttonType: .authentication)

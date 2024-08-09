@@ -63,9 +63,11 @@ struct RadioAppApp: App {
             */
             
              // это вариант настройки
+            /*
             RootView()
                 .environmentObject(appManager)
                 .environment(\.managedObjectContext, appManager.container.viewContext)
+             */
         }
     }
 }
