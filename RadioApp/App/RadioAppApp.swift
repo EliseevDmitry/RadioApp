@@ -13,17 +13,27 @@ import FirebaseAuth
 @main
 struct RadioAppApp: App {
     @StateObject var appManager = ViewModel()
-    
+    @AppStorage("isOnboarding") var isOnboarding = false
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
         WindowGroup {
             
-//          ProfileView(viewModel: ProfileViewModel())
-            appManager.selectedView
-                .environmentObject(appManager)
-                .environment(\.managedObjectContext, appManager.container.viewContext)
+            if !isOnboarding {
+                WelcomeView()
+                    .preferredColorScheme(.dark)
+                    .environmentObject(appManager)
+            } else if AuthService.shared.isAuthenticated() {
+                ContentView()
+                    .preferredColorScheme(.dark)
+                    .environmentObject(appManager)
+                    .environment(\.managedObjectContext, appManager.container.viewContext)
+            } else {
+                SignInView()
+                    .preferredColorScheme(.dark)
+                    .environmentObject(appManager)
+            }
         }
     }
 }

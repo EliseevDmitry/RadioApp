@@ -14,6 +14,7 @@ struct PopularView: View {
         GridItem(.flexible(minimum: 139, maximum: 139)),
         GridItem(.flexible(minimum: 139, maximum: 139))
     ]
+    @State var x = 1
     //MARK: - BODY
     var body: some View {
         NavigationView{
@@ -57,6 +58,10 @@ struct PopularView: View {
         }
         .onAppear{
             appManager.loadLikesData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                x += 1
+                print("onAppra \(x)")
+            }
             //clear Set Likes
             //appManager.likes.likeSet.removeAll()
             //appManager.saveLikesData()
