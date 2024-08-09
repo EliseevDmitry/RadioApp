@@ -9,12 +9,21 @@ import Foundation
 import AVKit
 import FirebaseAuth
 import CoreData
+import AVFoundation
+import Combine
 
 
 @MainActor
 final class ViewModel: ObservableObject {
 
     let network = NetworkService()
+
+    //
+    private let equalizerService = EqualizerService()
+    var cancellables = Set<AnyCancellable>()
+    @Published var amplitude: CGFloat = 0.0
+    //
+
     @Published var stations = [Station]()
 
     //VolumeView
@@ -94,6 +103,10 @@ final class ViewModel: ObservableObject {
                 print("CoreData failed to load \(error.localizedDescription)")
             }
         }
+
+        equalizerService.$amplitude
+                    .assign(to: \.amplitude, on: self)
+                    .store(in: &cancellables)
     }
 
     
@@ -211,9 +224,15 @@ final class ViewModel: ObservableObject {
         guard let url = URL.init(string: url) else { return }
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+
+            //equalizerService.playAudio(url: url)
             player = AVPlayer(url: url)
+
+
+
             player?.play()
             isPlay = true
+
         } catch let err {
             print(err.localizedDescription)
         }
@@ -228,7 +247,14 @@ final class ViewModel: ObservableObject {
         player?.pause()
         isPlay = false
     }
-    
+
+    ///
+
+
+
+
+    ///
+
     //запрос данных станции при нажатии на сердечно like
     func getStationForID(id: String) -> Station? {
         var indexStation: Int?

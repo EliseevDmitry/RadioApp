@@ -45,7 +45,7 @@ struct SearchBarView: View {
             }
             .padding(.horizontal)
         }
-        .frame(width: .infinity, height: 56)
+        .frame(/*width: .infinity,*/ height: 56)
         .padding(.horizontal, 8)
         .padding(.vertical, 0)
     }
