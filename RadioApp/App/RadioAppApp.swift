@@ -35,5 +35,6 @@ struct RadioAppApp: App {
                     .environmentObject(appManager)
             }
         }
+        
     }
 }
