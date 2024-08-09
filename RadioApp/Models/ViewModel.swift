@@ -5,7 +5,7 @@
 //  Created by Dmitriy Eliseev on 28.07.2024.
 //
 
-import Foundation
+import SwiftUI
 import AVKit
 import FirebaseAuth
 import CoreData
@@ -16,7 +16,9 @@ final class ViewModel: ObservableObject {
     
     let network = NetworkService()
     @Published var stations = [Station]()
-
+//    для выбора стартового экрана
+    @Published var selectedView: AnyView = AnyView(ContentView())//AnyView(WelcomeView())
+    
     //VolumeView
     //@Published var volume: CGFloat = 0
     //@Published var volume: CGFloat = CGFloat(AVAudioSession.sharedInstance().outputVolume)
@@ -61,6 +63,13 @@ final class ViewModel: ObservableObject {
     var progressObserver: NSKeyValueObservation!
     //CoreData
     let container = NSPersistentContainer(name: "LikeStations")
+    
+//    метод для выбора загрузки стартового экрана
+    func updateContext() {
+            let context = ContextForStart()
+            let startFlow = StartService().selectStartFlow(context: context)
+            self.selectedView = startFlow
+        }
     
     func setVolme(){
         do {
@@ -169,10 +178,11 @@ final class ViewModel: ObservableObject {
     }
     
     func setStations(stationData: [StationData]) -> Bool{
+        print(stationData)
         stations.removeAll()
         if stationData.count > 0 {
             for station in stationData {
-                let likeStation = Station(stationuuid: station.stationuuid ?? "", name: station.name ?? "", url: station.url ?? "", favicon: station.favicon ?? "", tags: station.tags ?? "", countrycode: station.tags ?? "", votes: station.votes)
+                let likeStation = Station(stationuuid: station.stationuuid ?? "", name: station.name ?? "", url: station.url ?? "", favicon: station.favicon ?? "", tags: station.tags ?? "", countrycode: station.countrycode ?? "", votes: station.votes)
                 stations.append(likeStation)
             }
             return true
