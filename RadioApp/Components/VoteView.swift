@@ -33,13 +33,17 @@ struct VoteView: View {
                     appManager.updateVotesWithoutRequest(idStation: idStation)
                 }
             }
+           
             //пока без проверки на наличие в базе элемента - тестовый вариант
+            //вынести в функцию appManager
             if let dataStation = appManager.getStationForID(id: idStation) {
                 let stationData = StationData(context: moc)
-                stationData.stationuuid = dataStation.changeuuid
-                stationData.url = dataStation.url
+                stationData.stationuuid = dataStation.stationuuid
                 stationData.name = dataStation.name
-                stationData.country = dataStation.countrycode
+                stationData.url = dataStation.url
+                stationData.favicon = dataStation.favicon
+                stationData.tags = dataStation.tags
+                stationData.countrycode = dataStation.countrycode
                 stationData.votes = Int32(dataStation.votes)
                 try? moc.save()
             }

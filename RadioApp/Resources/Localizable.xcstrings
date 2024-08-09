@@ -7,19 +7,6 @@
     "%@" : {
 
     },
-    "%@ + %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ + %2$@"
-          }
-        }
-      }
-    },
-    "%@?" : {
-
-    },
     "%@%%" : {
 
     },
@@ -62,6 +49,9 @@
           }
         }
       }
+    },
+    "DeleteData" : {
+
     },
     "deletePhoto" : {
       "extractionState" : "manual",

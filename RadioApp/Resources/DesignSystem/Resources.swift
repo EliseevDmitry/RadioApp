@@ -41,6 +41,11 @@ enum Resources {
         static let changePassword = "Change password"
         
         /// Profile
+        static let messagesNotifications = "Messages Notifications"
+        static let showNotifications = "Show Notifications"
+        static let selectTime = "Select Time"
+        static let selectTimeAndDays = "Select Time and Days"
+        static let exceptions = "Exceptions"
         static let settings = "Settings"
         static let profile = "Profile"
         static let general = "General"
@@ -59,6 +64,7 @@ enum Resources {
         static let takePhoto = "Take Photo"
         static let choosePhoto = "Choose Photo"
         static let deletePhoto = "Delete Photo"
+        static let areYouWantLogOut = "Are you sure you want to log out?"
         
         /// AboutUs
         static let teamLead = "Team Lead"

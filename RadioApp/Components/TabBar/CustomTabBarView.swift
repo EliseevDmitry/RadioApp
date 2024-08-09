@@ -40,8 +40,8 @@ struct CustomTabBarView: View {
             .frame(maxWidth: .infinity)
             .padding(.horizontal, 30)
         }
-        .frame(height: 42)
-        .padding(.top, 16)
+        .frame(height: 38)
+        .padding(.top, 12)
         .background(DS.Colors.darkBlue)
     }
 }

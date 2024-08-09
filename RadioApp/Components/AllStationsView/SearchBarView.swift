@@ -17,6 +17,7 @@ struct SearchBarView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
                 .fill(DS.Colors.graySearch)
+                .padding(.vertical, 0)
 
             HStack {
                 Image("search")
@@ -44,8 +45,9 @@ struct SearchBarView: View {
             }
             .padding(.horizontal)
         }
-        .frame(width: .infinity, height: 56)
+       // .frame(maxWidth: .infinity, maxHeight: 56)
         .padding(.horizontal, 8)
+        .padding(.vertical, 0)
     }
 
     struct CustomTextField: View {

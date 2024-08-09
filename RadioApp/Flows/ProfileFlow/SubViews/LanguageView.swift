@@ -10,7 +10,8 @@ import SwiftUI
 struct LanguageView: View {
     
     // MARK: - Properties
-    @State private var selectedLanguage: Language? = nil
+    @AppStorage("selectedLanguage") private var language = LocalizationService.shared.language
+    
     
     // MARK: - Body
     var body: some View {
@@ -19,19 +20,20 @@ struct LanguageView: View {
                 .ignoresSafeArea()
             
             // MARK: Language List
-            List(Language.allCases) { language in
+            List(Language.allCases) { lang in
                 LanguageElementView(
-                    language: language.rawValue.capitalized,
-                    isSelected: selectedLanguage == language
+                    language: lang.rawValue.capitalized,
+                    isSelected: language == lang
                 )
                 .onTapGesture {
-                    selectedLanguage = language
+                    self.language = lang
+                    
                 }
                 .listRowBackground(DS.Colors.darkBlue)
             }
             .listStyle(PlainListStyle())
         }
-        .navigationTitle(Resources.Text.language.capitalized)
+        .navigationTitle(Resources.Text.language.capitalized.localized(language))
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
