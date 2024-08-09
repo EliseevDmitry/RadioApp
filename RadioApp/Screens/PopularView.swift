@@ -14,6 +14,7 @@ struct PopularView: View {
         GridItem(.flexible(minimum: 139, maximum: 139)),
         GridItem(.flexible(minimum: 139, maximum: 139))
     ]
+    @State var x = 1
     //MARK: - BODY
     var body: some View {
         NavigationView{
@@ -27,7 +28,7 @@ struct PopularView: View {
                 .padding(.leading, 60)
                 .padding(.top, 10)
                 HStack{
-                    VolumeView()
+                    VolumeView(rotation: false)
                         .frame(width: 33 ,height: 250)
                         .padding(.leading, 15)
                     ScrollView(.vertical, showsIndicators: false){
@@ -57,6 +58,7 @@ struct PopularView: View {
         }
         .onAppear{
             appManager.loadLikesData()
+           
             //clear Set Likes
             //appManager.likes.likeSet.removeAll()
             //appManager.saveLikesData()

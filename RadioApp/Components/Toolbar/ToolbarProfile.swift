@@ -30,12 +30,8 @@ struct ToolbarProfile: View {
     
     var body: some View {
         
-        Button {
-            //action перехода на Profile
-            
-        } label: {
-            //изображение пользователя
-            Image(.eliseevd)
+        NavigationLink(destination: ProfileView(viewModel: ProfileViewModel())) {
+            Image(uiImage: appManager.userProfileImage ?? .eliseev)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 60, height: 70)

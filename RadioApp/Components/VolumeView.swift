@@ -10,11 +10,14 @@ import MediaPlayer
 
 struct VolumeView: View {
     @EnvironmentObject var appManager: ViewModel
+    var rotation: Bool
     var body: some View {
         VStack{
             Text("\((Int(appManager.volume*100)).formatted())%")
                 .font(.system(size: 12))
                 .foregroundStyle(.white)
+                .rotationEffect(rotation ? -Angle(degrees: (90)) : Angle(degrees: 0))
+                .offset(CGSize(width:0, height:rotation ? -12.0 : 0.0))
             GeometryReader { screen in
                 ZStack{
                     ZStack(alignment: .bottom){
@@ -56,18 +59,25 @@ struct VolumeView: View {
             .frame(width: 10)
             Image(systemName: appManager.volume == 0 ? "speaker.slash" : "speaker.wave.2")
                 .resizable()
-                .offset(CGSize(width: 5.0, height: 5.0))
+                .offset(CGSize(width:rotation ? 0 : 5.0, height:rotation ? 0 : 5.0))
                 .frame(width: 18, height: 18)
                 .foregroundStyle(DS.Colors.frame)
+                .rotationEffect(rotation ? -Angle(degrees: (90)) : Angle(degrees: 0))
+               
         }
+        //.frame(height: 200)
+        .rotationEffect(rotation ? Angle(degrees: (90)) : Angle(degrees: 0))
+       
+        
     }
+   
 }
 
 //MARK: - PREVIEW
 struct VolumeView_Previews: PreviewProvider {
     static let previewAppManager = ViewModel()
     static var previews: some View {
-        VolumeView()
+        VolumeView(rotation: false)
             .environmentObject(previewAppManager)
     }
 }

@@ -38,7 +38,6 @@ struct WelcomeView: View {
                 CustomButton(
                     action: {
                         isOnboarding.toggle()
-                        appManager.updateContext()
                     },
                     title: Resources.Text.getStarted,
                     buttonType: .onboarding)

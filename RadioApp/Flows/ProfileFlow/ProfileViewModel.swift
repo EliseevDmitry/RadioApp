@@ -90,7 +90,7 @@ final class ProfileViewModel: ObservableObject {
     }
 //    MARK: - Notifications
     func addNotification() {
-        notificationService.addNotifications()
+//        notificationService.addNotifications()
     }
    
     func notificationAction() {

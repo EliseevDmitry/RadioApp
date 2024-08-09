@@ -5,11 +5,11 @@
 //  Created by Келлер Дмитрий on 02.08.2024.
 //
 
-import Foundation
+import SwiftUI
 
 struct UserModel: Identifiable, Codable {
     let id: String
     let userName: String
     let email: String
-    var profileImagePath: String? = nil
+    var profileImage: String?
 }
