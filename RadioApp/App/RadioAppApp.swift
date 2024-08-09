@@ -38,6 +38,8 @@ struct RadioAppApp: App {
                     .preferredColorScheme(.dark)
                     .environmentObject(appManager)
             }
+            
+            // Hello
         }
     }
 }
