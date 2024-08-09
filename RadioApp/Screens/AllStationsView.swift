@@ -40,12 +40,18 @@ struct AllStationsView: View {
                     // stations
                     VStack {
                         ScrollView(.vertical, showsIndicators: false) {
-                            LazyVStack {
+                            LazyVStack(pinnedViews: .sectionHeaders) {
                                 ForEach(appManager.stations, id: \.stationuuid) { station in
-                                    StationView(selectedStationID: $appManager.selectedStation, station: station)
+                                    NavigationLink(destination: StationDetailsView(station: station)) {
+                                        StationView(selectedStationID: $appManager.selectedStation, station: station)
+                                            .onLongPressGesture {
+                                                print(station.name)
+                                            }
+                                    }
                                 }
                             }
                         }
+                        .background(DS.Colors.darkBlue)
                     }
                     Spacer()
                 }
