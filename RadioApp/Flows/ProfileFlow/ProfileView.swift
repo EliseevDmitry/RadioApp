@@ -21,7 +21,6 @@ struct ProfileView: View {
     
     // MARK: - Body
     var body: some View {
-        NavigationView {
             ZStack {
                 AnimatedBackgroundView()
                     .ignoresSafeArea()
@@ -67,6 +66,12 @@ struct ProfileView: View {
                 .showCustomAlert(alert: $errorAlert)
                 .navigationTitle(Resources.Text.settings.localized(language))
                 .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(true)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        BackBarButton()
+                    }
+                }
                 .alert(isPresented: $showLogoutAlert) {
                     Alert(
                         title: Text(Resources.Text.logOut.localized(language)),
@@ -78,7 +83,7 @@ struct ProfileView: View {
                     )
                 }
             }
-        }
+        
         .onReceive(viewModel.$error) { error in
             if let error = error {
                 errorAlert = AnyAppAlert(error: error)

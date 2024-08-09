@@ -11,7 +11,7 @@ struct AllStationsView: View {
 
     @EnvironmentObject var appManager: ViewModel
     @State private var isSearching: Bool = false
-
+    
     var body: some View {
         NavigationView {
             // text
@@ -32,7 +32,7 @@ struct AllStationsView: View {
                 HStack {
                     // sound control
                     VStack {
-                        VolumeView()
+                        VolumeView(rotation: false)
                             .frame(width: 33 ,height: 250)
                             .padding(.leading, 15)
                     }
