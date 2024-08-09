@@ -20,7 +20,7 @@ struct PopularView: View {
             VStack {
                 HStack {
                     Text("Popular")
-                        .font(.custom(DS.Fonts.sfRegular, size: 35))
+                        .font(.custom(DS.Fonts.sfRegular, size: 30))
                         .foregroundStyle(.white)
                     Spacer()
                 }
@@ -62,7 +62,7 @@ struct PopularView: View {
             //appManager.saveLikesData()
         }
         .onDisappear{
-            appManager.isPlay = false
+            appManager.stopAudioStream()
         }
     }
 }

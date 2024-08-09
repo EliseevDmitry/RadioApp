@@ -27,9 +27,8 @@ struct AllStationsView: View {
 
                 // search view
                 SearchBarView(isSearching: $isSearching)
-
+                    .frame(height: 56)
                 Spacer()
-
                 HStack {
                     // sound control
                     VStack {
@@ -63,7 +62,8 @@ struct AllStationsView: View {
             appManager.playFirstStation()
         }
         .onDisappear{
-            appManager.isPlay = false
+           // appManager.isPlay = false
+            appManager.stopAudioStream()
         }
         .navigationViewStyle(.stack)
     }
