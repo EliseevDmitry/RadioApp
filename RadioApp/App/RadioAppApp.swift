@@ -19,13 +19,10 @@ struct RadioAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-//  ContentView()
-            ProfileView(viewModel: ProfileViewModel())
-           // TestAuthView()
-            //TestVoteCoreDataView()
-            //PopularView()
+            
+//          ProfileView(viewModel: ProfileViewModel())
+            appManager.selectedView
                 .environmentObject(appManager)
-            //CoreData
                 .environment(\.managedObjectContext, appManager.container.viewContext)
         }
     }
