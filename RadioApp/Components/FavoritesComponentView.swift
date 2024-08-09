@@ -82,10 +82,11 @@ struct FavoritesComponentView: View {
             moc.delete(station)
             try? moc.save()
             _ = appManager.setStations(stationData: Array(stationData))
-            if appManager.stations.count >= 0 {
+            print(appManager.stations.count)
+            if appManager.stations.count > 0 {
                 appManager.playFirstStation()
             } else {
-                appManager.player?.replaceCurrentItem(with: nil)
+                appManager.stopAudioStream()
             }
         }
     }

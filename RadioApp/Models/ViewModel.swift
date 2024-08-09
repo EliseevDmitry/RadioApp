@@ -181,6 +181,15 @@ final class ViewModel: ObservableObject {
         }
     }
     
+    func containsElementCoreData(stationData: [StationData], idStation: String) -> Bool{
+        for station in stationData {
+            if station.stationuuid == idStation {
+                return true
+            }
+        }
+        return false
+    }
+    
 
 //    func fetchSearchStations() async throws {
 //        var fetchSearchStations: [Station]
@@ -241,6 +250,17 @@ final class ViewModel: ObservableObject {
         player?.pause()
         isPlay = false
     }
+    
+    func stopAudioStream() {
+        defer{
+            player = nil
+            isPlay = false
+        }
+        if isPlay {
+            pauseAudioStream()
+        }
+    }
+    
     
     //запрос данных станции при нажатии на сердечно like
     func getStationForID(id: String) -> Station? {

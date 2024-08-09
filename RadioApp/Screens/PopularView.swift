@@ -62,7 +62,7 @@ struct PopularView: View {
             //appManager.saveLikesData()
         }
         .onDisappear{
-            appManager.isPlay = false
+            appManager.pauseAudioStream()
         }
     }
 }
