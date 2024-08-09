@@ -59,11 +59,11 @@ struct VoteView: View {
                 .scaledToFit()
                 .foregroundStyle(.white)
         }
-        .task {
-            if !appManager.islike {
-                //print("отправляем запрос на сервер")
-            }
-        }
+//        .task {
+//            if !appManager.islike {
+//                //print("отправляем запрос на сервер")
+//            }
+//        }
         .disabled(!isShow ? true : false)
     }
 }

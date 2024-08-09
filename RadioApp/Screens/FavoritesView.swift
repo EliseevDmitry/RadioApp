@@ -20,10 +20,10 @@ struct FavoritesView: View {
                     Text("Favorites")
                         .font(.custom(DS.Fonts.sfRegular, size: 30))
                         .foregroundStyle(.white)
-                    Button("DeleteData"){
-                        deleteRecords()
-                        
-                    }
+                    //deleteRecords()
+                    //Button("DeleteData"){
+                    //deleteRecords()
+                    //}
                     Spacer()
                 }
                 .padding(.leading, 60)
@@ -48,20 +48,18 @@ struct FavoritesView: View {
             .background(DS.Colors.darkBlue)
             .navigationViewStyle(.stack)
             .onDisappear{
-                appManager.isPlay = false
+                appManager.stopAudioStream()
             }
             .onAppear{
                 if appManager.setStations(stationData: Array(stationData)) {
-                    appManager.playFirstStation()
+                    DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+                        appManager.playFirstStation()
+                    }
                 }
             }
-
         }
-
+        
     }
-    
-
-    
     // delete all records
     func deleteRecords() {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "StationData")
@@ -73,11 +71,9 @@ struct FavoritesView: View {
         } catch let error as NSError {
             print("Fetch failed. \(error.localizedDescription)")
         }
-//        try? moc.save()
-//        setStations()
+        try? moc.save()
+        _ = appManager.setStations(stationData: Array(stationData))
     }
-    
-
 }
 
 //MARK: - PREVIEW

@@ -170,7 +170,7 @@ final class ViewModel: ObservableObject {
     
     func setStations(stationData: [StationData]) -> Bool{
         stations.removeAll()
-        if stationData.count >= 0 {
+        if stationData.count > 0 {
             for station in stationData {
                 let likeStation = Station(stationuuid: station.stationuuid ?? "", name: station.name ?? "", url: station.url ?? "", favicon: station.favicon ?? "", tags: station.tags ?? "", countrycode: station.tags ?? "", votes: station.votes)
                 stations.append(likeStation)
@@ -252,13 +252,9 @@ final class ViewModel: ObservableObject {
     }
     
     func stopAudioStream() {
-        defer{
             player = nil
             isPlay = false
-        }
-        if isPlay {
-            pauseAudioStream()
-        }
+        selectedStation = ""
     }
     
     
@@ -339,6 +335,7 @@ final class ViewModel: ObservableObject {
 
     func playFirstStation() {
         if stations.count > 0 {
+            print(stations.count)
             selectedStation = stations[0].stationuuid
             playAudio(url: stations[0].url)
         }
