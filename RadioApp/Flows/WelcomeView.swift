@@ -14,7 +14,6 @@ struct WelcomeView: View {
     
     // MARK: - Drawing Constants
     private struct DrawingConstants {
-        // размеры - адаптивные: привязаны к ширине и высоте экрана (UIScreen)
         static let screenTitleFontSize = UIScreen.height * 1/16
         static let screenTitleBottomPadding = UIScreen.height * 1/32
         static let screenSubtitleFontSize = UIScreen.height * 1/48
@@ -33,12 +32,13 @@ struct WelcomeView: View {
                     Spacer()
                     
                     VStack(alignment: .leading) {
-                        // MARK: - Title
+                        
+                        // MARK: Title
                         Text(Resources.Text.letsGetStarted)
                             .font(.custom(.sfBold, size: DrawingConstants.screenTitleFontSize))
                             .padding(.bottom, DrawingConstants.screenTitleBottomPadding)
 
-                        // MARK: - Subtitle
+                        // MARK: Subtitle
                         Text(Resources.Text.enjoyTheBestRadio)
                             .font(.custom(.sfRegular, size: DrawingConstants.screenSubtitleFontSize))
                             .frame(maxWidth: DrawingConstants.screenSubtitleFrameWidth)
@@ -54,7 +54,9 @@ struct WelcomeView: View {
                             .navigationBarBackButtonHidden()
                             .environmentObject(appManager)
                     } label: {
-                        CustomButton(action: {appManager.onboardingIsShown.toggle()}, title: Resources.Text.getStarted, buttonType: .onboarding)
+                        CustomButton(action: {appManager.onboardingIsShown = true},
+                                     title: Resources.Text.getStarted,
+                                     buttonType: .onboarding)
                     }
                     
                     /*
@@ -63,34 +65,16 @@ struct WelcomeView: View {
                             .navigationBarBackButtonHidden()
                             .environmentObject(appManager)
                     ) {
-                        Text(Resources.Text.getStarted)
-                            .foregroundStyle(.white)
+                        CustomButton(action: { appManager.onboardingIsShown.toggle() }, title: Resources.Text.getStarted, buttonType: .onboarding)
                     }
                     */
                     
-                    /*
-                    NavigationLink(isActive: $onboardingPage1ViewIsOn) {
-                        OnboardingPage1View(appManager: appManager)
-                            .navigationBarBackButtonHidden()
-                    } label: {
-                        StartButtonView(title: "Get Started") {
-                            onboardingPage1ViewIsOn.toggle()
-                        }
-                    }
-                    */
-                    
-                    /*
-                    // MARK: GetStarted Button
-                    CustomButton(
-                        action: {},
-                        title: Resources.Text.getStarted,
-                        buttonType: .onboarding)
-                    */
                 }
                 .frame(maxWidth: DrawingConstants.screenContentFrameWidth)
                 .padding(.bottom, DrawingConstants.screenContentBottomPadding)
             }
         }
+        .navigationViewStyle(.stack)
     }
 }
 

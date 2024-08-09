@@ -22,7 +22,7 @@ final class AuthService {
     
     private init() {
         self.userSession = Auth.auth().currentUser
-        print("userSession\(userSession)")
+        print("userSession\(String(describing: userSession))")
     }
     
     func registerUser(with email: String, password: String, username: String) async throws {
@@ -103,7 +103,6 @@ final class AuthService {
     }
     
     
-//    func signUserOut() throws { // ошибка при копировании
     
     func signInWithGoogle() async -> Bool {
         guard let clientID = FirebaseApp.app()?.options.clientID else {

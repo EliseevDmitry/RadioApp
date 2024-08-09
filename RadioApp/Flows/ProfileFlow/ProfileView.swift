@@ -11,6 +11,12 @@ import SwiftUI
 struct ProfileView: View {
     // MARK: - Properties
     @ObservedObject var viewModel: ProfileViewModel
+    
+    /*
+    // это свойство позволяет обращаться к единой вью-модели приложения, например, чтобы разлогиниться тому пользователю, который залогинился на экране SignView
+    @EnvironmentObject var appManager: ViewModel
+    */
+    
 
     @State private var errorAlert: AnyAppAlert? = nil
     
@@ -56,6 +62,25 @@ struct ProfileView: View {
                         action: logOut,
                         title: Resources.Text.logOut,
                         buttonType: .profile)
+                    
+                    /*
+                    // это вариант кнопки Log Out, действие по нажатию на которую происходит через обращение к единой вью-модели приложения
+                    CustomButton(
+                        action: {
+                            Task {
+                                do {
+                                    try appManager.logOut()
+                                    appManager.showSignInView = true
+                                } catch {
+                                    print(error)
+                                }
+                            }
+                        },
+                        title: Resources.Text.logOut,
+                        buttonType: .profile
+                    )
+                    */
+                    
                 }
                 .padding()
                 .foregroundColor(.white)

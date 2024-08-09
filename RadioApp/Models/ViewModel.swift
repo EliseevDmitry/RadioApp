@@ -31,7 +31,10 @@ final class ViewModel: ObservableObject {
     @Published var isPlay: Bool = false
     
     // свойства для онбординга
-    @Published var onboardingIsShown = false
+    @Published var onboardingIsShown = false // логическое свойство, значение которого сообщает, был ли уже пройден онбординг (показывали ли уже экран WelcomeView)
+    
+    // свойства для определения необходимости аутентификации пользователя
+    @Published var showSignInView = false // логическое свойство, значение которого отвечает на вопрос, надо ли показывать экран SignView (зависит от того проходил ли пользователь аутентификацию)
 
     // свойства для аутентификации пользователя
     @Published var email = ""
@@ -43,7 +46,7 @@ final class ViewModel: ObservableObject {
     
     @Published var showPassword = false
     @Published var isUserRegistered = false
-    @Published var showSignInView = false
+//    @Published var showSignInView = false
 
     @Published var testUserEmail = "Franky@gmail.com"
     @Published var testUserPassword = "1212121"
@@ -319,9 +322,29 @@ final class ViewModel: ObservableObject {
     }
 
     // MARK: - Auth methods
+    /*
     func signIn() {
         Task {
             try await AuthService.shared.signIn(with: email, password: password)
+        }
+    }
+    */
+    
+    func signIn() {
+        // TODO: в guard сейчас проверка только на присутствие электронки и пароля с любым ненулевым количеством символов, но надо положить больше проверочных условий (длина, наличие собачки в электронке, наличие в пароле спецсимволов-цифр-прописных-строчных-букв)
+        guard !email.isEmpty, !password.isEmpty else {
+            print ("Адрес электронной почты или пароль не найдены.")
+            return
+        }
+                
+        Task {
+            do {
+                let returnedUserData = try await AuthManager.shared.createUser(email: email, password: password)
+                print("При выполнении метода SignIn успешно возвращены следующие пользовательские данные: \(returnedUserData).")
+            } catch {
+                print("При выполнении метода SignIn пользовательские данные не возвращены. Возникла ошибка: \(error).")
+                throw error
+            }
         }
     }
     
@@ -338,11 +361,19 @@ final class ViewModel: ObservableObject {
         }
     }
 
+    /*
     func signOut() {
         Task {
             try AuthService.shared.signUserOut()
         }
     }
+    */
+    
+    func logOut() throws {
+        try AuthManager.shared.signOut()
+    }
+    
+    // MARK: - Other Methods
     
     //get Tag in String with ","
     func getString(tags: String)->String? {

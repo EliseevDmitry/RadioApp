@@ -7,56 +7,85 @@
 
 import SwiftUI
 
-struct SignUpView: View {    
+// MARK: - SignInView
+struct SignUpView: View {
+    // MARK: - Properties
     @EnvironmentObject var appManager: ViewModel
     
+    // MARK: - Drawing Constants
     private struct DrawingConstants {
-        // размеры - адаптивные: привязаны к ширине и высоте экрана (UIScreen)
-        static let screenLogoImageWidth = UIScreen.width * 1/4
-        static let screenLogoImageHeight = UIScreen.width * 1/4
+        static let screenLogoImageWidth = UIScreen.width * 1/6
+        static let screenLogoImageHeight = screenLogoImageWidth
         static let screenTitleFontSize = UIScreen.height * 1/16
         static let screenTitleBottomPadding = UIScreen.height * 1/32
-        static let screenSubTitleFontSize = UIScreen.height * 1/48
-        static let screenSubTitleFrameWidth = UIScreen.width * 1/3
+        static let screenSubtitleFontSize = UIScreen.height * 1/48
+        static let screenSubtitleFrameWidth = UIScreen.width * 1/3
+        static let screenSubtitleBottomPadding = UIScreen.height * 1/16
+        static let screenContentPadding = UIScreen.width * 1/16
     }
     
+    // MARK: - Body
     var body: some View {
         ZStack {
+            // MARK: Background
             AnimatedBackgroundView(screenType: .authentication)
             AuthBackgroundView()
             
             VStack(alignment: .leading) {
                 Spacer()
                 
-                Image("Group 3").resizable()
+                // MARK: Logo
+                Image("playButtonLogo").resizable()
                     .frame(width: DrawingConstants.screenLogoImageWidth,
                            height: DrawingConstants.screenLogoImageHeight)
+                
+                // MARK: Title
                 Text(Resources.Text.signUp)
                     .font(.custom(.sfBold, size: DrawingConstants.screenTitleFontSize))
                     .padding(.bottom, DrawingConstants.screenTitleBottomPadding)
+                    .foregroundStyle(.white)
                 
+                // MARK: Subtitle
                 Text(Resources.Text.toStartPlay)
-                    .font(.custom(.sfRegular, size: DrawingConstants.screenSubTitleFontSize))
-                    .frame(maxWidth: DrawingConstants.screenSubTitleFrameWidth)
+                    .font(.custom(.sfRegular, size: DrawingConstants.screenSubtitleFontSize))
+                    .frame(maxWidth: DrawingConstants.screenSubtitleFrameWidth)
+                    .foregroundStyle(.white)
+                    .padding(.bottom, DrawingConstants.screenSubtitleBottomPadding)
                 
-                TextField(Resources.Text.name, text: $appManager.email)
-                    .font(.title)
+                // MARK: Name Textfield
+                Text(Resources.Text.name)
+                    .font(.custom(.sfRegular, size: DrawingConstants.screenSubtitleFontSize))
+                    .frame(maxWidth: DrawingConstants.screenSubtitleFrameWidth)
+                    .foregroundStyle(.white)
                 
-                TextField(Resources.Text.email, text: $appManager.email)
+                TextField(Resources.Text.yourName, text: $appManager.username)
                     .font(.title)
+                    .background(.white)
                 
-                SecureField(Resources.Text.password, text: $appManager.password)
+                // MARK: Email Textfield
+                Text(Resources.Text.email)
+                    .font(.custom(.sfRegular, size: DrawingConstants.screenSubtitleFontSize))
+                    .frame(maxWidth: DrawingConstants.screenSubtitleFrameWidth)
+                    .foregroundStyle(.white)
+                
+                TextField(Resources.Text.yourEmail, text: $appManager.email)
                     .font(.title)
+                    .background(.white)
+                
+                // MARK: Password Securefield
+                Text(Resources.Text.password)
+                    .font(.custom(.sfRegular, size: DrawingConstants.screenSubtitleFontSize))
+                    .frame(maxWidth: DrawingConstants.screenSubtitleFrameWidth)
+                    .foregroundStyle(.white)
+                
+                SecureField(Resources.Text.yourPassword, text: $appManager.password)
+                    .font(.title)
+                    .background(.white)
                                 
-                CustomButton(action: appManager.registerUser, title: Resources.Text.signUp, buttonType: .onboarding) // TODO: изменить тип кнопки
+                // MARK: SignUp Button
+                CustomButton(action: appManager.registerUser, title: Resources.Text.signUp, buttonType: .authentication)
                 
-                /*
-                Button(action: {}) {
-                    Text(Resources.Text.orSignIn)
-                        .foregroundStyle(.white)
-                }
-                */
-                
+                // MARK: SignIn Button
                 NavigationLink(
                     destination: SignInView()
                         .environmentObject(appManager)
@@ -68,7 +97,7 @@ struct SignUpView: View {
                 
                 Spacer()
             }
-            .padding()
+            .padding(DrawingConstants.screenContentPadding)
         }
     }
 }

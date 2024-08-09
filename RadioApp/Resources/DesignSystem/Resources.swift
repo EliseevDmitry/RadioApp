@@ -22,7 +22,7 @@ enum Resources {
         static let yourEmail = "Your email"
         static let password = "Password"
         static let yourPassword = "Your password"
-        static let forgotPassword = "Forgot Password?"
+        static let forgotPassword = "Forgot Password"
         static let orConnectWith = "Or connect with"
         static let orSignUp = "Or Sign Up"
         
@@ -60,7 +60,7 @@ enum Resources {
         static let choosePhoto = "Choose Photo"
         static let deletePhoto = "Delete Photo"
         
-        /// AboutUS
+        /// AboutUs
         static let teamLead = "Team Lead"
         static let developers = "Developers"
         static let eliseev = "Dmitry Eliseev"
@@ -74,9 +74,6 @@ enum Resources {
         
         static let kukarskiy = "Evgeniy Kukarskiy"
         static let kukarskiyGit = "https://github.com/EKukarskiy"
-        
-        
-        
     }
     
     enum Image {
@@ -97,6 +94,8 @@ enum Resources {
         static let gindulin = "gindulin"
         static let kukarskiy = "kukarskiy"
         static let keller = "keller"
+        /// SignIn + SignUp
+        static let arrowRight = "arrow.right"
     }
     
 }

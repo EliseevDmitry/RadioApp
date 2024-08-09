@@ -23,27 +23,46 @@ struct RadioAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if appManager.onboardingIsShown {
-               SignInView()
-                    .environmentObject(appManager)
-                    .environment(\.managedObjectContext, appManager.container.viewContext)
-            } else {
-               WelcomeView()
-                    .environmentObject(appManager)
-                    .environment(\.managedObjectContext, appManager.container.viewContext)
+            /*
+             // это вариант настройки, при которой если онбординг не пройден, то сначала показывают экран WelcomeView и далее экран SignIn, а если онбординг пройден, то показывают экран SignInView вне зависимости от аутентификации пользователя (независимо от того, залогинен ли пользователь)
+            NavigationView {
+                if appManager.onboardingIsShown {
+                    SignInView()
+                        .environmentObject(appManager)
+                        .environment(\.managedObjectContext, appManager.container.viewContext)
+                } else {
+                    WelcomeView()
+                        .environmentObject(appManager)
+                        .environment(\.managedObjectContext, appManager.container.viewContext)
+                }
             }
+            .navigationViewStyle(.stack)
+            */
             
-//            ContentView()
-//            TestAuthView()
+            /*
+            // это вариант настройки, при которой если онбординг не пройден
+            NavigationView {
+                if appManager.onboardingIsShown, !appManager.showSignInView {
+                    PopularView()
+                        .environmentObject(appManager)
+                        .environment(\.managedObjectContext, appManager.container.viewContext)
+                } else if appManager.onboardingIsShown, appManager.showSignInView {
+                    SignInView()
+                        .environmentObject(appManager)
+                        .environment(\.managedObjectContext, appManager.container.viewContext)
+                } else {
+                    WelcomeView()
+                        .environmentObject(appManager)
+                        .environment(\.managedObjectContext, appManager.container.viewContext)
+                }
+            }
+            .navigationViewStyle(.stack)
+            */
             
-//            SignInView()
-//            WelcomeView()
-//            ProfileView(viewModel: ProfileViewModel())
-           // TestAuthView()
-            //TestVoteCoreDataView()
-//                .environmentObject(appManager)
-            //CoreData
-//                .environment(\.managedObjectContext, appManager.container.viewContext)
+             // это вариант настройки
+            RootView()
+                .environmentObject(appManager)
+                .environment(\.managedObjectContext, appManager.container.viewContext)
         }
     }
 }

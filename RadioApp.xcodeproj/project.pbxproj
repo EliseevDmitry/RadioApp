@@ -13,6 +13,7 @@
 		220E86A82C5CE34D00F8B0D6 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 220E86A72C5CE34D00F8B0D6 /* GoogleSignInSwift */; };
 		220E86AA2C5D018900F8B0D6 /* TestAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E86A92C5D018900F8B0D6 /* TestAuthView.swift */; };
 		223406762C5DF7C200C701A3 /* WelcomeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223406752C5DF7C200C701A3 /* WelcomeBackgroundView.swift */; };
+		223C4ABE2C641A5100014D0E /* AuthDataResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C4ABD2C641A5100014D0E /* AuthDataResultModel.swift */; };
 		2277BB472C5E881700317DD2 /* AuthBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277BB462C5E87E500317DD2 /* AuthBackgroundView.swift */; };
 		2277BB4A2C5F2D0E00317DD2 /* ForgotPassOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277BB492C5F2D0E00317DD2 /* ForgotPassOneView.swift */; };
 		2277BB4C2C5F2D5700317DD2 /* ForgotPassTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277BB4B2C5F2D5700317DD2 /* ForgotPassTwoView.swift */; };
@@ -20,6 +21,8 @@
 		22CA8E942C59533A0009952D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 22CA8E932C59533A0009952D /* FirebaseAuth */; };
 		22CA8E962C5953440009952D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 22CA8E952C5953440009952D /* FirebaseDatabase */; };
 		22CA8E982C59534D0009952D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 22CA8E972C59534D0009952D /* FirebaseFirestore */; };
+		22E317132C64E59D000E4C10 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E317122C64E59C000E4C10 /* AuthManager.swift */; };
+		22E317152C64FCA5000E4C10 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E317142C64FCA5000E4C10 /* RootView.swift */; };
 		22EEE4BB2C62A72A006AE988 /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22EEE4B92C62A72A006AE988 /* LikeStations.xcdatamodeld */; };
 		260588492C5FDACC002F54C1 /* TestVoteCoreDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260588482C5FDACC002F54C1 /* TestVoteCoreDataView.swift */; };
 		2663C7802C569E54002EFD0C /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663C77F2C569E54002EFD0C /* WelcomeView.swift */; };
@@ -90,10 +93,13 @@
 		220E86A22C5CD94B00F8B0D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		220E86A92C5D018900F8B0D6 /* TestAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAuthView.swift; sourceTree = "<group>"; };
 		223406752C5DF7C200C701A3 /* WelcomeBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeBackgroundView.swift; sourceTree = "<group>"; };
+		223C4ABD2C641A5100014D0E /* AuthDataResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataResultModel.swift; sourceTree = "<group>"; };
 		2277BB462C5E87E500317DD2 /* AuthBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBackgroundView.swift; sourceTree = "<group>"; };
 		2277BB492C5F2D0E00317DD2 /* ForgotPassOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassOneView.swift; sourceTree = "<group>"; };
 		2277BB4B2C5F2D5700317DD2 /* ForgotPassTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassTwoView.swift; sourceTree = "<group>"; };
 		22891AC42C5B5F5F00DE33E6 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		22E317122C64E59C000E4C10 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		22E317142C64FCA5000E4C10 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		22EEE4BA2C62A72A006AE988 /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		260588482C5FDACC002F54C1 /* TestVoteCoreDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVoteCoreDataView.swift; sourceTree = "<group>"; };
 		2663C77A2C569E54002EFD0C /* RadioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +189,7 @@
 			children = (
 				222DC9702C5D90B7005DD0B2 /* Components */,
 				2663C77F2C569E54002EFD0C /* WelcomeView.swift */,
+				22E317142C64FCA5000E4C10 /* RootView.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -207,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				22891AC42C5B5F5F00DE33E6 /* AuthService.swift */,
+				22E317122C64E59C000E4C10 /* AuthManager.swift */,
 			);
 			path = AuthService;
 			sourceTree = "<group>";
@@ -302,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				2663C7AA2C56A257002EFD0C /* Model.swift */,
+				223C4ABD2C641A5100014D0E /* AuthDataResultModel.swift */,
 				2663C7A82C56A249002EFD0C /* ViewModel.swift */,
 			);
 			path = Models;
@@ -591,6 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E18529E12C5D30F800BBE649 /* ImagePicker.swift in Sources */,
+				22E317132C64E59D000E4C10 /* AuthManager.swift in Sources */,
 				26A7379E2C5A6A670002F1E9 /* SplineView.swift in Sources */,
 				26A737992C5A4F850002F1E9 /* BackButtonView.swift in Sources */,
 				2277BB472C5E881700317DD2 /* AuthBackgroundView.swift in Sources */,
@@ -608,6 +618,7 @@
 				7A7A4B332C5B520600CD8794 /* TabData.swift in Sources */,
 				2663C79B2C56A09B002EFD0C /* SignInView.swift in Sources */,
 				E14AA7862C5E234800BAC1BE /* EditPhotoButttonView.swift in Sources */,
+				223C4ABE2C641A5100014D0E /* AuthDataResultModel.swift in Sources */,
 				268696642C57DC330075E9DC /* StationPopularView.swift in Sources */,
 				22891AC52C5B5F5F00DE33E6 /* AuthService.swift in Sources */,
 				E1E497DA2C56D14F0099440D /* Resources.swift in Sources */,
@@ -628,6 +639,7 @@
 				2663C7AB2C56A257002EFD0C /* Model.swift in Sources */,
 				E16EBD572C5CB3F10010BF71 /* Color + Ext.swift in Sources */,
 				7A7A4B382C5B64DE00CD8794 /* AllStationsView.swift in Sources */,
+				22E317152C64FCA5000E4C10 /* RootView.swift in Sources */,
 				2663C7952C56A01F002EFD0C /* ProfileView.swift in Sources */,
 				E1E498012C56EC900099440D /* Font + Ext.swift in Sources */,
 				2663C79D2C56A0AB002EFD0C /* SignUpView.swift in Sources */,
