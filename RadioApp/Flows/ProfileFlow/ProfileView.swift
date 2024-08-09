@@ -10,8 +10,8 @@ import SwiftUI
 // MARK: - ProfileView
 struct ProfileView: View {
     // MARK: - Properties
-    @EnvironmentObject var appManager: ViewModel
     @AppStorage("selectedLanguage") private var language = LocalizationService.shared.language
+    @AppStorage("isOnboarding") var isOnboarding = true
     
     @ObservedObject var viewModel: ProfileViewModel
     
@@ -78,7 +78,9 @@ struct ProfileView: View {
                     title: Text(Resources.Text.logOut.localized(language)),
                     message: Text(Resources.Text.areYouWantLogOut.localized(language)),
                     primaryButton: .destructive(Text(Resources.Text.logOut.localized(language))) {
-                        logOut()
+                        DispatchQueue.main.async {
+                            logOut()
+                        }
                     },
                     secondaryButton: .cancel()
                 )
