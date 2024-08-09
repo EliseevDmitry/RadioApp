@@ -28,7 +28,7 @@ struct PopularView: View {
                 .padding(.leading, 60)
                 .padding(.top, 10)
                 HStack{
-                    VolumeView()
+                    VolumeView(rotation: false)
                         .frame(width: 33 ,height: 250)
                         .padding(.leading, 15)
                     ScrollView(.vertical, showsIndicators: false){
@@ -58,10 +58,7 @@ struct PopularView: View {
         }
         .onAppear{
             appManager.loadLikesData()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                x += 1
-                print("onAppra \(x)")
-            }
+           
             //clear Set Likes
             //appManager.likes.likeSet.removeAll()
             //appManager.saveLikesData()

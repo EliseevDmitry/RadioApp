@@ -121,7 +121,11 @@ final class ViewModel: ObservableObject {
         }
     }
 
-    
+    func clearError() {
+        Task {
+            self.error = nil
+        }
+    }
     
     
     
