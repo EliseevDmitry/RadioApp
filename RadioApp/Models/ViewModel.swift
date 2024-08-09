@@ -17,10 +17,9 @@ import Combine
 final class ViewModel: ObservableObject {
 
     let network = NetworkService()
-
+    private var amplitudeService = AmplitudeService()
     //
-    private let equalizerService = EqualizerService()
-    var cancellables = Set<AnyCancellable>()
+
     @Published var amplitude: CGFloat = 0.0
     //
 
@@ -103,10 +102,6 @@ final class ViewModel: ObservableObject {
                 print("CoreData failed to load \(error.localizedDescription)")
             }
         }
-
-        equalizerService.$amplitude
-                    .assign(to: \.amplitude, on: self)
-                    .store(in: &cancellables)
     }
 
     
@@ -225,13 +220,12 @@ final class ViewModel: ObservableObject {
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
 
-            //equalizerService.playAudio(url: url)
             player = AVPlayer(url: url)
-
-
-
             player?.play()
             isPlay = true
+
+            //
+            amplitudeService.startUpdatingAmplitude(viewModel: self)
 
         } catch let err {
             print(err.localizedDescription)
@@ -241,19 +235,18 @@ final class ViewModel: ObservableObject {
     func playAudioStream(){
         player?.play()
         isPlay = true
+
+        //
+        amplitudeService.startUpdatingAmplitude(viewModel: self)
     }
 
     func pauseAudioStream(){
         player?.pause()
         isPlay = false
+
+        //
+        amplitudeService.startUpdatingAmplitude(viewModel: self)
     }
-
-    ///
-
-
-
-
-    ///
 
     //запрос данных станции при нажатии на сердечно like
     func getStationForID(id: String) -> Station? {
