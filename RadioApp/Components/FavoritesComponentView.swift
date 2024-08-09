@@ -67,6 +67,9 @@ struct FavoritesComponentView: View {
                 }
                 .padding()
             }
+//            .gesture{
+//                o
+//            }
         }
         .frame(width: 293, height: 120)
         .clipShape(.rect(cornerRadius: 20))
