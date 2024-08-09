@@ -5,7 +5,7 @@
 //  Created by Dmitriy Eliseev on 28.07.2024.
 //
 
-import Foundation
+import SwiftUI
 import AVKit
 import FirebaseAuth
 import CoreData
@@ -16,7 +16,9 @@ final class ViewModel: ObservableObject {
     
     let network = NetworkService()
     @Published var stations = [Station]()
-
+//    для выбора стартового экрана
+    @Published var selectedView: AnyView = AnyView(WelcomeView())
+    
     //VolumeView
     //@Published var volume: CGFloat = 0
     //@Published var volume: CGFloat = CGFloat(AVAudioSession.sharedInstance().outputVolume)
@@ -61,6 +63,13 @@ final class ViewModel: ObservableObject {
     var progressObserver: NSKeyValueObservation!
     //CoreData
     let container = NSPersistentContainer(name: "LikeStations")
+    
+//    метод для выбора загрузки стартового экрана
+    func updateContext() {
+            let context = ContextForStart()
+            let startFlow = StartService().selectStartFlow(context: context)
+            self.selectedView = startFlow
+        }
     
     func setVolme(){
         do {

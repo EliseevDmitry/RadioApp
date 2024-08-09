@@ -41,10 +41,18 @@ struct SignInView: View {
                         .foregroundStyle(.white)
                 }
                 
-                CustomButton(action: appManager.signIn, title: Resources.Text.SignIn.title, buttonType: .onboarding) 
+                CustomButton(action: {
+                    appManager.signIn()
+                    appManager.updateContext()
+                },
+                             title: Resources.Text.SignIn.title,
+                             buttonType: .onboarding
+                )
                 // TODO: добавить в типы кнопок третий тип - для этой группы экранов и при выборе типа заменить тернарный оператор на switch (обсудить с Димой Келлером)
                 
-                Button(action: {}) {
+                Button(action: {
+                    
+                }) {
                     Text(Resources.Text.SignIn.orSignUp)
                         .foregroundStyle(.white)
                 }

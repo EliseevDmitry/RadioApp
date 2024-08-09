@@ -9,7 +9,8 @@ import SwiftUI
 
 struct WelcomeView: View {
     @EnvironmentObject var appManager: ViewModel
-    
+    @AppStorage("isOnboarding") var isOnboarding = false
+
     var body: some View {
         ZStack {
             WelcomeBackgroundView()
@@ -35,7 +36,10 @@ struct WelcomeView: View {
                 
                 // MARK: GetStarted Button
                 CustomButton(
-                    action: {},
+                    action: {
+                        isOnboarding.toggle()
+                        appManager.updateContext()
+                    },
                     title: Resources.Text.getStarted,
                     buttonType: .onboarding)
             }
