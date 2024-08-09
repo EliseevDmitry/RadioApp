@@ -63,7 +63,7 @@ final class AuthService {
             userSession = result.user
             print("DEBUG: Successfully signed user in: \(result.user.uid)")
         } catch {
-            print(error.localizedDescription)
+            throw error
         }
     }
     
@@ -78,7 +78,7 @@ final class AuthService {
             id: user.uid,
             userName: user.displayName ?? "",
             email: user.email ?? "",
-            profileImagePath: user.photoURL?.absoluteString
+            profileImage: user.photoURL?.absoluteString
         )
     }
     

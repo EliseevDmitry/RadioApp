@@ -17,57 +17,27 @@ import GoogleSignInSwift
 struct RadioAppApp: App {
     @AppStorage("onboardingIsShow") var onboardingIsShow = false
     @StateObject var appManager = ViewModel()
-    
+    @AppStorage("isOnboarding") var isOnboarding = false
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
         WindowGroup {
             
-//          ProfileView(viewModel: ProfileViewModel())
-            appManager.selectedView
-            /*
-             // это вариант настройки, при которой если онбординг не пройден, то сначала показывают экран WelcomeView и далее экран SignIn, а если онбординг пройден, то показывают экран SignInView вне зависимости от аутентификации пользователя (независимо от того, залогинен ли пользователь)
-            NavigationView {
-                if appManager.onboardingIsShown {
-                    SignInView()
-                        .environmentObject(appManager)
-                        .environment(\.managedObjectContext, appManager.container.viewContext)
-                } else {
-                    WelcomeView()
-                        .environmentObject(appManager)
-                        .environment(\.managedObjectContext, appManager.container.viewContext)
-                }
+            if !isOnboarding {
+                WelcomeView()
+                    .preferredColorScheme(.dark)
+                    .environmentObject(appManager)
+            } else if AuthService.shared.isAuthenticated() {
+                ContentView()
+                    .preferredColorScheme(.dark)
+                    .environmentObject(appManager)
+                    .environment(\.managedObjectContext, appManager.container.viewContext)
+            } else {
+                SignInView()
+                    .preferredColorScheme(.dark)
+                    .environmentObject(appManager)
             }
-            .navigationViewStyle(.stack)
-            */
-            
-            /*
-            // это вариант настройки, при которой если онбординг не пройден
-            NavigationView {
-                if appManager.onboardingIsShown, !appManager.showSignInView {
-                    PopularView()
-                        .environmentObject(appManager)
-                        .environment(\.managedObjectContext, appManager.container.viewContext)
-                } else if appManager.onboardingIsShown, appManager.showSignInView {
-                    SignInView()
-                        .environmentObject(appManager)
-                        .environment(\.managedObjectContext, appManager.container.viewContext)
-                } else {
-                    WelcomeView()
-                        .environmentObject(appManager)
-                        .environment(\.managedObjectContext, appManager.container.viewContext)
-                }
-            }
-            .navigationViewStyle(.stack)
-            */
-            
-             // это вариант настройки
-            /*
-            RootView()
-                .environmentObject(appManager)
-                .environment(\.managedObjectContext, appManager.container.viewContext)
-             */
         }
     }
 }

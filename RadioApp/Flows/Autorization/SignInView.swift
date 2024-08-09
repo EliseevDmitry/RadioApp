@@ -12,6 +12,11 @@ struct SignInView: View {
     // MARK: - Properties
     @EnvironmentObject var appManager: ViewModel
     
+    @State private var isAuthenticated = false
+    @State private var showAlert = false
+    @State private var alert: AnyAppAlert?
+    @State private var errorAlert: AnyAppAlert? = nil
+    
     // MARK: - Drawing Constants
     private struct DrawingConstants {
         static let screenLogoImageWidth = UIScreen.width * 1/6
@@ -44,23 +49,12 @@ struct SignInView: View {
                         .font(.custom(.sfBold, size: DrawingConstants.screenTitleFontSize))
                         .padding(.bottom, DrawingConstants.screenTitleBottomPadding)
                         .foregroundStyle(.white)
-                    
-                    
-                    /*
-                     CustomButton(action: {
-                     appManager.signIn()
-                     appManager.updateContext()
-                     },
-                     title: Resources.Text.signIn,
-                     buttonType: .authentication
-                     )
-                     // TODO: добавить в типы кнопок третий тип - для этой группы экранов и при выборе типа заменить тернарный оператор на switch (обсудить с Димой Келлером)
-                     
-                     Button(action: {
-                     
-                     }) {
-                     Text(Resources.Text.orSignUp)
-                     */
+                        .showCustomAlert(alert: $alert)
+                        .showCustomAlert(alert: $alert)
+                        .background(
+                            NavigationLink(destination: ContentView(), isActive: $isAuthenticated) { EmptyView() }
+                        )
+
                     
                     // MARK: Subtitle
                     Text(Resources.Text.toStartPlay)
@@ -205,6 +199,16 @@ struct SignInView: View {
         }
         .navigationViewStyle(.stack)
     }
+    
+    private func signIn() async {
+        await appManager.signIn()
+        if appManager.error != nil {
+            alert = AnyAppAlert(error: appManager.error!)
+            showAlert = true
+        } else {
+            isAuthenticated = true
+        }
+    }
 }
 
 struct SignInView_Previews: PreviewProvider {
@@ -221,3 +225,69 @@ struct SignInView_Previews: PreviewProvider {
     }
 }
 
+/*
+
+ Image("Group 3").resizable()
+     .frame(width: UIScreen.width * 1/4, height: UIScreen.width * 1/4)
+ Text(Resources.Text.SignIn.title)
+     .font(.custom(.sfBold, size: UIScreen.height * 1/16))
+     .padding(.bottom, UIScreen.height * 1/32)
+ 
+ Text(Resources.Text.SignIn.toStartPlay)
+     .font(.custom(.sfRegular, size: UIScreen.height * 1/48))
+     .frame(maxWidth: UIScreen.width * 1/3)
+ 
+ TextField(Resources.Text.SignIn.email, text: $appManager.email)
+     .font(.title)
+ 
+ SecureField(Resources.Text.SignIn.password, text: $appManager.password)
+     .font(.title)
+ 
+ Text(Resources.Text.SignIn.orConnectWith)
+ 
+ Button(action: {}) {
+     Text("G+")
+         .foregroundStyle(.white)
+ }
+ 
+ CustomButton(action: {
+     Task {
+         await signIn()
+     }
+ },
+              title: Resources.Text.SignIn.title,
+              buttonType: .onboarding
+ )
+ // TODO: добавить в типы кнопок третий тип - для этой группы экранов и при выборе типа заменить тернарный оператор на switch (обсудить с Димой Келлером)
+ 
+ Button(action: {
+ */
+
+
+
+
+
+/*
+ /*
+  CustomButton(action: {
+  appManager.signIn()
+  appManager.updateContext()
+  },
+  title: Resources.Text.signIn,
+  buttonType: .authentication
+  )
+  // TODO: добавить в типы кнопок третий тип - для этой группы экранов и при выборе типа заменить тернарный оператор на switch (обсудить с Димой Келлером)
+  
+  Button(action: {
+  
+  }) {
+  Text(Resources.Text.orSignUp)
+  */
+ */
+
+
+
+/*
+ }) {
+     Text(Resources.Text.SignIn.orSignUp)
+ */

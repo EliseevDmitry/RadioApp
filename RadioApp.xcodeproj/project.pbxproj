@@ -12,6 +12,7 @@
 		220E86A62C5CE34D00F8B0D6 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 220E86A52C5CE34D00F8B0D6 /* GoogleSignIn */; };
 		220E86A82C5CE34D00F8B0D6 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 220E86A72C5CE34D00F8B0D6 /* GoogleSignInSwift */; };
 		220E86AA2C5D018900F8B0D6 /* TestAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E86A92C5D018900F8B0D6 /* TestAuthView.swift */; };
+		222CD7042C66408C000EF05A /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 222CD7022C66408C000EF05A /* LikeStations.xcdatamodeld */; };
 		223406762C5DF7C200C701A3 /* WelcomeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223406752C5DF7C200C701A3 /* WelcomeBackgroundView.swift */; };
 		223C4ABE2C641A5100014D0E /* AuthDataResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C4ABD2C641A5100014D0E /* AuthDataResultModel.swift */; };
 		2277BB472C5E881700317DD2 /* AuthBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277BB462C5E87E500317DD2 /* AuthBackgroundView.swift */; };
@@ -37,7 +38,6 @@
 		2663C7AE2C56A2B9002EFD0C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2663C7AD2C56A2B9002EFD0C /* Kingfisher */; };
 		268696642C57DC330075E9DC /* StationPopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268696632C57DC330075E9DC /* StationPopularView.swift */; };
 		268696662C57E0320075E9DC /* VoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268696652C57E0320075E9DC /* VoteView.swift */; };
-		269FCD0C2C6629B00060FFD8 /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 269FCD0A2C6629B00060FFD8 /* LikeStations.xcdatamodeld */; };
 		26A737972C5A49490002F1E9 /* PlayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A737962C5A49490002F1E9 /* PlayButtonView.swift */; };
 		26A737992C5A4F850002F1E9 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A737982C5A4F850002F1E9 /* BackButtonView.swift */; };
 		26A7379B2C5A4FCB0002F1E9 /* ForwardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */; };
@@ -93,7 +93,6 @@
 		E1E87BB12C640CE10070D855 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BB02C640CE10070D855 /* NotificationsView.swift */; };
 		E1E87BB32C64122F0070D855 /* TimeAndDaysPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BB22C64122F0070D855 /* TimeAndDaysPicker.swift */; };
 		E1E87BB52C649F450070D855 /* NotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BB42C649F450070D855 /* NotificationsService.swift */; };
-		E1E87BBA2C65E0E20070D855 /* StartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BB92C65E0E20070D855 /* StartService.swift */; };
 		E1E87BBC2C65E7C10070D855 /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BBB2C65E7C10070D855 /* LocalizationService.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +100,7 @@
 		220E86A02C5CB98800F8B0D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		220E86A22C5CD94B00F8B0D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		220E86A92C5D018900F8B0D6 /* TestAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAuthView.swift; sourceTree = "<group>"; };
+		222CD7032C66408C000EF05A /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		223406752C5DF7C200C701A3 /* WelcomeBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeBackgroundView.swift; sourceTree = "<group>"; };
 		223C4ABD2C641A5100014D0E /* AuthDataResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataResultModel.swift; sourceTree = "<group>"; };
 		2277BB462C5E87E500317DD2 /* AuthBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBackgroundView.swift; sourceTree = "<group>"; };
@@ -123,7 +123,6 @@
 		2663C7AA2C56A257002EFD0C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		268696632C57DC330075E9DC /* StationPopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationPopularView.swift; sourceTree = "<group>"; };
 		268696652C57E0320075E9DC /* VoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteView.swift; sourceTree = "<group>"; };
-		269FCD0B2C6629B00060FFD8 /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		26A737962C5A49490002F1E9 /* PlayButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButtonView.swift; sourceTree = "<group>"; };
 		26A737982C5A4F850002F1E9 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButtonView.swift; sourceTree = "<group>"; };
@@ -181,7 +180,6 @@
 		E1E87BB02C640CE10070D855 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		E1E87BB22C64122F0070D855 /* TimeAndDaysPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAndDaysPicker.swift; sourceTree = "<group>"; };
 		E1E87BB42C649F450070D855 /* NotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsService.swift; sourceTree = "<group>"; };
-		E1E87BB92C65E0E20070D855 /* StartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartService.swift; sourceTree = "<group>"; };
 		E1E87BBB2C65E7C10070D855 /* LocalizationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -484,10 +482,9 @@
 		E1E497E32C56D4DF0099440D /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				269FCD0A2C6629B00060FFD8 /* LikeStations.xcdatamodeld */,
+				222CD7022C66408C000EF05A /* LikeStations.xcdatamodeld */,
 				E1E87BB42C649F450070D855 /* NotificationsService.swift */,
 				E1E87BBB2C65E7C10070D855 /* LocalizationService.swift */,
-				E1E87BB92C65E0E20070D855 /* StartService.swift */,
 				22891AC32C5B5EF700DE33E6 /* AuthService */,
 				E1E497E42C56D4F70099440D /* NetworkService */,
 				7A67B1532C65F718006EBE13 /* AmplitudeService.swift */,
@@ -663,12 +660,12 @@
 				268696662C57E0320075E9DC /* VoteView.swift in Sources */,
 				E1E4980C2C5A10560099440D /* ChevronCyrcleView.swift in Sources */,
 				2663C7A12C56A10E002EFD0C /* CustomTabBarView.swift in Sources */,
-				269FCD0C2C6629B00060FFD8 /* LikeStations.xcdatamodeld in Sources */,
 				26A7379B2C5A4FCB0002F1E9 /* ForwardButtonView.swift in Sources */,
 				E18529DF2C5D11AA00BBE649 /* ProfileHeaderView.swift in Sources */,
 				E1E497EB2C56D8500099440D /* DS.swift in Sources */,
 				7A7A4B332C5B520600CD8794 /* TabData.swift in Sources */,
 				2663C79B2C56A09B002EFD0C /* SignInView.swift in Sources */,
+				222CD7042C66408C000EF05A /* LikeStations.xcdatamodeld in Sources */,
 				E14AA7862C5E234800BAC1BE /* EditPhotoButttonView.swift in Sources */,
 				223C4ABE2C641A5100014D0E /* AuthDataResultModel.swift in Sources */,
 				E133D7D42C6345BE00BA4E84 /* String + Extension.swift in Sources */,
@@ -707,7 +704,6 @@
 				E1E87BB12C640CE10070D855 /* NotificationsView.swift in Sources */,
 				E1E498082C58D60F0099440D /* ProfileInfoView.swift in Sources */,
 				E14AA78E2C5FB5AD00BAC1BE /* LanguageElementView.swift in Sources */,
-				E1E87BBA2C65E0E20070D855 /* StartService.swift in Sources */,
 				2663C7972C56A037002EFD0C /* ProfileEditView.swift in Sources */,
 				7A7A4B302C5B51B000CD8794 /* ContentView.swift in Sources */,
 				26FB42E62C64994F00F9C2A2 /* FavoritesComponentView.swift in Sources */,
@@ -1026,12 +1022,12 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		269FCD0A2C6629B00060FFD8 /* LikeStations.xcdatamodeld */ = {
+		222CD7022C66408C000EF05A /* LikeStations.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				269FCD0B2C6629B00060FFD8 /* LikeStations.xcdatamodel */,
+				222CD7032C66408C000EF05A /* LikeStations.xcdatamodel */,
 			);
-			currentVersion = 269FCD0B2C6629B00060FFD8 /* LikeStations.xcdatamodel */;
+			currentVersion = 222CD7032C66408C000EF05A /* LikeStations.xcdatamodel */;
 			name = LikeStations.xcdatamodeld;
 			path = /Users/gdr/Desktop/SecondBrain/RadioAppChalenge/RadioApp/RadioApp/Services/LikeStations.xcdatamodeld;
 			sourceTree = "<group>";
