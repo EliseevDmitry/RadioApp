@@ -23,59 +23,46 @@ struct ProfileView: View {
     
     // MARK: - Body
     var body: some View {
-        ZStack {
-            AnimatedBackgroundView()
-                .ignoresSafeArea()
-            VStack {
-                // MARK: - Profile Info
-                ProfileInfoView(
-                    userName: appManager.currentUser?.userName ?? "",
-                    userEmail: appManager.currentUser?.email ??  "",
-                    profileImage: UIImage(systemName: "person.fill")!,
-                    saveChangesAction: saveChanges
-                )
-                // MARK: - General Settings
-                SettingView(
-                    generalTitle: Resources.Text.general.localized(language),
-                    firstTitle: Resources.Text.notification.localized(language),
-                    firstImageIcon: Resources.Image.notification,
-                    firstDestination: AnyView(NotificationsView(notificationAction: notificationAction)),
-                    secondTitle: Resources.Text.language.localized(language),
-                    secondImageIcon: Resources.Image.globe.localized(language),
-                    secondDestination: AnyView(LanguageView())
-                )
-                
-                // MARK: - More Settings
-                SettingView(
-                    generalTitle: Resources.Text.more.localized(language),
-                    firstTitle: Resources.Text.legalAndPolicies.localized(language),
-                    firstImageIcon: Resources.Image.shield,
-                    firstDestination: AnyView(LegalPoliciesView()),
-                    secondTitle: Resources.Text.aboutUs.localized(language),
-                    secondImageIcon: Resources.Image.information,
-                    secondDestination: AnyView(AboutUs())
-                )
-                Spacer()
-                // MARK: - Logout Button
-                CustomButton(
-                    action: { logOut() },
-                    title: Resources.Text.logOut.localized(language),
-                    buttonType: .profile)
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                //        }
-                
-                
+        NavigationView{
+            ZStack {
+                AnimatedBackgroundView()
+                    .ignoresSafeArea()
+                VStack {
+                    // MARK: - Profile Info
+                    ProfileInfoView(
+                        userName: appManager.currentUser?.userName ?? "",
+                        userEmail: appManager.currentUser?.email ??  "",
+                        profileImage: UIImage(systemName: "person.fill")!,
+                        saveChangesAction: saveChanges
+                    )
+                    // MARK: - General Settings
+                    SettingView(
+                        generalTitle: Resources.Text.general.localized(language),
+                        firstTitle: Resources.Text.notification.localized(language),
+                        firstImageIcon: Resources.Image.notification,
+                        firstDestination: AnyView(NotificationsView(notificationAction: notificationAction)),
+                        secondTitle: Resources.Text.language.localized(language),
+                        secondImageIcon: Resources.Image.globe.localized(language),
+                        secondDestination: AnyView(LanguageView())
+                    )
+                    
+                    // MARK: - More Settings
+                    SettingView(
+                        generalTitle: Resources.Text.more.localized(language),
+                        firstTitle: Resources.Text.legalAndPolicies.localized(language),
+                        firstImageIcon: Resources.Image.shield,
+                        firstDestination: AnyView(LegalPoliciesView()),
+                        secondTitle: Resources.Text.aboutUs.localized(language),
+                        secondImageIcon: Resources.Image.information,
+                        secondDestination: AnyView(AboutUs())
+                    )
+                    Spacer()
+                    // MARK: - Logout Button
+                    CustomButton(
+                        action: { logOut() },
+                        title: Resources.Text.logOut.localized(language),
+                        buttonType: .profile)
+                }
             }
             .padding()
             .foregroundColor(.white)
@@ -109,7 +96,7 @@ struct ProfileView: View {
     }
     
     private func notificationAction() {
-       // $appManager.configureNotifications
+        // $appManager.configureNotifications
     }
     
     private func logOut() {

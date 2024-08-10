@@ -66,6 +66,7 @@ struct StationPopularView: View {
                 .padding(.bottom, 10)
             }
             .frame(maxWidth: 139, maxHeight: 139)
+            //логика нажатия
             .background(NavigationLink(
                             destination: StationDetailsView(station: station),
                             isActive: $isActive) {
