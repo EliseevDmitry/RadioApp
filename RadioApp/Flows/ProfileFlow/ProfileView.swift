@@ -10,8 +10,8 @@ import SwiftUI
 // MARK: - ProfileView
 struct ProfileView: View {
     // MARK: - Properties
-    @EnvironmentObject var appManager: ViewModel
     @AppStorage("selectedLanguage") private var language = LocalizationService.shared.language
+    @AppStorage("isOnboarding") var isOnboarding = true
     
     @ObservedObject var viewModel: ProfileViewModel
     
@@ -78,13 +78,15 @@ struct ProfileView: View {
                     title: Text(Resources.Text.logOut.localized(language)),
                     message: Text(Resources.Text.areYouWantLogOut.localized(language)),
                     primaryButton: .destructive(Text(Resources.Text.logOut.localized(language))) {
-                        logOut()
+                            logOut()
                     },
                     secondaryButton: .cancel()
                 )
             }
         }
         
+                    
+               
         .onReceive(viewModel.$error) { error in
             if let error = error {
                 errorAlert = AnyAppAlert(error: error)
@@ -103,15 +105,12 @@ struct ProfileView: View {
     }
     
     private func notificationAction() {
-        viewModel.notificationAction()
+//        viewModel.configureNotifications()
     }
     
     private func logOut() {
-        Task {
-            viewModel.logOut()
-
-            
-        }
+        viewModel.logOut()
+        isOnboarding = false
     }
 }
 

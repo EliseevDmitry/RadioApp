@@ -123,7 +123,7 @@ struct SignInView: View {
         if let error = appManager.error {
             alertMessage = error.localizedDescription
             showAlert = true
-            appManager.clearError()
+            
         } else {
             isAuthenticated = true
         }

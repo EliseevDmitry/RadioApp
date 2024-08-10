@@ -52,11 +52,11 @@ final class ViewModel: ObservableObject {
     @Published var testUserEmail = "Franky@gmail.com"
     @Published var testUserPassword = "1212121"
     @Published var testUserUsername = "Frank"
-    @Published var error: Error?
     
     //search
     @Published var searchText: String = ""
-
+    @Published var error: Error?
+    
     func fetchSearchStations() async throws {
         var fetchSearchStations: [Station]
         fetchSearchStations = try await network.searchByName(searchText: searchText)
@@ -111,12 +111,6 @@ final class ViewModel: ObservableObject {
         }
     }
 
-    func clearError() {
-        Task {
-            self.error = nil
-        }
-    }
-    
     
     
     
@@ -383,7 +377,7 @@ final class ViewModel: ObservableObject {
             do {
                 try await AuthService.shared.signIn(with: email, password: password)
             } catch {
-                self.error = error
+//                self.error = error
             }
         }
 

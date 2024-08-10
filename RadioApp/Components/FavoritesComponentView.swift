@@ -66,6 +66,7 @@ struct FavoritesComponentView: View {
                     }
                 }
                 .padding()
+
             }
         }
         .frame(width: 293, height: 120)

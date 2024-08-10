@@ -11,8 +11,7 @@ import UserNotifications
 struct NotificationsView: View {
     // MARK: - Properties
     @AppStorage("selectedLanguage") private var language = LocalizationService.shared.language
-    
-    @State private var isToggleOn: Bool = false
+    @AppStorage("hasRequestedNotifications") private var isToggleOn: Bool = NotificationsService.shared.hasRequestedNotifications
     
     var notificationAction: () -> Void
     
@@ -33,68 +32,94 @@ struct NotificationsView: View {
     // MARK: - Body
     var body: some View {
         ZStack {
-            DS.Colors.darkBlue
-                .ignoresSafeArea()
-            
-            VStack(spacing: 0) {
-                // MARK: - Header
-                HStack {
-                    Text(Resources.Text.messagesNotifications.localized(language))
-                        .font(Font.custom(.sfMedium, size: Drawing.textSize))
-                        .foregroundColor(.white)
-                        .padding(.leading, Drawing.horizontalPadding)
-                        .padding(.top, Drawing.verticalPadding)
-                    Spacer()
-                }
-                // MARK: - Toggle Notifications
-                HStack {
-                    Text(Resources.Text.showNotifications.localized(language))
-                        .font(Font.custom(.sfMedium, size: Drawing.textSize))
-                        .foregroundColor(.white)
-                    Toggle(isOn: $isToggleOn) {
-                        Text("")
-                    }
-                    .onChange(of: isToggleOn) { newValue in
-                        notificationAction()
-                    }
-                    .toggleStyle(SwitchToggleStyle(tint: DS.Colors.blueNeon))
-                }
-                .padding(.horizontal, Drawing.horizontalPadding)
-                .padding(.vertical, Drawing.iconPadding)
-                
-                Divider()
-                    .background(Color.gray)
-                    .padding(.horizontal, Drawing.horizontalPadding)
-                    .opacity(Drawing.dividerOpacity)
-                
-                // MARK: - Time and Days Picker
-                HStack {
-                    Text(Resources.Text.selectTimeAndDays.localized(language))
-                        .font(Font.custom(.sfMedium, size: Drawing.textSize))
-                        .foregroundColor(.white)
-                    Spacer()
-                }
-                .padding(.horizontal, Drawing.horizontalPadding)
-                .padding(.top, Drawing.iconPadding)
-                
-                TimeAndDaysPicker()
-                    .padding(.horizontal, Drawing.horizontalPadding)
-                    .padding(.bottom, Drawing.verticalPadding)
-            }
-            .overlay(
-                RoundedRectangle(cornerRadius: Drawing.cornerRadius)
-                    .stroke(Color.gray, lineWidth: Drawing.strokeWidth)
-                    .opacity(Drawing.strokeOpacity)
-            )
-            .padding(.horizontal, Drawing.horizontalPadding)
-            .navigationTitle(Resources.Text.notification.localized(language))
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    BackBarButton()
-                }
+            backgroundColor
+            content
+        }
+        .navigationTitle(Resources.Text.notification.localized(language))
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                BackBarButton()
             }
         }
+    }
+    
+    // MARK: - Private Views
+    private var backgroundColor: some View {
+        DS.Colors.darkBlue
+            .ignoresSafeArea()
+    }
+    
+    private var content: some View {
+        VStack(spacing: 0) {
+            header
+            notificationToggle
+            timeAndDaysPicker
+        }
+        .overlay(
+            RoundedRectangle(cornerRadius: Drawing.cornerRadius)
+                .stroke(Color.gray, lineWidth: Drawing.strokeWidth)
+                .opacity(Drawing.strokeOpacity)
+        )
+        .padding(.horizontal, Drawing.horizontalPadding)
+    }
+    
+    private var header: some View {
+        HStack {
+            Text(Resources.Text.messagesNotifications.localized(language))
+                .font(Font.custom(.sfMedium, size: Drawing.textSize))
+                .foregroundColor(.white)
+                .padding(.leading, Drawing.horizontalPadding)
+                .padding(.top, Drawing.verticalPadding)
+            Spacer()
+        }
+    }
+    
+    private var notificationToggle: some View {
+        HStack {
+            Text(Resources.Text.showNotifications.localized(language))
+                .font(Font.custom(.sfMedium, size: Drawing.textSize))
+                .foregroundColor(.white)
+            Toggle(isOn: $isToggleOn) {
+                Text("")
+            }
+            .onChange(of: isToggleOn) { newValue in
+                handleNotificationToggleChange(newValue)
+            }
+            .toggleStyle(SwitchToggleStyle(tint: DS.Colors.blueNeon))
+        }
+        .padding(.horizontal, Drawing.horizontalPadding)
+        .padding(.vertical, Drawing.iconPadding)
+    }
+    
+    private var timeAndDaysPicker: some View {
+        VStack {
+            Divider()
+                .background(Color.gray)
+                .padding(.horizontal, Drawing.horizontalPadding)
+                .opacity(Drawing.dividerOpacity)
+            
+            HStack {
+                Text(Resources.Text.selectTimeAndDays.localized(language))
+                    .font(Font.custom(.sfMedium, size: Drawing.textSize))
+                    .foregroundColor(.white)
+                Spacer()
+            }
+            .padding(.horizontal, Drawing.horizontalPadding)
+            .padding(.top, Drawing.iconPadding)
+            
+            TimeAndDaysPicker()
+                .padding(.horizontal, Drawing.horizontalPadding)
+                .padding(.bottom, Drawing.verticalPadding)
+        }
+    }
+    
+    // MARK: - Private Methods
+    private func handleNotificationToggleChange(_ isOn: Bool) {
+        if isOn {
+            NotificationsService.shared.sendTestNotification()
+        }
+        notificationAction()
     }
 }
 

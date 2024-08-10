@@ -9,11 +9,22 @@ import SwiftUI
 
 struct TestRotationView: View {
     var body: some View {
-        VolumeView(rotation: true)
-            .frame(height: 200)
-            .preferredColorScheme(.dark)
-        //так как у нас компонент идет через rotationEffect
-        //его width задается через .frame(height: 200)
+        VStack{
+            VolumeView(rotation: true)
+                .frame(height: 200)
+            //.preferredColorScheme(.dark)
+            //так как у нас компонент идет через rotationEffect
+            //его width задается через .frame(height: 200)
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.orange)
+                .frame(width: 200,height: 200)
+                .onTapGesture {
+                    print("tap")
+                }
+                .onLongPressGesture {
+                    print("long tap")
+                }
+        }
     }
 }
 

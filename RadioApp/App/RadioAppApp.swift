@@ -19,7 +19,7 @@ struct RadioAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            
+           // ProfileView(viewModel: ProfileViewModel())
             if !isOnboarding {
                 WelcomeView()
                     .preferredColorScheme(.dark)
@@ -34,6 +34,7 @@ struct RadioAppApp: App {
                     .preferredColorScheme(.dark)
                     .environmentObject(appManager)
             }
+
         }
     }
 }
