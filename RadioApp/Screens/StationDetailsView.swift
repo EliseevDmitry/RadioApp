@@ -14,44 +14,50 @@ struct StationDetailsView: View {
 
     var body: some View {
 
-            ZStack {
-                VStack {
-                    HStack {
-                        Spacer()
-                        VoteView(isShow: true, idStation: station.stationuuid)
-                            .frame(width: 14, height: 14)
-                    }
-
-                    EqualizerView()
+        ZStack {
+            VStack {
+                HStack {
                     Spacer()
+                    VoteView(isShow: true, idStation: station.stationuuid)
+                        .frame(width: 14, height: 14)
                 }
 
-                VStack {
-                    AsyncImage(url: URL(string: station.favicon)) { image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: 40, maxHeight: 40)
+                EqualizerView()
+                Spacer()
+            }
 
-                    } placeholder: {
-                        Color.gray
-                    }
-                    .clipShape(Rectangle())
-                    .frame(maxWidth: 60, maxHeight: 60)
+            VStack {
+                AsyncImage(url: URL(string: station.favicon)) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: 40, maxHeight: 40)
 
-                    Text(station.name)
-                        .font(.custom(.sfRegular, size: 16))
-                        .foregroundStyle(.white)
-
-                    Spacer()
+                } placeholder: {
+                    Color.gray
                 }
+                .clipShape(Rectangle())
+                .frame(maxWidth: 60, maxHeight: 60)
+
+                Text(station.name)
+                    .font(.custom(.sfRegular, size: 16))
+                    .foregroundStyle(.white)
 
                 Spacer()
             }
-            .navigationBarBackButtonHidden(true)
-            .background(DS.Colors.darkBlue)
+
+            Spacer()
+        }
+        .background(DS.Colors.darkBlue)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                BackBarButton()
+            }
         }
     }
+}
 
 #Preview {
     StationDetailsView(station: Station.testStation())
