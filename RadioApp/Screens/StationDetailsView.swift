@@ -15,7 +15,6 @@ struct StationDetailsView: View {
     var body: some View {
 
         ZStack {
-
             VStack {
                 HStack {
                     Spacer()
