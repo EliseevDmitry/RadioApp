@@ -12,18 +12,17 @@ struct StationView: View {
     @EnvironmentObject var appManager: ViewModel
     @Binding var selectedStationID: String
     var station: Station
-
+    @State private var isActive = false
     var body: some View {
 
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .fill(selectedStationID == station.stationuuid ? DS.Colors.pinkNeon : .clear)
-
-            Button {
-                // on tap
-                selectedStationID = station.stationuuid
-                appManager.playAudio(url: station.url)
-            } label: {
+//            Button {
+//                // on tap
+//                selectedStationID = station.stationuuid
+//                appManager.playAudio(url: station.url)
+//            } label: {
                 // code, name, playing now
                 HStack{
                     HStack {
@@ -77,10 +76,25 @@ struct StationView: View {
                 }
                 .padding()
                 
-            }
+          //  }
 
         }
         .frame(width: 293, height: 120)
+        .background(NavigationLink(
+                        destination: StationDetailsView(station: station),
+                        isActive: $isActive) {
+                        EmptyView()
+                    })
+        .onTapGesture {
+            selectedStationID = station.stationuuid
+            appManager.playAudio(url: station.url)
+        }
+        .onLongPressGesture() {
+            if selectedStationID == station.stationuuid {
+                print("long tap")
+                isActive.toggle()
+            }
+        }
         .clipShape(.rect(cornerRadius: 20))
         .overlay {
             RoundedRectangle(cornerRadius: 20)

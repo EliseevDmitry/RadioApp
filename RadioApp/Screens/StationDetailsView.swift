@@ -50,6 +50,13 @@ struct StationDetailsView: View {
             }
             .navigationBarBackButtonHidden(true)
             .background(DS.Colors.darkBlue)
+            .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarBackButtonHidden(true)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            BackBarButton()
+                        }
+                    }
         }
     }
 
