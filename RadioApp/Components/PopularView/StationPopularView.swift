@@ -74,9 +74,9 @@ struct StationPopularView: View {
                 selectedStationID = station.stationuuid
                 appManager.playAudio(url: station.url)
             }
-            .onLongPressGesture {
-                print("long tap")
-            }
+//            .onLongPressGesture {
+//                print("long tap")
+//            }
             .overlay {
                 Text(appManager.getString(tags: self.station.tags)?.uppercased() ?? self.station.countrycode)
                     .lineLimit(2)
