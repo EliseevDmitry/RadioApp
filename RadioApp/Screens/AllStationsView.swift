@@ -11,9 +11,9 @@ struct AllStationsView: View {
 
     @EnvironmentObject var appManager: ViewModel
     @State private var isSearching: Bool = false
-    
+
     var body: some View {
-        NavigationView {
+        VStack {
             // text
             VStack {
                 HStack {
@@ -28,6 +28,7 @@ struct AllStationsView: View {
                 // search view
                 SearchBarView(isSearching: $isSearching)
                     .frame(height: 56)
+
                 Spacer()
                 HStack {
                     // sound control
@@ -38,14 +39,21 @@ struct AllStationsView: View {
                     }
 
                     // stations
-                    VStack {
+                    NavigationView {
                         ScrollView(.vertical, showsIndicators: false) {
-                            LazyVStack {
+                            LazyVStack(pinnedViews: .sectionHeaders) {
                                 ForEach(appManager.stations, id: \.stationuuid) { station in
-                                    StationView(selectedStationID: $appManager.selectedStation, station: station)
+                                    NavigationLink {
+                                        StationDetailsView(station: station)
+
+                                    } label: {
+                                        StationView(selectedStationID: $appManager.selectedStation, station: station)
+                                    }
                                 }
                             }
                         }
+                        .background(DS.Colors.darkBlue)
+                        .navigationViewStyle(.stack)
                     }
                     Spacer()
                 }
@@ -62,7 +70,7 @@ struct AllStationsView: View {
             appManager.playFirstStation()
         }
         .onDisappear{
-           // appManager.isPlay = false
+            // appManager.isPlay = false
             appManager.stopAudioStream()
         }
         .navigationViewStyle(.stack)
