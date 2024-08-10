@@ -13,13 +13,8 @@ struct StationPopularView: View {
     @Binding var selectedStationID: String
     @State private var isActive = false
     var station: Station
-    //let action: () -> Void
     //MARK: - BODY
     var body: some View {
-//        Button{
-//            selectedStationID = station.stationuuid
-//            appManager.playAudio(url: station.url)
-//        } label: {
             ZStack{
                 Rectangle()
                     .scaledToFit()
@@ -96,7 +91,6 @@ struct StationPopularView: View {
                     .font(.custom(DS.Fonts.sfBold, size: appManager.getString(tags: self.station.tags) != nil ? 20 : 30))
                     .offset(CGSize(width: 0.0, height: -15.0))
             }
-        //}
     }
     
 }

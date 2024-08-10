@@ -48,7 +48,9 @@ struct FavoritesView: View {
             .background(DS.Colors.darkBlue)
             .navigationViewStyle(.stack)
             .onDisappear{
-                appManager.stopAudioStream()
+                if !appManager.isActiveDetailView {
+                    appManager.stopAudioStream()
+                }
             }
             .onAppear{
                 if appManager.setStations(stationData: Array(stationData)) {

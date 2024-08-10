@@ -57,6 +57,9 @@ final class ViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var error: Error?
     
+    
+    @Published var isActiveDetailView = false
+    
     func fetchSearchStations() async throws {
         var fetchSearchStations: [Station]
         fetchSearchStations = try await network.searchByName(searchText: searchText)
