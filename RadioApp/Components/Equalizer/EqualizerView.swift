@@ -39,7 +39,7 @@ struct EqualizerView: View {
             }
             .frame(maxWidth: 300, maxHeight: 300)
             .onAppear {
-                appManager.playAudio(url: Station.testStation().url)
+                //appManager.playAudio(url: Station.testStation().url)
 
                 // Cкорость движения синусоиды
                 Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { _ in

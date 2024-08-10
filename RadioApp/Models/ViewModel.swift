@@ -248,11 +248,9 @@ final class ViewModel: ObservableObject {
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
 
-            //player = AVPlayer(url: url)
-            //player?.play()
+            player = AVPlayer(url: url)
+            player?.play()
             isPlay = true
-
-            //
             amplitudeService.startUpdatingAmplitude(viewModel: self)
 
         } catch let err {
@@ -261,18 +259,14 @@ final class ViewModel: ObservableObject {
     }
 
     func playAudioStream(){
-        //player?.play()
-        //isPlay = true
-
-        //
+        player?.play()
+        isPlay = true
         amplitudeService.startUpdatingAmplitude(viewModel: self)
     }
 
     func pauseAudioStream(){
         player?.pause()
         isPlay = false
-
-        //
         amplitudeService.startUpdatingAmplitude(viewModel: self)
     }
     

@@ -11,6 +11,7 @@ struct StationPopularView: View {
     //MARK: - PROPERTIES
     @EnvironmentObject var appManager: ViewModel
     @Binding var selectedStationID: String
+    @State private var isActive = false
     var station: Station
     //let action: () -> Void
     //MARK: - BODY
@@ -70,12 +71,20 @@ struct StationPopularView: View {
                 .padding(.bottom, 10)
             }
             .frame(maxWidth: 139, maxHeight: 139)
+            .background(NavigationLink(
+                            destination: StationDetailsView(station: station),
+                            isActive: $isActive) {
+                            EmptyView()
+                        })
             .onTapGesture {
                 selectedStationID = station.stationuuid
                 appManager.playAudio(url: station.url)
             }
-            .onLongPressGesture {
-                print("long tap")
+            .onLongPressGesture() {
+                if selectedStationID == station.stationuuid {
+                    print("long tap")
+                    isActive.toggle()
+                }
             }
             .overlay {
                 Text(appManager.getString(tags: self.station.tags)?.uppercased() ?? self.station.countrycode)
