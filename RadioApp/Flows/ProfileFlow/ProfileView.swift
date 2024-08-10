@@ -13,10 +13,11 @@ struct ProfileView: View {
     @AppStorage("selectedLanguage") private var language = LocalizationService.shared.language
     @AppStorage("isOnboarding") var isOnboarding = true
     
-    @ObservedObject var viewModel: ProfileViewModel
+    //@ObservedObject var viewModel: ProfileViewModel
+    //тестируем
+    @EnvironmentObject var appManager: ViewModel
     
-    @State private var showLogoutAlert: Bool = false
-    @State private var errorAlert: AnyAppAlert? = nil
+    // @State private var errorAlert: AnyAppAlert? = nil
     
     @State private var imageURL: URL? = nil
     
@@ -25,12 +26,11 @@ struct ProfileView: View {
         ZStack {
             AnimatedBackgroundView()
                 .ignoresSafeArea()
-            
             VStack {
                 // MARK: - Profile Info
                 ProfileInfoView(
-                    userName: viewModel.currentUser?.userName ?? "",
-                    userEmail: viewModel.currentUser?.email ??  "",
+                    userName: appManager.currentUser?.userName ?? "",
+                    userEmail: appManager.currentUser?.email ??  "",
                     profileImage: UIImage(systemName: "person.fill")!,
                     saveChangesAction: saveChanges
                 )
@@ -58,13 +58,14 @@ struct ProfileView: View {
                 Spacer()
                 // MARK: - Logout Button
                 CustomButton(
-                    action: { showLogoutAlert = true },
+                    action: { logOut() },
                     title: Resources.Text.logOut.localized(language),
                     buttonType: .profile)
             }
             .padding()
             .foregroundColor(.white)
-            .showCustomAlert(alert: $errorAlert)
+            
+            // .showCustomAlert(alert: $errorAlert)
             .navigationTitle(Resources.Text.settings.localized(language))
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
@@ -73,31 +74,19 @@ struct ProfileView: View {
                     BackBarButton()
                 }
             }
-            .alert(isPresented: $showLogoutAlert) {
-                Alert(
-                    title: Text(Resources.Text.logOut.localized(language)),
-                    message: Text(Resources.Text.areYouWantLogOut.localized(language)),
-                    primaryButton: .destructive(Text(Resources.Text.logOut.localized(language))) {
-                            logOut()
-                    },
-                    secondaryButton: .cancel()
-                )
+            .onReceive(appManager.$error) { error in
+                if let error = error {
+                    // errorAlert = AnyAppAlert(error: error)
+                    appManager.clearError()
+                }
             }
-        }
-        
-                    
-               
-        .onReceive(viewModel.$error) { error in
-            if let error = error {
-                errorAlert = AnyAppAlert(error: error)
-                viewModel.clearError()
-            }
+            
         }
     }
     
     //    MARK: - Private Methods
     private func saveChanges(_ userName: String, _ userEmail: String, _ avatar: UIImage?) {
-        viewModel.updateUserProfile(
+        appManager.updateUserProfile(
             userName,
             userEmail,
             avatar
@@ -105,17 +94,17 @@ struct ProfileView: View {
     }
     
     private func notificationAction() {
-//        viewModel.configureNotifications()
+       // $appManager.configureNotifications
     }
     
     private func logOut() {
-        viewModel.logOut()
+        //appManager.viewModel.logOut()
+        appManager.signOut()
         isOnboarding = false
     }
 }
 
-
 // MARK: - Preview
-#Preview {
-    ProfileView(viewModel: ProfileViewModel())
-}
+//#Preview {
+//    ProfileView(viewModel: ProfileViewModel())
+//}

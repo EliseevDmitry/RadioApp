@@ -14,18 +14,20 @@ import Combine
 
 
 @MainActor
-final class ViewModel: ObservableObject {
+class ViewModel: ObservableObject {
     private let authService = AuthService.shared
     let network = NetworkService()
     private var amplitudeService = AmplitudeService()
     //
-
+    @Published var isAlert: Bool = false
+    
+    
     @Published var amplitude: CGFloat = 0.0
     //
-
+    
     @Published var stations = [Station]()
-//    для выбора стартового экрана
-    @Published var selectedView: AnyView = AnyView(ContentView())//AnyView(WelcomeView())
+    //    для выбора стартового экрана
+    //@Published var selectedView: AnyView = AnyView(ContentView())//AnyView(WelcomeView())
     
     //VolumeView
     //@Published var volume: CGFloat = 0
@@ -35,20 +37,21 @@ final class ViewModel: ObservableObject {
     @Published var selectedStation = ""
     //VoteView
     @Published var islike: Bool = false
-
+    
     @Published var isPlay: Bool = false
-
-
+    
+    
     // свойства для аутентификации пользователя
     @Published var email = ""
     @Published var password = ""
     @Published var username = "Mark"
     @Published var userProfileImage: UIImage? = nil
     
+    
     @Published var showPassword = false
     @Published var isUserRegistered = false
     @Published var showSignInView = false
-
+    
     @Published var testUserEmail = "Franky@gmail.com"
     @Published var testUserPassword = "1212121"
     @Published var testUserUsername = "Frank"
@@ -60,16 +63,20 @@ final class ViewModel: ObservableObject {
     
     @Published var isActiveDetailView = false
     
+    //тест дименого кода
+    //@Published var viewModel = ProfileViewModel()
+
+    
     func fetchSearchStations() async throws {
         var fetchSearchStations: [Station]
         fetchSearchStations = try await network.searchByName(searchText: searchText)
         stations = fetchSearchStations
     }
-
+    
     // likes
     var likes = Like(likeSet: Set<String>())
     var player: AVPlayer?
-
+    
     // Audio session object
     let session = AVAudioSession.sharedInstance()
     // Observer
@@ -92,14 +99,15 @@ final class ViewModel: ObservableObject {
             }
         }
     }
-
+    
     //delete Observer
     func unsubscribe() {
         self.progressObserver.invalidate()
     }
-
+    
     //инициализируем - начальную громкость устройства
     init() {
+        fetchUser()
         self.volume = CGFloat(session.outputVolume)
         print("init volume value - \(self.volume)")
         setVolme()
@@ -113,7 +121,7 @@ final class ViewModel: ObservableObject {
             }
         }
     }
-
+    
     
     
     
@@ -125,14 +133,14 @@ final class ViewModel: ObservableObject {
     //        //            }
     //        //        }
     //        //    }
-
-
+    
+    
     func fetchTopStations() async throws {
         var fetchedStations: [Station]
         fetchedStations = try await network.getTopStations(numberLimit: 20)
         stations = fetchedStations
     }
-
+    
     func fetchAllStations() async throws {
         var fetchedAllStations: [Station]
         fetchedAllStations = try await network.getAllStations()
@@ -207,13 +215,13 @@ final class ViewModel: ObservableObject {
         return false
     }
     
-
-//    func fetchSearchStations() async throws {
-//        var fetchSearchStations: [Station]
-//        fetchSearchStations = try await network.getAllStations()
-//        stations = fetchSearchStations
-//    }
-
+    
+    //    func fetchSearchStations() async throws {
+    //        var fetchSearchStations: [Station]
+    //        fetchSearchStations = try await network.getAllStations()
+    //        stations = fetchSearchStations
+    //    }
+    
     //save likes
     func saveLikesData(){
         let encoder = JSONEncoder()
@@ -221,7 +229,7 @@ final class ViewModel: ObservableObject {
             UserDefaults.standard.set(data, forKey: "likes")
         }
     }
-
+    
     //load likes
     func loadLikesData(){
         let decoder = JSONDecoder()
@@ -229,7 +237,7 @@ final class ViewModel: ObservableObject {
         guard let loadData = try? decoder.decode(Like.self, from: data) else {return}
         likes.likeSet = loadData.likeSet
     }
-
+    
     //проверка на наличие уже оставленного отзыва
     //возвращает false при уже оставленном like
     func saveIDLikes(id: String) -> Bool {
@@ -245,37 +253,37 @@ final class ViewModel: ObservableObject {
         print("Такой ID уже существует!")
         return false
     }
-
+    
     func playAudio(url: String){
         guard let url = URL.init(string: url) else { return }
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-
+            
             player = AVPlayer(url: url)
-            player?.play()
+            // player?.play()
             isPlay = true
             amplitudeService.startUpdatingAmplitude(viewModel: self)
-
+            
         } catch let err {
             print(err.localizedDescription)
         }
     }
-
+    
     func playAudioStream(){
-        player?.play()
+        // player?.play()
         isPlay = true
         amplitudeService.startUpdatingAmplitude(viewModel: self)
     }
-
+    
     func pauseAudioStream(){
-        player?.pause()
+        //player?.pause()
         isPlay = false
         amplitudeService.startUpdatingAmplitude(viewModel: self)
     }
     
     func stopAudioStream() {
-            player = nil
-            isPlay = false
+        player = nil
+        isPlay = false
         selectedStation = ""
     }
     
@@ -294,9 +302,9 @@ final class ViewModel: ObservableObject {
             return nil
         }
     }
-
-
-
+    
+    
+    
     func nextTrackAudioStream(){
         var indexStation: Int?
         for (index, station) in stations.enumerated() {
@@ -321,7 +329,7 @@ final class ViewModel: ObservableObject {
             return
         }
     }
-
+    
     func backTrackAudioStream() {
         var indexStation: Int?
         for (index, station) in stations.enumerated() {
@@ -345,24 +353,23 @@ final class ViewModel: ObservableObject {
         } else {
             return
         }
-
-
+        
+        
         //функция не нужна при отсутствии изменять музыку бегунком
         //        func setVolmePlayer(){
         //            player?.volume = Float(self.volume)
         //            print(player?.volume)
         //        }
-
+        
     }
-
+    
     func playFirstStation() {
         if stations.count > 0 {
-            print(stations.count)
             selectedStation = stations[0].stationuuid
             playAudio(url: stations[0].url)
         }
     }
-
+    
     // MARK: - Auth methods
     func getUserInfo() {
         let user = authService.getCurrentUserModel()
@@ -371,20 +378,20 @@ final class ViewModel: ObservableObject {
     }
     
     func signIn() async {
-            do {
-                try await AuthService.shared.signIn(with: email, password: password)
-            } catch {
-//                self.error = error
-            }
+        do {
+            try await AuthService.shared.signIn(with: email, password: password)
+        } catch {
+            //self.error = error
         }
-
+    }
+    
     func registerUser() {
         Task {
             try await AuthService.shared.registerUser(with: email, password: password, username: username)
             isUserRegistered = true
         }
     }
-
+    
     func signOut() {
         Task {
             try AuthService.shared.signUserOut()
@@ -406,4 +413,96 @@ final class ViewModel: ObservableObject {
     }
     
     
+    
+    
+    
+    
+
+    
+    @Published var currentUser: UserModel?
+    //@Published var error: Error?
+    
+   
+    private let notificationService = NotificationsService.shared
+    
+    // MARK: - Initializer
+//    init() {
+//
+//    }
+    
+    // MARK: - Methods
+    func fetchUser() {
+        Task {
+             currentUser = authService.getCurrentUserModel()
+        }
+    }
+    
+    func getProfileImage(path: String) {
+        guard currentUser != nil else { return }
+        Task {
+          try await authService.getUrlForImage(path: path)
+        }
+    }
+    
+    func saveProfileImage(_ image: UIImage) {
+        guard let currentUser else { return }
+        
+        Task {
+            let (_, _) = try await authService.saveImage(image: image, userID: currentUser.id) //let (path, name)
+        }
+    }
+    
+    func updateUserProfile(_ name: String?, _ email: String?, _ avatar: UIImage?) {
+        Task {
+            do {
+                let photoURL: URL? = nil //var
+                
+//                if let avatar = avatar {
+//                    photoURL = try await authService.uploadAvatar(image: avatar, userId: currentUser?.id ?? "")
+//                }
+                
+                if let email = email {
+                    try await authService.updateEmail(email)
+                }
+                
+                try await authService.updateUserProfile(displayName: name, photoURL: photoURL)
+                
+                await MainActor.run {
+                    fetchUser()
+                }
+            } catch {
+                await MainActor.run {
+                    self.error = error
+                }
+            }
+        }
+    }
+    
+//    func logOut() {
+//        do {
+//            try authService.signUserOut()
+//        } catch {
+//            Task {
+//                self.error = error
+//            }
+//        }
+//    }
+    
+    //тест
+
+    
+    
+    
+    
+    func clearError() {
+        Task {
+            self.error = nil
+        }
+    }
+    
+//    MARK: - Notifications
+   
+    func notificationAction() {
+        notificationService.sendTestNotification()
+    }
 }

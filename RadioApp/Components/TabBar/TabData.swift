@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum Tab: String, CaseIterable {
-    case popular = "Popular"
-    case favorites = "Favorites"
-    case allStations = "All Stations"
+enum Tab: Int {
+    case popular = 0
+    case favorites = 1
+    case allStations = 2
 }

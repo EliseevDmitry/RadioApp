@@ -41,6 +41,7 @@
 		26A737992C5A4F850002F1E9 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A737982C5A4F850002F1E9 /* BackButtonView.swift */; };
 		26A7379B2C5A4FCB0002F1E9 /* ForwardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */; };
 		26A7379E2C5A6A670002F1E9 /* SplineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379D2C5A6A670002F1E9 /* SplineView.swift */; };
+		26B1A6622C674C2E00734278 /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26B1A6602C674C2E00734278 /* LikeStations.xcdatamodeld */; };
 		26D180992C5AA0A300D4EF68 /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D180982C5AA0A300D4EF68 /* PopularView.swift */; };
 		26FB42E62C64994F00F9C2A2 /* FavoritesComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB42E52C64994F00F9C2A2 /* FavoritesComponentView.swift */; };
 		7A0ED5E12C592B280063F449 /* TestView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0ED5E02C592B280063F449 /* TestView2.swift */; };
@@ -58,7 +59,6 @@
 		7A98A36F2C5CEC720049DE5F /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A98A36E2C5CEC720049DE5F /* StationView.swift */; };
 		7AAEB6F62C6330FB004D7424 /* ToolbarName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEB6F52C6330FB004D7424 /* ToolbarName.swift */; };
 		7AAEB6F92C638482004D7424 /* ToolbarProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEB6F82C638482004D7424 /* ToolbarProfile.swift */; };
-		7AC0A1E92C6745AC0059831A /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AC0A1E72C6745AC0059831A /* LikeStations.xcdatamodeld */; };
 		E133D7C22C6220B100BA4E84 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E133D7C12C6220B100BA4E84 /* FirebaseStorage */; };
 		E133D7D42C6345BE00BA4E84 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E133D7D32C6345BE00BA4E84 /* String + Extension.swift */; };
 		E133D7EA2C6346CB00BA4E84 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E133D7E82C6346CB00BA4E84 /* Localizable.strings */; };
@@ -71,7 +71,6 @@
 		E16EBD572C5CB3F10010BF71 /* Color + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16EBD562C5CB3F10010BF71 /* Color + Ext.swift */; };
 		E16EBD592C5CB4060010BF71 /* LegalPoliciesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16EBD582C5CB4060010BF71 /* LegalPoliciesView.swift */; };
 		E16EBD5B2C5CB42A0010BF71 /* RadioAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16EBD5A2C5CB42A0010BF71 /* RadioAppApp.swift */; };
-		E18529D42C5D00CD00BBE649 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18529D32C5D00CD00BBE649 /* UserModel.swift */; };
 		E18529D82C5D034800BBE649 /* AnimatedBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18529D72C5D034800BBE649 /* AnimatedBackgroundView.swift */; };
 		E18529DC2C5D08F000BBE649 /* ChangePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18529DB2C5D08F000BBE649 /* ChangePhotoView.swift */; };
 		E18529DF2C5D11AA00BBE649 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18529DE2C5D11AA00BBE649 /* ProfileHeaderView.swift */; };
@@ -128,6 +127,7 @@
 		26A737982C5A4F850002F1E9 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButtonView.swift; sourceTree = "<group>"; };
 		26A7379D2C5A6A670002F1E9 /* SplineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplineView.swift; sourceTree = "<group>"; };
+		26B1A6612C674C2E00734278 /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		26D180982C5AA0A300D4EF68 /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
 		26FB42E52C64994F00F9C2A2 /* FavoritesComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoritesComponentView.swift; path = RadioApp/Components/FavoritesComponentView.swift; sourceTree = SOURCE_ROOT; };
 		7A0ED5E02C592B280063F449 /* TestView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView2.swift; sourceTree = "<group>"; };
@@ -143,7 +143,6 @@
 		7A98A36E2C5CEC720049DE5F /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 		7AAEB6F52C6330FB004D7424 /* ToolbarName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarName.swift; sourceTree = "<group>"; };
 		7AAEB6F82C638482004D7424 /* ToolbarProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarProfile.swift; sourceTree = "<group>"; };
-		7AC0A1E82C6745AC0059831A /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		E133D7D32C6345BE00BA4E84 /* String + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		E133D7E92C6346CB00BA4E84 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = RadioApp/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E14AA7852C5E234800BAC1BE /* EditPhotoButttonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotoButttonView.swift; sourceTree = "<group>"; };
@@ -155,7 +154,6 @@
 		E16EBD562C5CB3F10010BF71 /* Color + Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color + Ext.swift"; sourceTree = "<group>"; };
 		E16EBD582C5CB4060010BF71 /* LegalPoliciesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalPoliciesView.swift; sourceTree = "<group>"; };
 		E16EBD5A2C5CB42A0010BF71 /* RadioAppApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioAppApp.swift; sourceTree = "<group>"; };
-		E18529D32C5D00CD00BBE649 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		E18529D72C5D034800BBE649 /* AnimatedBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedBackgroundView.swift; sourceTree = "<group>"; };
 		E18529DB2C5D08F000BBE649 /* ChangePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhotoView.swift; sourceTree = "<group>"; };
 		E18529DE2C5D11AA00BBE649 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -350,7 +348,6 @@
 		2663C7932C56A009002EFD0C /* ProfileFlow */ = {
 			isa = PBXGroup;
 			children = (
-				E18529DD2C5D118600BBE649 /* Models */,
 				2663C7942C56A01F002EFD0C /* ProfileView.swift */,
 				E14AA7872C5E7A2900BAC1BE /* ProfileViewModel.swift */,
 				E1E497EC2C56DD410099440D /* SubViews */,
@@ -455,14 +452,6 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
-		E18529DD2C5D118600BBE649 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				E18529D32C5D00CD00BBE649 /* UserModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		E1E497D82C56D0C70099440D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,7 +475,7 @@
 		E1E497E32C56D4DF0099440D /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				7AC0A1E72C6745AC0059831A /* LikeStations.xcdatamodeld */,
+				26B1A6602C674C2E00734278 /* LikeStations.xcdatamodeld */,
 				E1E87BB42C649F450070D855 /* NotificationsService.swift */,
 				E1E87BBB2C65E7C10070D855 /* LocalizationService.swift */,
 				7A67B1532C65F718006EBE13 /* AmplitudeService.swift */,
@@ -657,7 +646,6 @@
 				E1E87BB32C64122F0070D855 /* TimeAndDaysPicker.swift in Sources */,
 				2277BB472C5E881700317DD2 /* AuthBackgroundView.swift in Sources */,
 				E18529D82C5D034800BBE649 /* AnimatedBackgroundView.swift in Sources */,
-				7AC0A1E92C6745AC0059831A /* LikeStations.xcdatamodeld in Sources */,
 				E1E498142C5BBB500099440D /* CustomTextField.swift in Sources */,
 				7A98A36F2C5CEC720049DE5F /* StationView.swift in Sources */,
 				7A0ED5E12C592B280063F449 /* TestView2.swift in Sources */,
@@ -694,7 +682,6 @@
 				2663C7A92C56A249002EFD0C /* ViewModel.swift in Sources */,
 				26A737972C5A49490002F1E9 /* PlayButtonView.swift in Sources */,
 				E1E87BBC2C65E7C10070D855 /* LocalizationService.swift in Sources */,
-				E18529D42C5D00CD00BBE649 /* UserModel.swift in Sources */,
 				E16EBD5B2C5CB42A0010BF71 /* RadioAppApp.swift in Sources */,
 				2663C7AB2C56A257002EFD0C /* Model.swift in Sources */,
 				E16EBD572C5CB3F10010BF71 /* Color + Ext.swift in Sources */,
@@ -724,6 +711,7 @@
 				E18529DC2C5D08F000BBE649 /* ChangePhotoView.swift in Sources */,
 				220E86AA2C5D018900F8B0D6 /* TestAuthView.swift in Sources */,
 				E1E498062C58D3DF0099440D /* SettingView.swift in Sources */,
+				26B1A6622C674C2E00734278 /* LikeStations.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1028,14 +1016,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		7AC0A1E72C6745AC0059831A /* LikeStations.xcdatamodeld */ = {
+		26B1A6602C674C2E00734278 /* LikeStations.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				7AC0A1E82C6745AC0059831A /* LikeStations.xcdatamodel */,
+				26B1A6612C674C2E00734278 /* LikeStations.xcdatamodel */,
 			);
-			currentVersion = 7AC0A1E82C6745AC0059831A /* LikeStations.xcdatamodel */;
+			currentVersion = 26B1A6612C674C2E00734278 /* LikeStations.xcdatamodel */;
 			name = LikeStations.xcdatamodeld;
-			path = /Users/evgeniy/Desktop/GitHub/RadioApp/RadioApp/Services/LikeStations.xcdatamodeld;
+			path = "/Users/dmitriyeliseev/Downloads/RadioApp-develop/RadioApp/Services/LikeStations.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
