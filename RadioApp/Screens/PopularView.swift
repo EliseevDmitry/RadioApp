@@ -16,36 +16,38 @@ struct PopularView: View {
     ]
     //MARK: - BODY
     var body: some View {
-        VStack {
+        NavigationView {
             VStack {
-                HStack {
-                    Text("Popular")
-                        .font(.custom(DS.Fonts.sfRegular, size: 30))
-                        .foregroundStyle(.white)
-                    Spacer()
-                }
-                .padding(.leading, 60)
-                .padding(.top, 10)
-                HStack{
-                    VolumeView(rotation: false)
-                        .frame(width: 33 ,height: 250)
-                        .padding(.leading, 15)
-                    NavigationView {
+                VStack {
+                    HStack {
+                        Text("Popular")
+                            .font(.custom(DS.Fonts.sfRegular, size: 30))
+                            .foregroundStyle(.white)
+                        Spacer()
+                    }
+                    .padding(.leading, 60)
+                    .padding(.top, 10)
+                    HStack{
+                        VolumeView(rotation: false)
+                            .frame(width: 33 ,height: 250)
+                            .padding(.leading, 15)
+                        
                         ScrollView(.vertical, showsIndicators: false){
                             LazyVGrid(columns: columns) {
                                 ForEach(appManager.stations, id: \.stationuuid) {item in
                                     StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
                                         .frame(width: 139, height: 139)
                                 }
+                                
                             }
+                            .background(DS.Colors.darkBlue)
                         }
-                        .background(DS.Colors.darkBlue)
+                        Spacer()
                     }
                     Spacer()
                 }
-                Spacer()
+                .background(DS.Colors.darkBlue)
             }
-            .background(DS.Colors.darkBlue)
         }
         .padding(.top, 100)
         .navigationViewStyle(.stack)

@@ -14,25 +14,25 @@ struct FavoritesView: View {
     @Environment(\.managedObjectContext) var moc
     
     var body: some View {
-        VStack {
-            VStack{
-                HStack {
-                    Text("Favorites")
-                        .font(.custom(DS.Fonts.sfRegular, size: 30))
-                        .foregroundStyle(.white)
-                    //deleteRecords()
-                    //Button("DeleteData"){
-                    //deleteRecords()
-                    //}
-                    Spacer()
-                }
-                .padding(.leading, 60)
-                .padding(.top, 10)
-                HStack{
-                    VolumeView(rotation: false)
-                        .frame(width: 33 ,height: 250)
-                        .padding(.leading, 15)
-                    NavigationView {
+        NavigationView {
+            VStack {
+                VStack{
+                    HStack {
+                        Text("Favorites")
+                            .font(.custom(DS.Fonts.sfRegular, size: 30))
+                            .foregroundStyle(.white)
+                        //deleteRecords()
+                        //Button("DeleteData"){
+                        //deleteRecords()
+                        //}
+                        Spacer()
+                    }
+                    .padding(.leading, 60)
+                    .padding(.top, 10)
+                    HStack{
+                        VolumeView(rotation: false)
+                            .frame(width: 33 ,height: 250)
+                            .padding(.leading, 15)
                         ScrollView(.vertical, showsIndicators: false){
                             LazyVStack {
                                 ForEach(appManager.stations, id: \.stationuuid) {item in
@@ -41,12 +41,13 @@ struct FavoritesView: View {
                                         station: item
                                     )
                                 }
+                                
                             }
+                            .background(DS.Colors.darkBlue)
                         }
-                        .background(DS.Colors.darkBlue)
                     }
+                    Spacer()
                 }
-                Spacer()
             }
             .background(DS.Colors.darkBlue)
             .navigationViewStyle(.stack)

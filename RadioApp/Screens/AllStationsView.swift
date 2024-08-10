@@ -13,53 +13,54 @@ struct AllStationsView: View {
     @State private var isSearching: Bool = false
 
     var body: some View {
-        VStack {
-            // text
+        NavigationView {
             VStack {
-                HStack {
-                    Text("All stations")
-                        .font(.custom(DS.Fonts.sfRegular, size: 30))
-                        .foregroundStyle(.white)
-                    Spacer()
-                }
-                .padding(.leading, 60)
-                .padding(.top, 10)
-
-                // search view
-                SearchBarView(isSearching: $isSearching)
-                    .frame(height: 56)
-
-                Spacer()
-                HStack {
-                    // sound control
-                    VStack {
-                        VolumeView(rotation: false)
-                            .frame(width: 33 ,height: 250)
-                            .padding(.leading, 15)
+                // text
+                VStack {
+                    HStack {
+                        Text("All stations")
+                            .font(.custom(DS.Fonts.sfRegular, size: 30))
+                            .foregroundStyle(.white)
+                        Spacer()
                     }
-
-                    // stations
-                    NavigationView {
+                    .padding(.leading, 60)
+                    .padding(.top, 10)
+                    
+                    // search view
+                    SearchBarView(isSearching: $isSearching)
+                        .frame(height: 56)
+                    
+                    Spacer()
+                    HStack {
+                        // sound control
+                        VStack {
+                            VolumeView(rotation: false)
+                                .frame(width: 33 ,height: 250)
+                                .padding(.leading, 15)
+                        }
+                        
+                        // stations
                         ScrollView(.vertical, showsIndicators: false) {
                             LazyVStack(pinnedViews: .sectionHeaders) {
                                 ForEach(appManager.stations, id: \.stationuuid) { station in
                                     NavigationLink {
                                         StationDetailsView(station: station)
-
+                                        
                                     } label: {
                                         StationView(selectedStationID: $appManager.selectedStation, station: station)
                                     }
+                                    
                                 }
                             }
+                            .background(DS.Colors.darkBlue)
+                            .navigationViewStyle(.stack)
                         }
-                        .background(DS.Colors.darkBlue)
-                        .navigationViewStyle(.stack)
+                        Spacer()
                     }
                     Spacer()
                 }
-                Spacer()
+                .background(DS.Colors.darkBlue)
             }
-            .background(DS.Colors.darkBlue)
         }
         .padding(.top, 100)
         .task {
