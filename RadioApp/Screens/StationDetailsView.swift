@@ -14,43 +14,44 @@ struct StationDetailsView: View {
 
     var body: some View {
 
-        ZStack {
-            VStack {
-                HStack {
+            ZStack {
+                VStack {
+                    HStack {
+                        Spacer()
+                        VoteView(isShow: true, idStation: station.stationuuid)
+                            .frame(width: 14, height: 14)
+                    }
+
+                    EqualizerView()
                     Spacer()
-                    VoteView(isShow: true, idStation: station.stationuuid)
-                        .frame(width: 14, height: 14)
                 }
 
-                EqualizerView()
-                Spacer()
-            }
+                VStack {
+                    AsyncImage(url: URL(string: station.favicon)) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 40, maxHeight: 40)
 
-            VStack {
-                AsyncImage(url: URL(string: station.favicon)) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: 40, maxHeight: 40)
+                    } placeholder: {
+                        Color.gray
+                    }
+                    .clipShape(Rectangle())
+                    .frame(maxWidth: 60, maxHeight: 60)
 
-                } placeholder: {
-                    Color.gray
+                    Text(station.name)
+                        .font(.custom(.sfRegular, size: 16))
+                        .foregroundStyle(.white)
+
+                    Spacer()
                 }
-                .clipShape(Rectangle())
-                .frame(maxWidth: 60, maxHeight: 60)
-
-                Text(station.name)
-                    .font(.custom(.sfRegular, size: 16))
-                    .foregroundStyle(.white)
 
                 Spacer()
             }
-
-            Spacer()
+            .navigationBarBackButtonHidden(true)
+            .background(DS.Colors.darkBlue)
         }
-        .background(DS.Colors.darkBlue)
     }
-}
 
 #Preview {
     StationDetailsView(station: Station.testStation())

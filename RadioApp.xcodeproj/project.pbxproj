@@ -41,7 +41,6 @@
 		26A737992C5A4F850002F1E9 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A737982C5A4F850002F1E9 /* BackButtonView.swift */; };
 		26A7379B2C5A4FCB0002F1E9 /* ForwardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */; };
 		26A7379E2C5A6A670002F1E9 /* SplineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379D2C5A6A670002F1E9 /* SplineView.swift */; };
-		26B1A65F2C6738E200734278 /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26B1A65D2C6738E200734278 /* LikeStations.xcdatamodeld */; };
 		26D180992C5AA0A300D4EF68 /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D180982C5AA0A300D4EF68 /* PopularView.swift */; };
 		26FB42E62C64994F00F9C2A2 /* FavoritesComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB42E52C64994F00F9C2A2 /* FavoritesComponentView.swift */; };
 		7A0ED5E12C592B280063F449 /* TestView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0ED5E02C592B280063F449 /* TestView2.swift */; };
@@ -59,6 +58,7 @@
 		7A98A36F2C5CEC720049DE5F /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A98A36E2C5CEC720049DE5F /* StationView.swift */; };
 		7AAEB6F62C6330FB004D7424 /* ToolbarName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEB6F52C6330FB004D7424 /* ToolbarName.swift */; };
 		7AAEB6F92C638482004D7424 /* ToolbarProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEB6F82C638482004D7424 /* ToolbarProfile.swift */; };
+		7AC0A1E92C6745AC0059831A /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AC0A1E72C6745AC0059831A /* LikeStations.xcdatamodeld */; };
 		E133D7C22C6220B100BA4E84 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E133D7C12C6220B100BA4E84 /* FirebaseStorage */; };
 		E133D7D42C6345BE00BA4E84 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E133D7D32C6345BE00BA4E84 /* String + Extension.swift */; };
 		E133D7EA2C6346CB00BA4E84 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E133D7E82C6346CB00BA4E84 /* Localizable.strings */; };
@@ -128,7 +128,6 @@
 		26A737982C5A4F850002F1E9 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButtonView.swift; sourceTree = "<group>"; };
 		26A7379D2C5A6A670002F1E9 /* SplineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplineView.swift; sourceTree = "<group>"; };
-		26B1A65E2C6738E200734278 /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		26D180982C5AA0A300D4EF68 /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
 		26FB42E52C64994F00F9C2A2 /* FavoritesComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoritesComponentView.swift; path = RadioApp/Components/FavoritesComponentView.swift; sourceTree = SOURCE_ROOT; };
 		7A0ED5E02C592B280063F449 /* TestView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView2.swift; sourceTree = "<group>"; };
@@ -144,6 +143,7 @@
 		7A98A36E2C5CEC720049DE5F /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 		7AAEB6F52C6330FB004D7424 /* ToolbarName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarName.swift; sourceTree = "<group>"; };
 		7AAEB6F82C638482004D7424 /* ToolbarProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarProfile.swift; sourceTree = "<group>"; };
+		7AC0A1E82C6745AC0059831A /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		E133D7D32C6345BE00BA4E84 /* String + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		E133D7E92C6346CB00BA4E84 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = RadioApp/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E14AA7852C5E234800BAC1BE /* EditPhotoButttonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotoButttonView.swift; sourceTree = "<group>"; };
@@ -486,7 +486,7 @@
 		E1E497E32C56D4DF0099440D /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				26B1A65D2C6738E200734278 /* LikeStations.xcdatamodeld */,
+				7AC0A1E72C6745AC0059831A /* LikeStations.xcdatamodeld */,
 				E1E87BB42C649F450070D855 /* NotificationsService.swift */,
 				E1E87BBB2C65E7C10070D855 /* LocalizationService.swift */,
 				7A67B1532C65F718006EBE13 /* AmplitudeService.swift */,
@@ -657,6 +657,7 @@
 				E1E87BB32C64122F0070D855 /* TimeAndDaysPicker.swift in Sources */,
 				2277BB472C5E881700317DD2 /* AuthBackgroundView.swift in Sources */,
 				E18529D82C5D034800BBE649 /* AnimatedBackgroundView.swift in Sources */,
+				7AC0A1E92C6745AC0059831A /* LikeStations.xcdatamodeld in Sources */,
 				E1E498142C5BBB500099440D /* CustomTextField.swift in Sources */,
 				7A98A36F2C5CEC720049DE5F /* StationView.swift in Sources */,
 				7A0ED5E12C592B280063F449 /* TestView2.swift in Sources */,
@@ -723,7 +724,6 @@
 				E18529DC2C5D08F000BBE649 /* ChangePhotoView.swift in Sources */,
 				220E86AA2C5D018900F8B0D6 /* TestAuthView.swift in Sources */,
 				E1E498062C58D3DF0099440D /* SettingView.swift in Sources */,
-				26B1A65F2C6738E200734278 /* LikeStations.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1028,14 +1028,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		26B1A65D2C6738E200734278 /* LikeStations.xcdatamodeld */ = {
+		7AC0A1E72C6745AC0059831A /* LikeStations.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				26B1A65E2C6738E200734278 /* LikeStations.xcdatamodel */,
+				7AC0A1E82C6745AC0059831A /* LikeStations.xcdatamodel */,
 			);
-			currentVersion = 26B1A65E2C6738E200734278 /* LikeStations.xcdatamodel */;
+			currentVersion = 7AC0A1E82C6745AC0059831A /* LikeStations.xcdatamodel */;
 			name = LikeStations.xcdatamodeld;
-			path = /Users/dmitriyeliseev/Desktop/Challenge3/RadioApp/RadioApp/Services/LikeStations.xcdatamodeld;
+			path = /Users/evgeniy/Desktop/GitHub/RadioApp/RadioApp/Services/LikeStations.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
