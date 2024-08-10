@@ -61,6 +61,21 @@ struct ProfileView: View {
                     action: { logOut() },
                     title: Resources.Text.logOut.localized(language),
                     buttonType: .profile)
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                //        }
+                
+                
             }
             .padding()
             .foregroundColor(.white)
