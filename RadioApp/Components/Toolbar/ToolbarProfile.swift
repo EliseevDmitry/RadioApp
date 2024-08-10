@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct ToolbarProfile: View {
-    
     @EnvironmentObject var appManager: ViewModel
-    
+
     struct UserIcon: Shape {
         func path(in rect: CGRect) -> Path {
             var path = Path()
@@ -27,18 +26,20 @@ struct ToolbarProfile: View {
             return path
         }
     }
-    
+
     var body: some View {
-        
-        NavigationLink(destination: ProfileView(viewModel: ProfileViewModel())) {
-            Image(uiImage: appManager.userProfileImage ?? .eliseev)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 60, height: 70)
-                .mask {
-                    UserIcon()
-                        .frame(width: 60, height: 70)
-                }
+        HStack {
+            // Существующий NavigationLink
+            NavigationLink(destination: ProfileView(viewModel: ProfileViewModel())) {
+                Image(uiImage: appManager.userProfileImage ?? .eliseev)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60, height: 70)
+                    .mask {
+                        UserIcon()
+                            .frame(width: 60, height: 70)
+                    }
+            }
         }
     }
 }

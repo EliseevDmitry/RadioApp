@@ -15,10 +15,10 @@ struct StationPopularView: View {
     //let action: () -> Void
     //MARK: - BODY
     var body: some View {
-        Button{
-            selectedStationID = station.stationuuid
-            appManager.playAudio(url: station.url)
-        } label: {
+//        Button{
+//            selectedStationID = station.stationuuid
+//            appManager.playAudio(url: station.url)
+//        } label: {
             ZStack{
                 Rectangle()
                     .scaledToFit()
@@ -70,6 +70,13 @@ struct StationPopularView: View {
                 .padding(.bottom, 10)
             }
             .frame(maxWidth: 139, maxHeight: 139)
+            .onTapGesture {
+                selectedStationID = station.stationuuid
+                appManager.playAudio(url: station.url)
+            }
+            .onLongPressGesture {
+                print("long tap")
+            }
             .overlay {
                 Text(appManager.getString(tags: self.station.tags)?.uppercased() ?? self.station.countrycode)
                     .lineLimit(2)
@@ -80,7 +87,7 @@ struct StationPopularView: View {
                     .font(.custom(DS.Fonts.sfBold, size: appManager.getString(tags: self.station.tags) != nil ? 20 : 30))
                     .offset(CGSize(width: 0.0, height: -15.0))
             }
-        }
+        //}
     }
     
 }

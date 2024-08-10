@@ -21,7 +21,6 @@ final class ProfileViewModel: ObservableObject {
     
     // MARK: - Initializer
     init() {
-        addNotification() 
         fetchUser()
     }
     
@@ -43,14 +42,14 @@ final class ProfileViewModel: ObservableObject {
         guard let currentUser else { return }
         
         Task {
-            let (path, name) = try await authService.saveImage(image: image, userID: currentUser.id)
+            let (_, _) = try await authService.saveImage(image: image, userID: currentUser.id) //let (path, name)
         }
     }
     
     func updateUserProfile(_ name: String?, _ email: String?, _ avatar: UIImage?) {
         Task {
             do {
-                var photoURL: URL? = nil
+                let photoURL: URL? = nil //var
                 
 //                if let avatar = avatar {
 //                    photoURL = try await authService.uploadAvatar(image: avatar, userId: currentUser?.id ?? "")
@@ -88,12 +87,10 @@ final class ProfileViewModel: ObservableObject {
             self.error = nil
         }
     }
+    
 //    MARK: - Notifications
-    func addNotification() {
-//        notificationService.addNotifications()
-    }
    
     func notificationAction() {
-        notificationService.notificationAction()
+        notificationService.sendTestNotification() 
     }
 }
