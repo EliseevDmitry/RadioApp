@@ -13,10 +13,11 @@ struct ProfileView: View {
     @AppStorage("selectedLanguage") private var language = LocalizationService.shared.language
     @AppStorage("isOnboarding") var isOnboarding = true
     
-    @ObservedObject var viewModel: ProfileViewModel
+    //@ObservedObject var viewModel: ProfileViewModel
+    //тестируем
+    @EnvironmentObject var appManager: ViewModel
     
-    @State private var showLogoutAlert: Bool = false
-    @State private var errorAlert: AnyAppAlert? = nil
+    // @State private var errorAlert: AnyAppAlert? = nil
     
     @State private var imageURL: URL? = nil
     
@@ -25,12 +26,11 @@ struct ProfileView: View {
         ZStack {
             AnimatedBackgroundView()
                 .ignoresSafeArea()
-            
             VStack {
                 // MARK: - Profile Info
                 ProfileInfoView(
-                    userName: viewModel.currentUser?.userName ?? "",
-                    userEmail: viewModel.currentUser?.email ??  "",
+                    userName: appManager.viewModel.currentUser?.userName ?? "",
+                    userEmail: appManager.viewModel.currentUser?.email ??  "",
                     profileImage: UIImage(systemName: "person.fill")!,
                     saveChangesAction: saveChanges
                 )
@@ -58,13 +58,29 @@ struct ProfileView: View {
                 Spacer()
                 // MARK: - Logout Button
                 CustomButton(
-                    action: { showLogoutAlert = true },
+                    action: { logOut() },
                     title: Resources.Text.logOut.localized(language),
                     buttonType: .profile)
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                //        }
+                
+                
             }
             .padding()
             .foregroundColor(.white)
-            .showCustomAlert(alert: $errorAlert)
+            
+            // .showCustomAlert(alert: $errorAlert)
             .navigationTitle(Resources.Text.settings.localized(language))
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
@@ -73,49 +89,50 @@ struct ProfileView: View {
                     BackBarButton()
                 }
             }
-            .alert(isPresented: $showLogoutAlert) {
-                Alert(
-                    title: Text(Resources.Text.logOut.localized(language)),
-                    message: Text(Resources.Text.areYouWantLogOut.localized(language)),
-                    primaryButton: .destructive(Text(Resources.Text.logOut.localized(language))) {
-                            logOut()
-                    },
-                    secondaryButton: .cancel()
-                )
-            }
-        }
-        
-                    
-               
-        .onReceive(viewModel.$error) { error in
-            if let error = error {
-                errorAlert = AnyAppAlert(error: error)
-                viewModel.clearError()
-            }
+            
+            
+            
+            //                    .onReceive(appManager.viewModel.$error) { error in
+            //                        if let error = error {
+            //                            errorAlert = AnyAppAlert(error: error)
+            //                            appManager.viewModel.clearError()
+            //                        }
+            //                    }
+            
+            
+            
+            
+      
+            
+         
+            
+            
+          
+            
         }
     }
     
     //    MARK: - Private Methods
-    private func saveChanges(_ userName: String, _ userEmail: String, _ avatar: UIImage?) {
-        viewModel.updateUserProfile(
-            userName,
-            userEmail,
-            avatar
-        )
-    }
+                private func saveChanges(_ userName: String, _ userEmail: String, _ avatar: UIImage?) {
+                    appManager.viewModel.updateUserProfile(
+                        userName,
+                        userEmail,
+                        avatar
+                    )
+                }
     
-    private func notificationAction() {
-//        viewModel.configureNotifications()
-    }
+                private func notificationAction() {
+                    //        viewModel.configureNotifications()
+                }
     
-    private func logOut() {
-        viewModel.logOut()
-        isOnboarding = false
-    }
+                private func logOut() {
+                    //appManager.viewModel.logOut()
+                    appManager.signOut()
+                    isOnboarding = false
+                }
 }
-
-
-// MARK: - Preview
-#Preview {
-    ProfileView(viewModel: ProfileViewModel())
-}
+        
+        // MARK: - Preview
+        //#Preview {
+        //    ProfileView(viewModel: ProfileViewModel())
+        //}

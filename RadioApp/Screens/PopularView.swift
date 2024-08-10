@@ -14,10 +14,9 @@ struct PopularView: View {
         GridItem(.flexible(minimum: 139, maximum: 139)),
         GridItem(.flexible(minimum: 139, maximum: 139))
     ]
-    @State var x = 1
     //MARK: - BODY
     var body: some View {
-        NavigationView{
+        VStack {
             VStack {
                 HStack {
                     Text("Popular")
@@ -31,34 +30,24 @@ struct PopularView: View {
                     VolumeView(rotation: false)
                         .frame(width: 33 ,height: 250)
                         .padding(.leading, 15)
-                    ScrollView(.vertical, showsIndicators: false){
-                        LazyVGrid(columns: columns) {
-                            ForEach(appManager.stations, id: \.stationuuid) {item in
-                                StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
-                                    .frame(width: 139, height: 139)
-                                
-//                                StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
-//                                NavigationLink {
-//                                  StationDetailsView(station: item)
-//                                    
-//                                } label: {
-//                                    StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
-//                                }
-//                                .environmentObject(appManager)
-//                                .frame(width: 139, height: 139)
-//                                .onLongPressGesture {
-//                                    
-//                                }
+                    NavigationView {
+                        ScrollView(.vertical, showsIndicators: false){
+                            LazyVGrid(columns: columns) {
+                                ForEach(appManager.stations, id: \.stationuuid) {item in
+                                    StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
+                                        .frame(width: 139, height: 139)
+                                }
                             }
                         }
+                        .background(DS.Colors.darkBlue)
                     }
-                    
                     Spacer()
                 }
                 Spacer()
             }
             .background(DS.Colors.darkBlue)
         }
+        .padding(.top, 100)
         .navigationViewStyle(.stack)
         .task {
             do {
@@ -71,7 +60,6 @@ struct PopularView: View {
         }
         .onAppear{
             appManager.loadLikesData()
-            
             //clear Set Likes
             //appManager.likes.likeSet.removeAll()
             //appManager.saveLikesData()
@@ -81,6 +69,9 @@ struct PopularView: View {
         }
     }
 }
+
+
+
 
 //MARK: - PREVIEW
 struct PopularView_Previews: PreviewProvider {

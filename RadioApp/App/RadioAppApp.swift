@@ -12,14 +12,14 @@ import FirebaseAuth
 
 @main
 struct RadioAppApp: App {
+    //MARK: -
     @StateObject var appManager = ViewModel()
     @AppStorage("isOnboarding") var isOnboarding = false
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+   //MARK: -
     var body: some Scene {
         WindowGroup {
-           // ProfileView(viewModel: ProfileViewModel())
             if !isOnboarding {
                 WelcomeView()
                     .preferredColorScheme(.dark)
@@ -34,7 +34,6 @@ struct RadioAppApp: App {
                     .preferredColorScheme(.dark)
                     .environmentObject(appManager)
             }
-
         }
     }
 }

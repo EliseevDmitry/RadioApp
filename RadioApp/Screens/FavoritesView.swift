@@ -14,7 +14,7 @@ struct FavoritesView: View {
     @Environment(\.managedObjectContext) var moc
     
     var body: some View {
-        NavigationView {
+        VStack {
             VStack{
                 HStack {
                     Text("Favorites")
@@ -32,18 +32,21 @@ struct FavoritesView: View {
                     VolumeView(rotation: false)
                         .frame(width: 33 ,height: 250)
                         .padding(.leading, 15)
-                    ScrollView(.vertical, showsIndicators: false){
-                        LazyVStack {
-                            ForEach(appManager.stations, id: \.stationuuid) {item in
-                                FavoritesComponentView(
-                                    selectedStationID: $appManager.selectedStation,
-                                    station: item
-                                )
+                    NavigationView {
+                        ScrollView(.vertical, showsIndicators: false){
+                            LazyVStack {
+                                ForEach(appManager.stations, id: \.stationuuid) {item in
+                                    FavoritesComponentView(
+                                        selectedStationID: $appManager.selectedStation,
+                                        station: item
+                                    )
+                                }
                             }
-                            
                         }
+                        .background(DS.Colors.darkBlue)
                     }
                 }
+                Spacer()
             }
             .background(DS.Colors.darkBlue)
             .navigationViewStyle(.stack)
@@ -61,7 +64,7 @@ struct FavoritesView: View {
                 }
             }
         }
-        
+        .padding(.top, 100)
     }
     // delete all records
     func deleteRecords() {
@@ -85,6 +88,5 @@ struct FavoritesView_Previews: PreviewProvider {
     static var previews: some View {
         FavoritesView()
             .environmentObject(previewAppManager)
-        
     }
 }

@@ -27,7 +27,7 @@ final class AuthService {
     // MARK: - Initializer
     private init() {
         self.userSession = Auth.auth().currentUser
-        print("userSession\(userSession)")
+        print(userSession ?? "no data for user Auth")
     }
     
     // MARK: - Methods

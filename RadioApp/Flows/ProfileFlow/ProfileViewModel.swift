@@ -10,8 +10,8 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-@MainActor
-final class ProfileViewModel: ObservableObject {
+//@MainActor
+final class ProfileViewModel {
     // MARK: - Stored Properties
     @Published var currentUser: UserModel?
     @Published var error: Error?
@@ -72,15 +72,21 @@ final class ProfileViewModel: ObservableObject {
         }
     }
     
-    func logOut() {
-        do {
-            try authService.signUserOut()
-        } catch {
-            Task {
-                self.error = error
-            }
-        }
-    }
+//    func logOut() {
+//        do {
+//            try authService.signUserOut()
+//        } catch {
+//            Task {
+//                self.error = error
+//            }
+//        }
+//    }
+    
+    //тест
+
+    
+    
+    
     
     func clearError() {
         Task {

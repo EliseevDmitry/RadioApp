@@ -61,6 +61,7 @@ struct AllStationsView: View {
             }
             .background(DS.Colors.darkBlue)
         }
+        .padding(.top, 100)
         .task {
             do {
                 try await appManager.fetchAllStations()
@@ -73,9 +74,9 @@ struct AllStationsView: View {
             // appManager.isPlay = false
             appManager.stopAudioStream()
         }
-        .navigationViewStyle(.stack)
     }
 }
+
 
 //MARK: - PREVIEW
 struct AllStationsView_Previews: PreviewProvider {

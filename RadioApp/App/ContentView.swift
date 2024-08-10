@@ -8,34 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+
     @EnvironmentObject var appManager: ViewModel
-    @State var currentTab: Tab = .popular
-    init() {
-        UITabBar.appearance().isHidden = true
-    }
+    @State var selectedTab: Tab = .popular
+    @State var showTabBar: Bool = true
+
     var body: some View {
+
         NavigationView {
-            VStack(spacing: 0.0) {
-                TabView(selection: $currentTab) {
+
+            VStack {
+                Spacer()
+
+                switch selectedTab {
+                case .popular:
                     PopularView()
-                        .environmentObject(appManager)
-                        .onDisappear {
-                            
-                            appManager.stopAudioStream()
-                        }
-                        .tag(Tab.popular)
-                    
+                case .favorites:
                     FavoritesView()
-                        .tag(Tab.favorites)
-                    
+                case .allStations:
                     AllStationsView()
-                        .environmentObject(appManager)
-                        .tag(Tab.allStations)
                 }
-                CustomTabBarView(currentTab: $currentTab)
+
+                CustomTabBarView(selectedTab: $selectedTab)
+                Spacer()
+
             }
-            .ignoresSafeArea(.keyboard)
+            .navigationViewStyle(.stack)
+            .ignoresSafeArea()
+            .dynamicTypeSize(.xSmall ... .xLarge)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     ToolbarName()
@@ -44,25 +44,12 @@ struct ContentView: View {
                     ToolbarProfile()
                 }
             }
-            .overlay {
-                HStack(spacing: 30){
-                    BackButtonView()
-                    PlayButtonView()
-                    ForwardButtonView()
-                }
-                .offset(CGSize(width: 4, height: 240))
-            }
+            .background(DS.Colors.darkBlue)
         }
-        .navigationViewStyle(.stack)
-        .dynamicTypeSize(.xSmall ... .xxLarge)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
-    
-    static var previews: some View {
-        ContentView()
-            .environmentObject(previewAppManager)
-    }
+#Preview {
+    ContentView()
+        .environmentObject(ViewModel())
 }

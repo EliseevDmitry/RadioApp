@@ -9,43 +9,81 @@ import SwiftUI
 
 struct CustomTabBarView: View {
 
-    @Binding var currentTab: Tab
+    @Binding var selectedTab: Tab
 
     var body: some View {
-        VStack {
-            HStack(spacing: 0.0) {
-                ForEach(Tab.allCases, id: \.rawValue) { tab in
 
-                    Button {
-                        withAnimation(.easeInOut) {
-                            currentTab = tab
-                        }
-                    } label: {
-                        HStack {
-                            VStack {
-                                Text(tab.rawValue)
-                                    .font(.custom(DS.Fonts.sfMedium, size: 20))
-                                    .foregroundColor(currentTab == tab ? Color.white : DS.Colors.grayNotActive)
+            HStack {
+                Button {
+                    selectedTab = .popular
+                } label: {
 
-                                Circle()
-                                    .frame(width: 15, height: 15)
-                                    .foregroundColor(currentTab == tab ? DS.Colors.blueNeon : DS.Colors.darkBlue)
-                                    .clipShape(Circle())
-                            }
-                        }
-                        .frame(maxWidth: .infinity)
+                    VStack {
+                        Text(selectedTab == .popular ? "Popular" : "Popular")
+                            .font(.custom(DS.Fonts.sfMedium, size: 19))
+                            .foregroundColor(selectedTab == .popular ? Color.white : DS.Colors.grayNotActive)
+
+                        Circle()
+                            .frame(width: 15, height: 15)
+                            .foregroundColor(selectedTab == .popular ? DS.Colors.blueNeon : DS.Colors.darkBlue)
+                            .clipShape(Circle())
                     }
                 }
+                .frame(maxWidth: UIScreen.main.bounds.width / 3)
+
+                Button {
+                    selectedTab = .favorites
+                } label: {
+
+                    VStack {
+
+                        Text(selectedTab == .favorites ? "Favorites" : "Favorites")
+                            .font(.custom(DS.Fonts.sfMedium, size: 19))
+                            .foregroundColor(selectedTab == .favorites ? Color.white : DS.Colors.grayNotActive)
+                        
+                        Circle()
+                            .frame(width: 15, height: 15)
+                            .foregroundColor(selectedTab == .favorites ? DS.Colors.blueNeon : DS.Colors.darkBlue)
+                            .clipShape(Circle())
+                    }
+                }
+                .frame(maxWidth: UIScreen.main.bounds.width / 3)
+
+                Button {
+
+                    selectedTab = .allStations
+                } label: {
+                    VStack {
+
+                        Text(selectedTab == .allStations ? "All Stations" : "All Stations")
+                            .font(.custom(DS.Fonts.sfMedium, size: 19))
+                            .foregroundColor(selectedTab == .allStations ? Color.white : DS.Colors.grayNotActive)
+
+                        Circle()
+                            .frame(width: 15, height: 15)
+                            .foregroundColor(selectedTab == .allStations ? DS.Colors.blueNeon : DS.Colors.darkBlue)
+                            .clipShape(Circle())
+                    }
+                }
+                .frame(maxWidth: UIScreen.main.bounds.width / 3)
             }
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 30)
-        }
-        .frame(height: 38)
-        .padding(.top, 12)
+
+            .overlay {
+                HStack(spacing: 30) {
+                    BackButtonView()
+                    PlayButtonView()
+                    ForwardButtonView()
+                }
+                .offset(CGSize(width: 4, height: -120))
+            }
+        .frame(height: 80)
+        .padding(.bottom, 3)
         .background(DS.Colors.darkBlue)
     }
 }
 
+
 #Preview {
-    CustomTabBarView(currentTab: .constant(.popular))
+    ContentView()
+        .environmentObject(ViewModel())
 }
