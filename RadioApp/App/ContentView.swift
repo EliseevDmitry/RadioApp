@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    
     @EnvironmentObject var appManager: ViewModel
     @State var currentTab: Tab = .popular
     init() {
@@ -20,11 +20,15 @@ struct ContentView: View {
                 TabView(selection: $currentTab) {
                     PopularView()
                         .environmentObject(appManager)
+                        .onDisappear {
+                            
+                            appManager.stopAudioStream()
+                        }
                         .tag(Tab.popular)
-
+                    
                     FavoritesView()
                         .tag(Tab.favorites)
-
+                    
                     AllStationsView()
                         .environmentObject(appManager)
                         .tag(Tab.allStations)
@@ -56,7 +60,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static let previewAppManager = ViewModel()
-
+    
     static var previews: some View {
         ContentView()
             .environmentObject(previewAppManager)

@@ -21,7 +21,6 @@ final class ProfileViewModel: ObservableObject {
     
     // MARK: - Initializer
     init() {
-        addNotification() 
         fetchUser()
     }
     
@@ -88,12 +87,10 @@ final class ProfileViewModel: ObservableObject {
             self.error = nil
         }
     }
+    
 //    MARK: - Notifications
-    func addNotification() {
-//        notificationService.addNotifications()
-    }
    
     func notificationAction() {
-        notificationService.notificationAction()
+        notificationService.sendTestNotification() 
     }
 }
