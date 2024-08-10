@@ -53,6 +53,8 @@
 		7A7A4B332C5B520600CD8794 /* TabData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B312C5B520600CD8794 /* TabData.swift */; };
 		7A7A4B362C5B64CD00CD8794 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B352C5B64CD00CD8794 /* FavoritesView.swift */; };
 		7A7A4B382C5B64DE00CD8794 /* AllStationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B372C5B64DE00CD8794 /* AllStationsView.swift */; };
+		7A89B80C2C66368600B6F76D /* (null) in Sources */ = {isa = PBXBuildFile; };
+		7A89B80F2C663A2100B6F76D /* StationDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A89B80E2C663A2100B6F76D /* StationDetailsView.swift */; };
 		7A98A3682C5CCE820049DE5F /* SearchButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A98A3672C5CCE820049DE5F /* SearchButtonView.swift */; };
 		7A98A36F2C5CEC720049DE5F /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A98A36E2C5CEC720049DE5F /* StationView.swift */; };
 		7AAEB6F62C6330FB004D7424 /* ToolbarName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEB6F52C6330FB004D7424 /* ToolbarName.swift */; };
@@ -137,6 +139,7 @@
 		7A7A4B312C5B520600CD8794 /* TabData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabData.swift; sourceTree = "<group>"; };
 		7A7A4B352C5B64CD00CD8794 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		7A7A4B372C5B64DE00CD8794 /* AllStationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStationsView.swift; sourceTree = "<group>"; };
+		7A89B80E2C663A2100B6F76D /* StationDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailsView.swift; sourceTree = "<group>"; };
 		7A98A3672C5CCE820049DE5F /* SearchButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtonView.swift; sourceTree = "<group>"; };
 		7A98A36E2C5CEC720049DE5F /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 		7AAEB6F52C6330FB004D7424 /* ToolbarName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarName.swift; sourceTree = "<group>"; };
@@ -390,6 +393,7 @@
 				26D180982C5AA0A300D4EF68 /* PopularView.swift */,
 				7A7A4B352C5B64CD00CD8794 /* FavoritesView.swift */,
 				7A7A4B372C5B64DE00CD8794 /* AllStationsView.swift */,
+				7A89B80E2C663A2100B6F76D /* StationDetailsView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -485,9 +489,9 @@
 				269FCD142C6660FC0060FFD8 /* LikeStations.xcdatamodeld */,
 				E1E87BB42C649F450070D855 /* NotificationsService.swift */,
 				E1E87BBB2C65E7C10070D855 /* LocalizationService.swift */,
+				7A67B1532C65F718006EBE13 /* AmplitudeService.swift */,
 				22891AC32C5B5EF700DE33E6 /* AuthService */,
 				E1E497E42C56D4F70099440D /* NetworkService */,
-				7A67B1532C65F718006EBE13 /* AmplitudeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -666,6 +670,7 @@
 				E1E497EB2C56D8500099440D /* DS.swift in Sources */,
 				7A7A4B332C5B520600CD8794 /* TabData.swift in Sources */,
 				2663C79B2C56A09B002EFD0C /* SignInView.swift in Sources */,
+				7A89B80C2C66368600B6F76D /* (null) in Sources */,
 				E14AA7862C5E234800BAC1BE /* EditPhotoButttonView.swift in Sources */,
 				E133D7D42C6345BE00BA4E84 /* String + Extension.swift in Sources */,
 				268696642C57DC330075E9DC /* StationPopularView.swift in Sources */,
@@ -685,6 +690,7 @@
 				220E86A32C5CD94B00F8B0D6 /* AppDelegate.swift in Sources */,
 				7A67B1542C65F718006EBE13 /* AmplitudeService.swift in Sources */,
 				26D180992C5AA0A300D4EF68 /* PopularView.swift in Sources */,
+				7A89B80F2C663A2100B6F76D /* StationDetailsView.swift in Sources */,
 				2663C7A92C56A249002EFD0C /* ViewModel.swift in Sources */,
 				26A737972C5A49490002F1E9 /* PlayButtonView.swift in Sources */,
 				E1E87BBC2C65E7C10070D855 /* LocalizationService.swift in Sources */,
@@ -1029,7 +1035,7 @@
 			);
 			currentVersion = 269FCD152C6660FC0060FFD8 /* LikeStations.xcdatamodel */;
 			name = LikeStations.xcdatamodeld;
-			path = /Users/dmitriyeliseev/Desktop/Challenge3/RadioApp/RadioApp/Services/LikeStations.xcdatamodeld;
+			path = /Users/evgeniy/Desktop/GitHub/RadioApp/RadioApp/Services/LikeStations.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
