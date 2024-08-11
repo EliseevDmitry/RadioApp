@@ -10,6 +10,7 @@ import SwiftUI
 struct PopularView: View {
     //MARK: - PROPERTIES
     @EnvironmentObject var appManager: ViewModel
+    @State private var isActive = false
     let columns = [
         GridItem(.flexible(minimum: 139, maximum: 139)),
         GridItem(.flexible(minimum: 139, maximum: 139))
@@ -35,10 +36,10 @@ struct PopularView: View {
                         ScrollView(.vertical, showsIndicators: false){
                             LazyVGrid(columns: columns) {
                                 ForEach(appManager.stations, id: \.stationuuid) {item in
-                                    StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
-                                        .frame(width: 139, height: 139)
+                                  
+                                        StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
+                                            .frame(width: 139, height: 139)
                                 }
-                                
                             }
                             .background(DS.Colors.darkBlue)
                         }

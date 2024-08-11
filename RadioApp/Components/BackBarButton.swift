@@ -10,10 +10,9 @@ import SwiftUI
 // MARK: - BackBarButton
 struct BackBarButton: View {
     @Environment(\.dismiss) var dismiss
-    
     var body: some View {
         Button(action: {
-            dismiss()
+           dismiss()
         }) {
             Image(systemName: Resources.Image.arrowLeft)
                 .foregroundColor(.white)

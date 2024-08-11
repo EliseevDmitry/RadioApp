@@ -60,7 +60,7 @@ final class ViewModel: ObservableObject {
     
     @Published var isActiveDetailView = false
     
-    //@Published var viewModel = ProfileViewModel()
+    @Published var detailView = false
     
     func fetchSearchStations() async throws {
         var fetchSearchStations: [Station]
