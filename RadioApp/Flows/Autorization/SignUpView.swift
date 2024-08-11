@@ -8,7 +8,17 @@
 import SwiftUI
 
 struct SignUpView: View {    
-    @EnvironmentObject var appManager: ViewModel
+    @StateObject var viewModel: AuthViewModel
+    
+    init(
+        authService: AuthService = .shared
+    ) {
+        self._viewModel = StateObject(
+            wrappedValue: AuthViewModel(
+                authService: authService
+            )
+        )
+    }
     
     var body: some View {
         ZStack {
@@ -28,16 +38,16 @@ struct SignUpView: View {
                     .font(.custom(.sfRegular, size: UIScreen.height * 1/48))
                     .frame(maxWidth: UIScreen.width * 1/3)
                 
-                TextField(Resources.Text.SignUp.name, text: $appManager.email)
+                TextField(Resources.Text.SignUp.name, text: $viewModel.email)
                     .font(.title)
                 
-                TextField(Resources.Text.SignUp.email, text: $appManager.email)
+                TextField(Resources.Text.SignUp.email, text: $viewModel.email)
                     .font(.title)
                 
-                SecureField(Resources.Text.SignUp.password, text: $appManager.password)
+                SecureField(Resources.Text.SignUp.password, text: $viewModel.password)
                     .font(.title)
                                 
-                CustomButton(action: appManager.registerUser, title: Resources.Text.SignUp.title, buttonType: .onboarding)
+                CustomButton(action: viewModel.registerUser, title: Resources.Text.SignUp.title, buttonType: .onboarding)
                 // TODO: изменить тип кнопки
                 
                 Button(action: {}) {
@@ -52,12 +62,8 @@ struct SignUpView: View {
     }
 }
 
-struct SignUpView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
-    
-    static var previews: some View {
-        SignUpView()
-            .environmentObject(previewAppManager)
-    }
+// MARK: - Preview
+#Preview {
+    SignUpView()
 }
 

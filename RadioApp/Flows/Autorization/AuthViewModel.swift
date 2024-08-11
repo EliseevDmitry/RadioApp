@@ -16,7 +16,7 @@ final class AuthViewModel: ObservableObject {
     @Published var error: Error?
     
     private let authService: AuthService
-    
+    @Published var isUserRegistered = false
     // MARK: - Initializer
     init(authService: AuthService = .shared) {
         self.authService = authService
@@ -30,4 +30,12 @@ final class AuthViewModel: ObservableObject {
                 self.error = error
             }
         }
+    
+    func registerUser() {
+        Task {
+            try await AuthService.shared.registerUser(with: email, password: password, username: username)
+            isUserRegistered = true
+        }
+    }
+    
 }

@@ -16,51 +16,42 @@ import Combine
 @MainActor
 final class ViewModel: ObservableObject {
     private let authService = AuthService.shared
+    
     let network = NetworkService()
+    
     private var amplitudeService = AmplitudeService()
     //
 
-    @Published var amplitude: CGFloat = 0.0
+    var amplitude: CGFloat = 0.0
     //
 
-    @Published var stations = [Station]()
+     var stations = [Station]()
 //    для выбора стартового экрана
-    @Published var selectedView: AnyView = AnyView(ContentView())//AnyView(WelcomeView())
-    
+
     //VolumeView
     //@Published var volume: CGFloat = 0
     //@Published var volume: CGFloat = CGFloat(AVAudioSession.sharedInstance().outputVolume)
-    @Published var volume: CGFloat = 0.0
+   var volume: CGFloat = 0.0
     //PopularView
-    @Published var selectedStation = ""
+    var selectedStation = ""
     //VoteView
-    @Published var islike: Bool = false
+     var islike: Bool = false
 
-    @Published var isPlay: Bool = false
+    var isPlay: Bool = false
 
-
-    // свойства для аутентификации пользователя
-    @Published var email = ""
-    @Published var password = ""
-    @Published var username = "Mark"
-    @Published var userProfileImage: UIImage? = nil
-    
-    @Published var showPassword = false
-    @Published var isUserRegistered = false
-    @Published var showSignInView = false
-
-    @Published var testUserEmail = "Franky@gmail.com"
-    @Published var testUserPassword = "1212121"
-    @Published var testUserUsername = "Frank"
     
     //search
-    @Published var searchText: String = ""
+   var searchText: String = ""
     
     
-    @Published var isActiveDetailView = false
+    var isActiveDetailView = false
 //    @Published var isActiveParentView = true
     
-    
+    // свойства для аутентификации пользователя
+      var email = ""
+      var password = ""
+      var username = "Mark"
+     var userProfileImage: UIImage? = nil
     
     func fetchSearchStations() async throws {
         var fetchSearchStations: [Station]
@@ -106,7 +97,6 @@ final class ViewModel: ObservableObject {
         print("init volume value - \(self.volume)")
         setVolme()
         
-        getUserInfo()
         
         //инициализация PersistentContainer CoreData
         container.loadPersistentStores{description, error in
@@ -115,19 +105,6 @@ final class ViewModel: ObservableObject {
             }
         }
     }
-
-    
-    
-    
-    //тестовая функция
-    //    func setVolme(){
-    //        //        progressObserver = session.observe(\.outputVolume) { [self] (session, value) in
-    //        //            DispatchQueue.main.async {
-    //        //                self.volume = CGFloat(session.outputVolume)
-    //        //            }
-    //        //        }
-    //        //    }
-
 
     func fetchTopStations() async throws {
         var fetchedStations: [Station]
@@ -209,13 +186,6 @@ final class ViewModel: ObservableObject {
         return false
     }
     
-
-//    func fetchSearchStations() async throws {
-//        var fetchSearchStations: [Station]
-//        fetchSearchStations = try await network.getAllStations()
-//        stations = fetchSearchStations
-//    }
-
     //save likes
     func saveLikesData(){
         let encoder = JSONEncoder()
@@ -347,14 +317,6 @@ final class ViewModel: ObservableObject {
         } else {
             return
         }
-
-
-        //функция не нужна при отсутствии изменять музыку бегунком
-        //        func setVolmePlayer(){
-        //            player?.volume = Float(self.volume)
-        //            print(player?.volume)
-        //        }
-
     }
 
     func playFirstStation() {
@@ -366,32 +328,14 @@ final class ViewModel: ObservableObject {
     }
 
     // MARK: - Auth methods
-    func getUserInfo() {
-        let user = authService.getCurrentUserModel()
-        username = user?.userName ?? ""
-        userProfileImage = UIImage(named: user?.profileImage ?? Resources.Image.eliseev)
-    }
+//    func getUserInfo(userName: String, userProfileImage: UIImage?) {
+//        let user = authService.getCurrentUserModel()
+//        userName = user?.userName ?? ""
+//        userProfileImage = UIImage(named: user?.profileImage ?? Resources.Image.eliseev)
+//    }
     
-    func signIn() async {
-            do {
-                try await AuthService.shared.signIn(with: email, password: password)
-            } catch {
-//                self.error = error
-            }
-        }
 
-    func registerUser() {
-        Task {
-            try await AuthService.shared.registerUser(with: email, password: password, username: username)
-            isUserRegistered = true
-        }
-    }
 
-    func signOut() {
-        Task {
-            try AuthService.shared.signUserOut()
-        }
-    }
     
     //get Tag in String with ","
     func getString(tags: String)->String? {

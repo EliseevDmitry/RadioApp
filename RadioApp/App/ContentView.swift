@@ -30,7 +30,7 @@ struct ContentView: View {
                     FavoritesView()
                         .environmentObject(appManager)
                         .environment(\.managedObjectContext, appManager.container.viewContext)
-
+                    
                 case .allStations:
                     AllStationsView()
                         .environmentObject(appManager)
@@ -43,22 +43,23 @@ struct ContentView: View {
             .navigationViewStyle(.stack)
             .ignoresSafeArea()
             .dynamicTypeSize(.xSmall ... .xLarge)
-//            .toolbar {
-//                ToolbarItem(placement: .topBarLeading) {
-//                        ToolbarName()
-//                }
-//                
-//                ToolbarItem(placement: .topBarTrailing) {
-//                    ToolbarProfile()
-//                }
-//            }
-//            .background(DS.Colors.darkBlue)
+            //            .toolbar {
+            //                ToolbarItem(placement: .topBarLeading) {
+            //                        ToolbarName()
+            //                }
+            //                
+            //                ToolbarItem(placement: .topBarTrailing) {
+            //                    ToolbarProfile()
+            //                }
+            //            }
+            //            .background(DS.Colors.darkBlue)
             
         }
+    }
     
 }
-
-#Preview {
-    ContentView()
-        .environmentObject(ViewModel())
-}
+//
+//#Preview {
+//    ContentView()
+//        .environmentObject(ViewModel())
+//}
