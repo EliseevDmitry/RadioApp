@@ -9,7 +9,8 @@ import SwiftUI
 
 struct VoteView: View {
     //MARK: - PROPERTIES
-    @EnvironmentObject var appManager: ViewModel
+   // @EnvironmentObject var appManager: ViewModel
+    var appManager: ViewModel
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var stationsData: FetchedResults<StationData>
     var isShow: Bool
@@ -69,10 +70,10 @@ struct VoteView: View {
 }
 
 //MARK: - PREVIEW
-struct VoteView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
-    static var previews: some View {
-        VoteView(isShow: .random(), idStation: Station.testStation().stationuuid)
-            .environmentObject(previewAppManager)
-    }
-}
+//struct VoteView_Previews: PreviewProvider {
+//    static let previewAppManager = ViewModel()
+//    static var previews: some View {
+//        VoteView(isShow: .random(), idStation: Station.testStation().stationuuid)
+//            .environmentObject(previewAppManager)
+//    }
+//}

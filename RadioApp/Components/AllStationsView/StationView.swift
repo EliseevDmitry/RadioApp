@@ -9,7 +9,8 @@ import SwiftUI
 
 struct StationView: View {
 
-    @EnvironmentObject var appManager: ViewModel
+    //@EnvironmentObject var appManager: ViewModel
+    var appManager: ViewModel
     @Binding var selectedStationID: String
     var station: Station
     @State private var isActive = false
@@ -55,7 +56,7 @@ struct StationView: View {
                                         .font(.custom(DS.Fonts.sfRegular, size: 14))
                                         .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.frame)
                                     
-                                    VoteView(isShow: selectedStationID == station.stationuuid ? true : false, idStation: station.stationuuid)
+                                    VoteView(appManager: appManager, isShow: selectedStationID == station.stationuuid ? true : false, idStation: station.stationuuid)
                                         .frame(width: 14, height: 14)
                                 }
                                 Spacer(minLength: 20)
@@ -81,7 +82,7 @@ struct StationView: View {
         }
         .frame(width: 293, height: 120)
         .background(NavigationLink(
-                        destination: StationDetailsView(station: station),
+            destination: StationDetailsView(appManager: appManager, station: station),
                         isActive: $isActive) {
                         EmptyView()
                     })
@@ -107,10 +108,10 @@ struct StationView: View {
 }
 
 //MARK: - PREVIEW
-struct StationView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
-    static var previews: some View {
-        StationView(selectedStationID: .constant(""), station: .testStation())
-            .environmentObject(previewAppManager)
-    }
-}
+//struct StationView_Previews: PreviewProvider {
+//    static let previewAppManager = ViewModel()
+//    static var previews: some View {
+//        StationView(selectedStationID: .constant(""), station: .testStation())
+//            .environmentObject(previewAppManager)
+//    }
+//}

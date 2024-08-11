@@ -9,7 +9,8 @@ import SwiftUI
 import MediaPlayer
 
 struct VolumeView: View {
-    @EnvironmentObject var appManager: ViewModel
+    //@EnvironmentObject var appManager: ViewModel
+    var appManager: ViewModel
     var rotation: Bool
     var body: some View {
         VStack{
@@ -74,10 +75,10 @@ struct VolumeView: View {
 }
 
 //MARK: - PREVIEW
-struct VolumeView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
-    static var previews: some View {
-        VolumeView(rotation: false)
-            .environmentObject(previewAppManager)
-    }
-}
+//struct VolumeView_Previews: PreviewProvider {
+//    static let previewAppManager = ViewModel()
+//    static var previews: some View {
+//        VolumeView(rotation: false)
+//            .environmentObject(previewAppManager)
+//    }
+//}

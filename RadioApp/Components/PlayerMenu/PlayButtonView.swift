@@ -32,7 +32,8 @@ struct PlayButtonShape: Shape {
 
 
 struct PlayButtonView: View {
-    @EnvironmentObject var appManager: ViewModel
+    //@EnvironmentObject var appManager: ViewModel
+    var appManager: ViewModel
     var body: some View {
         Button{
          //action
@@ -81,6 +82,6 @@ struct PlayButtonView: View {
     }
 }
 
-#Preview {
-    PlayButtonView()
-}
+//#Preview {
+//    PlayButtonView()
+//}

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct AllStationsView: View {
-    @EnvironmentObject var appManager: ViewModel
+    //@EnvironmentObject var appManager: ViewModel
+    @ObservedObject var appManager: ViewModel
     @State private var isSearching: Bool = false
     var body: some View {
         VStack{
@@ -21,11 +22,11 @@ struct AllStationsView: View {
             .padding(.leading, 60)
             .padding(.top, 100)
             // search view
-            SearchBarView(isSearching: $isSearching)
+            SearchBarView(appManager: appManager, isSearching: $isSearching)
                 .frame(height: 56)
             Spacer()
             HStack{
-                VolumeView(rotation: false)
+                VolumeView(appManager: appManager, rotation: false)
                     .frame(width: 33 ,height: 250)
                     .padding(.leading, 15)
                 VStack {
@@ -33,10 +34,10 @@ struct AllStationsView: View {
                         LazyVStack(pinnedViews: .sectionHeaders) {
                             ForEach(appManager.stations, id: \.stationuuid) { station in
                                 NavigationLink {
-                                    StationDetailsView(station: station)
+                                    StationDetailsView(appManager: appManager, station: station)
                                     
                                 } label: {
-                                    StationView(selectedStationID: $appManager.selectedStation, station: station)
+                                    StationView(appManager: appManager, selectedStationID: $appManager.selectedStation, station: station)
                                 }
                                 
                             }
@@ -52,10 +53,10 @@ struct AllStationsView: View {
         .background(DS.Colors.darkBlue)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                ToolbarName()
+                ToolbarName(appManager: appManager)
             }
             ToolbarItem(placement: .topBarTrailing) {
-                ToolbarProfile()
+                ToolbarProfile(appManager: appManager)
             }
         }
         .task {
@@ -79,10 +80,10 @@ struct AllStationsView: View {
 }
 
 //MARK: - PREVIEW
-struct AllStationsView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
-    static var previews: some View {
-        AllStationsView()
-            .environmentObject(previewAppManager)
-    }
-}
+//struct AllStationsView_Previews: PreviewProvider {
+//    static let previewAppManager = ViewModel()
+//    static var previews: some View {
+//        AllStationsView()
+//            .environmentObject(previewAppManager)
+//    }
+//}

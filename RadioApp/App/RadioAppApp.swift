@@ -21,18 +21,19 @@ struct RadioAppApp: App {
     var body: some Scene {
         WindowGroup {
             if !isOnboarding {
-                WelcomeView()
+                WelcomeView(appManager: appManager)
                     .preferredColorScheme(.dark)
-                    .environmentObject(appManager)
+                   // .environmentObject(appManager)
             } else if AuthService.shared.isAuthenticated() {
-                ContentView()
+            
+                ContentView(appManager: appManager)
                     .preferredColorScheme(.dark)
-                    .environmentObject(appManager)
-                    .environment(\.managedObjectContext, appManager.container.viewContext)
+                    //.environmentObject(appManager)
+                   
             } else {
-                SignInView()
+                SignInView(appManager: appManager)
                     .preferredColorScheme(.dark)
-                    .environmentObject(appManager)
+                    //.environmentObject(appManager)
             }
         }
     }

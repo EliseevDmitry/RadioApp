@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct SignUpView: View {    
-    @EnvironmentObject var appManager: ViewModel
-    
+    //@EnvironmentObject var appManager: ViewModel
+    @ObservedObject var appManager: ViewModel
     var body: some View {
         ZStack {
             AnimatedBackgroundView()
@@ -52,12 +52,12 @@ struct SignUpView: View {
     }
 }
 
-struct SignUpView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
-    
-    static var previews: some View {
-        SignUpView()
-            .environmentObject(previewAppManager)
-    }
-}
+//struct SignUpView_Previews: PreviewProvider {
+//    static let previewAppManager = ViewModel()
+//    
+//    static var previews: some View {
+//        SignUpView()
+//            .environmentObject(previewAppManager)
+//    }
+//}
 

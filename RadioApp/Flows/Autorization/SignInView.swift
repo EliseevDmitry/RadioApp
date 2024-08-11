@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SignInView: View {
     // MARK: - Properties
-    @EnvironmentObject var appManager: ViewModel
-    
+    //@EnvironmentObject var appManager: ViewModel
+    @ObservedObject var appManager: ViewModel
     @State private var isAuthenticated = false
     @State private var showAlert = false
     @State private var alertMessage = ""
@@ -104,7 +104,7 @@ struct SignInView: View {
                      buttonType: .onboarding
         )
         .background(
-            NavigationLink(destination: ContentView(), isActive: $isAuthenticated) {
+            NavigationLink(destination: ContentView(appManager: appManager), isActive: $isAuthenticated) {
                 EmptyView()
             }
         )
@@ -120,7 +120,7 @@ struct SignInView: View {
     // MARK: - Functions
     private func signIn() async {
         await appManager.signIn()
-        if let error = appManager.error {
+        if let error = await appManager.error {
             alertMessage = error.localizedDescription
             showAlert = true
             
@@ -131,11 +131,11 @@ struct SignInView: View {
 }
 
 // MARK: - Previews
-struct SignInView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
-    
-    static var previews: some View {
-        SignInView()
-            .environmentObject(previewAppManager)
-    }
-}
+//struct SignInView_Previews: PreviewProvider {
+//    static let previewAppManager = ViewModel()
+//    
+//    static var previews: some View {
+//        SignInView()
+//            .environmentObject(previewAppManager)
+//    }
+//}

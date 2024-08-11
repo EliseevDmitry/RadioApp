@@ -12,7 +12,8 @@ struct ProfileView: View {
     // MARK: - Properties
     @AppStorage("selectedLanguage") private var language = LocalizationService.shared.language
     @AppStorage("isOnboarding") var isOnboarding = true
-    @EnvironmentObject var appManager: ViewModel
+    //@EnvironmentObject var appManager: ViewModel
+    var appManager: ViewModel
     @ObservedObject var viewModel: ProfileViewModel
     
     @State private var showLogoutAlert: Bool = false
@@ -117,7 +118,7 @@ struct ProfileView: View {
 }
 
 
-// MARK: - Preview
-#Preview {
-    ProfileView(viewModel: ProfileViewModel())
-}
+//// MARK: - Preview
+//#Preview {
+//    ProfileView(viewModel: ProfileViewModel())
+//}

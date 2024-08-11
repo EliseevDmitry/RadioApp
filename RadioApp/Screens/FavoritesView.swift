@@ -9,7 +9,8 @@ import SwiftUI
 import CoreData
 
 struct FavoritesView: View {
-    @EnvironmentObject var appManager: ViewModel
+    //@EnvironmentObject var appManager: ViewModel
+    @ObservedObject var appManager: ViewModel
     @FetchRequest(sortDescriptors: []) var stationData: FetchedResults<StationData>
     @Environment(\.managedObjectContext) var moc
     
@@ -29,7 +30,7 @@ struct FavoritesView: View {
             .padding(.top, 100)
             .background(DS.Colors.darkBlue)
             HStack{
-                VolumeView(rotation: false)
+                VolumeView(appManager: appManager, rotation: false)
                     .frame(width: 33 ,height: 250)
                     .padding(.leading, 15)
                 VStack {
@@ -37,7 +38,7 @@ struct FavoritesView: View {
                         LazyVStack {
                             ForEach(appManager.stations, id: \.stationuuid) {item in
                                 FavoritesComponentView(
-                                    selectedStationID: $appManager.selectedStation,
+                                    appManager: appManager, selectedStationID: $appManager.selectedStation,
                                     station: item
                                 )
                             }
@@ -51,10 +52,10 @@ struct FavoritesView: View {
         .background(DS.Colors.darkBlue)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                ToolbarName()
+                ToolbarName(appManager: appManager)
             }
             ToolbarItem(placement: .topBarTrailing) {
-                ToolbarProfile()
+                ToolbarProfile(appManager: appManager)
             }
         }
         .onDisappear{
@@ -93,10 +94,10 @@ struct FavoritesView: View {
 }
 
 //MARK: - PREVIEW
-struct FavoritesView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
-    static var previews: some View {
-        FavoritesView()
-            .environmentObject(previewAppManager)
-    }
-}
+//struct FavoritesView_Previews: PreviewProvider {
+//    static let previewAppManager = ViewModel()
+//    static var previews: some View {
+//        FavoritesView()
+//            .environmentObject(previewAppManager)
+//    }
+//}

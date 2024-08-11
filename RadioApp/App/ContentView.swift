@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject var appManager: ViewModel
+    //@EnvironmentObject var appManager: ViewModel
+    var appManager: ViewModel
     @State var selectedTab: Tab = .popular
     @State var showTabBar: Bool = true
     @State var tapBarVisible = true
@@ -24,13 +25,14 @@ struct ContentView: View {
                 Spacer()
                 switch selectedTab {
                 case .popular:
-                    PopularView()
+                    PopularView(appManager: appManager)
                 case .favorites:
-                    FavoritesView()
+                    FavoritesView(appManager: appManager)
+                        .environment(\.managedObjectContext, appManager.container.viewContext)
                 case .allStations:
-                    AllStationsView()
+                    AllStationsView(appManager: appManager)
                 }
-                CustomTabBarView(selectedTab: $selectedTab)
+                CustomTabBarView(appManager: appManager, selectedTab: $selectedTab)
                 Spacer()
                 
             }
@@ -52,7 +54,7 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-        .environmentObject(ViewModel())
-}
+//#Preview {
+//    ContentView()
+//        .environmentObject(ViewModel())
+//}
