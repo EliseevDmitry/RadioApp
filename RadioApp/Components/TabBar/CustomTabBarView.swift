@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CustomTabBarView: View {
-    @EnvironmentObject var appManager: ViewModel
+    //@EnvironmentObject var appManager: ViewModel
+    var appManager: ViewModel
     @Binding var selectedTab: Tab
 
     var body: some View {
@@ -73,9 +74,9 @@ struct CustomTabBarView: View {
 
             .overlay {
                 HStack(spacing: 30) {
-                    BackButtonView()
-                    PlayButtonView()
-                    ForwardButtonView()
+                    BackButtonView(appManager: appManager)
+                    PlayButtonView(appManager: appManager)
+                    ForwardButtonView(appManager: appManager)
                 }
                 .offset(CGSize(width: 4, height: -120))
             }
@@ -86,7 +87,7 @@ struct CustomTabBarView: View {
 }
 
 
-#Preview {
-    ContentView()
-        .environmentObject(ViewModel())
-}
+//#Preview {
+//    ContentView()
+//        .environmentObject(ViewModel())
+//}

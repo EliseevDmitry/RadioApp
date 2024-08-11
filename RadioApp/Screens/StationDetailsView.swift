@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct StationDetailsView: View { 
-    @EnvironmentObject var appManager: ViewModel
+    //@EnvironmentObject var appManager: ViewModel
+    @ObservedObject var appManager: ViewModel
     var station: Station
     var body: some View {
         VStack {
             HStack {
                 Spacer()
-                VoteView(isShow: true, idStation: station.stationuuid)
+                VoteView(appManager: appManager, isShow: true, idStation: station.stationuuid)
                     .frame(width: 14, height: 14)
                     .padding(.top, 30)
             }
@@ -39,19 +40,19 @@ struct StationDetailsView: View {
             }
             Spacer()
             HStack(spacing: 30) {
-                BackButtonView()
-                PlayButtonView()
-                ForwardButtonView()
+                BackButtonView(appManager: appManager)
+                PlayButtonView(appManager: appManager)
+                ForwardButtonView(appManager: appManager)
             }
             .padding(.bottom, 80)
         }
         .overlay(content: {
-            VolumeView(rotation: true)
+            VolumeView(appManager: appManager, rotation: true)
                 .frame(height: 300)
                 .offset(CGSize(width: 0.0, height: 350.0))
         })
         .overlay(content: {
-            EqualizerView()
+            EqualizerView(appManager: appManager)
                 .offset(CGSize(width: 0.0, height: 170))
         })
         .background(DS.Colors.darkBlue)
@@ -77,7 +78,7 @@ struct StationDetailsView: View {
 
 
 
-#Preview {
-    StationDetailsView(station: Station.testStation())
-        .environmentObject(ViewModel())
-}
+//#Preview {
+//    StationDetailsView(station: Station.testStation())
+//        .environmentObject(ViewModel())
+//}

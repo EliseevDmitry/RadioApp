@@ -9,7 +9,8 @@ import SwiftUI
 
 struct StationPopularView: View {
     //MARK: - PROPERTIES
-    @EnvironmentObject var appManager: ViewModel
+    //@EnvironmentObject var appManager: ViewModel
+    @ObservedObject var appManager: ViewModel
     @Binding var selectedStationID: String
     @State private var isActive = false
     var station: Station
@@ -39,7 +40,7 @@ struct StationPopularView: View {
                         Text("votes \(self.station.votes % 1000)")
                             .font(.custom(DS.Fonts.sfRegular, size: 14))
                             .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.frame)
-                        VoteView(isShow: selectedStationID == station.stationuuid ? true : false, idStation: station.stationuuid)
+                        VoteView(appManager: appManager, isShow: selectedStationID == station.stationuuid ? true : false, idStation: station.stationuuid)
                             .frame(
                                 width: 14,
                                 height: 14
@@ -68,7 +69,7 @@ struct StationPopularView: View {
             .frame(maxWidth: 139, maxHeight: 139)
             //логика нажатия
             .background(NavigationLink(
-                destination: StationDetailsView(station: self.station),
+                destination: StationDetailsView(appManager: appManager, station: self.station),
                             isActive: $isActive) {
                             EmptyView()
                         })
@@ -98,11 +99,11 @@ struct StationPopularView: View {
 }
 
 
-//MARK: - PREVIEW
-struct StationPopularView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
-    static var previews: some View {
-        StationPopularView(selectedStationID: .constant(""), station: .testStation())
-            .environmentObject(previewAppManager)
-    }
-}
+////MARK: - PREVIEW
+//struct StationPopularView_Previews: PreviewProvider {
+//    static let previewAppManager = ViewModel()
+//    static var previews: some View {
+//        StationPopularView(selectedStationID: .constant(""), station: .testStation())
+//            .environmentObject(previewAppManager)
+//    }
+//}

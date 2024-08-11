@@ -9,31 +9,42 @@ import SwiftUI
 import AVFAudio
 import FirebaseCore
 import FirebaseAuth
+import CoreData
+
 
 @main
 struct RadioAppApp: App {
     //MARK: -
     @StateObject var appManager = ViewModel()
     @AppStorage("isOnboarding") var isOnboarding = false
+   // let container = NSPersistentContainer(name: "LikeStations")
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
    //MARK: -
+//    init(){
+//        container.loadPersistentStores{description, error in
+//            if let error = error {
+//                print("CoreData failed to load \(error.localizedDescription)")
+//            }
+//        }
+//    }
     var body: some Scene {
         WindowGroup {
             if !isOnboarding {
-                WelcomeView()
+                WelcomeView(appManager: appManager)
                     .preferredColorScheme(.dark)
-                    .environmentObject(appManager)
+                   // .environmentObject(appManager)
             } else if AuthService.shared.isAuthenticated() {
-                ContentView()
+            
+                ContentView(appManager: appManager)
                     .preferredColorScheme(.dark)
-                    .environmentObject(appManager)
-                    .environment(\.managedObjectContext, appManager.container.viewContext)
+                    //.environmentObject(appManager)
             } else {
-                SignInView()
+                SignInView(appManager: appManager)
                     .preferredColorScheme(.dark)
-                    .environmentObject(appManager)
+                    //.environmentObject(appManager)
             }
+            
         }
     }
 }

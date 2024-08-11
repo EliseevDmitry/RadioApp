@@ -9,7 +9,8 @@ import SwiftUI
 
 struct PopularView: View {
     //MARK: - PROPERTIES
-    @EnvironmentObject var appManager: ViewModel
+    //@EnvironmentObject var appManager: ViewModel
+    @ObservedObject var appManager: ViewModel
     let columns = [
         GridItem(.flexible(minimum: 139, maximum: 139)),
         GridItem(.flexible(minimum: 139, maximum: 139))
@@ -27,14 +28,14 @@ struct PopularView: View {
                 .padding(.top, 100)
                 .background(DS.Colors.darkBlue)
                 HStack{
-                    VolumeView(rotation: false)
+                    VolumeView(appManager: appManager, rotation: false)
                         .frame(width: 33 ,height: 250)
                         .padding(.leading, 15)
                     VStack {
                         ScrollView(.vertical, showsIndicators: false){
                             LazyVGrid(columns: columns) {
                                 ForEach(appManager.stations, id: \.stationuuid) {item in
-                                    StationPopularView(selectedStationID: $appManager.selectedStation, station: item)
+                                    StationPopularView(appManager: appManager, selectedStationID: $appManager.selectedStation, station: item)
                                         .frame(width: 139, height: 139)
                                 }
                             }
@@ -47,10 +48,10 @@ struct PopularView: View {
         .background(DS.Colors.darkBlue)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                    ToolbarName()
+                ToolbarName(appManager: appManager)
             }
             ToolbarItem(placement: .topBarTrailing) {
-                ToolbarProfile()
+                ToolbarProfile(appManager: appManager)
             }
         }
         .task {
@@ -84,13 +85,13 @@ struct PopularView: View {
 
 
 //MARK: - PREVIEW
-struct PopularView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
-    static var previews: some View {
-        PopularView()
-            .environmentObject(previewAppManager)
-    }
-}
+//struct PopularView_Previews: PreviewProvider {
+//    static let previewAppManager = ViewModel()
+//    static var previews: some View {
+//        PopularView()
+//            .environmentObject(previewAppManager)
+//    }
+//}
 
 
 

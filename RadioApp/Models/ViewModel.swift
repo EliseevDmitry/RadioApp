@@ -25,7 +25,7 @@ final class ViewModel: ObservableObject {
 
     @Published var stations = [Station]()
 //    для выбора стартового экрана
-    @Published var selectedView: AnyView = AnyView(ContentView())//AnyView(WelcomeView())
+   // @Published var selectedView: AnyView = AnyView(ContentView())//AnyView(WelcomeView())
     
     //VolumeView
     //@Published var volume: CGFloat = 0

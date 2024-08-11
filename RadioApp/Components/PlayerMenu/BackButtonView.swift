@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct BackButtonView: View {
-    @EnvironmentObject var appManager: ViewModel
+   // @EnvironmentObject var appManager: ViewModel
+    var appManager: ViewModel
     var body: some View {
         Button{
             appManager.backTrackAudioStream()
@@ -25,7 +26,7 @@ struct BackButtonView: View {
         }
     }
 }
-
-#Preview {
-    BackButtonView()
-}
+//
+//#Preview {
+//    BackButtonView()
+//}

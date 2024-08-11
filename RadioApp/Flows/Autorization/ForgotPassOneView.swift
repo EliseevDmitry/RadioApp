@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ForgotPassOneView: View {
-    @EnvironmentObject var appManager: ViewModel
+    //@EnvironmentObject var appManager: ViewModel
+    var appManager: ViewModel
     // свойство, обеспечивающее работу кнопки "стрелка назад", возвращающей на предыдущий экран
     @Environment(\.dismiss) var dismiss
 
@@ -27,8 +28,8 @@ struct ForgotPassOneView: View {
                     .font(.custom(.sfBold, size: UIScreen.height * 1/16))
                     .padding(.bottom, UIScreen.height * 1/32)
                 
-                TextField(Resources.Text.ForgotPassOne.email, text: $appManager.email)
-                    .font(.title)
+//                TextField(Resources.Text.ForgotPassOne.email, text: $appManager.email)
+//                    .font(.title)
                                 
                 CustomButton(action: {}, title: Resources.Text.ForgotPassOne.sent, buttonType: .onboarding)
                 // TODO: изменить тип кнопки и добавить действие
@@ -53,11 +54,11 @@ struct ForgotPassOneView: View {
     }
 }
 
-struct ForgotPassOneView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
-    
-    static var previews: some View {
-        ForgotPassOneView()
-            .environmentObject(previewAppManager)
-    }
-}
+//struct ForgotPassOneView_Previews: PreviewProvider {
+//    static let previewAppManager = ViewModel()
+//    
+//    static var previews: some View {
+//        ForgotPassOneView()
+//            .environmentObject(previewAppManager)
+//    }
+//}

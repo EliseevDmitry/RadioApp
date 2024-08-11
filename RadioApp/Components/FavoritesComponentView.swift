@@ -13,7 +13,8 @@ import SwiftUI
 
 struct FavoritesComponentView: View {
     //MARK: - PROPERTIES
-    @EnvironmentObject var appManager: ViewModel
+   // @EnvironmentObject var appManager: ViewModel
+    var appManager: ViewModel
     @FetchRequest(sortDescriptors: []) var stationData: FetchedResults<StationData>
     @Environment(\.managedObjectContext) var moc
     @Binding var selectedStationID: String
@@ -67,7 +68,7 @@ struct FavoritesComponentView: View {
     
         .frame(width: 293, height: 120)
         .background(NavigationLink(
-            destination: StationDetailsView(station: station),
+            destination: StationDetailsView(appManager: appManager, station: station),
             isActive: $isActive) {
                 EmptyView()
             })
