@@ -7,24 +7,18 @@
 
 import SwiftUI
 
-struct StationDetailsView: View {
-    
+struct StationDetailsView: View { 
     @EnvironmentObject var appManager: ViewModel
     var station: Station
-    
     var body: some View {
-        ZStack {
-            VStack {
-                HStack {
-                    Spacer()
-                    VoteView(isShow: true, idStation: station.stationuuid)
-                        .frame(width: 14, height: 14)
-                }
-                
-                EqualizerView()
+        VStack {
+            HStack {
                 Spacer()
+                VoteView(isShow: true, idStation: station.stationuuid)
+                    .frame(width: 14, height: 14)
+                    .padding(.top, 30)
             }
-            
+            .padding(.horizontal, 30)
             VStack {
                 AsyncImage(url: URL(string: station.favicon)) { image in
                     image
@@ -37,16 +31,28 @@ struct StationDetailsView: View {
                 }
                 .clipShape(Rectangle())
                 .frame(maxWidth: 60, maxHeight: 60)
-                
                 Text(station.name)
                     .font(.custom(.sfRegular, size: 16))
                     .foregroundStyle(.white)
-                
                 Spacer()
             }
-            
             Spacer()
+            HStack(spacing: 30) {
+                BackButtonView()
+                PlayButtonView()
+                ForwardButtonView()
+            }
+            .padding(.bottom, 80)
         }
+        .overlay(content: {
+            VolumeView(rotation: true)
+                .frame(height: 300)
+                .offset(CGSize(width: 0.0, height: 350.0))
+        })
+        .overlay(content: {
+            EqualizerView()
+                .offset(CGSize(width: 0.0, height: 170))
+        })
         .background(DS.Colors.darkBlue)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
@@ -55,18 +61,18 @@ struct StationDetailsView: View {
                 BackBarButton()
             }
         }
-        .onAppear{
-            appManager.detailView = true
-        }
         .onDisappear{
-            appManager.detailView = false
+            appManager.isActiveDetailView = false
         }
-        
     }
-        
-    }
-    
-    #Preview {
-        StationDetailsView(station: Station.testStation())
-            .environmentObject(ViewModel())
-    }
+}
+
+
+
+
+
+
+#Preview {
+    StationDetailsView(station: Station.testStation())
+        .environmentObject(ViewModel())
+}

@@ -69,7 +69,9 @@ struct PopularView: View {
             //appManager.saveLikesData()
         }
         .onDisappear{
-            appManager.stopAudioStream()
+            if !appManager.isActiveDetailView{
+                appManager.stopAudioStream()
+            }
         }
     }
 }
