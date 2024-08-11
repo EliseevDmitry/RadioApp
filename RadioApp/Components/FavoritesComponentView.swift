@@ -17,6 +17,7 @@ struct FavoritesComponentView: View {
     @FetchRequest(sortDescriptors: []) var stationData: FetchedResults<StationData>
     @Environment(\.managedObjectContext) var moc
     @Binding var selectedStationID: String
+    @State private var isActive = false
     //@State private var isActive = false
     var station: Station
     //MARK: - BODY
@@ -67,7 +68,7 @@ struct FavoritesComponentView: View {
         .frame(width: 293, height: 120)
         .background(NavigationLink(
             destination: StationDetailsView(station: station),
-            isActive: $appManager.isActiveDetailView) {
+            isActive: $isActive) {
                 EmptyView()
             })
         .onTapGesture {
@@ -77,7 +78,8 @@ struct FavoritesComponentView: View {
         .onLongPressGesture() {
             if selectedStationID == station.stationuuid {
                 print("long tap")
-                appManager.isActiveDetailView.toggle()
+                isActive.toggle()
+                appManager.isActiveDetailView = true
             }
         }
         .clipShape(.rect(cornerRadius: 20))

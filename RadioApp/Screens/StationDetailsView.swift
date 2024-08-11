@@ -56,12 +56,15 @@ struct StationDetailsView: View {
         })
         .background(DS.Colors.darkBlue)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Playing now")
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                BackBarButton()
+                    BackBarButton()
+                }
             }
-        }
+                
+            
         .onDisappear{
             appManager.isActiveDetailView = false
 
