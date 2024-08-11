@@ -55,7 +55,6 @@ final class ViewModel: ObservableObject {
     
     //search
     @Published var searchText: String = ""
-    @Published var error: Error?
     
     
     @Published var isActiveDetailView = false

@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 import Firebase
-import FirebaseStorage
+
 
 // This service class will consist of login, sign up and logout auth
 
@@ -17,12 +17,6 @@ final class AuthService {
     static let shared = AuthService()
     
     @Published var userSession: FirebaseAuth.User?
-    
-    private let storage = Storage.storage().reference()
-    
-    private var imagesReference: StorageReference {
-        storage.child("images")
-    }
     
     // MARK: - Initializer
     private init() {
@@ -114,47 +108,4 @@ final class AuthService {
             throw error
         }
     }
-
-    private func userReferance(userID: String) -> StorageReference {
-        storage.child("users").child(userID)
-    }
-    
-    func getUrlForImage(path: String) async throws -> URL {
-        try await Storage.storage().reference(withPath: path).downloadURL()
-    }
-    
-    func getData(userID: String, path: String) async throws -> Data {
-        try await storage.child(path).data(maxSize: 3 * 1024 * 1024)
-    }
-    
-    func getImage(userID: String, path: String) async throws -> UIImage {
-        let data = try await getData(userID: userID, path: path)
-        
-        guard let image = UIImage(data: data) else {
-            throw URLError(.badServerResponse)
-        }
-        return image
-    }
-    
-    func saveImage(data: Data, userID: String) async throws -> (path: String, name: String) {
-        let meta = StorageMetadata()
-        meta.contentType = "image/jpeg"
-        
-        let path = "\(UUID().uuidString).jpeg"
-        let returnedMetaData = try await userReferance(userID: userID).child(path).putDataAsync(data, metadata: meta)
-        
-        guard let returnedPath = returnedMetaData.path, let returnedName = returnedMetaData.name else {
-            throw URLError(.badServerResponse)
-        }
-        return (returnedPath, returnedName)
-    }
-    
-    func saveImage(image: UIImage, userID: String) async throws -> (path: String, name: String) {
-        guard let data = image.jpegData(compressionQuality: 1) else {
-            throw URLError(.backgroundSessionWasDisconnected)
-        }
-        
-        return try await saveImage(data: data, userID: userID)
-    }
-    
 }

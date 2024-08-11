@@ -30,7 +30,7 @@ struct ToolbarProfile: View {
         // Существующий NavigationLink
         //скорее всего косяк тут!!!
         //NavigationLink(destination: ProfileView(viewModel: ProfileViewModel())) {
-        NavigationLink(destination: ProfileView(viewModel: ProfileViewModel())) {
+        NavigationLink(destination: ProfileView()) {
             Image(uiImage: appManager.userProfileImage ?? .eliseev)
                 .resizable()
                 .scaledToFit()

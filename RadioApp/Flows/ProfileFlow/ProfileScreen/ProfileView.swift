@@ -12,14 +12,25 @@ struct ProfileView: View {
     // MARK: - Properties
     @AppStorage("selectedLanguage") private var language = LocalizationService.shared.language
     @AppStorage("isOnboarding") var isOnboarding = true
-    @EnvironmentObject var appManager: ViewModel
-    @ObservedObject var viewModel: ProfileViewModel
     
-    @State private var showLogoutAlert: Bool = false
-    @State private var errorAlert: AnyAppAlert? = nil
+    @StateObject var viewModel: ProfileViewModel
     
     @State private var imageURL: URL? = nil
+    @EnvironmentObject var appManager: ViewModel
     
+    init(
+        authService: AuthService = .shared,
+        firebaseService: FirebaseStorageService = .shared,
+        notificationsService: NotificationsService = .shared
+    ) {
+        self._viewModel = StateObject(
+            wrappedValue: ProfileViewModel(
+                authService: authService,
+                firebaseStorage: firebaseService,
+                notificationsService: notificationsService
+            )
+        )
+    }
     // MARK: - Body
     var body: some View {
         ZStack {
@@ -29,20 +40,19 @@ struct ProfileView: View {
             VStack {
                 // MARK: - Profile Info
                 ProfileInfoView(
-                    userName: viewModel.currentUser?.userName ?? "",
-                    userEmail: viewModel.currentUser?.email ??  "",
-                    profileImage: UIImage(systemName: "person.fill")!,
-                    saveChangesAction: saveChanges
+                    userName: viewModel.userName,
+                    userEmail: viewModel.userEmail,
+                    profileImage: UIImage(systemName: "person.fill")!
                 )
                 // MARK: - General Settings
                 SettingView(
                     generalTitle: Resources.Text.general.localized(language),
                     firstTitle: Resources.Text.notification.localized(language),
                     firstImageIcon: Resources.Image.notification,
-                    firstDestination: AnyView(NotificationsView(notificationAction: notificationAction)),
+                    settingsRoute: { NotificationsView(notificationAction: notificationAction) },
                     secondTitle: Resources.Text.language.localized(language),
                     secondImageIcon: Resources.Image.globe.localized(language),
-                    secondDestination: AnyView(LanguageView())
+                    secondSettingsRoute: { LanguageView() }
                 )
                 
                 // MARK: - More Settings
@@ -50,21 +60,21 @@ struct ProfileView: View {
                     generalTitle: Resources.Text.more.localized(language),
                     firstTitle: Resources.Text.legalAndPolicies.localized(language),
                     firstImageIcon: Resources.Image.shield,
-                    firstDestination: AnyView(LegalPoliciesView()),
+                    settingsRoute: { LegalPoliciesView() },
                     secondTitle: Resources.Text.aboutUs.localized(language),
                     secondImageIcon: Resources.Image.information,
-                    secondDestination: AnyView(AboutUs())
+                    secondSettingsRoute: { AboutUs() }
                 )
                 Spacer()
                 // MARK: - Logout Button
                 CustomButton(
-                    action: { showLogoutAlert = true },
+                    action: { viewModel.showLogoutAlert() },
                     title: Resources.Text.logOut.localized(language),
                     buttonType: .profile)
             }
             .padding()
             .foregroundColor(.white)
-            .showCustomAlert(alert: $errorAlert)
+            
             .navigationTitle(Resources.Text.settings.localized(language))
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
@@ -73,49 +83,35 @@ struct ProfileView: View {
                     BackBarButton()
                 }
             }
-            .alert(isPresented: $showLogoutAlert) {
-                Alert(
-                    title: Text(Resources.Text.logOut.localized(language)),
-                    message: Text(Resources.Text.areYouWantLogOut.localized(language)),
-                    primaryButton: .destructive(Text(Resources.Text.logOut.localized(language))) {
-                            logOut()
-                    },
-                    secondaryButton: .cancel()
-                )
-            }
-        }
-        
-                    
-               
-        .onReceive(viewModel.$error) { error in
-            if let error = error {
-                errorAlert = AnyAppAlert(error: error)
-               viewModel.clearError()
+            
+            .alert(isPresented: isPresentedAlert(),
+                   error: viewModel.error) {
+                Button("Ok", action:
+                        viewModel.tapErrorOk)
+                Button("Cancel", action:
+                        viewModel.cancelErrorAlert)
             }
         }
     }
     
     //    MARK: - Private Methods
-    private func saveChanges(_ userName: String, _ userEmail: String, _ avatar: UIImage?) {
-        viewModel.updateUserProfile(
-            userName,
-            userEmail,
-            avatar
-        )
-    }
     
     private func notificationAction() {
-//        viewModel.configureNotifications()
+        //        viewModel.configureNotifications()
     }
     
-    private func logOut() {
-       viewModel.logOut()
-        isOnboarding = false
+    private func isPresentedAlert() -> Binding<Bool> {
+        Binding(get: { viewModel.error != nil },
+                set: { isPresenting in
+            if isPresenting { return }
+            viewModel.error = nil
+        }
+        )
     }
 }
 
 
 // MARK: - Preview
 #Preview {
-    ProfileView(viewModel: ProfileViewModel())
+    ProfileView()
 }

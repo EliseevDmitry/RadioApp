@@ -8,27 +8,27 @@
 import SwiftUI
 
 // MARK: - SettingView
-struct SettingView: View {
+struct SettingView<S, F>: View where S: View, F: View {
     // MARK: - Properties
     var generalTitle: String
     
     var firstTitle: String
     var firstImageIcon: String
-    var firstDestination: AnyView
+    var settingsRoute: () -> S
     
     var secondTitle: String
     var secondImageIcon: String
-    var secondDestination: AnyView
+    var secondSettingsRoute: () -> F
 
     // MARK: - Drawing Constants
     private struct DrawingConstants {
-        static let titleFontSize: CGFloat = 22
-        static let titlePadding: CGFloat = 16
-        static let dividerPadding: CGFloat = 16
-        static let cornerRadius: CGFloat = 16
-        static let strokeWidth: CGFloat = 1.0
-        static let strokeOpacity: CGFloat = 0.3
-        static let dividerOpacity: CGFloat = 0.3
+        let titleFontSize: CGFloat = 22
+        let titlePadding: CGFloat = 16
+        let dividerPadding: CGFloat = 16
+        let cornerRadius: CGFloat = 16
+        let strokeWidth: CGFloat = 1.0
+        let strokeOpacity: CGFloat = 0.3
+        let dividerOpacity: CGFloat = 0.3
     }
     
     // MARK: - Body
@@ -38,14 +38,14 @@ struct SettingView: View {
             HStack {
                 Text(generalTitle)
                     .padding()
-                    .font(.custom(.sfBold, size: DrawingConstants.titleFontSize))
+                    .font(.custom(.sfBold, size: DrawingConstants().titleFontSize))
                     .foregroundColor(.white)
-                    .padding(.leading, DrawingConstants.titlePadding)
+                    .padding(.leading, DrawingConstants().titlePadding)
                 Spacer()
             }
             
             // MARK: - Settings Buttons
-            NavigationLink(destination: firstDestination) {
+            NavigationLink(destination: settingsRoute) {
                 SettingsButton(
                     imageIcon: firstImageIcon,
                     titleText: firstTitle
@@ -54,10 +54,10 @@ struct SettingView: View {
             
             Divider()
                 .background(.gray)
-                .padding(.horizontal, DrawingConstants.dividerPadding)
-                .opacity(DrawingConstants.dividerOpacity)
+                .padding(.horizontal, DrawingConstants().dividerPadding)
+                .opacity(DrawingConstants().dividerOpacity)
             
-            NavigationLink(destination: secondDestination) {
+            NavigationLink(destination: secondSettingsRoute) {
                 SettingsButton(
                     imageIcon: secondImageIcon,
                     titleText: secondTitle
@@ -66,11 +66,11 @@ struct SettingView: View {
         }
         .padding()
         .background(.clear)
-        .cornerRadius(DrawingConstants.cornerRadius)
+        .cornerRadius(DrawingConstants().cornerRadius)
         .overlay {
-            RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
-                .stroke(Color.gray, lineWidth: DrawingConstants.strokeWidth)
-                .opacity(DrawingConstants.strokeOpacity)
+            RoundedRectangle(cornerRadius: DrawingConstants().cornerRadius)
+                .stroke(Color.gray, lineWidth: DrawingConstants().strokeWidth)
+                .opacity(DrawingConstants().strokeOpacity)
         }
     }
 }
@@ -80,8 +80,9 @@ struct SettingView: View {
         generalTitle: "General",
         firstTitle: "Notification",
         firstImageIcon: "notification",
-        firstDestination: AnyView(LegalPoliciesView()),
+        settingsRoute: LegalPoliciesView.init,
         secondTitle: "Language",
         secondImageIcon: "globe",
-        secondDestination:  AnyView(LegalPoliciesView()))
+        secondSettingsRoute:  LegalPoliciesView.init
+    )
 }

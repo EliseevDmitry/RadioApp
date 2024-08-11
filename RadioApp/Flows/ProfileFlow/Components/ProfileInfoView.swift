@@ -12,9 +12,7 @@ struct ProfileInfoView: View {
     // MARK: - Properties
     var userName: String
     var userEmail: String
-    @State var profileImage: UIImage?
-    
-    var saveChangesAction: (String, String, UIImage?) -> Void
+    var profileImage: UIImage?
     
     // MARK: - Drawing Constants
     private struct DrawingConstants {
@@ -60,10 +58,9 @@ struct ProfileInfoView: View {
             Spacer()
             
             NavigationLink(destination: ProfileEditView(
-                saveChangesAction: saveChangesAction,
                 userName: userName,
                 userEmail: userEmail,
-                profileImage: $profileImage
+                profileImage: profileImage
             )
             )
             {
@@ -101,7 +98,6 @@ struct ProfileInfoView: View {
     ProfileInfoView(
         userName: "Stephen",
         userEmail: "stephen@ds",
-        profileImage: UIImage(named: "stephen")!, 
-        saveChangesAction: {_,_,_ in }
+        profileImage: UIImage(named: "stephen")!
     )
 }
