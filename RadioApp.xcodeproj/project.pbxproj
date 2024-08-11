@@ -12,13 +12,20 @@
 		220E86A62C5CE34D00F8B0D6 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 220E86A52C5CE34D00F8B0D6 /* GoogleSignIn */; };
 		220E86A82C5CE34D00F8B0D6 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 220E86A72C5CE34D00F8B0D6 /* GoogleSignInSwift */; };
 		220E86AA2C5D018900F8B0D6 /* TestAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E86A92C5D018900F8B0D6 /* TestAuthView.swift */; };
-		222CD7042C66408C000EF05A /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 222CD7022C66408C000EF05A /* LikeStations.xcdatamodeld */; };
+		221B88C22C69140F0041231C /* FieldForConfirmPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221B88C12C69140F0041231C /* FieldForConfirmPasswordView.swift */; };
+		222CD7042C66408C000EF05A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		223406762C5DF7C200C701A3 /* WelcomeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223406752C5DF7C200C701A3 /* WelcomeBackgroundView.swift */; };
 		223C4ABE2C641A5100014D0E /* AuthDataResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C4ABD2C641A5100014D0E /* AuthDataResultModel.swift */; };
+		2252B6E02C68B3D600F38EC6 /* TextFieldForEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252B6DF2C68B3D600F38EC6 /* TextFieldForEmailView.swift */; };
+		2252B6E22C68B41900F38EC6 /* TextFieldForNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252B6E12C68B41900F38EC6 /* TextFieldForNameView.swift */; };
+		2252B6E42C68B45400F38EC6 /* FieldForPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252B6E32C68B45400F38EC6 /* FieldForPasswordView.swift */; };
+		2252B6E62C68B55600F38EC6 /* SecureFieldForInvisiblePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252B6E52C68B55600F38EC6 /* SecureFieldForInvisiblePasswordView.swift */; };
+		2252B6E82C68B59F00F38EC6 /* TextFieldForVisiblePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252B6E72C68B59F00F38EC6 /* TextFieldForVisiblePasswordView.swift */; };
 		2277BB472C5E881700317DD2 /* AuthBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277BB462C5E87E500317DD2 /* AuthBackgroundView.swift */; };
 		2277BB4A2C5F2D0E00317DD2 /* ForgotPassOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277BB492C5F2D0E00317DD2 /* ForgotPassOneView.swift */; };
 		2277BB4C2C5F2D5700317DD2 /* ForgotPassTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277BB4B2C5F2D5700317DD2 /* ForgotPassTwoView.swift */; };
 		22891AC52C5B5F5F00DE33E6 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22891AC42C5B5F5F00DE33E6 /* AuthService.swift */; };
+		22AA9CD22C668C7A00F242AE /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22AA9CD02C668C7900F242AE /* LikeStations.xcdatamodeld */; };
 		22CA8E942C59533A0009952D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 22CA8E932C59533A0009952D /* FirebaseAuth */; };
 		22CA8E962C5953440009952D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 22CA8E952C5953440009952D /* FirebaseDatabase */; };
 		22CA8E982C59534D0009952D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 22CA8E972C59534D0009952D /* FirebaseFirestore */; };
@@ -40,7 +47,6 @@
 		268696642C57DC330075E9DC /* StationPopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268696632C57DC330075E9DC /* StationPopularView.swift */; };
 		268696662C57E0320075E9DC /* VoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268696652C57E0320075E9DC /* VoteView.swift */; };
 		269FCD132C665DB60060FFD8 /* TestRotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269FCD122C665DB60060FFD8 /* TestRotationView.swift */; };
-		269FCD162C6660FC0060FFD8 /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 269FCD142C6660FC0060FFD8 /* LikeStations.xcdatamodeld */; };
 		26A737972C5A49490002F1E9 /* PlayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A737962C5A49490002F1E9 /* PlayButtonView.swift */; };
 		26A737992C5A4F850002F1E9 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A737982C5A4F850002F1E9 /* BackButtonView.swift */; };
 		26A7379B2C5A4FCB0002F1E9 /* ForwardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */; };
@@ -103,13 +109,19 @@
 		220E86A02C5CB98800F8B0D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		220E86A22C5CD94B00F8B0D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		220E86A92C5D018900F8B0D6 /* TestAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAuthView.swift; sourceTree = "<group>"; };
-		222CD7032C66408C000EF05A /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
+		221B88C12C69140F0041231C /* FieldForConfirmPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldForConfirmPasswordView.swift; sourceTree = "<group>"; };
 		223406752C5DF7C200C701A3 /* WelcomeBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeBackgroundView.swift; sourceTree = "<group>"; };
 		223C4ABD2C641A5100014D0E /* AuthDataResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataResultModel.swift; sourceTree = "<group>"; };
+		2252B6DF2C68B3D600F38EC6 /* TextFieldForEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldForEmailView.swift; sourceTree = "<group>"; };
+		2252B6E12C68B41900F38EC6 /* TextFieldForNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldForNameView.swift; sourceTree = "<group>"; };
+		2252B6E32C68B45400F38EC6 /* FieldForPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldForPasswordView.swift; sourceTree = "<group>"; };
+		2252B6E52C68B55600F38EC6 /* SecureFieldForInvisiblePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureFieldForInvisiblePasswordView.swift; sourceTree = "<group>"; };
+		2252B6E72C68B59F00F38EC6 /* TextFieldForVisiblePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldForVisiblePasswordView.swift; sourceTree = "<group>"; };
 		2277BB462C5E87E500317DD2 /* AuthBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBackgroundView.swift; sourceTree = "<group>"; };
 		2277BB492C5F2D0E00317DD2 /* ForgotPassOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassOneView.swift; sourceTree = "<group>"; };
 		2277BB4B2C5F2D5700317DD2 /* ForgotPassTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassTwoView.swift; sourceTree = "<group>"; };
 		22891AC42C5B5F5F00DE33E6 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		22AA9CD12C668C7900F242AE /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		22E317122C64E59C000E4C10 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		2663C77A2C569E54002EFD0C /* RadioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2663C77F2C569E54002EFD0C /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeView.swift; path = ../WelcomeView.swift; sourceTree = "<group>"; };
@@ -128,7 +140,6 @@
 		268696632C57DC330075E9DC /* StationPopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationPopularView.swift; sourceTree = "<group>"; };
 		268696652C57E0320075E9DC /* VoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteView.swift; sourceTree = "<group>"; };
 		269FCD122C665DB60060FFD8 /* TestRotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRotationView.swift; sourceTree = "<group>"; };
-		269FCD152C6660FC0060FFD8 /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		26A737962C5A49490002F1E9 /* PlayButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButtonView.swift; sourceTree = "<group>"; };
 		26A737982C5A4F850002F1E9 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButtonView.swift; sourceTree = "<group>"; };
@@ -228,6 +239,12 @@
 			isa = PBXGroup;
 			children = (
 				2277BB462C5E87E500317DD2 /* AuthBackgroundView.swift */,
+				2252B6DF2C68B3D600F38EC6 /* TextFieldForEmailView.swift */,
+				2252B6E12C68B41900F38EC6 /* TextFieldForNameView.swift */,
+				2252B6E32C68B45400F38EC6 /* FieldForPasswordView.swift */,
+				2252B6E52C68B55600F38EC6 /* SecureFieldForInvisiblePasswordView.swift */,
+				2252B6E72C68B59F00F38EC6 /* TextFieldForVisiblePasswordView.swift */,
+				221B88C12C69140F0041231C /* FieldForConfirmPasswordView.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -490,7 +507,7 @@
 		E1E497E32C56D4DF0099440D /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				269FCD142C6660FC0060FFD8 /* LikeStations.xcdatamodeld */,
+				22AA9CD02C668C7900F242AE /* LikeStations.xcdatamodeld */,
 				E1E87BB42C649F450070D855 /* NotificationsService.swift */,
 				E1E87BBB2C65E7C10070D855 /* LocalizationService.swift */,
 				22891AC32C5B5EF700DE33E6 /* AuthService */,
@@ -661,27 +678,32 @@
 				26A737992C5A4F850002F1E9 /* BackButtonView.swift in Sources */,
 				E1E87BB32C64122F0070D855 /* TimeAndDaysPicker.swift in Sources */,
 				2277BB472C5E881700317DD2 /* AuthBackgroundView.swift in Sources */,
+				22AA9CD22C668C7A00F242AE /* LikeStations.xcdatamodeld in Sources */,
 				E18529D82C5D034800BBE649 /* AnimatedBackgroundView.swift in Sources */,
 				E1E498142C5BBB500099440D /* CustomTextField.swift in Sources */,
 				7A98A36F2C5CEC720049DE5F /* StationView.swift in Sources */,
 				7A0ED5E12C592B280063F449 /* TestView2.swift in Sources */,
 				E1E4980E2C5A58F30099440D /* LanguageView.swift in Sources */,
 				268696662C57E0320075E9DC /* VoteView.swift in Sources */,
+				2252B6E62C68B55600F38EC6 /* SecureFieldForInvisiblePasswordView.swift in Sources */,
 				E1E4980C2C5A10560099440D /* ChevronCyrcleView.swift in Sources */,
-				269FCD162C6660FC0060FFD8 /* LikeStations.xcdatamodeld in Sources */,
 				2663C7A12C56A10E002EFD0C /* CustomTabBarView.swift in Sources */,
 				26A7379B2C5A4FCB0002F1E9 /* ForwardButtonView.swift in Sources */,
 				E18529DF2C5D11AA00BBE649 /* ProfileHeaderView.swift in Sources */,
 				E1E497EB2C56D8500099440D /* DS.swift in Sources */,
 				7A7A4B332C5B520600CD8794 /* TabData.swift in Sources */,
 				2663C79B2C56A09B002EFD0C /* SignInView.swift in Sources */,
-				222CD7042C66408C000EF05A /* LikeStations.xcdatamodeld in Sources */,
+				222CD7042C66408C000EF05A /* (null) in Sources */,
 				E14AA7862C5E234800BAC1BE /* EditPhotoButttonView.swift in Sources */,
+				2252B6E22C68B41900F38EC6 /* TextFieldForNameView.swift in Sources */,
 				223C4ABE2C641A5100014D0E /* AuthDataResultModel.swift in Sources */,
 				E133D7D42C6345BE00BA4E84 /* String + Extension.swift in Sources */,
 				268696642C57DC330075E9DC /* StationPopularView.swift in Sources */,
+				2252B6E82C68B59F00F38EC6 /* TextFieldForVisiblePasswordView.swift in Sources */,
 				22891AC52C5B5F5F00DE33E6 /* AuthService.swift in Sources */,
 				E1E497DA2C56D14F0099440D /* Resources.swift in Sources */,
+				2252B6E42C68B45400F38EC6 /* FieldForPasswordView.swift in Sources */,
+				221B88C22C69140F0041231C /* FieldForConfirmPasswordView.swift in Sources */,
 				7A1194752C64F49A0050515E /* (null) in Sources */,
 				2663C7802C569E54002EFD0C /* WelcomeView.swift in Sources */,
 				7A98A3682C5CCE820049DE5F /* SearchButtonView.swift in Sources */,
@@ -727,6 +749,7 @@
 				E1E4980A2C5983450099440D /* SettingsButton.swift in Sources */,
 				E16EBD552C5CADA50010BF71 /* CustomButton.swift in Sources */,
 				E18529DC2C5D08F000BBE649 /* ChangePhotoView.swift in Sources */,
+				2252B6E02C68B3D600F38EC6 /* TextFieldForEmailView.swift in Sources */,
 				220E86AA2C5D018900F8B0D6 /* TestAuthView.swift in Sources */,
 				E1E498062C58D3DF0099440D /* SettingView.swift in Sources */,
 			);
@@ -873,10 +896,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RadioApp/Preview Content\"";
-				DEVELOPMENT_TEAM = LT54Q8Z33F;
+				DEVELOPMENT_TEAM = 689Q9C7S84;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RadioApp/Resources/Info.plist;
@@ -911,10 +935,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RadioApp/Preview Content\"";
-				DEVELOPMENT_TEAM = LT54Q8Z33F;
+				DEVELOPMENT_TEAM = 689Q9C7S84;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RadioApp/Resources/Info.plist;
@@ -1033,14 +1058,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		269FCD142C6660FC0060FFD8 /* LikeStations.xcdatamodeld */ = {
+		22AA9CD02C668C7900F242AE /* LikeStations.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				269FCD152C6660FC0060FFD8 /* LikeStations.xcdatamodel */,
+				22AA9CD12C668C7900F242AE /* LikeStations.xcdatamodel */,
 			);
-			currentVersion = 269FCD152C6660FC0060FFD8 /* LikeStations.xcdatamodel */;
+			currentVersion = 22AA9CD12C668C7900F242AE /* LikeStations.xcdatamodel */;
 			name = LikeStations.xcdatamodeld;
-			path = /Users/dmitriyeliseev/Desktop/Challenge3/RadioApp/RadioApp/Services/LikeStations.xcdatamodeld;
+			path = /Users/gdr/Desktop/SecondBrain/NewRadio/RadioApp/RadioApp/Services/LikeStations.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

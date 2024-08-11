@@ -20,8 +20,11 @@ final class ViewModel: ObservableObject {
     private let authService = AuthService.shared
     let network = NetworkService()
     private var amplitudeService = AmplitudeService()
-    //
+    
+    // свойство для обращения к синглтону AuthManager как к альтернативе синглтона AuthService
+    private let authManager = AuthManager.shared
 
+    
     @Published var amplitude: CGFloat = 0.0
     //
 
@@ -397,7 +400,7 @@ final class ViewModel: ObservableObject {
             }
         }
 
-    /*
+    /* // метод связан с AuthService
     func signIn() {
         Task {
             try await AuthService.shared.signIn(with: email, password: password)
@@ -405,6 +408,8 @@ final class ViewModel: ObservableObject {
     }
     */
     
+    
+    // метод связан с AuthManager
     func signIn() {
         // TODO: в guard сейчас проверка только на присутствие электронки и пароля с любым ненулевым количеством символов, но надо положить больше проверочных условий (длина, наличие собачки в электронке, наличие в пароле спецсимволов-цифр-прописных-строчных-букв)
         guard !email.isEmpty, !password.isEmpty else {
@@ -444,6 +449,7 @@ final class ViewModel: ObservableObject {
     }
     */
     
+    // метод связан с AuthManager
     func logOut() throws {
         try AuthManager.shared.signOut()
     }

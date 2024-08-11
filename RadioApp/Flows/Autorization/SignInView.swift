@@ -16,18 +16,36 @@ struct SignInView: View {
     @State private var showAlert = false
     @State private var alertMessage = ""
     
+    // MARK: - Drawing Constants
+    private struct DrawingConstants {
+        static let screenLogoImageWidth = UIScreen.width * 1/7
+        static let screenLogoImageHeight = screenLogoImageWidth
+        static let screenTitleFontSize = UIScreen.height * 1/24
+        static let screenTitleBottomPadding = UIScreen.height * 1/32
+        static let screenSubtitleFontSize = UIScreen.height * 1/36
+        static let screenSubtitleFrameWidth = UIScreen.width * 1/3
+        static let screenSubtitleBottomPadding = UIScreen.height * 1/16
+        static let screenContentPadding = UIScreen.width * 1/16
+        static let verticalPaddingSize = UIScreen.height * 1/54
+        static let lineWidth = UIScreen.width * 1/5
+        static let lineHeight = UIScreen.height * 1/160
+        static let googleButtonWidth = screenLogoImageWidth
+        static let googleButtonHeight = screenLogoImageHeight
+        static let signInButtonWidth = UIScreen.width * 1/3
+    }
+    
     // MARK: - Body
     var body: some View {
         NavigationView {
             
             ZStack {
-                // Backgrounds
-                AnimatedBackgroundView()
-                AuthBackgroundView()
+                // MARK: Background
+                background
                 
                 VStack(alignment: .leading) {
                     Spacer()
                     
+                    // MARK: Screen Content
                     appLogo
                     
                     titleText
@@ -35,6 +53,8 @@ struct SignInView: View {
                     subtitleText
                     
                     inputFields
+                    
+                    forgotPasswordButton
                     
                     socialMediaButton
                     
@@ -44,7 +64,7 @@ struct SignInView: View {
                     
                     Spacer()
                 }
-                .padding()
+                .padding(32)
                 .alert(isPresented: $showAlert) {
                     Alert(
                         title: Text("Error"),
@@ -55,68 +75,120 @@ struct SignInView: View {
             }
         }
     }
+    
     // MARK: - Subviews
+    private var background: some View {
+        ZStack {
+            AnimatedBackgroundView(screenType: .authentication)
+            AuthBackgroundView()
+        }
+    }
+    
     private var appLogo: some View {
-        Image("Group 3")
+        Image("playButtonLogo")
             .resizable()
-            .frame(width: UIScreen.width * 1/4, height: UIScreen.width * 1/4)
+            .frame(
+                width: DrawingConstants.screenLogoImageWidth,
+                height: DrawingConstants.screenLogoImageHeight
+            )
     }
     
     private var titleText: some View {
-        Text(Resources.Text.SignIn.title)
-            .font(.custom(.sfBold, size: UIScreen.height * 1/16))
-            .padding(.bottom, UIScreen.height * 1/32)
+        HStack {
+            Text(Resources.Text.signIn)
+                .font(.custom(.sfBold, size: 
+                                DrawingConstants.screenTitleFontSize))
+                .foregroundColor(.white)
+        }
     }
     
     private var subtitleText: some View {
-        Text(Resources.Text.SignIn.toStartPlay)
-            .font(.custom(.sfRegular, size: UIScreen.height * 1/48))
-            .frame(maxWidth: UIScreen.width * 1/3)
+        HStack {
+            Text(Resources.Text.toStartPlay)
+                .font(.custom(.sfMedium, size: DrawingConstants.screenSubtitleFontSize))
+                .foregroundColor(.white)
+            Spacer()
+        }
     }
     
     private var inputFields: some View {
         VStack {
-            TextField(Resources.Text.SignIn.email, text: $appManager.email)
-                .font(.title)
-            
-            SecureField(Resources.Text.SignIn.password, text: $appManager.password)
-                .font(.title)
+            TextFieldForEmailView()
+            FieldForPasswordView()
         }
-        .navigationViewStyle(.stack)
+    }
+    
+    private var forgotPasswordButton: some View {
+        HStack {
+            Spacer()
+            Button(action: {
+                NavigationLink(destination: ForgotPassOneView()) {
+                    EmptyView()
+                }
+            }) {
+                Text("\(Resources.Text.forgotPassword) ?")
+                    .foregroundStyle(.white)
+                    .padding(.vertical, DrawingConstants.verticalPaddingSize)
+            }
+        }
     }
     
     private var socialMediaButton: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(Resources.Text.SignIn.orConnectWith)
+        VStack(alignment: .center) {
+            HStack {
+                Spacer()
+                Rectangle()
+                    .frame(width: DrawingConstants.lineWidth,
+                           height: DrawingConstants.lineHeight)
+                Text(Resources.Text.orConnectWith)
+                Rectangle()
+                    .frame(width: DrawingConstants.lineWidth,
+                           height: DrawingConstants.lineHeight)
+                Spacer()
+            }
+            .foregroundStyle(.gray)
+            .font(.subheadline)
+            .padding(.vertical, DrawingConstants.verticalPaddingSize)
             
             Button(action: {}) {
-                Text("G+")
-                    .foregroundStyle(.white)
+                ZStack {
+                    Circle()
+                        .foregroundStyle(DS.Colors.reddish)
+                        .frame(width: DrawingConstants.googleButtonWidth,
+                               height: DrawingConstants.googleButtonHeight)
+                    Image("googlePlus")
+                }
             }
         }
     }
     
     private var signInButton: some View {
-        CustomButton(action: {
-            Task {
-                await signIn()
-            }
-        },
-                     title: Resources.Text.SignIn.title,
-                     buttonType: .onboarding
+        CustomButton(
+            action: {
+                Task {
+                    await signIn()
+                }
+            },
+            title: Resources.Text.signIn,
+            buttonType: .authentication
         )
         .background(
-            NavigationLink(destination: ContentView(), isActive: $isAuthenticated) {
-                EmptyView()
-            }
+            NavigationLink(
+                destination: ContentView(),
+                isActive: $isAuthenticated) {
+                    EmptyView()
+                }
         )
+        .frame(maxWidth: DrawingConstants.signInButtonWidth)
+        .padding(.vertical, DrawingConstants.verticalPaddingSize)
     }
     
     private var signUpButton: some View {
         Button(action: {}) {
-            Text(Resources.Text.SignIn.orSignUp)
+            Text(Resources.Text.orSignUp)
                 .foregroundStyle(.white)
         }
+        .padding(.vertical, DrawingConstants.verticalPaddingSize)
     }
     
     // MARK: - Functions
