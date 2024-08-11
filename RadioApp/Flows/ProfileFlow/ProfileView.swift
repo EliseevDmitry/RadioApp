@@ -84,7 +84,9 @@ struct ProfileView: View {
                 )
             }
         }
-        
+        .onAppear{
+            appManager.isActiveDetailView = false
+        }
                     
                
         .onReceive(viewModel.$error) { error in

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CustomTabBarView: View {
-
+    @EnvironmentObject var appManager: ViewModel
     @Binding var selectedTab: Tab
 
     var body: some View {
@@ -16,6 +16,7 @@ struct CustomTabBarView: View {
             HStack {
                 Button {
                     selectedTab = .popular
+                    appManager.isActiveDetailView = false
                 } label: {
 
                     VStack {
@@ -33,6 +34,7 @@ struct CustomTabBarView: View {
 
                 Button {
                     selectedTab = .favorites
+                    appManager.isActiveDetailView = false
                 } label: {
 
                     VStack {
@@ -52,6 +54,7 @@ struct CustomTabBarView: View {
                 Button {
 
                     selectedTab = .allStations
+                    appManager.isActiveDetailView = false
                 } label: {
                     VStack {
 

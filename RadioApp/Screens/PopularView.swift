@@ -54,13 +54,17 @@ struct PopularView: View {
             }
         }
         .task {
-            do {
-                try await appManager.fetchTopStations()
-            } catch let err{
-                // handle error
-                print(err.localizedDescription)
+            if !appManager.isActiveDetailView {
+                do {
+                    try await appManager.fetchTopStations()
+                } catch let err{
+                    // handle error
+                    print(err.localizedDescription)
+                }
+                appManager.playFirstStation()
+            } else {
+                return
             }
-            appManager.playFirstStation()
         }
         .onAppear{
             appManager.loadLikesData()

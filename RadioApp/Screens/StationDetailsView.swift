@@ -31,8 +31,9 @@ struct StationDetailsView: View {
                 }
                 .clipShape(Rectangle())
                 .frame(maxWidth: 60, maxHeight: 60)
-                Text(station.name)
-                    .font(.custom(.sfRegular, size: 16))
+                Text(appManager.getString(tags: self.station.tags)?.uppercased() ?? self.station.countrycode)
+                   // .font(.custom(.sfRegular, size: 16))
+                    .font(.custom(DS.Fonts.sfBold, size: appManager.getString(tags: self.station.tags) != nil ? 20 : 30))
                     .foregroundStyle(.white)
                 Spacer()
             }
@@ -63,6 +64,7 @@ struct StationDetailsView: View {
         }
         .onDisappear{
             appManager.isActiveDetailView = false
+
         }
     }
 }
