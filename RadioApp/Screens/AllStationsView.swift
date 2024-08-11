@@ -59,16 +59,21 @@ struct AllStationsView: View {
             }
         }
         .task {
-            do {
-                try await appManager.fetchAllStations()
-            } catch {
-                print(error)
+            if !appManager.isActiveDetailView {
+                do {
+                    try await appManager.fetchAllStations()
+                } catch {
+                    print(error)
+                }
+                appManager.playFirstStation()
+            } else {
+                return
             }
-            appManager.playFirstStation()
         }
         .onDisappear{
-            // appManager.isPlay = false
-            appManager.stopAudioStream()
+            if !appManager.isActiveDetailView{
+                appManager.stopAudioStream()
+            }
         }
     }
 }

@@ -63,11 +63,15 @@ struct FavoritesView: View {
             }
         }
         .onAppear{
-            if appManager.setStations(stationData: Array(stationData)) {
-                DispatchQueue.main.asyncAfter(deadline: .now()+1) {
-                    appManager.playFirstStation()
+            if !appManager.isActiveDetailView {
+                if appManager.setStations(stationData: Array(stationData)) {
+                    DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+                        appManager.playFirstStation()
+                    }
+                    print(appManager.stations)
                 }
-                print(appManager.stations)
+            } else {
+                return
             }
         }
     }
