@@ -93,6 +93,7 @@ struct StationView: View {
             if selectedStationID == station.stationuuid {
                 print("long tap")
                 isActive.toggle()
+                appManager.isActiveDetailView = true
             }
         }
         .clipShape(.rect(cornerRadius: 20))

@@ -68,7 +68,7 @@ struct StationPopularView: View {
             .frame(maxWidth: 139, maxHeight: 139)
             //логика нажатия
             .background(NavigationLink(
-                            destination: StationDetailsView(station: station),
+                destination: StationDetailsView(station: self.station),
                             isActive: $isActive) {
                             EmptyView()
                         })
@@ -80,6 +80,7 @@ struct StationPopularView: View {
                 if selectedStationID == station.stationuuid {
                     print("long tap")
                     isActive.toggle()
+                    appManager.isActiveDetailView = true
                 }
             }
             .overlay {

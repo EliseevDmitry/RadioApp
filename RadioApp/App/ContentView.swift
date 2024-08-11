@@ -12,11 +12,16 @@ struct ContentView: View {
     @StateObject var appManager = ViewModel()
     @State var selectedTab: Tab = .popular
     @State var showTabBar: Bool = true
-
+    @State var tapBarVisible = true
+    
+    
+    
+    
     var body: some View {
+        
+        NavigationView {
             VStack {
                 Spacer()
-
                 switch selectedTab {
                 case .popular:
                     PopularView()
@@ -30,26 +35,25 @@ struct ContentView: View {
                     AllStationsView()
                         .environmentObject(appManager)
                 }
-
                 CustomTabBarView(selectedTab: $selectedTab)
                     .environmentObject(appManager)
                 Spacer()
-
+                
             }
             .navigationViewStyle(.stack)
             .ignoresSafeArea()
             .dynamicTypeSize(.xSmall ... .xLarge)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    ToolbarName()
-                        .environmentObject(appManager)
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    ToolbarProfile()
-                        .environmentObject(appManager)
-                }
-            }
-            .background(DS.Colors.darkBlue)
+//            .toolbar {
+//                ToolbarItem(placement: .topBarLeading) {
+//                        ToolbarName()
+//                }
+//                
+//                ToolbarItem(placement: .topBarTrailing) {
+//                    ToolbarProfile()
+//                }
+//            }
+//            .background(DS.Colors.darkBlue)
+            
         }
     
 }

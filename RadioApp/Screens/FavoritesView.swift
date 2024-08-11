@@ -14,59 +14,68 @@ struct FavoritesView: View {
     @Environment(\.managedObjectContext) var moc
     
     var body: some View {
-        NavigationView {
-            VStack {
-                VStack{
-                    HStack {
-                        Text("Favorites")
-                            .font(.custom(DS.Fonts.sfRegular, size: 30))
-                            .foregroundStyle(.white)
-                        //deleteRecords()
-                        //Button("DeleteData"){
-                        //deleteRecords()
-                        //}
-                        Spacer()
-                    }
-                    .padding(.leading, 60)
-                    .padding(.top, 10)
-                    HStack{
-                        VolumeView(rotation: false)
-                            .frame(width: 33 ,height: 250)
-                            .padding(.leading, 15)
-                        ScrollView(.vertical, showsIndicators: false){
-                            LazyVStack {
-                                ForEach(appManager.stations, id: \.stationuuid) {item in
-                                    FavoritesComponentView(
-                                        selectedStationID: $appManager.selectedStation,
-                                        station: item
-                                    )
-                                }
-                                
+        VStack{
+            HStack {
+                Text("Favorites")
+                    .font(.custom(DS.Fonts.sfRegular, size: 30))
+                    .foregroundStyle(.white)
+                Spacer()
+                //deleteRecords()
+                //Button("DeleteData"){
+                //deleteRecords()
+                //}
+            }
+            .padding(.leading, 60)
+            .padding(.top, 100)
+            .background(DS.Colors.darkBlue)
+            HStack{
+                VolumeView(rotation: false)
+                    .frame(width: 33 ,height: 250)
+                    .padding(.leading, 15)
+                VStack {
+                    ScrollView(.vertical, showsIndicators: false){
+                        LazyVStack {
+                            ForEach(appManager.stations, id: \.stationuuid) {item in
+                                FavoritesComponentView(
+                                    selectedStationID: $appManager.selectedStation,
+                                    station: item
+                                )
                             }
-                            .background(DS.Colors.darkBlue)
                         }
                     }
-                    Spacer()
                 }
+                Spacer()
             }
-            .background(DS.Colors.darkBlue)
-            .navigationViewStyle(.stack)
-            .onDisappear{
-                if !appManager.isActiveDetailView {
-                    appManager.stopAudioStream()
-                }
+            Spacer()
+        }
+        .background(DS.Colors.darkBlue)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                ToolbarName()
             }
-            .onAppear{
+            ToolbarItem(placement: .topBarTrailing) {
+                ToolbarProfile()
+            }
+        }
+        .onDisappear{
+            if !appManager.isActiveDetailView {
+                appManager.stopAudioStream()
+            }
+        }
+        .onAppear{
+            if !appManager.isActiveDetailView {
                 if appManager.setStations(stationData: Array(stationData)) {
                     DispatchQueue.main.asyncAfter(deadline: .now()+1) {
                         appManager.playFirstStation()
                     }
                     print(appManager.stations)
                 }
+            } else {
+                return
             }
         }
-        .padding(.top, 100)
     }
+    
     // delete all records
     func deleteRecords() {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "StationData")

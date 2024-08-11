@@ -58,8 +58,9 @@ final class ViewModel: ObservableObject {
     
     
     @Published var isActiveDetailView = false
+//    @Published var isActiveParentView = true
     
-    //@Published var viewModel = ProfileViewModel()
+    
     
     func fetchSearchStations() async throws {
         var fetchSearchStations: [Station]
