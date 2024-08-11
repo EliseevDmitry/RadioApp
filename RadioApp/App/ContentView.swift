@@ -20,10 +20,8 @@ struct ContentView: View {
     var body: some View {
         
         NavigationView {
-            
             VStack {
                 Spacer()
-                
                 switch selectedTab {
                 case .popular:
                     PopularView()
@@ -32,7 +30,6 @@ struct ContentView: View {
                 case .allStations:
                     AllStationsView()
                 }
-                
                 CustomTabBarView(selectedTab: $selectedTab)
                 Spacer()
                 
@@ -40,16 +37,16 @@ struct ContentView: View {
             .navigationViewStyle(.stack)
             .ignoresSafeArea()
             .dynamicTypeSize(.xSmall ... .xLarge)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                        ToolbarName()
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
-                    ToolbarProfile()
-                }
-            }
-            .background(DS.Colors.darkBlue)
+//            .toolbar {
+//                ToolbarItem(placement: .topBarLeading) {
+//                        ToolbarName()
+//                }
+//                
+//                ToolbarItem(placement: .topBarTrailing) {
+//                    ToolbarProfile()
+//                }
+//            }
+//            .background(DS.Colors.darkBlue)
             
         }
     }

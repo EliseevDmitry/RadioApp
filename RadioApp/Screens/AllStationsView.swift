@@ -79,6 +79,11 @@ struct AllStationsView: View {
 }
 
 
+
+
+
+//Text("All stations")
+
 //MARK: - PREVIEW
 struct AllStationsView_Previews: PreviewProvider {
     static let previewAppManager = ViewModel()
