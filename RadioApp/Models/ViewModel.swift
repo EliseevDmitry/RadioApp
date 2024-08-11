@@ -77,8 +77,12 @@ final class ViewModel: ObservableObject {
     let session = AVAudioSession.sharedInstance()
     // Observer
     var progressObserver: NSKeyValueObservation!
-    //CoreData
+    
+    
+    //---------CoreData--------
+    //@Published var container = NSPersistentContainer(name: "LikeStations")
     let container = NSPersistentContainer(name: "LikeStations")
+    //---------CoreData--------
     
     
     func setVolme(){
@@ -94,6 +98,7 @@ final class ViewModel: ObservableObject {
                 print("current volume value - \(self.volume)")
             }
         }
+     
     }
 
     //delete Observer
@@ -109,13 +114,19 @@ final class ViewModel: ObservableObject {
         
         getUserInfo()
         
+        
+        //---------CoreData--------
         //инициализация PersistentContainer CoreData
         container.loadPersistentStores{description, error in
             if let error = error {
                 print("CoreData failed to load \(error.localizedDescription)")
             }
         }
+        //---------CoreData--------
+        
     }
+    
+    
 
     
     

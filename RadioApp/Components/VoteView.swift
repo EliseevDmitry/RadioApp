@@ -11,8 +11,12 @@ struct VoteView: View {
     //MARK: - PROPERTIES
    // @EnvironmentObject var appManager: ViewModel
     var appManager: ViewModel
+    
+    //---------CoreData--------
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var stationsData: FetchedResults<StationData>
+    //---------CoreData--------
+    
     var isShow: Bool
     var idStation: String
     //MARK: - BODY

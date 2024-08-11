@@ -11,8 +11,14 @@ import CoreData
 struct FavoritesView: View {
     //@EnvironmentObject var appManager: ViewModel
     @ObservedObject var appManager: ViewModel
+    //---------CoreData--------
     @FetchRequest(sortDescriptors: []) var stationData: FetchedResults<StationData>
     @Environment(\.managedObjectContext) var moc
+    //---------CoreData--------
+    
+    //---------CoreData-------- (onApper)
+    //var stationData: FetchedResults<StationData>
+    //---------CoreData--------
     
     var body: some View {
         VStack{
@@ -76,21 +82,31 @@ struct FavoritesView: View {
             }
         }
     }
+//    func test(){
+//        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "StationData")
+//        do {
+//            try appManager.container.viewContext.persistentStoreCoordinator?.persistentStores
+//            print("данные удалены")
+//        } catch let error as NSError {
+//            print("Fetch failed. \(error.localizedDescription)")
+//        }
+//       // moc = appManager.container.viewContext
+//    }
     
     // delete all records
-    func deleteRecords() {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "StationData")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try moc.persistentStoreCoordinator?.execute(deleteRequest, with: moc)
-            print("данные удалены")
-        } catch let error as NSError {
-            print("Fetch failed. \(error.localizedDescription)")
-        }
-        try? moc.save()
-        _ = appManager.setStations(stationData: Array(stationData))
-    }
+//    func deleteRecords() {
+//        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "StationData")
+//        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+//        
+//        do {
+//            try moc.persistentStoreCoordinator?.execute(deleteRequest, with: moc)
+//            print("данные удалены")
+//        } catch let error as NSError {
+//            print("Fetch failed. \(error.localizedDescription)")
+//        }
+//        try? moc.save()
+//        _ = appManager.setStations(stationData: Array(stationData))
+//    }
 }
 
 //MARK: - PREVIEW

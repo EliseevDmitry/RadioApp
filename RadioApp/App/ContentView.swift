@@ -16,10 +16,6 @@ struct ContentView: View {
     @State var selectedTab: Tab = .popular
     @State var showTabBar: Bool = true
     @State var tapBarVisible = true
-    
-
-    
-    
     var body: some View {
 
         NavigationView {
@@ -30,7 +26,7 @@ struct ContentView: View {
                     PopularView(appManager: appManager)
                 case .favorites:
                     FavoritesView(appManager: appManager)
-                        .environment(\.managedObjectContext, appManager.container.viewContext)
+                        
                 case .allStations:
                     AllStationsView(appManager: appManager)
                 }
