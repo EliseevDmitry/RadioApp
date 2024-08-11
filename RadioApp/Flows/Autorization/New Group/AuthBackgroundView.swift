@@ -12,7 +12,7 @@ struct AuthBackgroundView: View {
         ZStack(alignment: .trailing) {
             Image("pinkSpots2").resizable().opacity(0.5)
             Image("Polygon 4")
-                .offset(y: -(UIScreen.height * 1/5))
+                .offset(y: -UIScreen.height * 1/8)
         }
         .ignoresSafeArea()
         .scaledToFill()        

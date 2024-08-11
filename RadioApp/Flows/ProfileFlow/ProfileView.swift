@@ -30,7 +30,7 @@ struct ProfileView: View {
     // MARK: - Body
     var body: some View {
         ZStack {
-            AnimatedBackgroundView(screenType: .profile)
+            AnimatedBackgroundView()
                 .ignoresSafeArea()
             
             VStack {
