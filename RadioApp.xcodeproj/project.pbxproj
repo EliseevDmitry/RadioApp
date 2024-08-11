@@ -97,6 +97,7 @@
 		E1E87BCC2C6893440070D855 /* ProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BCB2C6893440070D855 /* ProfileEditViewModel.swift */; };
 		E1E87BCE2C6893FB0070D855 /* FIrebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BCD2C6893FB0070D855 /* FIrebaseStorageService.swift */; };
 		E1E87BD02C68B4250070D855 /* Button + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BCF2C68B4250070D855 /* Button + Extension.swift */; };
+		E1E87BD32C68BE850070D855 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E87BD22C68BE850070D855 /* AuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,6 +187,7 @@
 		E1E87BCB2C6893440070D855 /* ProfileEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewModel.swift; sourceTree = "<group>"; };
 		E1E87BCD2C6893FB0070D855 /* FIrebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseStorageService.swift; sourceTree = "<group>"; };
 		E1E87BCF2C68B4250070D855 /* Button + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button + Extension.swift"; sourceTree = "<group>"; };
+		E1E87BD22C68BE850070D855 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,12 +225,13 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		2277BB482C5E8A7600317DD2 /* New Group */ = {
+		2277BB482C5E8A7600317DD2 /* SubVIews */ = {
 			isa = PBXGroup;
 			children = (
-				2277BB462C5E87E500317DD2 /* AuthBackgroundView.swift */,
+				2277BB492C5F2D0E00317DD2 /* ForgotPassOneView.swift */,
+				2277BB4B2C5F2D5700317DD2 /* ForgotPassTwoView.swift */,
 			);
-			path = "New Group";
+			path = SubVIews;
 			sourceTree = "<group>";
 		};
 		22891AC32C5B5EF700DE33E6 /* FirebaseServices */ = {
@@ -340,11 +343,11 @@
 		2663C7922C569FA4002EFD0C /* Autorization */ = {
 			isa = PBXGroup;
 			children = (
-				2277BB482C5E8A7600317DD2 /* New Group */,
+				E1E87BD12C68BE5A0070D855 /* Components */,
+				2277BB482C5E8A7600317DD2 /* SubVIews */,
 				2663C79A2C56A09B002EFD0C /* SignInView.swift */,
 				2663C79C2C56A0AB002EFD0C /* SignUpView.swift */,
-				2277BB492C5F2D0E00317DD2 /* ForgotPassOneView.swift */,
-				2277BB4B2C5F2D5700317DD2 /* ForgotPassTwoView.swift */,
+				E1E87BD22C68BE850070D855 /* AuthViewModel.swift */,
 			);
 			path = Autorization;
 			sourceTree = "<group>";
@@ -559,6 +562,14 @@
 			path = ProfileEditScreen;
 			sourceTree = "<group>";
 		};
+		E1E87BD12C68BE5A0070D855 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2277BB462C5E87E500317DD2 /* AuthBackgroundView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -697,6 +708,7 @@
 				7A89B80F2C663A2100B6F76D /* StationDetailsView.swift in Sources */,
 				2663C7A92C56A249002EFD0C /* ViewModel.swift in Sources */,
 				26A737972C5A49490002F1E9 /* PlayButtonView.swift in Sources */,
+				E1E87BD32C68BE850070D855 /* AuthViewModel.swift in Sources */,
 				E1E87BBC2C65E7C10070D855 /* LocalizationService.swift in Sources */,
 				E16EBD5B2C5CB42A0010BF71 /* RadioAppApp.swift in Sources */,
 				2663C7AB2C56A257002EFD0C /* Model.swift in Sources */,

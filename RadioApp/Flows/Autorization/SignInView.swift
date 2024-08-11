@@ -9,12 +9,13 @@ import SwiftUI
 
 struct SignInView: View {
     // MARK: - Properties
-    @EnvironmentObject var appManager: ViewModel
+    @StateObject viewModel: AuthViewModel
     
     @State private var isAuthenticated = false
     @State private var showAlert = false
     @State private var alertMessage = ""
     
+ 
     // MARK: - Body
     var body: some View {
         NavigationView {
@@ -119,7 +120,7 @@ struct SignInView: View {
     
     // MARK: - Functions
     private func signIn() async {
-        await appManager.signIn()
+        await viewModel.signIn()
         if let error = appManager.error {
             alertMessage = error.localizedDescription
             showAlert = true
