@@ -9,13 +9,22 @@ import SwiftUI
 
 struct SignInView: View {
     // MARK: - Properties
-    @StateObject viewModel: AuthViewModel
+    @StateObject var viewModel: AuthViewModel
     
     @State private var isAuthenticated = false
     @State private var showAlert = false
     @State private var alertMessage = ""
     
- 
+    init(
+        authService: AuthService = .shared
+    ) {
+        self._viewModel = StateObject(
+            wrappedValue: AuthViewModel(
+                authService: authService
+            )
+        )
+    }
+    
     // MARK: - Body
     var body: some View {
         NavigationView {
@@ -76,10 +85,10 @@ struct SignInView: View {
     
     private var inputFields: some View {
         VStack {
-            TextField(Resources.Text.SignIn.email, text: $appManager.email)
+            TextField(Resources.Text.SignIn.email, text: $viewModel.email)
                 .font(.title)
             
-            SecureField(Resources.Text.SignIn.password, text: $appManager.password)
+            SecureField(Resources.Text.SignIn.password, text: $viewModel.password)
                 .font(.title)
         }
     }
@@ -121,7 +130,7 @@ struct SignInView: View {
     // MARK: - Functions
     private func signIn() async {
         await viewModel.signIn()
-        if let error = appManager.error {
+        if let error = viewModel.error {
             alertMessage = error.localizedDescription
             showAlert = true
             
@@ -131,12 +140,7 @@ struct SignInView: View {
     }
 }
 
-// MARK: - Previews
-struct SignInView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
-    
-    static var previews: some View {
-        SignInView()
-            .environmentObject(previewAppManager)
-    }
+// MARK: - Preview
+#Preview {
+    SignInView()
 }

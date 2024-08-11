@@ -9,27 +9,30 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @EnvironmentObject var appManager: ViewModel
+    @StateObject var appManager = ViewModel()
     @State var selectedTab: Tab = .popular
     @State var showTabBar: Bool = true
 
     var body: some View {
-
-        NavigationView {
-
             VStack {
                 Spacer()
 
                 switch selectedTab {
                 case .popular:
                     PopularView()
+                        .environmentObject(appManager)
                 case .favorites:
                     FavoritesView()
+                        .environmentObject(appManager)
+                        .environment(\.managedObjectContext, appManager.container.viewContext)
+
                 case .allStations:
                     AllStationsView()
+                        .environmentObject(appManager)
                 }
 
                 CustomTabBarView(selectedTab: $selectedTab)
+                    .environmentObject(appManager)
                 Spacer()
 
             }
@@ -39,14 +42,16 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     ToolbarName()
+                        .environmentObject(appManager)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     ToolbarProfile()
+                        .environmentObject(appManager)
                 }
             }
             .background(DS.Colors.darkBlue)
         }
-    }
+    
 }
 
 #Preview {

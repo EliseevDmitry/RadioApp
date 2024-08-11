@@ -66,6 +66,7 @@ final class ProfileViewModel: ObservableObject {
     // MARK: - Stored Properties
     @Published var currentUser: UserModel?
     @Published var error: ProfileFlowError?
+    @AppStorage("isOnboarding") var isOnboarding = true
     
     var userName: String { currentUser?.userName ?? "" }
     var userEmail: String { currentUser?.email ?? "" }
@@ -77,9 +78,9 @@ final class ProfileViewModel: ObservableObject {
     
     // MARK: - Initializer
     init(
-        authService: AuthService,
-        firebaseStorage: FirebaseStorageService,
-        notificationsService: NotificationsService) {
+        authService: AuthService = .shared,
+        firebaseStorage: FirebaseStorageService = .shared,
+        notificationsService: NotificationsService = .shared) {
             self.authService = authService
             self.firebaseStorage = firebaseStorage
             self.notificationsService = notificationsService
@@ -117,6 +118,7 @@ final class ProfileViewModel: ObservableObject {
     func logOut() {
         do {
             try authService.signUserOut()
+            isOnboarding.toggle()
         } catch {
             Task {
                 self.error = ProfileFlowError.map(error)

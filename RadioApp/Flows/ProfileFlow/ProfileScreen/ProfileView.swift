@@ -11,7 +11,7 @@ import SwiftUI
 struct ProfileView: View {
     // MARK: - Properties
     @AppStorage("selectedLanguage") private var language = LocalizationService.shared.language
-    @AppStorage("isOnboarding") var isOnboarding = true
+ 
     
     @StateObject var viewModel: ProfileViewModel
     
@@ -33,6 +33,7 @@ struct ProfileView: View {
     }
     // MARK: - Body
     var body: some View {
+        
         ZStack {
             AnimatedBackgroundView()
                 .ignoresSafeArea()

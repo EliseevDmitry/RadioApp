@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CustomTabBarView: View {
-
+    @EnvironmentObject var appManager: ViewModel
     @Binding var selectedTab: Tab
 
     var body: some View {
