@@ -18,19 +18,13 @@ struct RadioAppApp: App {
     @StateObject var appManager = ViewModel()
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-   //MARK: -
-
+    //MARK: -
+    
     var body: some Scene {
         WindowGroup {
-                 TransitView(appManager: appManager)
-//                .preferredColorScheme(.dark)
-//                .environment(\.managedObjectContext, appManager.container.viewContext)
-            
-           //SignInView(appManager: appManager)
-           // WelcomeView(appManager: appManager)
-            //ContentView(appManager: appManager)
-                            .preferredColorScheme(.dark)
-                            .environment(\.managedObjectContext, appManager.container.viewContext)
+            TransitView(appManager: appManager)
+                .preferredColorScheme(.dark)
+                .environment(\.managedObjectContext, appManager.container.viewContext)
         }
     }
 }

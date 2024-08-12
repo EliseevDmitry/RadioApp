@@ -26,12 +26,13 @@ struct UserIcon: Shape {
 
 struct ToolbarProfile: View {
     //@EnvironmentObject var appManager: ViewModel
+    
     var appManager: ViewModel
     var body: some View {
         // Существующий NavigationLink
         //скорее всего косяк тут!!!
         //NavigationLink(destination: ProfileView(viewModel: ProfileViewModel())) {
-        NavigationLink(destination: GotoWelcome(appManager: appManager)) {
+        NavigationLink(destination: ProfileView(appManager: appManager, viewModel: ProfileViewModel())) {
             Image(uiImage: appManager.userProfileImage ?? .eliseev)
                 .resizable()
                 .scaledToFit()
@@ -41,6 +42,16 @@ struct ToolbarProfile: View {
                         .frame(width: 60, height: 70)
                 }
         }
+//        NavigationLink(destination: ProfileView(appManager: appManager, viewModel: ProfileViewModel())) {
+//            Image(uiImage: appManager.userProfileImage ?? .eliseev)
+//                .resizable()
+//                .scaledToFit()
+//                .frame(width: 60, height: 70)
+//                .mask {
+//                    UserIcon()
+//                        .frame(width: 60, height: 70)
+//                }
+//        }
     }
 }
 

@@ -15,7 +15,7 @@ import Combine
 
 @MainActor
 final class ViewModel: ObservableObject {
-    
+    //@AppStorage("isOnboarding") var isOnboarding = false
     //Авторизация
      let authService = AuthService.shared
     // свойства для аутентификации пользователя
@@ -217,8 +217,16 @@ final class ViewModel: ObservableObject {
         }
         //---------CoreData--------
         
+        guard let onboarding = UserDefaults.standard.value(forKey: "isOnboarding") as? Bool else {return}
+          
+        
+        
         if authService.userSession == nil {
-            tagSelection = "view1"
+            if onboarding {
+                tagSelection = "view3"
+            } else {
+                tagSelection = "view1"
+            }
         } else {
             tagSelection = "view2"
         }
