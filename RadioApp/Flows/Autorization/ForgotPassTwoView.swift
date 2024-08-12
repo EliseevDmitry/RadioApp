@@ -20,17 +20,17 @@ struct ForgotPassTwoView: View {
                 
                 BackBarButton()
                 
-                Text(Resources.Text.ForgotPassTwo.title)
+                Text(Resources.Text.forgotPassword)
                     .font(.custom(.sfBold, size: UIScreen.height * 1/16))
                     .padding(.bottom, UIScreen.height * 1/32)
                 
-                SecureField(Resources.Text.ForgotPassTwo.password, text: $appManager.password) //$appManager.password
+                SecureField(Resources.Text.forgotPassword, text: $appManager.password) //$appManager.password
                     .font(.title)
                 
-                SecureField(Resources.Text.ForgotPassTwo.confirmPassword, text: $appManager.password) //$appManager.password
+                SecureField(Resources.Text.confirmPassword, text: $appManager.password) //$appManager.password
                     .font(.title)
                                 
-                CustomButton(action: {}, title: Resources.Text.ForgotPassTwo.changePassword, buttonType: .onboarding) // TODO: изменить тип кнопки и добавить действие
+                CustomButton(action: {}, title: Resources.Text.changePassword, buttonType: .onboarding) // TODO: изменить тип кнопки и добавить действие
                 
                 Spacer()
             }

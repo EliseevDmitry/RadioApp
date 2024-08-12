@@ -42,7 +42,12 @@
 		26A7379B2C5A4FCB0002F1E9 /* ForwardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */; };
 		26A7379E2C5A6A670002F1E9 /* SplineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379D2C5A6A670002F1E9 /* SplineView.swift */; };
 		26AFBD4B2C69A84D00C49554 /* TransitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFBD4A2C69A84D00C49554 /* TransitView.swift */; };
-		26AFBD4D2C69CF0500C49554 /* GotoWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFBD4C2C69CF0500C49554 /* GotoWelcome.swift */; };
+		26AFBD502C69F7A300C49554 /* TextFieldForEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFBD4E2C69F7A300C49554 /* TextFieldForEmailView.swift */; };
+		26AFBD512C69F7A300C49554 /* TextFieldForNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFBD4F2C69F7A300C49554 /* TextFieldForNameView.swift */; };
+		26AFBD542C69F81C00C49554 /* FieldForPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFBD522C69F81C00C49554 /* FieldForPasswordView.swift */; };
+		26AFBD552C69F81C00C49554 /* FieldForConfirmPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFBD532C69F81C00C49554 /* FieldForConfirmPasswordView.swift */; };
+		26AFBD582C69F97F00C49554 /* SecureFieldForInvisiblePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFBD562C69F97F00C49554 /* SecureFieldForInvisiblePasswordView.swift */; };
+		26AFBD592C69F97F00C49554 /* TextFieldForVisiblePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFBD572C69F97F00C49554 /* TextFieldForVisiblePasswordView.swift */; };
 		26B1A6622C674C2E00734278 /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26B1A6602C674C2E00734278 /* LikeStations.xcdatamodeld */; };
 		26D180992C5AA0A300D4EF68 /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D180982C5AA0A300D4EF68 /* PopularView.swift */; };
 		26FB42E62C64994F00F9C2A2 /* FavoritesComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB42E52C64994F00F9C2A2 /* FavoritesComponentView.swift */; };
@@ -130,7 +135,12 @@
 		26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButtonView.swift; sourceTree = "<group>"; };
 		26A7379D2C5A6A670002F1E9 /* SplineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplineView.swift; sourceTree = "<group>"; };
 		26AFBD4A2C69A84D00C49554 /* TransitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitView.swift; sourceTree = "<group>"; };
-		26AFBD4C2C69CF0500C49554 /* GotoWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoWelcome.swift; sourceTree = "<group>"; };
+		26AFBD4E2C69F7A300C49554 /* TextFieldForEmailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldForEmailView.swift; sourceTree = "<group>"; };
+		26AFBD4F2C69F7A300C49554 /* TextFieldForNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldForNameView.swift; sourceTree = "<group>"; };
+		26AFBD522C69F81C00C49554 /* FieldForPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldForPasswordView.swift; sourceTree = "<group>"; };
+		26AFBD532C69F81C00C49554 /* FieldForConfirmPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldForConfirmPasswordView.swift; sourceTree = "<group>"; };
+		26AFBD562C69F97F00C49554 /* SecureFieldForInvisiblePasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureFieldForInvisiblePasswordView.swift; sourceTree = "<group>"; };
+		26AFBD572C69F97F00C49554 /* TextFieldForVisiblePasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldForVisiblePasswordView.swift; sourceTree = "<group>"; };
 		26B1A6612C674C2E00734278 /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		26D180982C5AA0A300D4EF68 /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
 		26FB42E52C64994F00F9C2A2 /* FavoritesComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoritesComponentView.swift; path = RadioApp/Components/FavoritesComponentView.swift; sourceTree = SOURCE_ROOT; };
@@ -226,6 +236,12 @@
 		2277BB482C5E8A7600317DD2 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				26AFBD4E2C69F7A300C49554 /* TextFieldForEmailView.swift */,
+				26AFBD4F2C69F7A300C49554 /* TextFieldForNameView.swift */,
+				26AFBD562C69F97F00C49554 /* SecureFieldForInvisiblePasswordView.swift */,
+				26AFBD572C69F97F00C49554 /* TextFieldForVisiblePasswordView.swift */,
+				26AFBD532C69F81C00C49554 /* FieldForConfirmPasswordView.swift */,
+				26AFBD522C69F81C00C49554 /* FieldForPasswordView.swift */,
 				2277BB462C5E87E500317DD2 /* AuthBackgroundView.swift */,
 			);
 			path = "New Group";
@@ -283,7 +299,6 @@
 				26AFBD4A2C69A84D00C49554 /* TransitView.swift */,
 				7A7A4B2F2C5B51B000CD8794 /* ContentView.swift */,
 				220E86A92C5D018900F8B0D6 /* TestAuthView.swift */,
-				26AFBD4C2C69CF0500C49554 /* GotoWelcome.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -648,8 +663,10 @@
 				E1E498142C5BBB500099440D /* CustomTextField.swift in Sources */,
 				7A98A36F2C5CEC720049DE5F /* StationView.swift in Sources */,
 				7A0ED5E12C592B280063F449 /* TestView2.swift in Sources */,
+				26AFBD552C69F81C00C49554 /* FieldForConfirmPasswordView.swift in Sources */,
 				E1E4980E2C5A58F30099440D /* LanguageView.swift in Sources */,
 				268696662C57E0320075E9DC /* VoteView.swift in Sources */,
+				26AFBD582C69F97F00C49554 /* SecureFieldForInvisiblePasswordView.swift in Sources */,
 				E1E4980C2C5A10560099440D /* ChevronCyrcleView.swift in Sources */,
 				2663C7A12C56A10E002EFD0C /* CustomTabBarView.swift in Sources */,
 				26A7379B2C5A4FCB0002F1E9 /* ForwardButtonView.swift in Sources */,
@@ -660,19 +677,21 @@
 				7A89B80C2C66368600B6F76D /* (null) in Sources */,
 				E14AA7862C5E234800BAC1BE /* EditPhotoButttonView.swift in Sources */,
 				E133D7D42C6345BE00BA4E84 /* String + Extension.swift in Sources */,
+				26AFBD542C69F81C00C49554 /* FieldForPasswordView.swift in Sources */,
 				268696642C57DC330075E9DC /* StationPopularView.swift in Sources */,
 				22891AC52C5B5F5F00DE33E6 /* AuthService.swift in Sources */,
+				26AFBD592C69F97F00C49554 /* TextFieldForVisiblePasswordView.swift in Sources */,
 				E1E497DA2C56D14F0099440D /* Resources.swift in Sources */,
 				7A1194752C64F49A0050515E /* (null) in Sources */,
 				2663C7802C569E54002EFD0C /* WelcomeView.swift in Sources */,
 				7A98A3682C5CCE820049DE5F /* SearchButtonView.swift in Sources */,
 				7AAEB6F62C6330FB004D7424 /* ToolbarName.swift in Sources */,
+				26AFBD502C69F7A300C49554 /* TextFieldForEmailView.swift in Sources */,
 				E1E497E62C56D5380099440D /* NetworkService.swift in Sources */,
 				2663C7A72C56A212002EFD0C /* SearchBarView.swift in Sources */,
 				7AAEB6F92C638482004D7424 /* ToolbarProfile.swift in Sources */,
 				2277BB4A2C5F2D0E00317DD2 /* ForgotPassOneView.swift in Sources */,
 				223406762C5DF7C200C701A3 /* WelcomeBackgroundView.swift in Sources */,
-				26AFBD4D2C69CF0500C49554 /* GotoWelcome.swift in Sources */,
 				2663C7A52C56A1F2002EFD0C /* VolumeView.swift in Sources */,
 				E14AA7962C600FF900BAC1BE /* AboutUsCell.swift in Sources */,
 				220E86A32C5CD94B00F8B0D6 /* AppDelegate.swift in Sources */,
@@ -694,6 +713,7 @@
 				E14AA7942C600C6900BAC1BE /* AppAllert.swift in Sources */,
 				26742C1B2C668A5000668D86 /* TestEq.swift in Sources */,
 				2277BB4C2C5F2D5700317DD2 /* ForgotPassTwoView.swift in Sources */,
+				26AFBD512C69F7A300C49554 /* TextFieldForNameView.swift in Sources */,
 				E1E87BB12C640CE10070D855 /* NotificationsView.swift in Sources */,
 				E1E498082C58D60F0099440D /* ProfileInfoView.swift in Sources */,
 				E14AA78E2C5FB5AD00BAC1BE /* LanguageElementView.swift in Sources */,

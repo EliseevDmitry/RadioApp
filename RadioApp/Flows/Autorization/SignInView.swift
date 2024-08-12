@@ -15,29 +15,49 @@ struct SignInView: View {
     @State private var alertMessage = ""
     
     // MARK: - Body
+    
+    // MARK: - Drawing Constants
+    private struct DrawingConstants {
+        static let screenLogoImageWidth = UIScreen.width * 1/7
+        static let screenLogoImageHeight = screenLogoImageWidth
+        static let screenTitleFontSize = UIScreen.height * 1/24
+        static let screenTitleBottomPadding = UIScreen.height * 1/32
+        static let screenSubtitleFontSize = UIScreen.height * 1/36
+        static let screenSubtitleFrameWidth = UIScreen.width * 1/3
+        static let screenSubtitleBottomPadding = UIScreen.height * 1/16
+        static let screenContentPadding = UIScreen.width * 1/16
+        static let verticalPaddingSize = UIScreen.height * 1/54
+        static let lineWidth = UIScreen.width * 1/5
+        static let lineHeight = UIScreen.height * 1/160
+        static let googleButtonWidth = screenLogoImageWidth
+        static let googleButtonHeight = screenLogoImageHeight
+        static let signInButtonWidth = UIScreen.width * 1/3
+    }
+    
+    
     var body: some View {
         NavigationView {
             ZStack {
-                // Backgrounds
-                //                AnimatedBackgroundView()
-                //                AuthBackgroundView()
+                //Backgrounds
+                AnimatedBackgroundView()
+                AuthBackgroundView()
                 
                 VStack(alignment: .leading) {
                     Spacer()
                     
-                 //   appLogo
+                    appLogo
                     
-                   // titleText
+                    titleText
                     
-                  //  subtitleText
+                    subtitleText
                     
-                   inputFields
+                    inputFields
                     
-                   // socialMediaButton
+                    socialMediaButton
                     
                     signInButton
                     
-                  //  signUpButton
+                    signUpButton
                     
                     Spacer()
                 }
@@ -52,101 +72,181 @@ struct SignInView: View {
             }
         }
         .navigationViewStyle(.stack)
-//        .navigationBarTitleDisplayMode(.inline)
+        //        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
     }
     // MARK: - Subviews
+    private var background: some View {
+        ZStack {
+            AnimatedBackgroundView()
+            AuthBackgroundView()
+        }
+    }
+    
     private var appLogo: some View {
-        Image("Group 3")
+        Image("playButtonLogo")
             .resizable()
-            .frame(width: UIScreen.width * 1/4, height: UIScreen.width * 1/4)
+            .frame(
+                width: DrawingConstants.screenLogoImageWidth,
+                height: DrawingConstants.screenLogoImageHeight
+            )
     }
     
     private var titleText: some View {
-        Text(Resources.Text.SignIn.title)
-            .font(.custom(.sfBold, size: UIScreen.height * 1/16))
-            .padding(.bottom, UIScreen.height * 1/32)
+        HStack {
+            Text(Resources.Text.signIn)
+                .font(.custom(.sfBold, size:
+                                DrawingConstants.screenTitleFontSize))
+                .foregroundColor(.white)
+        }
     }
     
     private var subtitleText: some View {
-        Text(Resources.Text.SignIn.toStartPlay)
-            .font(.custom(.sfRegular, size: UIScreen.height * 1/48))
-            .frame(maxWidth: UIScreen.width * 1/3)
+        HStack {
+            Text(Resources.Text.toStartPlay)
+                .font(.custom(.sfMedium, size: DrawingConstants.screenSubtitleFontSize))
+                .foregroundColor(.white)
+            Spacer()
+        }
     }
     
     private var inputFields: some View {
         VStack {
-            TextField(Resources.Text.SignIn.email, text: $appManager.email)
-                .font(.title)
-            
-            SecureField(Resources.Text.SignIn.password, text: $appManager.password)
-                .font(.title)
+            TextFieldForEmailView(appManager: appManager)
+            FieldForPasswordView(appManager: appManager)
         }
     }
     
+    private var forgotPasswordButton: some View {
+        HStack {
+            Spacer()
+            Button(action: {
+                NavigationLink(destination: ForgotPassOneView(appManager: appManager)) {
+                    EmptyView()
+                }
+            }) {
+                Text("\(Resources.Text.forgotPassword) ?")
+                    .foregroundStyle(.white)
+                    .padding(.vertical, DrawingConstants.verticalPaddingSize)
+            }
+        }
+        
+    }
+    
     private var socialMediaButton: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(Resources.Text.SignIn.orConnectWith)
+        VStack(alignment: .center) {
+            HStack {
+                Spacer()
+                Rectangle()
+                    .frame(width: DrawingConstants.lineWidth,
+                           height: DrawingConstants.lineHeight)
+                Text(Resources.Text.orConnectWith)
+                Rectangle()
+                    .frame(width: DrawingConstants.lineWidth,
+                           height: DrawingConstants.lineHeight)
+                Spacer()
+            }
+            .foregroundStyle(.gray)
+            .font(.subheadline)
+            .padding(.vertical, DrawingConstants.verticalPaddingSize)
             
             Button(action: {}) {
-                Text("G+")
-                    .foregroundStyle(.white)
+                ZStack {
+                    Circle()
+                        .foregroundStyle(DS.Colors.reddish)
+                        .frame(width: DrawingConstants.googleButtonWidth,
+                               height: DrawingConstants.googleButtonHeight)
+                    Image("googlePlus")
+                }
             }
         }
     }
     
     private var signInButton: some View {
-        //        CustomButton(action: {
-        //            Task {
-        //                await appManager.signIn()
-        //            }
-        //            isAuthenticated = true
-        //        },
-        //                     title: Resources.Text.SignIn.title,
-        //                     buttonType: .onboarding
-        //        )
-        //        .background(
-        //            NavigationLink(destination: ContentView(appManager: appManager), isActive: $isAuthenticated) {
-        //                EmptyView()
-        //            }
-        //        )
-
-            
-            Button(Resources.Text.SignIn.title){
+        CustomButton(
+            action: {
                 Task {
-                        do {
-                            try await appManager.test()
-                        } catch {
-                            // Обработка ошибки
-                            print("Ошибка при выполнении test(): (error)")
-                        }
+                    do {
+                        try await appManager.test()
+                    } catch {
+                        // Обработка ошибки
+                        print("Ошибка при выполнении test(): (error)")
                     }
+                }
+            },
+            title: Resources.Text.signIn,
+            buttonType: .onboarding
+        )
+        .background(
+            NavigationLink(destination: ContentView(appManager: appManager), isActive: $isAuthenticated) {
+                EmptyView()
             }
-
-        
-        
-        
+        )
+        .frame(maxWidth: DrawingConstants.signInButtonWidth)
+        .padding(.vertical, DrawingConstants.verticalPaddingSize)
     }
     
     private var signUpButton: some View {
         Button(action: {}) {
-            Text(Resources.Text.SignIn.orSignUp)
+            Text(Resources.Text.orSignUp)
                 .foregroundStyle(.white)
         }
+        .padding(.vertical, DrawingConstants.verticalPaddingSize)
     }
     
-    // MARK: - Functions
-    //    private func signIn() async {
-    //        await appManager.signIn()
-    //        if let error = await appManager.error {
-    //            alertMessage = error.localizedDescription
-    //            showAlert = true
-    //
-    //        } else {
-    //            isAuthenticated = true
-    //        }
-    //    }
+    
+    //    private var signInButton: some View {
+    //                CustomButton(action: {
+    //                    Task {
+    //                            do {
+    //                                try await appManager.test()
+    //                            } catch {
+    //                                // Обработка ошибки
+    //                                print("Ошибка при выполнении test(): (error)")
+    //                            }
+    //                        }
+    //                },
+    //                             title: Resources.Text.SignIn.title,
+    //                             buttonType: .onboarding
+    //                )
+    
+    
+    
+    //        return Button(Resources.Text.SignIn.title){
+    //                Task {
+    //                        do {
+    //                            try await appManager.test()
+    //                        } catch {
+    //                            // Обработка ошибки
+    //                            print("Ошибка при выполнении test(): (error)")
+    //                        }
+    //                    }
+    //            }
+    
+    
+    
+    
 }
+
+private var signUpButton: some View {
+    Button(action: {}) {
+        Text(Resources.Text.orSignUp)
+            .foregroundStyle(.white)
+    }
+}
+
+// MARK: - Functions
+//    private func signIn() async {
+//        await appManager.signIn()
+//        if let error = await appManager.error {
+//            alertMessage = error.localizedDescription
+//            showAlert = true
+//
+//        } else {
+//            isAuthenticated = true
+//        }
+//    }
+
 
 
 // MARK: - Previews

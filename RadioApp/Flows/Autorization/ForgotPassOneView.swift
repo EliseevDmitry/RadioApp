@@ -24,14 +24,14 @@ struct ForgotPassOneView: View {
                 
                 BackBarButton()
                 
-                Text(Resources.Text.ForgotPassOne.title)
+                Text(Resources.Text.forgotPassword)
                     .font(.custom(.sfBold, size: UIScreen.height * 1/16))
                     .padding(.bottom, UIScreen.height * 1/32)
                 
 //                TextField(Resources.Text.ForgotPassOne.email, text: $appManager.email)
 //                    .font(.title)
                                 
-                CustomButton(action: {}, title: Resources.Text.ForgotPassOne.sent, buttonType: .onboarding)
+                CustomButton(action: {}, title: Resources.Text.sent, buttonType: .onboarding)
                 // TODO: изменить тип кнопки и добавить действие
                 
                 Spacer()
