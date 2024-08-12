@@ -30,7 +30,7 @@ struct RadioAppApp: App {
                 ContentView(appManager: appManager)
                     .preferredColorScheme(.dark)
                 //---------CoreData--------
-                    //.environment(\.managedObjectContext, appManager.container.viewContext)
+                    .environment(\.managedObjectContext, appManager.container.viewContext)
                 //---------CoreData--------
             } else {
                 SignInView(appManager: appManager)

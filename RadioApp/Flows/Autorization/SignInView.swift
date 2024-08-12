@@ -19,8 +19,8 @@ struct SignInView: View {
         NavigationView {
             ZStack {
                 // Backgrounds
-//                AnimatedBackgroundView()
-//                AuthBackgroundView()
+                //                AnimatedBackgroundView()
+                //                AuthBackgroundView()
                 
                 VStack(alignment: .leading) {
                     Spacer()
@@ -93,19 +93,33 @@ struct SignInView: View {
     }
     
     private var signInButton: some View {
-        CustomButton(action: {
-            Task {
-                await appManager.signIn()
+        //        CustomButton(action: {
+        //            Task {
+        //                await appManager.signIn()
+        //            }
+        //            isAuthenticated = true
+        //        },
+        //                     title: Resources.Text.SignIn.title,
+        //                     buttonType: .onboarding
+        //        )
+        //        .background(
+        //            NavigationLink(destination: ContentView(appManager: appManager), isActive: $isAuthenticated) {
+        //                EmptyView()
+        //            }
+        //        )
+        NavigationLink(destination: ContentView(appManager: appManager), isActive: $isAuthenticated) {
+            
+            Button(Resources.Text.SignIn.title){
+                Task {
+                    await appManager.signIn()
+                }
+                isAuthenticated = true
             }
-        },
-                     title: Resources.Text.SignIn.title,
-                     buttonType: .onboarding
-        )
-        .background(
-            NavigationLink(destination: ContentView(appManager: appManager), isActive: $isAuthenticated) {
-                EmptyView()
-            }
-        )
+            .foregroundStyle(.blue)
+            .background(.red)
+        }
+        
+        
     }
     
     private var signUpButton: some View {
@@ -116,16 +130,16 @@ struct SignInView: View {
     }
     
     // MARK: - Functions
-//    private func signIn() async {
-//        await appManager.signIn()
-//        if let error = await appManager.error {
-//            alertMessage = error.localizedDescription
-//            showAlert = true
-//            
-//        } else {
-//            isAuthenticated = true
-//        }
-//    }
+    //    private func signIn() async {
+    //        await appManager.signIn()
+    //        if let error = await appManager.error {
+    //            alertMessage = error.localizedDescription
+    //            showAlert = true
+    //
+    //        } else {
+    //            isAuthenticated = true
+    //        }
+    //    }
 }
 
 // MARK: - Previews
@@ -134,6 +148,6 @@ struct SignInView_Previews: PreviewProvider {
     
     static var previews: some View {
         SignInView(appManager: previewAppManager)
-
+        
     }
 }
