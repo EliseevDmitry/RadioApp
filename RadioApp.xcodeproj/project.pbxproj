@@ -43,12 +43,12 @@
 		26A7379E2C5A6A670002F1E9 /* SplineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379D2C5A6A670002F1E9 /* SplineView.swift */; };
 		26AFBD4B2C69A84D00C49554 /* TransitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFBD4A2C69A84D00C49554 /* TransitView.swift */; };
 		26AFBD4D2C69CF0500C49554 /* GotoWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFBD4C2C69CF0500C49554 /* GotoWelcome.swift */; };
-		26B1A6622C674C2E00734278 /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26B1A6602C674C2E00734278 /* LikeStations.xcdatamodeld */; };
 		26D180992C5AA0A300D4EF68 /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D180982C5AA0A300D4EF68 /* PopularView.swift */; };
 		26FB42E62C64994F00F9C2A2 /* FavoritesComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB42E52C64994F00F9C2A2 /* FavoritesComponentView.swift */; };
 		7A0ED5E12C592B280063F449 /* TestView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0ED5E02C592B280063F449 /* TestView2.swift */; };
 		7A1194752C64F49A0050515E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		7A1194782C6502BE0050515E /* EqualizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1194772C6502BE0050515E /* EqualizerView.swift */; };
+		7A586CAB2C69EF0800FB9F6F /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A586CA92C69EF0800FB9F6F /* LikeStations.xcdatamodeld */; };
 		7A6579FF2C57F34E00FFDBFD /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6579FE2C57F34E00FFDBFD /* URLManager.swift */; };
 		7A67B1542C65F718006EBE13 /* AmplitudeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67B1532C65F718006EBE13 /* AmplitudeService.swift */; };
 		7A7A4B302C5B51B000CD8794 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A4B2F2C5B51B000CD8794 /* ContentView.swift */; };
@@ -131,11 +131,11 @@
 		26A7379D2C5A6A670002F1E9 /* SplineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplineView.swift; sourceTree = "<group>"; };
 		26AFBD4A2C69A84D00C49554 /* TransitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitView.swift; sourceTree = "<group>"; };
 		26AFBD4C2C69CF0500C49554 /* GotoWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoWelcome.swift; sourceTree = "<group>"; };
-		26B1A6612C674C2E00734278 /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		26D180982C5AA0A300D4EF68 /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
 		26FB42E52C64994F00F9C2A2 /* FavoritesComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoritesComponentView.swift; path = RadioApp/Components/FavoritesComponentView.swift; sourceTree = SOURCE_ROOT; };
 		7A0ED5E02C592B280063F449 /* TestView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView2.swift; sourceTree = "<group>"; };
 		7A1194772C6502BE0050515E /* EqualizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualizerView.swift; sourceTree = "<group>"; };
+		7A586CAA2C69EF0800FB9F6F /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		7A6579FE2C57F34E00FFDBFD /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		7A67B1532C65F718006EBE13 /* AmplitudeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplitudeService.swift; sourceTree = "<group>"; };
 		7A7A4B2F2C5B51B000CD8794 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -474,7 +474,7 @@
 		E1E497E32C56D4DF0099440D /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				26B1A6602C674C2E00734278 /* LikeStations.xcdatamodeld */,
+				7A586CA92C69EF0800FB9F6F /* LikeStations.xcdatamodeld */,
 				E1E87BB42C649F450070D855 /* NotificationsService.swift */,
 				E1E87BBB2C65E7C10070D855 /* LocalizationService.swift */,
 				7A67B1532C65F718006EBE13 /* AmplitudeService.swift */,
@@ -676,6 +676,7 @@
 				2663C7A52C56A1F2002EFD0C /* VolumeView.swift in Sources */,
 				E14AA7962C600FF900BAC1BE /* AboutUsCell.swift in Sources */,
 				220E86A32C5CD94B00F8B0D6 /* AppDelegate.swift in Sources */,
+				7A586CAB2C69EF0800FB9F6F /* LikeStations.xcdatamodeld in Sources */,
 				7A67B1542C65F718006EBE13 /* AmplitudeService.swift in Sources */,
 				26D180992C5AA0A300D4EF68 /* PopularView.swift in Sources */,
 				7A89B80F2C663A2100B6F76D /* StationDetailsView.swift in Sources */,
@@ -711,7 +712,6 @@
 				E18529DC2C5D08F000BBE649 /* ChangePhotoView.swift in Sources */,
 				220E86AA2C5D018900F8B0D6 /* TestAuthView.swift in Sources */,
 				E1E498062C58D3DF0099440D /* SettingView.swift in Sources */,
-				26B1A6622C674C2E00734278 /* LikeStations.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1016,14 +1016,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		26B1A6602C674C2E00734278 /* LikeStations.xcdatamodeld */ = {
+		7A586CA92C69EF0800FB9F6F /* LikeStations.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				26B1A6612C674C2E00734278 /* LikeStations.xcdatamodel */,
+				7A586CAA2C69EF0800FB9F6F /* LikeStations.xcdatamodel */,
 			);
-			currentVersion = 26B1A6612C674C2E00734278 /* LikeStations.xcdatamodel */;
+			currentVersion = 7A586CAA2C69EF0800FB9F6F /* LikeStations.xcdatamodel */;
 			name = LikeStations.xcdatamodeld;
-			path = "/Users/dmitriyeliseev/Downloads/RadioApp-develop/RadioApp/Services/LikeStations.xcdatamodeld";
+			path = /Users/evgeniy/Desktop/GitHub/RadioApp/RadioApp/Services/LikeStations.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

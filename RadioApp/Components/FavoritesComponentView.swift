@@ -30,7 +30,7 @@ struct FavoritesComponentView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Text(appManager.getString(tags: self.station.tags)?.uppercased() ?? self.station.countrycode)
                         .font(.custom(DS.Fonts.sfBold, size: appManager.getString(tags: self.station.tags) != nil ? 20 : 30))
-                        .foregroundStyle(selectedStationID == station.stationuuid ? .blue : DS.Colors.frame)
+                        .foregroundStyle(selectedStationID == station.stationuuid ? .white : DS.Colors.frame)
                     HStack() {
                         Spacer()
                         Text(station.name)
