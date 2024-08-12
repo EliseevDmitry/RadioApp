@@ -41,8 +41,10 @@ struct StationDetailsView: View {
             Spacer()
             HStack(spacing: 30) {
                 BackButtonView(appManager: appManager)
+                    .disabled(true)
                 PlayButtonView(appManager: appManager)
                 ForwardButtonView(appManager: appManager)
+                    .disabled(true)
             }
             .padding(.bottom, 80)
         }
