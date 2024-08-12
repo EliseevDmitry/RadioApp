@@ -22,7 +22,7 @@ enum Resources {
                 static let yourEmail = "Your email"
                 static let password = "Password"
                 static let yourPassword = "Your password"
-                static let forgotPassword = "Forgot Password?"
+                static let forgotPassword = "Forgot Password"
                 static let orConnectWith = "Or connect with"
                 static let orSignUp = "Or Sign Up"
 
