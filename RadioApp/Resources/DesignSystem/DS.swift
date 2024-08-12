@@ -31,7 +31,8 @@ enum DS {
         static let graySearchImage = Color(hex: "#1F1D2B")
         /// розовый, PlayingNow
         static let pinkPlaying = Color(hex: "#B02854")
-
+        /// рыжеватый
+                static let reddish = Color(hex: "#DC4E41")
 
     }
     

@@ -27,17 +27,17 @@ final class ViewModel: ObservableObject {
     @Published var error: Error?
     @Published var tagSelection: String?
     
-    func getBoolAuth() -> Bool {
-
-        if authService.isAuthenticated() {
-            //tagSelection = "view2"
-            return true
-            
-        } else {
-            //tagSelection = "view3"
-            return false
-        }
-    }
+//    func getBoolAuth() -> Bool {
+//
+//        if authService.isAuthenticated() {
+//            //tagSelection = "view2"
+//            return true
+//            
+//        } else {
+//            //tagSelection = "view3"
+//            return false
+//        }
+//    }
     
     
     // MARK: - Auth methods
@@ -66,6 +66,8 @@ final class ViewModel: ObservableObject {
         }
     }
 
+    
+    
     func signOut() {
         Task {
             try AuthService.shared.signUserOut()
@@ -146,6 +148,20 @@ final class ViewModel: ObservableObject {
         }
     }
     
+    
+    func testNewUser() async throws {
+        try await Task.sleep(nanoseconds: 500_000_000) // Задержка в 1 секунду
+
+        try await authService.registerUser(with: email, password: password, username: username)
+
+        DispatchQueue.main.async {
+            if self.authService.userSession == nil {
+                self.tagSelection = "view3"
+            } else {
+                self.tagSelection = "view2"
+            }
+        }
+    }
     
     
     

@@ -10,7 +10,6 @@ import SwiftUI
 
 struct AnimatedBackgroundView: View {
     @State private var animate = false
-    
     var body: some View {
         ZStack {
             DS.Colors.darkBlue
@@ -59,6 +58,8 @@ struct BlobModifier: ViewModifier {
             )
     }
 }
+
+
 
 // MARK: - Preview
 #Preview {
