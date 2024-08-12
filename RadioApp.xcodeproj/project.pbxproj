@@ -227,14 +227,6 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
-		22891AC32C5B5EF700DE33E6 /* AuthService */ = {
-			isa = PBXGroup;
-			children = (
-				22891AC42C5B5F5F00DE33E6 /* AuthService.swift */,
-			);
-			path = AuthService;
-			sourceTree = "<group>";
-		};
 		2663C7712C569E54002EFD0C = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +321,7 @@
 			children = (
 				2663C7AA2C56A257002EFD0C /* Model.swift */,
 				2663C7A82C56A249002EFD0C /* ViewModel.swift */,
+				22891AC42C5B5F5F00DE33E6 /* AuthService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -479,7 +472,6 @@
 				E1E87BB42C649F450070D855 /* NotificationsService.swift */,
 				E1E87BBB2C65E7C10070D855 /* LocalizationService.swift */,
 				7A67B1532C65F718006EBE13 /* AmplitudeService.swift */,
-				22891AC32C5B5EF700DE33E6 /* AuthService */,
 				E1E497E42C56D4F70099440D /* NetworkService */,
 			);
 			path = Services;

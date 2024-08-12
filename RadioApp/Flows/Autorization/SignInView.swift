@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SignInView: View {
     // MARK: - Properties
-    //@EnvironmentObject var appManager: ViewModel
     @ObservedObject var appManager: ViewModel
     @State private var isAuthenticated = false
     @State private var showAlert = false
@@ -18,11 +17,10 @@ struct SignInView: View {
     // MARK: - Body
     var body: some View {
         NavigationView {
-            
             ZStack {
                 // Backgrounds
-                AnimatedBackgroundView()
-                AuthBackgroundView()
+//                AnimatedBackgroundView()
+//                AuthBackgroundView()
                 
                 VStack(alignment: .leading) {
                     Spacer()
@@ -97,7 +95,7 @@ struct SignInView: View {
     private var signInButton: some View {
         CustomButton(action: {
             Task {
-                await signIn()
+                await appManager.signIn()
             }
         },
                      title: Resources.Text.SignIn.title,
@@ -118,24 +116,24 @@ struct SignInView: View {
     }
     
     // MARK: - Functions
-    private func signIn() async {
-        await appManager.signIn()
-        if let error = await appManager.error {
-            alertMessage = error.localizedDescription
-            showAlert = true
-            
-        } else {
-            isAuthenticated = true
-        }
-    }
+//    private func signIn() async {
+//        await appManager.signIn()
+//        if let error = await appManager.error {
+//            alertMessage = error.localizedDescription
+//            showAlert = true
+//            
+//        } else {
+//            isAuthenticated = true
+//        }
+//    }
 }
 
 // MARK: - Previews
-//struct SignInView_Previews: PreviewProvider {
-//    static let previewAppManager = ViewModel()
-//    
-//    static var previews: some View {
-//        SignInView()
-//            .environmentObject(previewAppManager)
-//    }
-//}
+struct SignInView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    
+    static var previews: some View {
+        SignInView(appManager: previewAppManager)
+
+    }
+}
