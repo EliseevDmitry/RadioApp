@@ -7,14 +7,11 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct EqualizerView: View {
-
-    //@EnvironmentObject var appManager: ViewModel
-    var appManager: ViewModel
+    //MARK: - PROPERTIES
+    @ObservedObject var appManager: ViewModel
     @State private var phaseShift: Double = 0.0
-
+    //MARK: - BODY
     var body: some View {
             GeometryReader { geometry in
                 HStack(spacing: 10) {
@@ -22,11 +19,8 @@ struct EqualizerView: View {
                         let randomFactor = CGFloat.random(in: 0.5...1.5)
                         let amplitudeModifier = appManager.amplitude * randomFactor * CGFloat(column) * 0.5
                         let circleCount = max(1, min(40, Int(amplitudeModifier)))
-                        
                         let xPosition = Double(column) / 6.0
-                        
                         let yOffset = sin(xPosition + phaseShift + amplitudeModifier / 5) * geometry.size.height / 8
-                        
                         VStack {
                             ForEach(0 ..< circleCount, id: \.self) { _ in
                                 Circle()
@@ -40,7 +34,6 @@ struct EqualizerView: View {
             .frame(maxWidth: 300, maxHeight: 300)
             .onAppear {
                 //appManager.playAudio(url: Station.testStation().url)
-
                 // Cкорость движения синусоиды
                 Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { _ in
                     withAnimation(.spring(duration: 0.2).delay(0.09)) {
@@ -53,7 +46,7 @@ struct EqualizerView: View {
     }
 }
 
-//#Preview {
-//    EqualizerView()
-//        .environmentObject(ViewModel())
-//}
+//MARK: - PREVIEW
+#Preview {
+    EqualizerView(appManager: ViewModel())
+}

@@ -13,7 +13,8 @@ struct ProfileView: View {
     @AppStorage("selectedLanguage") private var language = LocalizationService.shared.language
     @AppStorage("isOnboarding") var isOnboarding = true
     @ObservedObject var appManager: ViewModel
-    @ObservedObject var viewModel: ProfileViewModel
+    //???
+    var viewModel: ProfileViewModel
     @State private var showLogoutAlert: Bool = false
     @State private var errorAlert: AnyAppAlert? = nil
     @State private var imageURL: URL? = nil

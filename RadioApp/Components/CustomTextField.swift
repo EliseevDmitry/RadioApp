@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: - CustomTextField
+//MARK: - CustomTextField
 struct CustomTextField: View {
     // MARK: - Properties
     @Binding var value: String
@@ -53,7 +53,6 @@ struct CustomTextField: View {
                     .opacity(Drawing.strokeOpacity)
                 ZStack {
                     Drawing.backgroundColor
-                   
                         .frame(
                             width: Drawing.backgroundWidth,
                             height: Drawing.backgroundHeight

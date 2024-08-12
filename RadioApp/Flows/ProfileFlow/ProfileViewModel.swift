@@ -10,7 +10,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-@MainActor
+//@MainActor
 final class ProfileViewModel: ObservableObject {
     
     // MARK: - Stored Properties

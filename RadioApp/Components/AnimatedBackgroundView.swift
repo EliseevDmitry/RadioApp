@@ -49,7 +49,6 @@ struct BlobView: View {
 
 struct BlobModifier: ViewModifier {
     @Binding var animate: Bool
-    
     func body(content: Content) -> some View {
         content
             .offset(

@@ -9,14 +9,9 @@ import SwiftUI
 
 struct VoteView: View {
     //MARK: - PROPERTIES
-   // @EnvironmentObject var appManager: ViewModel
     var appManager: ViewModel
-    
-    //---------CoreData--------
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var stationsData: FetchedResults<StationData>
-    //---------CoreData--------
-    
     var isShow: Bool
     var idStation: String
     //MARK: - BODY
@@ -56,7 +51,7 @@ struct VoteView: View {
                     try? moc.save()
                 } else {
                     moc.reset()
-                }   
+                }
             }
         } label: {
             Image(systemName: isShow ? "heart.fill" : "heart")
@@ -64,20 +59,19 @@ struct VoteView: View {
                 .scaledToFit()
                 .foregroundStyle(.white)
         }
-//        .task {
-//            if !appManager.islike {
-//                //print("отправляем запрос на сервер")
-//            }
-//        }
+        //.task {
+        //if !appManager.islike {
+        ////print("отправляем запрос на сервер")
+        //}
+        //}
         .disabled(!isShow ? true : false)
     }
 }
 
 //MARK: - PREVIEW
-//struct VoteView_Previews: PreviewProvider {
-//    static let previewAppManager = ViewModel()
-//    static var previews: some View {
-//        VoteView(isShow: .random(), idStation: Station.testStation().stationuuid)
-//            .environmentObject(previewAppManager)
-//    }
-//}
+struct VoteView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    static var previews: some View {
+        VoteView(appManager: previewAppManager, isShow: .random(), idStation: Station.testStation().stationuuid)
+    }
+}
