@@ -25,19 +25,19 @@ struct SignInView: View {
                 VStack(alignment: .leading) {
                     Spacer()
                     
-                    appLogo
+                 //   appLogo
                     
-                    titleText
+                   // titleText
                     
-                    subtitleText
+                  //  subtitleText
                     
-                    inputFields
+                   inputFields
                     
-                    socialMediaButton
+                   // socialMediaButton
                     
                     signInButton
                     
-                    signUpButton
+                  //  signUpButton
                     
                     Spacer()
                 }
@@ -51,6 +51,9 @@ struct SignInView: View {
                 }
             }
         }
+        .navigationViewStyle(.stack)
+//        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
     }
     // MARK: - Subviews
     private var appLogo: some View {

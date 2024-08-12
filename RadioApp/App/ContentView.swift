@@ -28,7 +28,7 @@ struct ContentView: View {
                 CustomTabBarView(appManager: appManager, selectedTab: $selectedTab)
                 Spacer()
             }
-            .navigationViewStyle(.stack)
+            //.navigationViewStyle(.stack)
             .ignoresSafeArea()
             .navigationBarBackButtonHidden(true)
             .dynamicTypeSize(.xSmall ... .xLarge)
