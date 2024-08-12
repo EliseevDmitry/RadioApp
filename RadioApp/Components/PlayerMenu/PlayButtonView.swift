@@ -32,12 +32,13 @@ struct PlayButtonShape: Shape {
 
 
 struct PlayButtonView: View {
-    //@EnvironmentObject var appManager: ViewModel
+    //MARK: - PROPERTIES
     @ObservedObject var appManager: ViewModel
+    //MARK: - BODY
     var body: some View {
         Button{
-         //action
-
+            //action
+            
             if appManager.player != nil {
                 if appManager.isPlay {
                     appManager.pauseAudioStream()
@@ -45,14 +46,14 @@ struct PlayButtonView: View {
                     appManager.playAudioStream()
                 }
             }
-           
+            
         } label: {
             //Image(.play)
             Image(systemName: appManager.isPlay ? "play.fill" : "pause.fill")
                 .resizable()
                 .foregroundStyle(.white)
                 .frame(width: 37, height: 37)
-             
+            
         }
         .frame(width: 89, height: 89)
         .background {
@@ -67,7 +68,7 @@ struct PlayButtonView: View {
         .background {
             PlayButtonShape()
                 .fill(DS.Colors.blueNeon)
-                .frame(width: 111, height: 111)     
+                .frame(width: 111, height: 111)
         }
         .background {
             PlayButtonShape()
@@ -82,6 +83,7 @@ struct PlayButtonView: View {
     }
 }
 
-//#Preview {
-//    PlayButtonView()
-//}
+//MARK: - PREVIEW
+#Preview {
+    PlayButtonView(appManager: ViewModel())
+}

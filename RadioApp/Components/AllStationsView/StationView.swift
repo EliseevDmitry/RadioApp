@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct StationView: View {
-
-    //@EnvironmentObject var appManager: ViewModel
     var appManager: ViewModel
     @Binding var selectedStationID: String
     var station: Station
@@ -19,11 +17,6 @@ struct StationView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .fill(selectedStationID == station.stationuuid ? DS.Colors.pinkNeon : .clear)
-//            Button {
-//                // on tap
-//                selectedStationID = station.stationuuid
-//                appManager.playAudio(url: station.url)
-//            } label: {
                 // code, name, playing now
                 HStack{
                     HStack {
@@ -108,10 +101,9 @@ struct StationView: View {
 }
 
 //MARK: - PREVIEW
-//struct StationView_Previews: PreviewProvider {
-//    static let previewAppManager = ViewModel()
-//    static var previews: some View {
-//        StationView(selectedStationID: .constant(""), station: .testStation())
-//            .environmentObject(previewAppManager)
-//    }
-//}
+struct StationView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    static var previews: some View {
+        StationView(appManager: previewAppManager, selectedStationID: .constant(""), station: .testStation())
+    }
+}
