@@ -66,7 +66,7 @@ final class AuthService {
             
         } catch let error {
             print(error.localizedDescription)
-            print(userSession)
+            print(userSession as Any)
         }
     }
     
