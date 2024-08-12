@@ -5,11 +5,7 @@
 //  Created by Dmitriy Eliseev on 08.08.2024.
 //
 
-
-
 import SwiftUI
-
-
 
 struct FavoritesComponentView: View {
     //MARK: - PROPERTIES

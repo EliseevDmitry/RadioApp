@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct SearchButtonView: View {
-
+    //MARK: - PROPERTIES
     @Binding var isSearching: Bool
-
+    //MARK: - BODY
     var body: some View {
         Image(systemName: isSearching ? "xmark" : "chevron.right")
             .resizable()
@@ -22,6 +22,7 @@ struct SearchButtonView: View {
     }
 }
 
+//MARK: - PREVIEW
 #Preview {
     SearchButtonView(isSearching: .constant(false))
 }

@@ -15,9 +15,9 @@ import Combine
 
 @MainActor
 final class ViewModel: ObservableObject {
-    //@AppStorage("isOnboarding") var isOnboarding = false
+    
     //Авторизация
-     let authService = AuthService.shared
+    let authService = AuthService.shared
     // свойства для аутентификации пользователя
     @Published var email = "Franky@gmail.com"
     @Published var password = "1212121"
@@ -26,18 +26,6 @@ final class ViewModel: ObservableObject {
     @Published var userProfileImage: UIImage? = nil
     @Published var error: Error?
     @Published var tagSelection: String?
-    
-//    func getBoolAuth() -> Bool {
-//
-//        if authService.isAuthenticated() {
-//            //tagSelection = "view2"
-//            return true
-//            
-//        } else {
-//            //tagSelection = "view3"
-//            return false
-//        }
-//    }
     
     
     // MARK: - Auth methods
@@ -48,24 +36,20 @@ final class ViewModel: ObservableObject {
         userProfileImage = UIImage(named: user?.profileImage ?? Resources.Image.eliseev)
     }
     
-    
-
     func signIn() async {
-            do {
-                try await AuthService.shared.signIn(with: email, password: password)
-            } catch {
-//                self.error = error
-            }
+        do {
+            try await AuthService.shared.signIn(with: email, password: password)
+        } catch {
+            //print err
         }
+    }
     
-
     func registerUser() {
         Task {
             try await AuthService.shared.registerUser(with: email, password: password, username: username)
             isUserRegistered = true
         }
     }
-
     
     
     func signOut() {
@@ -75,17 +59,8 @@ final class ViewModel: ObservableObject {
     }
     //--------Функция дениса по входу в приложение
     
-    
-    
-    
-    
-    
-    
-    
-    
     //Сервис запроса станций
     private let network = NetworkService()
-    
     
     //Эквалайзер
     private var amplitudeService = AmplitudeService()
@@ -93,7 +68,7 @@ final class ViewModel: ObservableObject {
     
     //Массив станций - сердце приложения
     @Published var stations = [Station]()
-
+    
     //VolumeView
     @Published var volume: CGFloat = 0.0
     
@@ -101,44 +76,26 @@ final class ViewModel: ObservableObject {
     @Published var selectedStation = ""
     //VoteView
     @Published var islike: Bool = false
-
+    
     //AVPlayer
     var player: AVPlayer?
     @Published var isPlay: Bool = false
-    
-
-    
-    //@Published var showPassword = false
     @Published var isUserRegistered = false
-    //@Published var showSignInView = false
-
-//    @Published var testUserEmail = "Franky@gmail.com"
-//    @Published var testUserPassword = "1212121"
-//    @Published var testUserUsername = "Frank"
+    
+    
+    //@Published var testUserEmail = "Franky@gmail.com"
+    //@Published var testUserPassword = "1212121"
+    //@Published var testUserUsername = "Frank"
     
     //search
     @Published var searchText: String = ""
     @Published var isActiveDetailView = false
-
-    
-//    func test()  {
-//    
-//        DispatchQueue.main.async {
-//            try await authService.signIn(with: email, password: password)
-//        }
-//        
-//        if authService.userSession == nil {
-//            tagSelection = "view3"
-//        } else {
-//            tagSelection = "view2"
-//        }
-//    }
     
     func test() async throws {
         try await Task.sleep(nanoseconds: 500_000_000) // Задержка в 1 секунду
-
+        
         try await authService.signIn(with: email, password: password)
-
+        
         DispatchQueue.main.async {
             if self.authService.userSession == nil {
                 self.tagSelection = "view3"
@@ -147,13 +104,12 @@ final class ViewModel: ObservableObject {
             }
         }
     }
-    
     
     func testNewUser() async throws {
         try await Task.sleep(nanoseconds: 500_000_000) // Задержка в 1 секунду
-
+        
         try await authService.registerUser(with: email, password: password, username: username)
-
+        
         DispatchQueue.main.async {
             if self.authService.userSession == nil {
                 self.tagSelection = "view3"
@@ -162,32 +118,21 @@ final class ViewModel: ObservableObject {
             }
         }
     }
-    
-    
     
     func fetchSearchStations() async throws {
         var fetchSearchStations: [Station]
         fetchSearchStations = try await network.searchByName(searchText: searchText)
         stations = fetchSearchStations
     }
-
-    
     
     // likes
     var likes = Like(likeSet: Set<String>())
     
-
+    
     // Audio session object
     let session = AVAudioSession.sharedInstance()
     // Observer
     var progressObserver: NSKeyValueObservation!
-    
-    
-    //---------CoreData--------
-    //@Published var container = NSPersistentContainer(name: "LikeStations")
-    let container = NSPersistentContainer(name: "LikeStations")
-    //---------CoreData--------
-    
     
     func setVolme(){
         do {
@@ -202,28 +147,23 @@ final class ViewModel: ObservableObject {
                 print("current volume value - \(self.volume)")
             }
         }
-     
     }
-
-    
     
     //delete Observer
     func unsubscribe() {
         self.progressObserver.invalidate()
     }
-
     
-    
+    //---------CoreData--------
+    let container = NSPersistentContainer(name: "LikeStations")
+    //---------CoreData--------
     
     //инициализируем - начальную громкость устройства
     init() {
         self.volume = CGFloat(session.outputVolume)
         print("init volume value - \(self.volume)")
         setVolme()
-        
         getUserInfo()
-        
-        
         //---------CoreData--------
         //инициализация PersistentContainer CoreData
         container.loadPersistentStores{description, error in
@@ -232,11 +172,7 @@ final class ViewModel: ObservableObject {
             }
         }
         //---------CoreData--------
-        
         guard let onboarding = UserDefaults.standard.value(forKey: "isOnboarding") as? Bool else {return}
-          
-        
-        
         if authService.userSession == nil {
             if onboarding {
                 tagSelection = "view3"
@@ -248,17 +184,12 @@ final class ViewModel: ObservableObject {
         }
     }
     
-    
-
-
-
-
     func fetchTopStations() async throws {
         var fetchedStations: [Station]
         fetchedStations = try await network.getTopStations(numberLimit: 20)
         stations = fetchedStations
     }
-
+    
     func fetchAllStations() async throws {
         var fetchedAllStations: [Station]
         fetchedAllStations = try await network.getAllStations()
@@ -268,7 +199,6 @@ final class ViewModel: ObservableObject {
     func voteStationByID(id: String) async throws {
         try await network.voteStationById(id: id)
     }
-    
     
     //обновление (votes) текущей станции в случае успешного запроса
     func getOneStationByID(id: String) async throws {
@@ -288,8 +218,6 @@ final class ViewModel: ObservableObject {
         }
     }
     
-    
-    
     //Обновление (votes) аудиостанций не дожидаясь обновления сервера
     func updateVotesWithoutRequest(idStation: String){
         if var updateStation = getStationForID(id:idStation){
@@ -302,8 +230,6 @@ final class ViewModel: ObservableObject {
         }
     }
     
-    
-    
     //Внутрянняя функция поиска индекса в массиве [Station]()
     func getIndexStations(idStation: String)->Int?{
         for (index, station) in stations.enumerated() {
@@ -313,9 +239,6 @@ final class ViewModel: ObservableObject {
         }
         return nil
     }
-    
-    
-    
     
     func setStations(stationData: [StationData]) -> Bool{
         print(stationData)
@@ -331,8 +254,6 @@ final class ViewModel: ObservableObject {
         }
     }
     
-    
-    
     func containsElementCoreData(stationData: [StationData], idStation: String) -> Bool{
         for station in stationData {
             if station.stationuuid == idStation {
@@ -342,9 +263,6 @@ final class ViewModel: ObservableObject {
         return false
     }
     
-
-    
-    
     //save likes
     func saveLikesData(){
         let encoder = JSONEncoder()
@@ -352,8 +270,6 @@ final class ViewModel: ObservableObject {
             UserDefaults.standard.set(data, forKey: "likes")
         }
     }
-
-    
     
     //load likes
     func loadLikesData(){
@@ -362,8 +278,6 @@ final class ViewModel: ObservableObject {
         guard let loadData = try? decoder.decode(Like.self, from: data) else {return}
         likes.likeSet = loadData.likeSet
     }
-
-    
     
     //проверка на наличие уже оставленного отзыва
     //возвращает false при уже оставленном like
@@ -380,42 +294,39 @@ final class ViewModel: ObservableObject {
         print("Такой ID уже существует!")
         return false
     }
-
-    
     
     func playAudio(url: String){
         guard let url = URL.init(string: url) else { return }
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-
+            
             player = AVPlayer(url: url)
-            player?.play()
+           // player?.play()
             isPlay = true
             amplitudeService.startUpdatingAmplitude(viewModel: self)
-
+            
         } catch let err {
             print(err.localizedDescription)
         }
     }
-
+    
     func playAudioStream(){
-        player?.play()
-        isPlay = true
+        //player?.play()
+        //isPlay = true
         amplitudeService.startUpdatingAmplitude(viewModel: self)
     }
-
+    
     func pauseAudioStream(){
-        player?.pause()
-        isPlay = false
+        //player?.pause()
+       // isPlay = false
         amplitudeService.startUpdatingAmplitude(viewModel: self)
     }
     
     func stopAudioStream() {
-            player = nil
-            isPlay = false
+        //player = nil
+        //isPlay = false
         selectedStation = ""
     }
-    
     
     //запрос данных станции при нажатии на сердечно like
     func getStationForID(id: String) -> Station? {
@@ -431,7 +342,7 @@ final class ViewModel: ObservableObject {
             return nil
         }
     }
-
+    
     func nextTrackAudioStream(){
         var indexStation: Int?
         for (index, station) in stations.enumerated() {
@@ -456,8 +367,6 @@ final class ViewModel: ObservableObject {
             return
         }
     }
-
-    
     
     func backTrackAudioStream() {
         var indexStation: Int?
@@ -483,8 +392,6 @@ final class ViewModel: ObservableObject {
             return
         }
     }
-
-    
     
     func playFirstStation() {
         if stations.count > 0 {
@@ -493,7 +400,7 @@ final class ViewModel: ObservableObject {
             playAudio(url: stations[0].url)
         }
     }
-
+    
     //get Tag in String with ","
     func getString(tags: String)->String? {
         let tagsArr = tags.components(separatedBy: ",")
@@ -507,11 +414,4 @@ final class ViewModel: ObservableObject {
             return nil
         }
     }
-
-    
-    
-    
-    
-    
-
 }

@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct SearchBarView: View {
-
-    //@EnvironmentObject var appManager: ViewModel
+    //MARK: - PROPERTIES
     @ObservedObject var appManager: ViewModel
     @State var searchText: String = ""
     @Binding var isSearching: Bool
-
+    //MARK: - BODY
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
@@ -68,8 +67,7 @@ struct SearchBarView: View {
         }
     }
 }
-
-//#Preview {
-//    SearchBarView(isSearching: .constant(false))
-//        .environmentObject(ViewModel())
-//}
+//MARK: - PREVIEW
+#Preview {
+    SearchBarView(appManager: ViewModel(), isSearching: .constant(false))
+}

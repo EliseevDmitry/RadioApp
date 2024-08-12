@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ForwardButtonView: View {
     //MARK: - PROPERTIES
-    //@EnvironmentObject var appManager: ViewModel
     var appManager: ViewModel
     //MARK: - BODY
     var body: some View {
@@ -30,10 +29,9 @@ struct ForwardButtonView: View {
 }
 
 //MARK: - PREVIEW
-//struct ForwardButtonView_Previews: PreviewProvider {
-//    static let previewAppManager = ViewModel()
-//    static var previews: some View {
-//        ForwardButtonView()
-//            .environmentObject(previewAppManager)
-//    }
-//}
+struct ForwardButtonView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    static var previews: some View {
+        ForwardButtonView(appManager: previewAppManager)
+    }
+}

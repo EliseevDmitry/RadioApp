@@ -69,8 +69,8 @@ struct PopularView: View {
         .onAppear{
             appManager.loadLikesData()
             //clear Set Likes
-            //appManager.likes.likeSet.removeAll()
-            //appManager.saveLikesData()
+//            appManager.likes.likeSet.removeAll()
+//            appManager.saveLikesData()
         }
         .onDisappear{
             if !appManager.isActiveDetailView{
