@@ -27,7 +27,7 @@ struct UserIcon: Shape {
 struct ToolbarProfile: View {
     //@EnvironmentObject var appManager: ViewModel
     
-    var appManager: ViewModel
+    @ObservedObject var appManager: ViewModel
     var body: some View {
         // Существующий NavigationLink
         //скорее всего косяк тут!!!

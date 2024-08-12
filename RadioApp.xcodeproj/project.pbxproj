@@ -351,10 +351,10 @@
 			isa = PBXGroup;
 			children = (
 				2663C79A2C56A09B002EFD0C /* SignInView.swift */,
-				2277BB482C5E8A7600317DD2 /* New Group */,
 				2663C79C2C56A0AB002EFD0C /* SignUpView.swift */,
 				2277BB492C5F2D0E00317DD2 /* ForgotPassOneView.swift */,
 				2277BB4B2C5F2D5700317DD2 /* ForgotPassTwoView.swift */,
+				2277BB482C5E8A7600317DD2 /* New Group */,
 			);
 			path = Autorization;
 			sourceTree = "<group>";

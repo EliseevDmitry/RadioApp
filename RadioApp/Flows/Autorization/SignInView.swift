@@ -53,6 +53,8 @@ struct SignInView: View {
                     
                     inputFields
                     
+                    forgotPasswordButton
+                    
                     socialMediaButton
                     
                     signInButton
@@ -61,7 +63,7 @@ struct SignInView: View {
                     
                     Spacer()
                 }
-                .padding()
+                .padding(32)
                 .alert(isPresented: $showAlert) {
                     Alert(
                         title: Text("Error"),
@@ -84,7 +86,7 @@ struct SignInView: View {
     }
     
     private var appLogo: some View {
-        Image("playButtonLogo")
+        Image("toolbarplay")
             .resizable()
             .frame(
                 width: DrawingConstants.screenLogoImageWidth,
@@ -150,7 +152,11 @@ struct SignInView: View {
             .font(.subheadline)
             .padding(.vertical, DrawingConstants.verticalPaddingSize)
             
-            Button(action: {}) {
+            Button(action: {
+                
+                
+                
+            }) {
                 ZStack {
                     Circle()
                         .foregroundStyle(DS.Colors.reddish)
@@ -177,22 +183,21 @@ struct SignInView: View {
             title: Resources.Text.signIn,
             buttonType: .onboarding
         )
-        .background(
-            NavigationLink(destination: ContentView(appManager: appManager), isActive: $isAuthenticated) {
-                EmptyView()
-            }
-        )
         .frame(maxWidth: DrawingConstants.signInButtonWidth)
         .padding(.vertical, DrawingConstants.verticalPaddingSize)
     }
     
     private var signUpButton: some View {
-        Button(action: {}) {
+        NavigationLink {
+            SignUpView(appManager: appManager).navigationBarBackButtonHidden(true)
+        } label: {
             Text(Resources.Text.orSignUp)
-                .foregroundStyle(.white)
+                //.padding(.vertical, DrawingConstants.verticalPaddingSize)
+                .padding(.bottom, 10)
+                .tint(.white)
         }
-        .padding(.vertical, DrawingConstants.verticalPaddingSize)
-    }
+        
+        }
     
     
     //    private var signInButton: some View {

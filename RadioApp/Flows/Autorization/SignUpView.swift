@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignUpView: View {    
-    //@EnvironmentObject var appManager: ViewModel
+    @Environment (\.dismiss) var dismiss
     @ObservedObject var appManager: ViewModel
     var body: some View {
         ZStack {
@@ -28,7 +28,7 @@ struct SignUpView: View {
                     .font(.custom(.sfRegular, size: UIScreen.height * 1/48))
                     .frame(maxWidth: UIScreen.width * 1/3)
                 
-                TextField(Resources.Text.name, text: $appManager.email)
+                TextField(Resources.Text.name, text: $appManager.username)
                     .font(.title)
                 
                 TextField(Resources.Text.email, text: $appManager.email)
@@ -37,14 +37,22 @@ struct SignUpView: View {
                 SecureField(Resources.Text.password, text: $appManager.password)
                     .font(.title)
                                 
-                CustomButton(action: appManager.registerUser, title: Resources.Text.signUp, buttonType: .onboarding)
+                CustomButton(action: {
+                    Task {
+                        do {
+                            try await  appManager.testNewUser()
+                        } catch let err {
+                            // Обработка ошибки
+                            print("Ошибка при выполнении test(): (error) - \(err)")
+                        }
+                    }
+                }, title: Resources.Text.signUp, buttonType: .onboarding)
                 // TODO: изменить тип кнопки
                 
-                Button(action: {}) {
+                Button(action: {dismiss()}) {
                     Text(Resources.Text.orSignIn)
                         .foregroundStyle(.white)
                 }
-                
                 Spacer()
             }
             .padding()
@@ -52,12 +60,11 @@ struct SignUpView: View {
     }
 }
 
-//struct SignUpView_Previews: PreviewProvider {
-//    static let previewAppManager = ViewModel()
-//    
-//    static var previews: some View {
-//        SignUpView()
-//            .environmentObject(previewAppManager)
-//    }
-//}
+struct SignUpView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    
+    static var previews: some View {
+        SignUpView(appManager: ViewModel())
+    }
+}
 
