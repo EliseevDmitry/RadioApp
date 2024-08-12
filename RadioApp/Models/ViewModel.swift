@@ -17,14 +17,27 @@ import Combine
 final class ViewModel: ObservableObject {
     
     //Авторизация
-    private let authService = AuthService.shared
+     let authService = AuthService.shared
     // свойства для аутентификации пользователя
-    @Published var email = "Dr@dr.net"
-    @Published var password = "1111111"
+    @Published var email = "Franky@gmail.com"
+    @Published var password = "1212121"
     @Published var username = "Mark"
     //фото иконки тулбара
     @Published var userProfileImage: UIImage? = nil
     @Published var error: Error?
+    @Published var tagSelection: String?
+    
+    func getBoolAuth() -> Bool {
+
+        if authService.isAuthenticated() {
+            //tagSelection = "view2"
+            return true
+            
+        } else {
+            //tagSelection = "view3"
+            return false
+        }
+    }
     
     
     // MARK: - Auth methods
@@ -106,8 +119,32 @@ final class ViewModel: ObservableObject {
     @Published var isActiveDetailView = false
 
     
-   
+//    func test()  {
+//    
+//        DispatchQueue.main.async {
+//            try await authService.signIn(with: email, password: password)
+//        }
+//        
+//        if authService.userSession == nil {
+//            tagSelection = "view3"
+//        } else {
+//            tagSelection = "view2"
+//        }
+//    }
     
+    func test() async throws {
+        try await Task.sleep(nanoseconds: 500_000_000) // Задержка в 1 секунду
+
+        try await authService.signIn(with: email, password: password)
+
+        DispatchQueue.main.async {
+            if self.authService.userSession == nil {
+                self.tagSelection = "view3"
+            } else {
+                self.tagSelection = "view2"
+            }
+        }
+    }
     
     
     
@@ -180,6 +217,11 @@ final class ViewModel: ObservableObject {
         }
         //---------CoreData--------
         
+        if authService.userSession == nil {
+            tagSelection = "view1"
+        } else {
+            tagSelection = "view2"
+        }
     }
     
     

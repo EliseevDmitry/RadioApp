@@ -41,6 +41,8 @@
 		26A737992C5A4F850002F1E9 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A737982C5A4F850002F1E9 /* BackButtonView.swift */; };
 		26A7379B2C5A4FCB0002F1E9 /* ForwardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */; };
 		26A7379E2C5A6A670002F1E9 /* SplineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7379D2C5A6A670002F1E9 /* SplineView.swift */; };
+		26AFBD4B2C69A84D00C49554 /* TransitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFBD4A2C69A84D00C49554 /* TransitView.swift */; };
+		26AFBD4D2C69CF0500C49554 /* GotoWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFBD4C2C69CF0500C49554 /* GotoWelcome.swift */; };
 		26B1A6622C674C2E00734278 /* LikeStations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26B1A6602C674C2E00734278 /* LikeStations.xcdatamodeld */; };
 		26D180992C5AA0A300D4EF68 /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D180982C5AA0A300D4EF68 /* PopularView.swift */; };
 		26FB42E62C64994F00F9C2A2 /* FavoritesComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB42E52C64994F00F9C2A2 /* FavoritesComponentView.swift */; };
@@ -127,6 +129,8 @@
 		26A737982C5A4F850002F1E9 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		26A7379A2C5A4FCB0002F1E9 /* ForwardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButtonView.swift; sourceTree = "<group>"; };
 		26A7379D2C5A6A670002F1E9 /* SplineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplineView.swift; sourceTree = "<group>"; };
+		26AFBD4A2C69A84D00C49554 /* TransitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitView.swift; sourceTree = "<group>"; };
+		26AFBD4C2C69CF0500C49554 /* GotoWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoWelcome.swift; sourceTree = "<group>"; };
 		26B1A6612C674C2E00734278 /* LikeStations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikeStations.xcdatamodel; sourceTree = "<group>"; };
 		26D180982C5AA0A300D4EF68 /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
 		26FB42E52C64994F00F9C2A2 /* FavoritesComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoritesComponentView.swift; path = RadioApp/Components/FavoritesComponentView.swift; sourceTree = SOURCE_ROOT; };
@@ -276,8 +280,10 @@
 			isa = PBXGroup;
 			children = (
 				E16EBD5A2C5CB42A0010BF71 /* RadioAppApp.swift */,
+				26AFBD4A2C69A84D00C49554 /* TransitView.swift */,
 				7A7A4B2F2C5B51B000CD8794 /* ContentView.swift */,
 				220E86A92C5D018900F8B0D6 /* TestAuthView.swift */,
+				26AFBD4C2C69CF0500C49554 /* GotoWelcome.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -329,8 +335,8 @@
 		2663C7922C569FA4002EFD0C /* Autorization */ = {
 			isa = PBXGroup;
 			children = (
-				2277BB482C5E8A7600317DD2 /* New Group */,
 				2663C79A2C56A09B002EFD0C /* SignInView.swift */,
+				2277BB482C5E8A7600317DD2 /* New Group */,
 				2663C79C2C56A0AB002EFD0C /* SignUpView.swift */,
 				2277BB492C5F2D0E00317DD2 /* ForgotPassOneView.swift */,
 				2277BB4B2C5F2D5700317DD2 /* ForgotPassTwoView.swift */,
@@ -633,6 +639,7 @@
 			files = (
 				269FCD132C665DB60060FFD8 /* TestRotationView.swift in Sources */,
 				E18529E12C5D30F800BBE649 /* ImagePicker.swift in Sources */,
+				26AFBD4B2C69A84D00C49554 /* TransitView.swift in Sources */,
 				26A7379E2C5A6A670002F1E9 /* SplineView.swift in Sources */,
 				26A737992C5A4F850002F1E9 /* BackButtonView.swift in Sources */,
 				E1E87BB32C64122F0070D855 /* TimeAndDaysPicker.swift in Sources */,
@@ -665,6 +672,7 @@
 				7AAEB6F92C638482004D7424 /* ToolbarProfile.swift in Sources */,
 				2277BB4A2C5F2D0E00317DD2 /* ForgotPassOneView.swift in Sources */,
 				223406762C5DF7C200C701A3 /* WelcomeBackgroundView.swift in Sources */,
+				26AFBD4D2C69CF0500C49554 /* GotoWelcome.swift in Sources */,
 				2663C7A52C56A1F2002EFD0C /* VolumeView.swift in Sources */,
 				E14AA7962C600FF900BAC1BE /* AboutUsCell.swift in Sources */,
 				220E86A32C5CD94B00F8B0D6 /* AppDelegate.swift in Sources */,

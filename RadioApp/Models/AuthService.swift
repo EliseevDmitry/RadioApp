@@ -17,6 +17,7 @@ final class AuthService {
     static let shared = AuthService()
     
     @Published var userSession: FirebaseAuth.User?
+    @Published var tagSelection: String? = "view1"
     
     private let storage = Storage.storage().reference()
     
@@ -32,7 +33,7 @@ final class AuthService {
     
     // MARK: - Methods
     func isAuthenticated() -> Bool {
-        return Auth.auth().currentUser?.uid != nil
+        return ((Auth.auth().currentUser?.uid) != nil)
     }
     
     /// Registers a new user with the given email, password, and username
@@ -59,8 +60,10 @@ final class AuthService {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             userSession = result.user
             print("DEBUG: Successfully signed user in: \(result.user.uid)")
-        } catch {
-            throw error
+            
+        } catch let error {
+            print(error.localizedDescription)
+            print(userSession)
         }
     }
     

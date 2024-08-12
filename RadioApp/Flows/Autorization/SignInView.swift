@@ -110,17 +110,20 @@ struct SignInView: View {
         //                EmptyView()
         //            }
         //        )
-        NavigationLink(destination: ContentView(appManager: appManager), isActive: $isAuthenticated) {
+
             
             Button(Resources.Text.SignIn.title){
                 Task {
-                    await appManager.signIn()
-                }
-                isAuthenticated = true
+                        do {
+                            try await appManager.test()
+                        } catch {
+                            // Обработка ошибки
+                            print("Ошибка при выполнении test(): (error)")
+                        }
+                    }
             }
-            .foregroundStyle(.blue)
-            .background(.red)
-        }
+
+        
         
         
     }
@@ -144,6 +147,7 @@ struct SignInView: View {
     //        }
     //    }
 }
+
 
 // MARK: - Previews
 struct SignInView_Previews: PreviewProvider {

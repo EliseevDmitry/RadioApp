@@ -38,6 +38,7 @@ struct WelcomeView: View {
                 CustomButton(
                     action: {
                         isOnboarding.toggle()
+                        appManager.tagSelection = "view3"
                     },
                     title: Resources.Text.getStarted,
                     buttonType: .onboarding)
@@ -45,6 +46,7 @@ struct WelcomeView: View {
             .frame(maxWidth: UIScreen.width * 2/3)
             .padding(.bottom, UIScreen.width * 1/6)
         }
+        .navigationViewStyle(.stack)
     }
 }
 

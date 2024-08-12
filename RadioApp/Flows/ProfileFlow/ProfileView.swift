@@ -112,8 +112,10 @@ struct ProfileView: View {
     }
     
     private func logOut() {
-       viewModel.logOut()
+       //viewModel.logOut()
+        appManager.signOut()
         isOnboarding = false
+        appManager.tagSelection = "view1"
     }
 }
 
