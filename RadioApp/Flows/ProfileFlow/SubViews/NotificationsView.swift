@@ -12,7 +12,6 @@ struct NotificationsView: View {
     // MARK: - Properties
     @AppStorage("selectedLanguage") private var language = LocalizationService.shared.language
     @AppStorage("hasRequestedNotifications") private var isToggleOn: Bool = NotificationsService.shared.hasRequestedNotifications
-    
     var notificationAction: () -> Void
     
     // MARK: - Drawing Constants
@@ -123,6 +122,7 @@ struct NotificationsView: View {
     }
 }
 
+//MARK: - PREVIEW
 #Preview {
     NotificationsView(notificationAction: {
         print("Notification toggle changed")

@@ -21,7 +21,6 @@ enum Language: String, CaseIterable, Identifiable {
 final class LocalizationService {
     // MARK: - Properties
     public static let shared = LocalizationService()
-    
     var language: Language {
         get {
             guard let languageString = UserDefaults.standard.string(forKey: "selectedLanguage") else {
@@ -36,7 +35,7 @@ final class LocalizationService {
             }
         }
     }
-    
+
     // MARK: - Init
     public init() { }
     

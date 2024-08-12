@@ -10,11 +10,9 @@ import SwiftUI
 struct ProfileEditView: View {
     // MARK: - Properties
     var saveChangesAction: (String, String, UIImage?) -> Void
-    
     @State var userName: String
     @State var userEmail: String
     @Binding var profileImage: UIImage?
-    
     @State private var showChangedView = false
     @State private var blurBackground = false
     @State private var isImagePickerPresented = false
@@ -38,13 +36,14 @@ struct ProfileEditView: View {
     }
     
     var body: some View {
+        //MARK: - BODY
         ZStack {
             VStack {
                 ZStack {
                     AnimatedBackgroundView()
                         .ignoresSafeArea()
-                    
                     VStack(spacing: Drawing.spacing) {
+                        
                         // MARK: - Profile Image Section
                         ProfileHeaderView(
                             userName: $userName,
@@ -67,9 +66,7 @@ struct ProfileEditView: View {
                             titleBorder: Resources.Text.email
                         )
                         .padding(.top, Drawing.fieldTopPadding)
-                        
                         Spacer()
-                        
                         CustomButton(
                             action: {
                                 saveChangesAction(userName, userEmail, profileImage)
@@ -77,7 +74,6 @@ struct ProfileEditView: View {
                             title: Resources.Text.saveChanges,
                             buttonType: .profile
                         )
-                        
                         Spacer()
                     }
                     .padding(.top, Drawing.topPadding)
@@ -92,7 +88,6 @@ struct ProfileEditView: View {
                 }
             }
             .blur(radius: showChangedView ? Drawing.blurRadius : 0)
-            
             if showChangedView {
                 Color.black.opacity(Drawing.overlayOpacity)
                     .edgesIgnoringSafeArea(.all)
@@ -101,7 +96,6 @@ struct ProfileEditView: View {
                             hideChangedPhotoView()
                         }
                     }
-                
                 ChangePhotoView(
                     onTakePhoto: {
                         showImagePicker(source: .camera)
@@ -149,14 +143,14 @@ struct ProfileEditView: View {
     }
     
     func saveImageURL() {
-//        viewModel.saveProfileImage(
-//            profileImage
-//            ?? UIImage(systemName: Resources.Image.fileIcon)!
-//        )
+        //viewModel.saveProfileImage(
+        //profileImage
+        //?? UIImage(systemName: Resources.Image.fileIcon)!
+        //)
     }
 }
 
-// MARK: - Preview
+//MARK: - PREVIEW
 struct ProfileEditView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileEditView(

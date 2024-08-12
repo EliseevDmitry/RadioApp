@@ -14,12 +14,11 @@ import CoreData
 
 @main
 struct RadioAppApp: App {
-    //MARK: -
+    //MARK: - PROPERTIES
     @StateObject var appManager = ViewModel()
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    //MARK: -
-    
+    //MARK: - BODY
     var body: some Scene {
         WindowGroup {
             TransitView(appManager: appManager)

@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    //MARK: - PROPERTIES
     @ObservedObject var appManager: ViewModel
     @State var selectedTab: Tab = .popular
     @State var showTabBar: Bool = true
     @State var tapBarVisible = true
+    //MARK: - BODY
     var body: some View {
         NavigationView {
             VStack {
@@ -28,7 +30,6 @@ struct ContentView: View {
                 CustomTabBarView(appManager: appManager, selectedTab: $selectedTab)
                 Spacer()
             }
-            //.navigationViewStyle(.stack)
             .ignoresSafeArea()
             .navigationBarBackButtonHidden(true)
             .dynamicTypeSize(.xSmall ... .xLarge)
@@ -36,6 +37,7 @@ struct ContentView: View {
     }
 }
 
+//MARK: - PREVIEW
 #Preview {
     ContentView(appManager: ViewModel())
 }

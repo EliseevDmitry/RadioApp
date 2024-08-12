@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct TextFieldForEmailView: View {
+    //MARK: - PROPERTIES
     @ObservedObject var appManager: ViewModel
-    
     private struct DrawingConstants {
         static let verticalPaddingSize = UIScreen.height * 1/54
     }
-    
+    //MARK: - BODY
     var body: some View {
         HStack {
             Text(Resources.Text.email)
@@ -36,7 +36,7 @@ struct TextFieldForEmailView: View {
     }
 }
 
-
+//MARK: - PREVIEW
 #Preview {
     TextFieldForEmailView(appManager: ViewModel())
 }

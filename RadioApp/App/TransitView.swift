@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct TransitView: View {
+    //MARK: - PROPERTIES
     @AppStorage("isOnboarding") var isOnboarding = false
     @ObservedObject var appManager: ViewModel
+    //MARK: - BODY
     var body: some View {
         NavigationView{
             VStack{
@@ -25,9 +27,9 @@ struct TransitView: View {
             .navigationViewStyle(.stack)
         }
     }
-    
 }
 
+//MARK: - PREVIEW
 #Preview {
     TransitView(appManager: ViewModel())
 }

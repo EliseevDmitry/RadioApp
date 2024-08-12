@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct FieldForPasswordView: View {
+    //MARK: - PROPERTIES
     @ObservedObject var appManager: ViewModel
-    
     @State private var isPasswordVisible = false
-    
     private struct DrawingConstants {
         static let verticalPaddingSize = UIScreen.height * 1/108
     }
-    
+    //MARK: - BODY
     var body: some View {
         HStack {
             Text(Resources.Text.password)
@@ -44,7 +43,7 @@ struct FieldForPasswordView: View {
     }
 }
 
-
+//MARK: - PREVIEW
 #Preview {
     FieldForPasswordView(appManager: ViewModel())
 }

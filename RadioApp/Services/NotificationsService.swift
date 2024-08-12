@@ -12,7 +12,6 @@ import UserNotifications
 final class NotificationsService {
     // MARK: - Properties
     public static let shared = NotificationsService()
-    
     var hasRequestedNotifications: Bool {
         get {
             return UserDefaults.standard.bool(forKey: "hasRequestedNotifications")
@@ -31,7 +30,6 @@ final class NotificationsService {
     private init() {}
     
     // MARK: - Methods
-    
     private func saveNotificationPreference(_ value: Bool) {
         UserDefaults.standard.set(value, forKey: "hasRequestedNotifications")
     }
@@ -51,10 +49,8 @@ final class NotificationsService {
         content.title = "Уведомления включены"
         content.body = "Вы успешно включили уведомления в приложении."
         content.sound = .default
-        
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        
         UNUserNotificationCenter.current().add(request)
     }
 }

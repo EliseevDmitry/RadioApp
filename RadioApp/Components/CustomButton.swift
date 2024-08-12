@@ -42,11 +42,11 @@ struct CustomButton: View {
                     : Drawing.onboardingBackground
                 )
                 .clipShape(RoundedRectangle(cornerRadius:
-                    buttonType == .profile
-                    ? Drawing.profileCornerRadius
-                    : Drawing.onboardingCornerRadius
+                                                buttonType == .profile
+                                            ? Drawing.profileCornerRadius
+                                            : Drawing.onboardingCornerRadius
+                                           )
                 )
-            )
         }
     }
 }

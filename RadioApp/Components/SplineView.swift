@@ -107,13 +107,13 @@ struct SplineView: View {
         .onAppear{
             withAnimation(.easeInOut(duration: 1).delay(0).repeatForever()) {
                 if isActive{
-                   startAnimation = true
+                    startAnimation = true
                 } else {
-                   startAnimation = false
-                }
+                    startAnimation = false
                 }
             }
         }
+    }
 }
 
 //MARK: - PREVIEW

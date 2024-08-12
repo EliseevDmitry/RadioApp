@@ -7,33 +7,28 @@
 
 import SwiftUI
 
+
 struct ForgotPassOneView: View {
-    //@EnvironmentObject var appManager: ViewModel
+    //MARK: - PROPERTIES
     var appManager: ViewModel
     // свойство, обеспечивающее работу кнопки "стрелка назад", возвращающей на предыдущий экран
     @Environment(\.dismiss) var dismiss
-
     
+    //MARK: - BODY
     var body: some View {
         ZStack {
             AnimatedBackgroundView()
             AuthBackgroundView()
-            
             VStack(alignment: .leading) {
                 Spacer()
-                
                 BackBarButton()
-                
                 Text(Resources.Text.forgotPassword)
                     .font(.custom(.sfBold, size: UIScreen.height * 1/16))
                     .padding(.bottom, UIScreen.height * 1/32)
-                
-//                TextField(Resources.Text.ForgotPassOne.email, text: $appManager.email)
-//                    .font(.title)
-                                
+                //TextField(Resources.Text.ForgotPassOne.email, text: $appManager.email)
+                //.font(.title)
                 CustomButton(action: {}, title: Resources.Text.sent, buttonType: .onboarding)
                 // TODO: изменить тип кнопки и добавить действие
-                
                 Spacer()
             }
             .padding()
@@ -46,7 +41,7 @@ struct ForgotPassOneView: View {
                     dismiss()
                 } label: {
                     BackBarButton()
-//                    Image(systemName: "arrow.left")
+                    //Image(systemName: "arrow.left")
                         .foregroundStyle(.primary)
                 }
             }
@@ -54,11 +49,10 @@ struct ForgotPassOneView: View {
     }
 }
 
-//struct ForgotPassOneView_Previews: PreviewProvider {
-//    static let previewAppManager = ViewModel()
-//    
-//    static var previews: some View {
-//        ForgotPassOneView()
-//            .environmentObject(previewAppManager)
-//    }
-//}
+//MARK: - PREVIEW
+struct ForgotPassOneView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    static var previews: some View {
+        ForgotPassOneView(appManager: previewAppManager)
+    }
+}

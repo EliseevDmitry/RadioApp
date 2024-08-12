@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct SecureFieldForInvisiblePasswordView: View {
+    //MARK: - PROPERTIES
     @ObservedObject var appManager: ViewModel
-    
+    //MARK: - BODY
     var body: some View {
         SecureField(Resources.Text.yourPassword, text: $appManager.password, prompt: Text(Resources.Text.yourPassword).foregroundColor(.gray))
             .font(.title3)
@@ -25,7 +26,7 @@ struct SecureFieldForInvisiblePasswordView: View {
     }
 }
 
-
+//MARK: - PREVIEW
 #Preview {
     SecureFieldForInvisiblePasswordView(appManager: ViewModel())
 }

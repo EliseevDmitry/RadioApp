@@ -9,7 +9,6 @@ import SwiftUI
 
 struct StationPopularView: View {
     //MARK: - PROPERTIES
-    //@EnvironmentObject var appManager: ViewModel
     @ObservedObject var appManager: ViewModel
     @Binding var selectedStationID: String
     @State private var isActive = false

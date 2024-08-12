@@ -27,3 +27,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         return GIDSignIn.sharedInstance.handle(url)
     }
 }
+
+//MARK: - PROPERTIES
+//MARK: - BODY
+//MARK: - PREVIEW

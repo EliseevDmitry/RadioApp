@@ -14,8 +14,6 @@ struct SignInView: View {
     @State private var showAlert = false
     @State private var alertMessage = ""
     
-    // MARK: - Body
-    
     // MARK: - Drawing Constants
     private struct DrawingConstants {
         static let screenLogoImageWidth = UIScreen.width * 1/7
@@ -34,33 +32,23 @@ struct SignInView: View {
         static let signInButtonWidth = UIScreen.width * 1/3
     }
     
-    
+    // MARK: - Body
     var body: some View {
         NavigationView {
             ZStack {
                 //Backgrounds
                 AnimatedBackgroundView()
                 AuthBackgroundView()
-                
                 VStack(alignment: .leading) {
                     Spacer()
-                    
                     appLogo
-                    
                     titleText
-                    
                     subtitleText
-                    
                     inputFields
-                    
                     forgotPasswordButton
-                    
                     socialMediaButton
-                    
                     signInButton
-                    
                     signUpButton
-                    
                     Spacer()
                 }
                 .padding(32)
@@ -74,9 +62,10 @@ struct SignInView: View {
             }
         }
         .navigationViewStyle(.stack)
-        //        .navigationBarTitleDisplayMode(.inline)
+        //.navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
     }
+    
     // MARK: - Subviews
     private var background: some View {
         ZStack {
@@ -123,7 +112,7 @@ struct SignInView: View {
         HStack {
             Spacer()
             Button(action: {
-                NavigationLink(destination: ForgotPassOneView(appManager: appManager)) {
+                _ = NavigationLink(destination: ForgotPassOneView(appManager: appManager)) {
                     EmptyView()
                 }
             }) {
@@ -132,7 +121,6 @@ struct SignInView: View {
                     .padding(.vertical, DrawingConstants.verticalPaddingSize)
             }
         }
-        
     }
     
     private var socialMediaButton: some View {
@@ -153,9 +141,6 @@ struct SignInView: View {
             .padding(.vertical, DrawingConstants.verticalPaddingSize)
             
             Button(action: {
-                
-                
-                
             }) {
                 ZStack {
                     Circle()
@@ -192,74 +177,17 @@ struct SignInView: View {
             SignUpView(appManager: appManager).navigationBarBackButtonHidden(true)
         } label: {
             Text(Resources.Text.orSignUp)
-                //.padding(.vertical, DrawingConstants.verticalPaddingSize)
+            //.padding(.vertical, DrawingConstants.verticalPaddingSize)
                 .padding(.bottom, 10)
                 .tint(.white)
         }
-        
-        }
-    
-    
-    //    private var signInButton: some View {
-    //                CustomButton(action: {
-    //                    Task {
-    //                            do {
-    //                                try await appManager.test()
-    //                            } catch {
-    //                                // Обработка ошибки
-    //                                print("Ошибка при выполнении test(): (error)")
-    //                            }
-    //                        }
-    //                },
-    //                             title: Resources.Text.SignIn.title,
-    //                             buttonType: .onboarding
-    //                )
-    
-    
-    
-    //        return Button(Resources.Text.SignIn.title){
-    //                Task {
-    //                        do {
-    //                            try await appManager.test()
-    //                        } catch {
-    //                            // Обработка ошибки
-    //                            print("Ошибка при выполнении test(): (error)")
-    //                        }
-    //                    }
-    //            }
-    
-    
-    
-    
-}
-
-private var signUpButton: some View {
-    Button(action: {}) {
-        Text(Resources.Text.orSignUp)
-            .foregroundStyle(.white)
     }
 }
-
-// MARK: - Functions
-//    private func signIn() async {
-//        await appManager.signIn()
-//        if let error = await appManager.error {
-//            alertMessage = error.localizedDescription
-//            showAlert = true
-//
-//        } else {
-//            isAuthenticated = true
-//        }
-//    }
-
-
 
 // MARK: - Previews
 struct SignInView_Previews: PreviewProvider {
     static let previewAppManager = ViewModel()
-    
     static var previews: some View {
         SignInView(appManager: previewAppManager)
-        
     }
 }

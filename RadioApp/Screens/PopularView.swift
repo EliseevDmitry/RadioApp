@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PopularView: View {
     //MARK: - PROPERTIES
-    //@EnvironmentObject var appManager: ViewModel
     @ObservedObject var appManager: ViewModel
     let columns = [
         GridItem(.flexible(minimum: 139, maximum: 139)),
@@ -81,17 +80,13 @@ struct PopularView: View {
     }
 }
 
-
-
-
 //MARK: - PREVIEW
-//struct PopularView_Previews: PreviewProvider {
-//    static let previewAppManager = ViewModel()
-//    static var previews: some View {
-//        PopularView()
-//            .environmentObject(previewAppManager)
-//    }
-//}
+struct PopularView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    static var previews: some View {
+        PopularView(appManager: previewAppManager)
+    }
+}
 
 
 

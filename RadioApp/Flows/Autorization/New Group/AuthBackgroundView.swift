@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AuthBackgroundView: View {
+    //MARK: - BODY
     var body: some View {
         ZStack(alignment: .trailing) {
             Image("pinkSpots2").resizable().opacity(0.8)
@@ -19,6 +20,7 @@ struct AuthBackgroundView: View {
     }
 }
 
+//MARK: - PREVIEW
 #Preview {
     AuthBackgroundView()
 }

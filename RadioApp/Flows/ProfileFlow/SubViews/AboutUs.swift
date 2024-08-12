@@ -48,7 +48,6 @@ struct AboutUs: View {
         ZStack {
             AnimatedBackgroundView()
                 .ignoresSafeArea()
-            
             List {
                 Section(header: Text(Resources.Text.teamLead)
                     .font(.title)
@@ -60,7 +59,6 @@ struct AboutUs: View {
                         )
                         .listRowBackground(Color.clear)
                     }
-                
                 Section(header: Text(Resources.Text.developers)
                     .font(.title)
                     .foregroundColor(.white)) {
@@ -74,10 +72,8 @@ struct AboutUs: View {
                     }
                     .listRowBackground(Color.clear)
             }
-            
             .listStyle(PlainListStyle())
             .background(Color.clear)
-            
         }
         .navigationTitle(Resources.Text.aboutUs.capitalized)
         .navigationBarBackButtonHidden(true)
@@ -89,7 +85,7 @@ struct AboutUs: View {
     }
 }
 
-// MARK: - Preview
+//MARK: - Preview
 #Preview {
     AboutUs()
 }

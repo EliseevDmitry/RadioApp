@@ -9,9 +9,11 @@ import Foundation
 import Combine
 
 class AmplitudeService {
+    //MARK: - PROPERTIES
     private var timer: AnyCancellable?
     private let updateInterval: TimeInterval = 0.08
-
+    
+    //MARK: - Methods
     func startUpdatingAmplitude(viewModel: ViewModel) {
         timer = Timer.publish(every: updateInterval, on: .main, in: .common)
             .autoconnect()

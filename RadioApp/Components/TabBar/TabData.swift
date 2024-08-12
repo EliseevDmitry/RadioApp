@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: - CustomTabBar PAGES
 enum Tab: String {
     case popular = "0"
     case favorites = "1"
