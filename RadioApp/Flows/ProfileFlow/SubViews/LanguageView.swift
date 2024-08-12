@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct LanguageView: View {
-    
     // MARK: - Properties
     @AppStorage("selectedLanguage") private var language = LocalizationService.shared.language
-    
     
     // MARK: - Body
     var body: some View {
@@ -27,7 +25,6 @@ struct LanguageView: View {
                 )
                 .onTapGesture {
                     self.language = lang
-                    
                 }
                 .listRowBackground(DS.Colors.darkBlue)
             }

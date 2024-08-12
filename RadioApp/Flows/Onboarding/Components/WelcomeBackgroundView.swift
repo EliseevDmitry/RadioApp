@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WelcomeBackgroundView: View {
+    //MARK: - BODY
     var body: some View {
         ZStack {
             Image("blueGradient").resizable()
@@ -21,6 +22,7 @@ struct WelcomeBackgroundView: View {
     }
 }
 
+//MARK: - PREVIEW
 #Preview {
     WelcomeBackgroundView()
 }

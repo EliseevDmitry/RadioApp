@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct TextFieldForVisiblePasswordView: View {
+    //MARK: - PROPERTIES
     @ObservedObject var appManager: ViewModel
-    
     @State private var isPasswordVisible = false
-    
+    //MARK: - BODY
     var body: some View {
         TextField(Resources.Text.yourPassword, text: $appManager.password, prompt: Text(Resources.Text.yourPassword).foregroundColor(.gray))
             .font(.title3)
@@ -27,7 +27,7 @@ struct TextFieldForVisiblePasswordView: View {
     }
 }
 
-
+//MARK: - PREVIEW
 #Preview {
     TextFieldForVisiblePasswordView(appManager: ViewModel())
 }

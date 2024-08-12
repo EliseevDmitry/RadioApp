@@ -7,27 +7,24 @@
 
 import SwiftUI
 
-// MARK: - ProfileView
+//MARK: - ProfileView
 struct ProfileView: View {
     // MARK: - Properties
     @AppStorage("selectedLanguage") private var language = LocalizationService.shared.language
     @AppStorage("isOnboarding") var isOnboarding = true
-    //@EnvironmentObject var appManager: ViewModel
     @ObservedObject var appManager: ViewModel
     @ObservedObject var viewModel: ProfileViewModel
-    
     @State private var showLogoutAlert: Bool = false
     @State private var errorAlert: AnyAppAlert? = nil
-    
     @State private var imageURL: URL? = nil
     
-    // MARK: - Body
+// MARK: - Body
     var body: some View {
         ZStack {
             AnimatedBackgroundView()
                 .ignoresSafeArea()
-            
             VStack {
+                
                 // MARK: - Profile Info
                 ProfileInfoView(
                     userName: viewModel.currentUser?.userName ?? "",
@@ -35,6 +32,7 @@ struct ProfileView: View {
                     profileImage: UIImage(systemName: "person.fill")!,
                     saveChangesAction: saveChanges
                 )
+                
                 // MARK: - General Settings
                 SettingView(
                     generalTitle: Resources.Text.general.localized(language),
@@ -57,6 +55,7 @@ struct ProfileView: View {
                     secondDestination: AnyView(AboutUs())
                 )
                 Spacer()
+                
                 // MARK: - Logout Button
                 CustomButton(
                     action: { showLogoutAlert = true },
@@ -79,7 +78,7 @@ struct ProfileView: View {
                     title: Text(Resources.Text.logOut.localized(language)),
                     message: Text(Resources.Text.areYouWantLogOut.localized(language)),
                     primaryButton: .destructive(Text(Resources.Text.logOut.localized(language))) {
-                            logOut()
+                        logOut()
                     },
                     secondaryButton: .cancel()
                 )
@@ -88,17 +87,15 @@ struct ProfileView: View {
         .onAppear{
             appManager.isActiveDetailView = false
         }
-                    
-               
         .onReceive(viewModel.$error) { error in
             if let error = error {
                 errorAlert = AnyAppAlert(error: error)
-               viewModel.clearError()
+                viewModel.clearError()
             }
         }
     }
     
-    //    MARK: - Private Methods
+//MARK: - Private Methods
     private func saveChanges(_ userName: String, _ userEmail: String, _ avatar: UIImage?) {
         viewModel.updateUserProfile(
             userName,
@@ -108,19 +105,18 @@ struct ProfileView: View {
     }
     
     private func notificationAction() {
-//        viewModel.configureNotifications()
+        //viewModel.configureNotifications()
     }
     
     private func logOut() {
-       //viewModel.logOut()
+        //viewModel.logOut()
         appManager.signOut()
         isOnboarding = false
         appManager.tagSelection = "view1"
     }
 }
 
-
-//// MARK: - Preview
-//#Preview {
-//    ProfileView(viewModel: ProfileViewModel())
-//}
+// MARK: - Preview
+#Preview {
+    ProfileView(appManager: ViewModel(), viewModel: ProfileViewModel())
+}

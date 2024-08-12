@@ -12,10 +12,10 @@ import FirebaseDatabase
 
 @MainActor
 final class ProfileViewModel: ObservableObject {
+    
     // MARK: - Stored Properties
     @Published var currentUser: UserModel?
     @Published var error: Error?
-    
     private let authService = AuthService.shared
     private let notificationService = NotificationsService.shared
     
@@ -34,7 +34,7 @@ final class ProfileViewModel: ObservableObject {
     func getProfileImage(path: String) {
         guard currentUser != nil else { return }
         Task {
-          try await authService.getUrlForImage(path: path)
+            try await authService.getUrlForImage(path: path)
         }
     }
     
@@ -51,16 +51,13 @@ final class ProfileViewModel: ObservableObject {
             do {
                 let photoURL: URL? = nil //var
                 
-//                if let avatar = avatar {
-//                    photoURL = try await authService.uploadAvatar(image: avatar, userId: currentUser?.id ?? "")
-//                }
-                
+                //if let avatar = avatar {
+                //photoURL = try await authService.uploadAvatar(image: avatar, userId: currentUser?.id ?? "")
+                //}
                 if let email = email {
                     try await authService.updateEmail(email)
                 }
-                
                 try await authService.updateUserProfile(displayName: name, photoURL: photoURL)
-                
                 await MainActor.run {
                     fetchUser()
                 }
@@ -88,8 +85,7 @@ final class ProfileViewModel: ObservableObject {
         }
     }
     
-//    MARK: - Notifications
-   
+    //MARK: - Notifications
     func notificationAction() {
         notificationService.sendTestNotification()
     }

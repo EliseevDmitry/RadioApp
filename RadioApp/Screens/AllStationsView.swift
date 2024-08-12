@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct AllStationsView: View {
-    //@EnvironmentObject var appManager: ViewModel
+    //MARK: - PROPERTIES
     @ObservedObject var appManager: ViewModel
     @State private var isSearching: Bool = false
+    //MARK: - BODY
     var body: some View {
         VStack{
             HStack {
@@ -35,11 +36,9 @@ struct AllStationsView: View {
                             ForEach(appManager.stations, id: \.stationuuid) { station in
                                 NavigationLink {
                                     StationDetailsView(appManager: appManager, station: station)
-                                    
                                 } label: {
                                     StationView(appManager: appManager, selectedStationID: $appManager.selectedStation, station: station)
                                 }
-                                
                             }
                         }
                         .background(DS.Colors.darkBlue)
@@ -80,10 +79,9 @@ struct AllStationsView: View {
 }
 
 //MARK: - PREVIEW
-//struct AllStationsView_Previews: PreviewProvider {
-//    static let previewAppManager = ViewModel()
-//    static var previews: some View {
-//        AllStationsView()
-//            .environmentObject(previewAppManager)
-//    }
-//}
+struct AllStationsView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    static var previews: some View {
+        AllStationsView(appManager: previewAppManager)
+    }
+}

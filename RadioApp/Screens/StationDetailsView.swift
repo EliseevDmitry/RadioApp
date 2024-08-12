@@ -7,10 +7,13 @@
 
 import SwiftUI
 
-struct StationDetailsView: View { 
-    //@EnvironmentObject var appManager: ViewModel
+
+
+struct StationDetailsView: View {
+    //MARK: - PROPERTIES
     @ObservedObject var appManager: ViewModel
     var station: Station
+    //MARK: - BODY
     var body: some View {
         VStack {
             HStack {
@@ -33,7 +36,6 @@ struct StationDetailsView: View {
                 .clipShape(Rectangle())
                 .frame(maxWidth: 60, maxHeight: 60)
                 Text(appManager.getString(tags: self.station.tags)?.uppercased() ?? self.station.countrycode)
-                   // .font(.custom(.sfRegular, size: 16))
                     .font(.custom(DS.Fonts.sfBold, size: appManager.getString(tags: self.station.tags) != nil ? 20 : 30))
                     .foregroundStyle(.white)
                 Spacer()
@@ -63,24 +65,17 @@ struct StationDetailsView: View {
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                    BackBarButton()
-                }
+                BackBarButton()
             }
-                
-            
+        }
         .onDisappear{
             appManager.isActiveDetailView = false
-
+            
         }
     }
 }
 
-
-
-
-
-
-//#Preview {
-//    StationDetailsView(station: Station.testStation())
-//        .environmentObject(ViewModel())
-//}
+//MARK: - PREVIEW
+#Preview {
+    StationDetailsView(appManager: ViewModel(), station: Station.testStation())
+}

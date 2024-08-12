@@ -43,6 +43,20 @@ struct Station: Codable, Hashable {
     //let clicktimestamp_iso8601: String
 }
 
+//MARK: - unique IDs
+struct Like: Codable {
+    var idUUID = UUID()
+    var likeSet: Set<String>
+}
+
+//MARK: - UserModel
+struct UserModel: Identifiable, Codable {
+    let id: String
+    let userName: String
+    let email: String
+    var profileImage: String?
+}
+
 // MARK: - Preview data
 extension Station {
     static func testStation() -> Station {
@@ -73,17 +87,3 @@ extension Station {
         return station
     }
 }
-
-struct Like: Codable {
-    var idUUID = UUID()
-    var likeSet: Set<String>
-}
-
-struct UserModel: Identifiable, Codable {
-    let id: String
-    let userName: String
-    let email: String
-    var profileImage: String?
-}
-
-

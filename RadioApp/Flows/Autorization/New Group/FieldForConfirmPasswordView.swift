@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct FieldForConfirmPasswordView: View {
+    //MARK: - PROPERTIES
     @ObservedObject var appManager: ViewModel
-    
     @State private var isPasswordVisible = false
-    
     private struct DrawingConstants {
         static let verticalPaddingSize = UIScreen.height * 1/54
     }
     
+    //MARK: - BODY
     var body: some View {
         HStack {
             Text(Resources.Text.confirmPassword)
@@ -44,7 +44,7 @@ struct FieldForConfirmPasswordView: View {
     }
 }
 
-
+//MARK: - PREVIEW
 #Preview {
     FieldForConfirmPasswordView(appManager: ViewModel())
 }

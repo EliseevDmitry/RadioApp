@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct WelcomeView: View {
+    //MARK: - PROPERTIES
     var appManager: ViewModel
     @AppStorage("isOnboarding") var isOnboarding = false
-
+    //MARK: - BODY
     var body: some View {
         ZStack {
             WelcomeBackgroundView()
-            
             VStack(alignment: .leading) {
                 Spacer()
-                
                 VStack(alignment: .leading) {
                     // MARK: Title Text
                     Text(Resources.Text.letsGetStarted)
@@ -30,10 +29,8 @@ struct WelcomeView: View {
                         .frame(maxWidth: UIScreen.width * 1/3)
                 }
                 .foregroundColor(.white)
-                
                 Spacer()
                 Spacer()
-                
                 // MARK: GetStarted Button
                 CustomButton(
                     action: {
@@ -55,11 +52,11 @@ extension UIScreen {
     static let height = UIScreen.main.bounds.size.height
 }
 
-//struct WelcomeView_Previews: PreviewProvider {
-//    static let previewAppManager = ViewModel()
-//    
-//    static var previews: some View {
-//        WelcomeView()
-//            .environmentObject(previewAppManager)
-//    }
-//}
+//MARK: - PREVIEW
+struct WelcomeView_Previews: PreviewProvider {
+    static let previewAppManager = ViewModel()
+    
+    static var previews: some View {
+        WelcomeView(appManager: previewAppManager)
+    }
+}
