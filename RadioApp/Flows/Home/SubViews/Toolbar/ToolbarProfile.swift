@@ -25,25 +25,27 @@ struct UserIcon: Shape {
 }
 
 struct ToolbarProfile: View {
-    @EnvironmentObject var appManager: ViewModel
+    @EnvironmentObject var appManager: HomeViewModel
+    var toolbarRoute: () -> ()
+    
     var body: some View {
-        // Существующий NavigationLink
-        //скорее всего косяк тут!!!
-        //NavigationLink(destination: ProfileView(viewModel: ProfileViewModel())) {
-        NavigationLink(destination: ProfileView()) {
-            Image(uiImage: appManager.userProfileImage ?? .eliseev)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 60, height: 70)
-                .mask {
-                    UserIcon()
-                        .frame(width: 60, height: 70)
-                }
-        }
-    }
-}
+           Button(action: {
+               toolbarRoute()
+           }) {
+               Image(uiImage: appManager.userProfileImage ?? .eliseev)
+                   .resizable()
+                   .scaledToFit()
+                   .frame(width: 60, height: 70)
+                   .mask {
+                       UserIcon()
+                           .frame(width: 60, height: 70)
+                   }
+           }
+       }
+   }
 
-#Preview {
-    ToolbarProfile()
-        .environmentObject(ViewModel())
-}
+
+//#Preview {
+//    ToolbarProfile()
+//        .environmentObject(ViewModel())
+//}

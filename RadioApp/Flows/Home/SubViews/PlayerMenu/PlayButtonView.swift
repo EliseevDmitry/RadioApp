@@ -32,7 +32,7 @@ struct PlayButtonShape: Shape {
 
 
 struct PlayButtonView: View {
-    @EnvironmentObject var appManager: ViewModel
+    @EnvironmentObject var appManager: HomeViewModel
     var body: some View {
         Button{
          //action

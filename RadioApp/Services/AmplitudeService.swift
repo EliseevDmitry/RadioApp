@@ -9,10 +9,14 @@ import Foundation
 import Combine
 
 class AmplitudeService {
+    
+   public static let shared = AmplitudeService()
     private var timer: AnyCancellable?
     private let updateInterval: TimeInterval = 0.08
 
-    func startUpdatingAmplitude(viewModel: ViewModel) {
+    private init() {}
+    
+    func startUpdatingAmplitude(viewModel: HomeViewModel) {
         timer = Timer.publish(every: updateInterval, on: .main, in: .common)
             .autoconnect()
             .sink { _ in

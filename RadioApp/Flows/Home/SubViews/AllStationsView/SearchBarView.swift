@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchBarView: View {
 
-    @EnvironmentObject var appManager: ViewModel
+    @EnvironmentObject var appManager: HomeViewModel
     @State var searchText: String = ""
     @Binding var isSearching: Bool
 
@@ -70,5 +70,5 @@ struct SearchBarView: View {
 
 #Preview {
     SearchBarView(isSearching: .constant(false))
-        .environmentObject(ViewModel())
+        .environmentObject(HomeViewModel())
 }

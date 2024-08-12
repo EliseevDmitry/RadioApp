@@ -11,7 +11,7 @@ import SwiftUI
 
 struct EqualizerView: View {
 
-    @EnvironmentObject var appManager: ViewModel
+    @EnvironmentObject var appManager: HomeViewModel
     @State private var phaseShift: Double = 0.0
 
     var body: some View {
@@ -54,5 +54,5 @@ struct EqualizerView: View {
 
 #Preview {
     EqualizerView()
-        .environmentObject(ViewModel())
+        .environmentObject(HomeViewModel())
 }

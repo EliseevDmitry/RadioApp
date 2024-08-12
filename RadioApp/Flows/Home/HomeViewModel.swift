@@ -13,49 +13,54 @@ import AVFoundation
 import Combine
 
 
-@MainActor
-final class ViewModel: ObservableObject {
-    private let authService = AuthService.shared
-    
-    let network = NetworkService()
-    
-    private var amplitudeService = AmplitudeService()
-    //
+final class HomeViewModel: ObservableObject {
+    private let authService: AuthService
+    private let networkService: NetworkService
+    private let amplitudeService: AmplitudeService
+    private let coreDataService: CoreDataService
 
     var amplitude: CGFloat = 0.0
-    //
+   
 
-     var stations = [Station]()
-//    для выбора стартового экрана
+    var stations = [Station]()
 
-    //VolumeView
-    //@Published var volume: CGFloat = 0
-    //@Published var volume: CGFloat = CGFloat(AVAudioSession.sharedInstance().outputVolume)
-   var volume: CGFloat = 0.0
-    //PopularView
+   
+   var volume: CGFloat = CGFloat(AVAudioSession.sharedInstance().outputVolume)
+
     var selectedStation = ""
-    //VoteView
-     var islike: Bool = false
+   
+    var islike: Bool = false
 
     var isPlay: Bool = false
 
-    
-    //search
-   var searchText: String = ""
-    
-    
+
+ 
+    var email = ""
+    var password = ""
+    var username = "Mark"
+    var userProfileImage: UIImage? = nil
+   
+    var showPassword = false
+    var isUserRegistered = false
+    var showSignInView = false
+
+    var testUserEmail = "Franky@gmail.com"
+    var testUserPassword = "1212121"
+    var testUserUsername = "Frank"
+   
+   
+    var searchText: String = ""
+    var error: Error?
+   
+   
     var isActiveDetailView = false
 //    @Published var isActiveParentView = true
     
-    // свойства для аутентификации пользователя
-      var email = ""
-      var password = ""
-      var username = "Mark"
-     var userProfileImage: UIImage? = nil
+    
     
     func fetchSearchStations() async throws {
         var fetchSearchStations: [Station]
-        fetchSearchStations = try await network.searchByName(searchText: searchText)
+        fetchSearchStations = try await networkService.searchByName(searchText: searchText)
         stations = fetchSearchStations
     }
 
@@ -67,8 +72,12 @@ final class ViewModel: ObservableObject {
     let session = AVAudioSession.sharedInstance()
     // Observer
     var progressObserver: NSKeyValueObservation!
-    //CoreData
+    
+    
+    //---------CoreData--------
+    //@Published var container = NSPersistentContainer(name: "LikeStations")
     let container = NSPersistentContainer(name: "LikeStations")
+    //---------CoreData--------
     
     
     func setVolme(){
@@ -84,6 +93,7 @@ final class ViewModel: ObservableObject {
                 print("current volume value - \(self.volume)")
             }
         }
+     
     }
 
     //delete Observer
@@ -92,34 +102,64 @@ final class ViewModel: ObservableObject {
     }
 
     //инициализируем - начальную громкость устройства
-    init() {
+    init( 
+        authService: AuthService = .shared,
+        networkService: NetworkService = .shared,
+        amplitudeService: AmplitudeService = .shared,
+        coreDataService: CoreDataService = .shared
+    ) {
+        self.authService = authService
+        self.networkService = networkService
+        self.amplitudeService = amplitudeService
+        self.coreDataService = coreDataService
+        
         self.volume = CGFloat(session.outputVolume)
         print("init volume value - \(self.volume)")
         setVolme()
         
+        getUserInfo()
         
+        
+        //---------CoreData--------
         //инициализация PersistentContainer CoreData
-        container.loadPersistentStores{description, error in
-            if let error = error {
-                print("CoreData failed to load \(error.localizedDescription)")
-            }
-        }
+//        container.loadPersistentStores{description, error in
+//            if let error = error {
+//                print("CoreData failed to load \(error.localizedDescription)")
+//            }
+//        }
+        //---------CoreData--------
+        
     }
+    
+    
+
+    
+    
+    
+    //тестовая функция
+    //    func setVolme(){
+    //        //        progressObserver = session.observe(\.outputVolume) { [self] (session, value) in
+    //        //            DispatchQueue.main.async {
+    //        //                self.volume = CGFloat(session.outputVolume)
+    //        //            }
+    //        //        }
+    //        //    }
+
 
     func fetchTopStations() async throws {
         var fetchedStations: [Station]
-        fetchedStations = try await network.getTopStations(numberLimit: 20)
+        fetchedStations = try await networkService.getTopStations(numberLimit: 20)
         stations = fetchedStations
     }
 
     func fetchAllStations() async throws {
         var fetchedAllStations: [Station]
-        fetchedAllStations = try await network.getAllStations()
+        fetchedAllStations = try await networkService.getAllStations()
         stations = fetchedAllStations
     }
     
     func voteStationByID(id: String) async throws {
-        try await network.voteStationById(id: id)
+        try await networkService.voteStationById(id: id)
     }
     
     
@@ -127,7 +167,7 @@ final class ViewModel: ObservableObject {
     func getOneStationByID(id: String) async throws {
         var fetchedStation: [Station]
         var indexStation: Int?
-        fetchedStation = try await network.getStationById(id: id)
+        fetchedStation = try await networkService.getStationById(id: id)
         for (index, station) in stations.enumerated() {
             if id == station.stationuuid{
                 indexStation = index
@@ -186,6 +226,13 @@ final class ViewModel: ObservableObject {
         return false
     }
     
+
+//    func fetchSearchStations() async throws {
+//        var fetchSearchStations: [Station]
+//        fetchSearchStations = try await network.getAllStations()
+//        stations = fetchSearchStations
+//    }
+
     //save likes
     func saveLikesData(){
         let encoder = JSONEncoder()
@@ -317,6 +364,14 @@ final class ViewModel: ObservableObject {
         } else {
             return
         }
+
+
+        //функция не нужна при отсутствии изменять музыку бегунком
+        //        func setVolmePlayer(){
+        //            player?.volume = Float(self.volume)
+        //            print(player?.volume)
+        //        }
+
     }
 
     func playFirstStation() {
@@ -328,14 +383,32 @@ final class ViewModel: ObservableObject {
     }
 
     // MARK: - Auth methods
-//    func getUserInfo(userName: String, userProfileImage: UIImage?) {
-//        let user = authService.getCurrentUserModel()
-//        userName = user?.userName ?? ""
-//        userProfileImage = UIImage(named: user?.profileImage ?? Resources.Image.eliseev)
-//    }
+    func getUserInfo() {
+        let user = authService.getCurrentUserModel()
+        username = user?.userName ?? ""
+        userProfileImage = UIImage(named: user?.profileImage ?? Resources.Image.eliseev)
+    }
     
+    func signIn() async {
+            do {
+                try await AuthService.shared.signIn(with: email, password: password)
+            } catch {
+//                self.error = error
+            }
+        }
 
+    func registerUser() {
+        Task {
+            try await AuthService.shared.registerUser(with: email, password: password, username: username)
+            isUserRegistered = true
+        }
+    }
 
+    func signOut() {
+        Task {
+            try AuthService.shared.signUserOut()
+        }
+    }
     
     //get Tag in String with ","
     func getString(tags: String)->String? {

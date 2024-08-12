@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PopularView: View {
     //MARK: - PROPERTIES
-    @EnvironmentObject var appManager: ViewModel
+    @EnvironmentObject var appManager: HomeViewModel
     let columns = [
         GridItem(.flexible(minimum: 139, maximum: 139)),
         GridItem(.flexible(minimum: 139, maximum: 139))
@@ -45,14 +45,6 @@ struct PopularView: View {
                 Spacer()
             }
         .background(DS.Colors.darkBlue)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                    ToolbarName()
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                ToolbarProfile()
-            }
-        }
         .task {
             if !appManager.isActiveDetailView {
                 do {
@@ -85,7 +77,7 @@ struct PopularView: View {
 
 //MARK: - PREVIEW
 struct PopularView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
+    static let previewAppManager = HomeViewModel()
     static var previews: some View {
         PopularView()
             .environmentObject(previewAppManager)

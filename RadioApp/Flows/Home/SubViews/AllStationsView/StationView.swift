@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StationView: View {
 
-    @EnvironmentObject var appManager: ViewModel
+    @EnvironmentObject var appManager: HomeViewModel
     @Binding var selectedStationID: String
     var station: Station
     @State private var isActive = false
@@ -108,7 +108,7 @@ struct StationView: View {
 
 //MARK: - PREVIEW
 struct StationView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
+    static let previewAppManager = HomeViewModel()
     static var previews: some View {
         StationView(selectedStationID: .constant(""), station: .testStation())
             .environmentObject(previewAppManager)

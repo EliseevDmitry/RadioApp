@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ToolbarName: View {
     
-    @EnvironmentObject var appManager: ViewModel
+    @EnvironmentObject var appManager: HomeViewModel
     
     var body: some View {
         
@@ -36,5 +36,5 @@ struct ToolbarName: View {
 
 #Preview {
     ContentView()
-        .environmentObject(ViewModel())
+        .environmentObject(HomeViewModel())
 }

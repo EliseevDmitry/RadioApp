@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AllStationsView: View {
-    @EnvironmentObject var appManager: ViewModel
+    @EnvironmentObject var appManager: HomeViewModel
     @State private var isSearching: Bool = false
     var body: some View {
         VStack{
@@ -50,14 +50,6 @@ struct AllStationsView: View {
             Spacer()
         }
         .background(DS.Colors.darkBlue)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                ToolbarName()
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                ToolbarProfile()
-            }
-        }
         .task {
             if !appManager.isActiveDetailView {
                 do {
@@ -80,7 +72,7 @@ struct AllStationsView: View {
 
 //MARK: - PREVIEW
 struct AllStationsView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
+    static let previewAppManager = HomeViewModel()
     static var previews: some View {
         AllStationsView()
             .environmentObject(previewAppManager)

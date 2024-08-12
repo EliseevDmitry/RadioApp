@@ -7,14 +7,13 @@
 
 import SwiftUI
 
+// MARK: - SignInView
 struct SignInView: View {
     // MARK: - Properties
     @StateObject var viewModel: AuthViewModel
-    
-    @State private var isAuthenticated = false
-    @State private var showAlert = false
     @State private var alertMessage = ""
     
+    // MARK: - Initializer
     init(
         authService: AuthService = .shared
     ) {
@@ -27,43 +26,42 @@ struct SignInView: View {
     
     // MARK: - Body
     var body: some View {
-        NavigationView {
+        ZStack {
+            // Backgrounds
+            AnimatedBackgroundView()
+            AuthBackgroundView()
             
-            ZStack {
-                // Backgrounds
-                AnimatedBackgroundView()
-                AuthBackgroundView()
+            VStack(alignment: .leading) {
+                Spacer()
                 
-                VStack(alignment: .leading) {
-                    Spacer()
-                    
-                    appLogo
-                    
-                    titleText
-                    
-                    subtitleText
-                    
-                    inputFields
-                    
-                    socialMediaButton
-                    
-                    signInButton
-                    
-                    signUpButton
-                    
-                    Spacer()
-                }
-                .padding()
-                .alert(isPresented: $showAlert) {
-                    Alert(
-                        title: Text("Error"),
-                        message: Text(alertMessage),
-                        dismissButton: .default(Text("OK"))
-                    )
-                }
+                appLogo
+                
+                titleText
+                
+                subtitleText
+                
+                inputFields
+                
+                socialMediaButton
+                
+                signInButton
+                
+                signUpButton
+                
+                Spacer()
+            }
+            .padding()
+            .alert(isPresented: isPresentedAlert()) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text(viewModel.error?.localizedDescription ?? ""),
+                    dismissButton: .default(Text("OK"),
+                    action: viewModel.cancelErrorAlert)
+                )
             }
         }
     }
+    
     // MARK: - Subviews
     private var appLogo: some View {
         Image("Group 3")
@@ -105,19 +103,16 @@ struct SignInView: View {
     }
     
     private var signInButton: some View {
-        CustomButton(action: {
-            Task {
-                await signIn()
-            }
-        },
-                     title: Resources.Text.SignIn.title,
-                     buttonType: .onboarding
-        )
-        .background(
-            NavigationLink(destination: ContentView(), isActive: $isAuthenticated) {
-                EmptyView()
-            }
-        )
+        NavigationLink(destination: ContentView(), isActive: $viewModel.isAuthenticated) {
+            CustomButton(action: {
+                Task {
+                    await signIn()
+                }
+            },
+                         title: Resources.Text.SignIn.title,
+                         buttonType: .onboarding
+            )
+        }
     }
     
     private var signUpButton: some View {
@@ -130,13 +125,13 @@ struct SignInView: View {
     // MARK: - Functions
     private func signIn() async {
         await viewModel.signIn()
-        if let error = viewModel.error {
-            alertMessage = error.localizedDescription
-            showAlert = true
-            
-        } else {
-            isAuthenticated = true
-        }
+    }
+    
+    private func isPresentedAlert() -> Binding<Bool> {
+        Binding(get: { viewModel.error != nil },
+                set: { isPresenting in
+            if isPresenting { return }
+        })
     }
 }
 

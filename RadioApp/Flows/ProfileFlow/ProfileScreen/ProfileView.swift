@@ -16,7 +16,6 @@ struct ProfileView: View {
     @StateObject var viewModel: ProfileViewModel
     
     @State private var imageURL: URL? = nil
-    @EnvironmentObject var appManager: ViewModel
     
     init(
         authService: AuthService = .shared,

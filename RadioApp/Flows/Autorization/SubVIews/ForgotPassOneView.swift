@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ForgotPassOneView: View {
-    @EnvironmentObject var appManager: ViewModel
+    @EnvironmentObject var appManager: HomeViewModel
     // свойство, обеспечивающее работу кнопки "стрелка назад", возвращающей на предыдущий экран
     @Environment(\.dismiss) var dismiss
 
@@ -54,7 +54,7 @@ struct ForgotPassOneView: View {
 }
 
 struct ForgotPassOneView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
+    static let previewAppManager = HomeViewModel()
     
     static var previews: some View {
         ForgotPassOneView()

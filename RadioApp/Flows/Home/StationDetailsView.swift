@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StationDetailsView: View { 
-    @EnvironmentObject var appManager: ViewModel
+    @EnvironmentObject var appManager: HomeViewModel
     var station: Station
     var body: some View {
         VStack {
@@ -79,5 +79,5 @@ struct StationDetailsView: View {
 
 #Preview {
     StationDetailsView(station: Station.testStation())
-        .environmentObject(ViewModel())
+        .environmentObject(HomeViewModel())
 }

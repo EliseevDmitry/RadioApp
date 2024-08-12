@@ -82,6 +82,7 @@ struct ProfileEditView: View {
                     .padding(Drawing.spacing)
                     .navigationTitle(Resources.Text.profile.capitalized)
                     .navigationBarBackButtonHidden(true)
+                    
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
                             BackBarButton()

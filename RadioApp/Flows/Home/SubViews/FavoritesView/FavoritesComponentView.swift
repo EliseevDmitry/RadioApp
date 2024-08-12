@@ -9,11 +9,9 @@
 
 import SwiftUI
 
-
-
 struct FavoritesComponentView: View {
     //MARK: - PROPERTIES
-    @EnvironmentObject var appManager: ViewModel
+    @EnvironmentObject var appManager: HomeViewModel
     @FetchRequest(sortDescriptors: []) var stationData: FetchedResults<StationData>
     @Environment(\.managedObjectContext) var moc
     @Binding var selectedStationID: String

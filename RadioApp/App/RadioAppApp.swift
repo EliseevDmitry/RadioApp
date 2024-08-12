@@ -16,19 +16,23 @@ struct RadioAppApp: App {
     @AppStorage("isOnboarding") var isOnboarding = false
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-   //MARK: -
+    
+    //MARK: - Body
     var body: some Scene {
         WindowGroup {
-            if !isOnboarding {
-                WelcomeView()
-                    .preferredColorScheme(.dark)
-            } else if AuthService.shared.isAuthenticated() {
-             ContentView()
+            NavigationView {
+                if !isOnboarding {
+                    WelcomeView()
                         .preferredColorScheme(.dark)
-               
-            } else {
-                SignInView()
-                    .preferredColorScheme(.dark)
+                } else if AuthService.shared.isAuthenticated() {
+                    ContentView()
+//                        .navigationBarHidden(true) 
+                        .preferredColorScheme(.dark)
+                } else {
+                    SignInView()
+                        .navigationBarHidden(true)
+                        .preferredColorScheme(.dark)
+                }
             }
         }
     }

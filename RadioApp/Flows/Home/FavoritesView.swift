@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct FavoritesView: View {
-    @EnvironmentObject var appManager: ViewModel
+    @EnvironmentObject var appManager: HomeViewModel
     @FetchRequest(sortDescriptors: []) var stationData: FetchedResults<StationData>
     @Environment(\.managedObjectContext) var moc
     
@@ -49,14 +49,6 @@ struct FavoritesView: View {
             Spacer()
         }
         .background(DS.Colors.darkBlue)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                ToolbarName()
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                ToolbarProfile()
-            }
-        }
         .onDisappear{
             if !appManager.isActiveDetailView {
                 appManager.stopAudioStream()
@@ -94,7 +86,7 @@ struct FavoritesView: View {
 
 //MARK: - PREVIEW
 struct FavoritesView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
+    static let previewAppManager = HomeViewModel()
     static var previews: some View {
         FavoritesView()
             .environmentObject(previewAppManager)

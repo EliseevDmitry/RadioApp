@@ -8,58 +8,71 @@
 import SwiftUI
 
 struct ContentView: View {
-
-    @StateObject var appManager = ViewModel()
-    @State var selectedTab: Tab = .popular
-    @State var showTabBar: Bool = true
-    @State var tapBarVisible = true
     
+    @StateObject var appManager: HomeViewModel
+    @State private var selectedTab: Tab = .popular
     
+    @State private var isProfileViewActive = false
     
-    
-    var body: some View {
-        
-        NavigationView {
-            VStack {
-                Spacer()
-                switch selectedTab {
-                case .popular:
-                    PopularView()
-                        .environmentObject(appManager)
-                case .favorites:
-                    FavoritesView()
-                        .environmentObject(appManager)
-                        .environment(\.managedObjectContext, appManager.container.viewContext)
-                    
-                case .allStations:
-                    AllStationsView()
-                        .environmentObject(appManager)
-                }
-                CustomTabBarView(selectedTab: $selectedTab)
-                    .environmentObject(appManager)
-                Spacer()
-                
-            }
-            .navigationViewStyle(.stack)
-            .ignoresSafeArea()
-            .dynamicTypeSize(.xSmall ... .xLarge)
-            //            .toolbar {
-            //                ToolbarItem(placement: .topBarLeading) {
-            //                        ToolbarName()
-            //                }
-            //                
-            //                ToolbarItem(placement: .topBarTrailing) {
-            //                    ToolbarProfile()
-            //                }
-            //            }
-            //            .background(DS.Colors.darkBlue)
-            
-        }
+    init(
+        authService: AuthService = .shared,
+        networkService: NetworkService = .shared,
+        amplitudeService: AmplitudeService = .shared,
+        coreDataService: CoreDataService = .shared
+    ) {
+        self._appManager = StateObject(
+            wrappedValue: HomeViewModel(
+                authService: authService,
+                networkService: networkService,
+                amplitudeService: amplitudeService,
+                coreDataService: coreDataService
+            )
+        )
     }
     
+    var body: some View {
+        VStack {
+            switch selectedTab {
+            case .popular:
+                PopularView()
+                    .environmentObject(appManager)
+                
+            case .favorites:
+                FavoritesView()
+                    .environmentObject(appManager)
+                
+            case .allStations:
+                AllStationsView()
+                    .environmentObject(appManager)
+            }
+            
+            CustomTabBarView(selectedTab: $selectedTab)
+                .environmentObject(appManager)
+                .ignoresSafeArea()
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        ToolbarName()
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        ToolbarProfile(toolbarRoute: {
+                            withAnimation(.easeInOut) {
+                                isProfileViewActive.toggle()
+                            }
+                        })
+                    }
+                }
+                .environmentObject(appManager)
+        }
+        .background(
+            NavigationLink(destination: ProfileView(),
+                           isActive: $isProfileViewActive,
+                           label: { EmptyView() })
+        )
+        .navigationBarBackButtonHidden(true)
+    }
 }
-//
-//#Preview {
-//    ContentView()
-//        .environmentObject(ViewModel())
-//}
+
+
+#Preview {
+    ContentView()
+}

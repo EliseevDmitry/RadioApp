@@ -30,7 +30,7 @@ struct TestRotationView: View {
 
 //MARK: - PREVIEW
 struct TestRotationView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
+    static let previewAppManager = HomeViewModel()
     static var previews: some View {
         TestRotationView()
             .environmentObject(previewAppManager)

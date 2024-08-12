@@ -8,11 +8,11 @@
 import SwiftUI
 
 final class AuthViewModel: ObservableObject {
-    @Published var email = ""
-    @Published var password = ""
+    var email = ""
+    var password = ""
     @Published var username = "Mark"
-    @Published var userProfileImage: UIImage? = nil
-    
+   
+    @Published var isAuthenticated: Bool
     @Published var error: Error?
     
     private let authService: AuthService
@@ -20,12 +20,17 @@ final class AuthViewModel: ObservableObject {
     // MARK: - Initializer
     init(authService: AuthService = .shared) {
         self.authService = authService
+        isAuthenticated = authService.isAuthenticated()
     }
+    
+    func cancelErrorAlert() { error = nil }
     
     //    MARK: - AuthService Methods
     func signIn() async {
             do {
-                try await AuthService.shared.signIn(with: email, password: password)
+                try await authService.signIn(with: email, password: password)
+                isAuthenticated = authService.isAuthenticated()
+                print("isAuthenticated set to \(isAuthenticated)")
             } catch {
                 self.error = error
             }
@@ -33,7 +38,7 @@ final class AuthViewModel: ObservableObject {
     
     func registerUser() {
         Task {
-            try await AuthService.shared.registerUser(with: email, password: password, username: username)
+            try await authService.registerUser(with: email, password: password, username: username)
             isUserRegistered = true
         }
     }

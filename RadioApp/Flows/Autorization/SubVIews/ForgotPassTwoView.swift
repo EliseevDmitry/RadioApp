@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ForgotPassTwoView: View {
-    @EnvironmentObject var appManager: ViewModel
+    @EnvironmentObject var appManager: HomeViewModel
     
     var body: some View {
         ZStack {
@@ -40,7 +40,7 @@ struct ForgotPassTwoView: View {
 }
 
 struct ForgotPassTwoView_Previews: PreviewProvider {
-    static let previewAppManager = ViewModel()
+    static let previewAppManager = HomeViewModel()
     
     static var previews: some View {
         ForgotPassTwoView()
