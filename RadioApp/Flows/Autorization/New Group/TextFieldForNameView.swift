@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TextFieldForNameView: View {
     //MARK: - PROPERTIES
-    @EnvironmentObject var appManager: ViewModel
+    @ObservedObject var appManager: ViewModel
     private struct DrawingConstants {
         static let verticalPaddingSize = UIScreen.height * 1/108
     }
@@ -38,5 +38,5 @@ struct TextFieldForNameView: View {
 
 //MARK: - PREVIEW
 #Preview {
-    TextFieldForNameView()
+    TextFieldForNameView(appManager: ViewModel())
 }
